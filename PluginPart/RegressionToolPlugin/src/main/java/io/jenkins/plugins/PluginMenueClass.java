@@ -4,9 +4,14 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 public class PluginMenueClass {
     
+    private String pfadZuBasen;
     
     @DataBoundConstructor
-    public PluginMenueClass() {
-        // TODO Auto-generated constructor stub
+    public PluginMenueClass(String pfadZuBasen) {
+        this.pfadZuBasen = pfadZuBasen;
+    }
+    
+    public String getPfadZuBasen() {
+        return pfadZuBasen;
     }
 }
