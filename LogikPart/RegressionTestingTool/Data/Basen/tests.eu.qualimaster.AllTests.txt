@@ -1,0 +1,5 @@
+Name:tests.eu.qualimaster.AllTests
+AvarageLaufzeit: 62.62519999999999
+Obergrenze:72.138
+Untergrenze:52.609
+Varianz:68.74774256000003

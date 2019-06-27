@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Group-Id: io.jenkins.plugins
+Short-Name: RegressionToolPlugin
+Long-Name: TODO Plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 1.0
+Hudson-Version: 2.164.1
+Jenkins-Version: 2.164.1
+Plugin-Developers: 
+Support-Dynamic-Loading: true
+Libraries: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTes
+ ts(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\src\main\
+ resources,F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTes
+ ts(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\target\cl
+ asses
+Resource-Path: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanc
+ eTests(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\src\m
+ ain\webapp
+

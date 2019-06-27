@@ -1,0 +1,1087 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<result plugin="junit@1.27">
+  <suites>
+    <suite>
+      <file>/var/lib/jenkins/workspace/QM_Events/result.xml</file>
+      <name>tests.eu.qualimaster.AllTests</name>
+      <stdout>Reading /var/lib/jenkins/workspace/QM_Events/testdata/test.properties
+Direct test
+647  [main] INFO  eu.qualimaster.Configuration - The configured pipeline ports: 63000-64000
+Replay test
+681  [main] INFO  eu.qualimaster.Configuration - The configured pipeline ports: 63000-64000
+Reconfiguring infrastructure settings: {eventBus.port=2999, pipelines.ports=63000-64000, zookeeper.host=localhost,myserver.de, watcher.waiting.time=100, monitoring.volume.enabled=true, zookeeper.retry.times=5, zookeeper.port=1024, eventBus.disableLogging=eu.qualiMaster.MyEvent,eu.qualiMaster.YourEvent, eventBus.host=qm.sse.uni-hildesheim.de, zookeeper.retry.interval=100} from {zookeeper.retry.times=5, storm.zookeeper.port=1024, eventBus.port=2999, pipelines.ports=63000-64000, eventBus.disableLogging=eu.qualiMaster.MyEvent,eu.qualiMaster.YourEvent, storm.zookeeper.servers=[localhost, myserver.de], eventBus.host=qm.sse.uni-hildesheim.de, monitoring.volume.enabled=true, zookeeper.retry.interval=100, watcher.waiting.time=100}
+690  [main] INFO  eu.qualimaster.Configuration - Turning abba into URL : no protocol: abba
+1413 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+1413 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+1414 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+1420 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2025 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2025 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2532 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2533 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2533 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2533 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2533 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2536 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2536 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2536 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2538 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+2638 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received tests.eu.qualimaster.events.EventHandlerTests$1ChannelEvent@19509f55
+2639 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching tests.eu.qualimaster.events.EventHandlerTests$1ChannelEvent@19509f55
+2639 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching tests.eu.qualimaster.events.EventHandlerTests$1ChannelEvent@19509f55
+2639 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching tests.eu.qualimaster.events.EventHandlerTests$1ChannelEvent@19509f55
+2639 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching tests.eu.qualimaster.events.EventHandlerTests$1ChannelEvent@19509f55
+3741 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3742 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3742 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3742 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3742 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3743 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3743 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3743 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3743 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3743 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+3744 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4344 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test2 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4848 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4849 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4851 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4852 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4852 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+4852 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: test1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5452 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: test2 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5471 [main] INFO  eu.qualimaster.events.EventManager - Event manager started in server mode on port 9998.
+5479 [Thread-1] INFO  eu.qualimaster.events.EventManager - accepted event connection from /127.0.0.1:58300
+5484 [main] INFO  eu.qualimaster.events.EventManager - sending PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5484 [main] INFO  eu.qualimaster.events.EventManager - sending PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5501 [Thread-2] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5501 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5502 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5502 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5502 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5502 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5503 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5505 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5505 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5525 [Thread-2] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5525 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5525 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5526 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5528 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5528 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5528 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+5528 [Thread-2] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pip status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10720 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10720 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10721 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10721 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10721 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10722 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10722 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10723 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10724 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10724 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10725 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10725 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10726 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10726 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+10726 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+
+10831 [Time-limited test] INFO  eu.qualimaster.events.EventManager - Event manager started in server mode on port 9998.
+10834 [Thread-3] INFO  eu.qualimaster.events.EventManager - accepted event connection from /127.0.0.1:58304
+10839 [Time-limited test] INFO  eu.qualimaster.events.EventManager -  Event manager started in client mode (server localhost/9998).
+10840 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10861 [Thread-5] INFO  eu.qualimaster.events.EventManager - sending ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10863 [Thread-4] INFO  eu.qualimaster.events.EventManager - received ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10863 [Thread-4] INFO  eu.qualimaster.events.EventManager - dispatching ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10863 [Thread-4] INFO  eu.qualimaster.events.EventManager - dispatching ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10863 [Thread-4] INFO  eu.qualimaster.events.EventManager - dispatching ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10863 [Thread-4] INFO  eu.qualimaster.events.EventManager - dispatching ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10865 [Thread-4] INFO  eu.qualimaster.events.EventManager - dispatching ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-7fff-2146297339045267 eventClass: eu.qualimaster.logging.events.LoggingFilterEvent 
+10865 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received LoggingFilterEvent additions: [.*] removals: [] 
+10865 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10865 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10865 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10866 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10866 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10866 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10872 [Thread-6] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+10892 [Thread-6] INFO  eu.qualimaster.events.EventManager - dispatching LoggingFilterEvent additions: [.*] removals: [] 
+
+31089 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31089 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31089 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31090 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31091 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: CHECKING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+
+31194 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31194 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31194 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31197 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31197 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31198 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31199 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31199 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31199 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31199 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31199 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+
+31305 [Time-limited test] INFO  eu.qualimaster.events.EventManager - Event manager started in server mode on port 9998.
+31306 [Time-limited test] INFO  eu.qualimaster.events.EventManager -  Event manager started in client mode (server localhost/9998).
+31307 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31309 [Thread-7] INFO  eu.qualimaster.events.EventManager - accepted event connection from /127.0.0.1:58474
+31313 [Thread-8] INFO  eu.qualimaster.events.EventManager - sending PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31322 [Thread-9] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31324 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31324 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31324 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31324 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31327 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31327 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31327 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31327 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31328 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31328 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31328 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31331 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31331 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31331 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31331 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31331 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+31332 [Thread-9] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+
+36517 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36519 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36519 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36519 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36519 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36520 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36521 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36521 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36521 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36521 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36521 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36622 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36623 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36623 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36623 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36624 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36624 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36624 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36624 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36624 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: CREATED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36625 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36626 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STOPPED adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - received PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STARTING adaptationFilterName: null causeSenderId: null causeMessageId: null options: null 
+36727 [Time-limited test] INFO  eu.qualimaster.events.EventManager - dispatching PipelineLifecycleEvent pipeline: pipeline1 status: STA
+...[truncated 49978 chars]...
+kerId: 3 eventId: 7 
+61901 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 7 
+61903 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 7 
+61921 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 7 
+61922 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 7 
+61923 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 7 
+61942 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 7 
+61942 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 7 
+61943 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 7 
+61962 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 7 
+61962 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 7 
+61963 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 8 
+61982 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 8 
+61982 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 8 
+61984 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 8 
+62003 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 8 
+62003 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 8 
+62004 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 8 
+62023 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 8 
+62023 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 8 
+62024 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 8 
+62043 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 8 
+62043 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 8 
+62044 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 8 
+62064 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 8 
+62064 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 8 
+62064 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 8 
+62084 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 8 
+62084 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 8 
+62085 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 8 
+62104 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 8 
+62104 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 8 
+62105 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 8 
+62125 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 8 
+62125 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 8 
+62125 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 8 
+62145 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 8 
+62145 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 8 
+62145 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 8 
+62165 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 8 
+62165 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 9 
+62166 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 8 
+62186 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 9 
+62186 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 9 
+62186 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 9 
+62206 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 9 
+62206 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 9 
+62206 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 9 
+62226 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 9 
+62227 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 9 
+62227 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 9 
+62246 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 9 
+62247 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 9 
+62247 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 9 
+62267 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 9 
+62267 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 9 
+62267 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 9 
+62287 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 9 
+62287 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 9 
+62288 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 9 
+62307 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 9 
+62308 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 9 
+62308 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 9 
+62327 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 9 
+62328 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 9 
+62328 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 9 
+62347 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 9 
+62348 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 9 
+62348 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 9 
+62369 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 9 
+62369 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 9 
+63415 [main] INFO  eu.qualimaster.events.EventManager - received ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-8000-2146287405553887 eventClass: tests.eu.qualimaster.events.EventManagerTests$TestEvent 
+63432 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-8000-2146287405553887 eventClass: tests.eu.qualimaster.events.EventManagerTests$TestEvent 
+63432 [Thread-34] INFO  eu.qualimaster.events.EventManager - received ForwardHandlerEvent clientId: 8217a19f2f06ab8b:60261236:16a8214c815:-8000-2146287405553887 eventClass: tests.eu.qualimaster.events.EventManagerTests$TestEvent 
+68416 [main] ERROR eu.qualimaster.events.EventManager - While setting up event forwarding: Read timed out
+69416 [pool-1-thread-6] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 0 
+69416 [pool-1-thread-6] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 0 
+69416 [pool-1-thread-6] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 0 
+69416 [pool-1-thread-6] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 0 
+69416 [pool-1-thread-5] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 0 
+69417 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 0 
+69417 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 0 
+69417 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 0 
+69437 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 0 
+69437 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 0 
+69437 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 0 
+69457 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 0 
+69458 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 0 
+69458 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 0 
+69466 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 1 
+69466 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 1 
+69466 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 1 
+69466 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 1 
+69466 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 1 
+69466 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 1 
+69466 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 1 
+69466 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 1 
+69467 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 1 
+69467 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 1 
+69478 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 0 
+69478 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 0 
+69478 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 0 
+69498 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 0 
+69498 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 0 
+69498 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 0 
+69516 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 2 
+69516 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 2 
+69516 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 2 
+69516 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 2 
+69516 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 2 
+69517 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 2 
+69517 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 2 
+69517 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 2 
+69517 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 2 
+69517 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 2 
+69518 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 0 
+69518 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 0 
+69519 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 0 
+69538 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 0 
+69539 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 0 
+69539 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 0 
+69558 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 0 
+69559 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 0 
+69559 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 0 
+69566 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 3 
+69566 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 3 
+69566 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 3 
+69566 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 3 
+69567 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 3 
+69567 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 3 
+69567 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 3 
+69567 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 3 
+69567 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 3 
+69576 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 3 
+69579 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 0 
+69579 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 0 
+69580 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 0 
+69599 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 0 
+69600 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 0 
+69600 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 0 
+69616 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 4 
+69616 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 4 
+69616 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 4 
+69617 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 4 
+69617 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 4 
+69617 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 4 
+69617 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 4 
+69617 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 4 
+69617 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 4 
+69619 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 1 
+69620 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 1 
+69620 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 1 
+69626 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 4 
+69639 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 1 
+69640 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 1 
+69640 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 1 
+69660 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 1 
+69661 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 1 
+69661 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 1 
+69667 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 5 
+69667 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 5 
+69667 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 5 
+69667 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 5 
+69667 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 5 
+69667 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 5 
+69667 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 5 
+69667 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 5 
+69667 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 5 
+69676 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 5 
+69680 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 1 
+69681 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 1 
+69681 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 1 
+69700 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 1 
+69701 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 1 
+69701 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 1 
+69717 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 6 
+69717 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 6 
+69717 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 6 
+69717 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 6 
+69717 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 6 
+69717 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 6 
+69717 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 6 
+69717 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 6 
+69717 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 6 
+69720 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 1 
+69721 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 1 
+69721 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 1 
+69727 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 6 
+69740 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 1 
+69742 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 1 
+69742 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 1 
+69760 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 1 
+69762 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 1 
+69762 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 1 
+69767 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 7 
+69767 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 7 
+69767 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 7 
+69767 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 7 
+69767 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 7 
+69767 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 7 
+69767 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 7 
+69767 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 7 
+69768 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 7 
+69777 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 7 
+69781 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 1 
+69782 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 1 
+69782 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 1 
+69801 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 1 
+69802 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 1 
+69803 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 1 
+69817 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 8 
+69817 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 8 
+69817 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 8 
+69817 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 8 
+69817 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 8 
+69817 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 8 
+69818 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 8 
+69818 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 8 
+69818 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 8 
+69821 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 2 
+69823 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 2 
+69823 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 2 
+69827 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 8 
+69841 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 2 
+69843 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 2 
+69843 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 2 
+69861 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 2 
+69863 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 2 
+69863 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 2 
+69867 [Thread-39] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 9 
+69867 [Thread-37] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 9 
+69867 [Thread-36] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 9 
+69867 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 9 
+69867 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 9 
+69868 [Thread-40] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 9 
+69868 [Thread-35] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 9 
+69868 [Thread-44] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 9 
+69868 [Thread-42] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 9 
+69877 [Thread-43] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 9 
+69882 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 2 
+69884 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 2 
+69884 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 2 
+69902 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 2 
+69904 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 2 
+69904 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 2 
+69922 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 2 
+69924 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 2 
+69924 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 2 
+69942 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 2 
+69944 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 2 
+69945 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 2 
+69962 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 2 
+69965 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 2 
+69965 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 2 
+69983 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 2 
+69985 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 2 
+69985 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 2 
+70003 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 2 
+70005 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 2 
+70005 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 2 
+70023 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 3 
+70026 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 3 
+70026 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 3 
+70043 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 3 
+70046 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 3 
+70046 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 3 
+70063 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 3 
+70066 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 3 
+70066 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 3 
+70084 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 3 
+70087 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 3 
+70087 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 3 
+70104 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 3 
+70107 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 3 
+70107 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 3 
+70124 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 3 
+70127 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 3 
+70127 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 3 
+70144 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 3 
+70147 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 3 
+70147 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 3 
+70164 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 3 
+70168 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 3 
+70168 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 3 
+70184 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 3 
+70188 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 3 
+70188 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 3 
+70205 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 3 
+70208 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 3 
+70208 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 3 
+70225 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 4 
+70228 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 4 
+70229 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 4 
+70245 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 4 
+70249 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 4 
+70249 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 4 
+70265 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 4 
+70269 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 4 
+70269 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 4 
+70285 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 4 
+70289 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 4 
+70289 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 4 
+70305 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 4 
+70310 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 4 
+70310 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 4 
+70326 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 4 
+70330 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 4 
+70330 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 4 
+70346 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 4 
+70350 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 4 
+70350 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 4 
+70366 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 4 
+70370 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 4 
+70370 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 4 
+70386 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 4 
+70391 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 4 
+70391 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 4 
+70406 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 4 
+70411 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 4 
+70411 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 4 
+70427 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 5 
+70431 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 5 
+70431 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 5 
+70447 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 5 
+70451 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 5 
+70452 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 5 
+70467 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 5 
+70472 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 5 
+70472 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 5 
+70487 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 5 
+70492 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 5 
+70492 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 5 
+70507 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 5 
+70512 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 5 
+70512 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 5 
+70527 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 5 
+70533 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 5 
+70533 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 5 
+70548 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 5 
+70553 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 5 
+70553 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 5 
+70568 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 5 
+70573 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 5 
+70573 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 5 
+70588 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 5 
+70593 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 5 
+70594 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 5 
+70608 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 5 
+70614 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 5 
+70614 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 5 
+70628 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 6 
+70634 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 6 
+70634 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 6 
+70648 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 6 
+70654 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 6 
+70654 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 6 
+70669 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 6 
+70675 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 6 
+70675 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 6 
+70689 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 6 
+70695 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 6 
+70695 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 6 
+70709 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 6 
+70715 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 6 
+70715 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 6 
+70729 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 6 
+70735 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 6 
+70735 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 6 
+70749 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 6 
+70756 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 6 
+70756 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 6 
+70769 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 6 
+70776 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 6 
+70776 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 6 
+70790 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 6 
+70796 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 6 
+70796 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 6 
+70810 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 6 
+70817 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 6 
+70817 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 6 
+70830 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 7 
+70837 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 7 
+70837 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 7 
+70850 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 7 
+70857 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 7 
+70857 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 7 
+70870 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 7 
+70877 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 7 
+70877 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 7 
+70890 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 7 
+70898 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 7 
+70898 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 7 
+70911 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 7 
+70918 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 7 
+70918 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 7 
+70931 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 7 
+70938 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 7 
+70938 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 7 
+70951 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 7 
+70959 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 7 
+70959 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 7 
+70971 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 7 
+70979 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 7 
+70979 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 7 
+70991 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 7 
+70999 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 7 
+70999 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 7 
+71012 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 7 
+71019 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 7 
+71019 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 7 
+71032 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 8 
+71040 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 8 
+71040 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 8 
+71052 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 8 
+71060 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 8 
+71060 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 8 
+71072 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 8 
+71080 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 8 
+71080 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 8 
+71092 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 8 
+71101 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 8 
+71101 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 8 
+71112 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 8 
+71121 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 8 
+71121 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 8 
+71133 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 8 
+71141 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 8 
+71141 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 8 
+71153 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 8 
+71161 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 8 
+71161 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 8 
+71173 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 8 
+71182 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 8 
+71182 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 8 
+71193 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 8 
+71202 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 8 
+71202 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 8 
+71213 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 8 
+71222 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 8 
+71222 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 8 
+71234 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 4 eventId: 9 
+71243 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 4 eventId: 9 
+71243 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 4 eventId: 9 
+71254 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 2 eventId: 9 
+71263 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 2 eventId: 9 
+71263 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 2 eventId: 9 
+71274 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 1 eventId: 9 
+71283 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 1 eventId: 9 
+71283 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 1 eventId: 9 
+71294 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 3 eventId: 9 
+71303 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 9 
+71303 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 9 
+71314 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 6 eventId: 9 
+71324 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 9 
+71324 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 9 
+71334 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 5 eventId: 9 
+71344 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 5 eventId: 9 
+71344 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 5 eventId: 9 
+71355 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 0 eventId: 9 
+71364 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 0 eventId: 9 
+71364 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 0 eventId: 9 
+71375 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 9 eventId: 9 
+71384 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 9 eventId: 9 
+71385 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 9 
+71395 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 7 eventId: 9 
+71405 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 7 eventId: 9 
+71405 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 7 eventId: 9 
+71415 [Thread-33] INFO  eu.qualimaster.events.EventManager - sending TestEvent workerId: 8 eventId: 9 
+71432 [Thread-34] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 8 eventId: 9 
+71432 [Thread-34] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 8 eventId: 9 
+</stdout>
+      <stderr></stderr>
+      <duration>72.138</duration>
+      <timestamp>2019-05-04T09:02:40</timestamp>
+      <time>72.138</time>
+      <enclosingBlocks/>
+      <enclosingBlockNames/>
+      <cases>
+        <case>
+          <duration>0.735</duration>
+          <className>tests.eu.qualimaster.ConfigurationTests</className>
+          <testName>configurationTest</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.ConfigurationTests</className>
+          <testName>testConfigurationOption</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.192</duration>
+          <className>tests.eu.qualimaster.ConfigurationTests</className>
+          <testName>testUtilities</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>1.136</duration>
+          <className>tests.eu.qualimaster.events.EventHandlerTests</className>
+          <testName>testSuperClassHandler</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.003</duration>
+          <className>tests.eu.qualimaster.events.EventHandlerTests</className>
+          <testName>testEventManagerNotStarted</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>1.214</duration>
+          <className>tests.eu.qualimaster.events.EventHandlerTests</className>
+          <testName>testChannelHandler</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>1.105</duration>
+          <className>tests.eu.qualimaster.events.EventHandlerTests</className>
+          <testName>testEventManagerStartStop</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>1.108</duration>
+          <className>tests.eu.qualimaster.events.EventHandlerTests</className>
+          <testName>testEventManagerStartUnregister</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.009</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testMonitoringEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testHardwareEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.003</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testLoggingEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.22</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testEventSender</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testSourceMonitoringEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.006</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testAdaptationEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testEndOfDataEvent</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testPlatformMonitoringEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testInfrastructurePart</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.003</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testMonitoringEvents2</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.002</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testLifecycleEvent</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.015</duration>
+          <className>tests.eu.qualimaster.events.EventsTests</className>
+          <testName>testAlgorithmEvents</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.108</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testLocal</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>20.258</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testForward</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.105</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testLocalAsync</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.107</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testLocalUnstarted</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.212</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testRemote</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.422</duration>
+          <className>tests.eu.qualimaster.events.PipelineStatusTrackerTest</className>
+          <testName>testPiplineStatusTracker</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.115</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testSynchronousStore</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.803</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testTimerHandler</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.715</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testRequestResponseClient</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.716</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testRequestResponseServer</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.PipelineOptionsTest</className>
+          <testName>testOptionKey</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.PipelineOptionsTest</className>
+          <testName>testAdaptationFilter</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.0</duration>
+          <className>tests.eu.qualimaster.PipelineOptionsTest</className>
+          <testName>parallelismArgTests</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.PipelineOptionsTest</className>
+          <testName>execArgTests</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.003</duration>
+          <className>tests.eu.qualimaster.PipelineOptionsTest</className>
+          <testName>pipelineOptionsTest</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.004</duration>
+          <className>tests.eu.qualimaster.FrozenSystemStateTest</className>
+          <testName>testFrozenSystemState</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.034</duration>
+          <className>tests.eu.qualimaster.events.ComponentKeyTests</className>
+          <testName>testComponentKey</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.005</duration>
+          <className>tests.eu.qualimaster.AlgorithmChangeParameterTest</className>
+          <testName>testSet</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.AlgorithmChangeParameterTest</className>
+          <testName>testConvert</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.035</duration>
+          <className>tests.eu.qualimaster.ResponseStoreTest</className>
+          <testName>testResponseStore</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.001</duration>
+          <className>tests.eu.qualimaster.AdditionalTests</className>
+          <testName>testXmlFactory</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>4.026</duration>
+          <className>tests.eu.qualimaster.events.EventManagerTests</className>
+          <testName>testCsParallelStartup</testName>
+          <skipped>false</skipped>
+          <errorStackTrace>junit.framework.AssertionFailedError: Number of expected events (10) for worker 0 does not match: 9 [TestEvent workerId: 0 eventId: 1 , TestEvent workerId: 0 eventId: 2 , TestEvent workerId: 0 eventId: 3 , TestEvent workerId: 0 eventId: 4 , TestEvent workerId: 0 eventId: 5 , TestEvent workerId: 0 eventId: 6 , TestEvent workerId: 0 eventId: 7 , TestEvent workerId: 0 eventId: 8 , TestEvent workerId: 0 eventId: 9 ] expected:&lt;10&gt; but was:&lt;9&gt;
+	at tests.eu.qualimaster.events.EventManagerTests.doTest(EventManagerTests.java:258)
+	at tests.eu.qualimaster.events.EventManagerTests.testCsParallelStartup(EventManagerTests.java:215)
+</errorStackTrace>
+          <errorDetails>Number of expected events (10) for worker 0 does not match: 9 [TestEvent workerId: 0 eventId: 1 , TestEvent workerId: 0 eventId: 2 , TestEvent workerId: 0 eventId: 3 , TestEvent workerId: 0 eventId: 4 , TestEvent workerId: 0 eventId: 5 , TestEvent workerId: 0 eventId: 6 , TestEvent workerId: 0 eventId: 7 , TestEvent workerId: 0 eventId: 8 , TestEvent workerId: 0 eventId: 9 ] expected:&lt;10&gt; but was:&lt;9&gt;</errorDetails>
+          <failedSince>9</failedSince>
+        </case>
+        <case>
+          <duration>8.006</duration>
+          <className>tests.eu.qualimaster.events.EventManagerTests</className>
+          <testName>testLocalParallelStartup</testName>
+          <skipped>false</skipped>
+          <errorStackTrace>junit.framework.AssertionFailedError: Number of expected events (10) for worker 0 does not match: 0 [] expected:&lt;10&gt; but was:&lt;0&gt;
+	at tests.eu.qualimaster.events.EventManagerTests.doTest(EventManagerTests.java:258)
+	at tests.eu.qualimaster.events.EventManagerTests.testLocalParallelStartup(EventManagerTests.java:202)
+</errorStackTrace>
+          <errorDetails>Number of expected events (10) for worker 0 does not match: 0 [] expected:&lt;10&gt; but was:&lt;0&gt;</errorDetails>
+          <failedSince>9</failedSince>
+        </case>
+        <case>
+          <duration>0.053</duration>
+          <className>tests.eu.qualimaster.FileTests</className>
+          <testName>testFileUtils</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.009</duration>
+          <className>tests.eu.qualimaster.FileTests</className>
+          <testName>zipTests</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.5</duration>
+          <className>tests.eu.qualimaster.FileTests</className>
+          <testName>sleepTest</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.003</duration>
+          <className>tests.eu.qualimaster.plugins.EntryParserTests</className>
+          <testName>testEntryParser</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.0</duration>
+          <className>tests.eu.qualimaster.reflection.ReflectionHelperTests</className>
+          <testName>createInstanceTest</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>72.138</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

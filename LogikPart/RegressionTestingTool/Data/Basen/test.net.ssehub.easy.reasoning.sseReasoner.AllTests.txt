@@ -1,0 +1,5 @@
+Name:test.net.ssehub.easy.reasoning.sseReasoner.AllTests
+AvarageLaufzeit: 142.22625
+Obergrenze:170.379
+Untergrenze:113.781
+Varianz:1655.6943501874998
