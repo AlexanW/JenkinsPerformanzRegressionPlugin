@@ -8,11 +8,11 @@ public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
     System.out.println("Running tests for "+"io.jenkins.plugins:RegressionToolPlugin:1.0");
     Map<String, Object> parameters = new HashMap<String, Object>();
-    parameters.put("basedir","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\Tool\\RegressionToolPlugin\\RegressionToolPlugin");
+    parameters.put("basedir","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin");
     parameters.put("artifactId","RegressionToolPlugin");
     parameters.put("packaging","hpi");
-    parameters.put("outputDirectory","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\Tool\\RegressionToolPlugin\\RegressionToolPlugin\\target\\classes");
-    parameters.put("testOutputDirectory","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\Tool\\RegressionToolPlugin\\RegressionToolPlugin\\target\\test-classes");
+    parameters.put("outputDirectory","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\target\\classes");
+    parameters.put("testOutputDirectory","F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\target\\test-classes");
     parameters.put("requirePI","true");
     return org.jvnet.hudson.test.PluginAutomaticTestBuilder.build(parameters);
   }

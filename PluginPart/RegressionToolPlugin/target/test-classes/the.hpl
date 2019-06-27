@@ -9,11 +9,10 @@ Jenkins-Version: 2.164.1
 Plugin-Developers: 
 Support-Dynamic-Loading: true
 Libraries: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTes
- ts(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\src\main\
- resources,F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTes
- ts(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\target\cl
- asses
+ ts(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resou
+ rces,F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Ba
+ chelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\classes
 Resource-Path: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanc
- eTests(Bachelor)\Tool\RegressionToolPlugin\RegressionToolPlugin\src\m
- ain\webapp
+ eTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\w
+ ebapp
 
