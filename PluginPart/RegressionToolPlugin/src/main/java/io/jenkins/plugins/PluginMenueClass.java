@@ -1,5 +1,8 @@
 package io.jenkins.plugins;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 
@@ -21,7 +24,6 @@ public class PluginMenueClass extends BuildWrapper{
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
         this.pfadZuBasen = pfadZuBasen;
         this.pfadZuBuilds = pfadZuBuilds;
-        System.out.println("Testausgabe.");
     }
     
     public String getPfadZuBasen() {
@@ -31,11 +33,24 @@ public class PluginMenueClass extends BuildWrapper{
     public String getPfadZuBuilds() {
         return pfadZuBuilds;
     }
+    
     @Override
     public Environment setUp(AbstractBuild build,
             Launcher launcher,
             BuildListener listener) {
         return new Environment() {
+            
+            @Override
+            public boolean tearDown(AbstractBuild build, BuildListener listener)
+                    throws IOException, InterruptedException {
+                System.out.println("Teardown works fine");
+                System.out.println(getPfadZuBasen() + "Basen");
+                System.out.println(getPfadZuBuilds() + " sadf");
+                Logger logger = Logger.getLogger("PathLogger");
+                logger.info(getPfadZuBasen() + "Basen-----------------------------------------------------");
+                logger.info(getPfadZuBasen() + "Basen......................................................");
+                return super.tearDown(build, listener);
+            }
         };
     }
     
