@@ -5,14 +5,13 @@ Build-Jdk: 10.0.2
 Extension-Name: RegressionToolPlugin
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: RegressionToolPlugin
-Implementation-Version: 1.0
+Implementation-Version: 1.01
 Group-Id: io.jenkins.plugins
 Short-Name: RegressionToolPlugin
-Long-Name: TODO Plugin
+Long-Name: RegressionToolPlugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 1.0
+Plugin-Version: 1.01
 Hudson-Version: 2.164.1
 Jenkins-Version: 2.164.1
 Plugin-Developers: 
-Support-Dynamic-Loading: true
 
