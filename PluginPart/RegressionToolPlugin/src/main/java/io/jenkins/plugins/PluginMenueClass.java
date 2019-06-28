@@ -21,6 +21,7 @@ public class PluginMenueClass extends BuildWrapper{
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
         this.pfadZuBasen = pfadZuBasen;
         this.pfadZuBuilds = pfadZuBuilds;
+        System.out.println("Testausgabe.");
     }
     
     public String getPfadZuBasen() {
