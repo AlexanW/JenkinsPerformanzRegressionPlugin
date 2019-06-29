@@ -7,5 +7,8 @@
   	<f:entry title="${%pfadZuBuilds}" field="pfadZuBuilds">
     	<f:textbox />
   	</f:entry>
+ <f:validateButton
+      title="${%CreateBasen}" progress="${%CreateBasen.progress}"
+      method="createBase" with="pfadZuBasen" />
   </f:section>
 </j:jelly>

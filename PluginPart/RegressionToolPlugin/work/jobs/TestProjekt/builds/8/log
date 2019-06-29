@@ -1,0 +1,15 @@
+Gestartet durch Benutzer unknown or anonymous
+Baue in Arbeitsbereich F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\workspace\TestProjekt
+Blub HIER IST DER PFAD ZU DEN BASEN------------------------------
+FATAL: HierIstEtwasSchiefgegangen.
+
+FATAL: TestName: -- TestProjekt
+
+FATAL: TeatPlace: -- F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt
+
+FATAL: TeatPlace: -- F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt
+
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt\builds------------------------------
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt\config.xml------------------------------
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt\nextBuildNumber------------------------------
+Finished: SUCCESS

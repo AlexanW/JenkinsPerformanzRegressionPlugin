@@ -1,5 +1,6 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <project>
+  <actions/>
   <description>Testprojekt um Plugin zu Testen.</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -14,8 +15,8 @@
   <publishers/>
   <buildWrappers>
     <io.jenkins.plugins.PluginMenueClass plugin="RegressionToolPlugin@1.01">
-      <pfadZuBasen></pfadZuBasen>
-      <pfadZuBuilds></pfadZuBuilds>
+      <pfadZuBasen>Blub</pfadZuBasen>
+      <pfadZuBuilds>Blab</pfadZuBuilds>
     </io.jenkins.plugins.PluginMenueClass>
   </buildWrappers>
 </project>

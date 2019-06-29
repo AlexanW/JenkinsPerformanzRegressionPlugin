@@ -1,3 +1,4 @@
+io\jenkins\plugins\PluginMenueClass\DescriptorImpl\doCreateBase.stapler
 META-INF\annotations\hudson.Extension.txt
 io\jenkins\plugins\PluginMenueClass$1.class
 io\jenkins\plugins\PluginMenueClass$DescriptorImpl.class
