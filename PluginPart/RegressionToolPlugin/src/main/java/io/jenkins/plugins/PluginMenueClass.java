@@ -93,7 +93,8 @@ public class PluginMenueClass extends BuildWrapper{
         public FormValidation doCreateBase(@QueryParameter("pfadZuBasen") final String pfadZuBasen) {
             FormValidation valid = FormValidation.ok("pfadZuBasen");
             
-            File file = new File("text.txt");
+            File file = new File("jobs/text.txt");
+            
             try {
                 file.createNewFile();
                 
