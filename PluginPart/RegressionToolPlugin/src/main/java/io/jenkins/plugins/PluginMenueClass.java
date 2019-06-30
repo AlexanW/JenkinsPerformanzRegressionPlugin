@@ -34,6 +34,8 @@ public class PluginMenueClass extends BuildWrapper{
     
     private int anzahlAnVergangenenBuilds;
     
+    private double tolleranzFuerBasen;
+    
     @DataBoundConstructor
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
         this.pfadZuBasen = pfadZuBasen;
@@ -53,6 +55,10 @@ public class PluginMenueClass extends BuildWrapper{
     
     public boolean getErstelleBasis() {
         return erstelleBasis;
+    }
+    
+    public double getTolleranzFuerBasen() {
+        return tolleranzFuerBasen;
     }
     
     @Override
@@ -75,7 +81,7 @@ public class PluginMenueClass extends BuildWrapper{
             }
             if (erstelleBasis) {
                 IErstelleBasis basis = new ErstelleBasis();
-                basis.erstelleBasis(build.getRootDir().getParent(), file.getAbsolutePath() + "/basen", 0.0, anzahlAnVergangenenBuilds);
+                basis.erstelleBasis(build.getRootDir().getParent(), file.getAbsolutePath() + "/basen", tolleranzFuerBasen, anzahlAnVergangenenBuilds);
             }
         }
  
@@ -120,18 +126,6 @@ public class PluginMenueClass extends BuildWrapper{
         
         public FormValidation doCreateBase(@QueryParameter("pfadZuBasen") final String pfadZuBasen) throws IOException, InterruptedException {
             FormValidation valid = FormValidation.ok("pfadZuBasen");
-            
-            File file = new File("jobs/");
-            FilePath filepaht = new FilePath(file);
-            
-            try {
-                //file.createNewFile();
-                valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.list().get(0).getRemote());
-            } catch (IOException e) {
-                e.printStackTrace();
-               //valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.getParent());
-                valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.list().get(0).getRemote() + "asdfdafg" + e.getMessage());
-            }
             return valid;
         }
         
