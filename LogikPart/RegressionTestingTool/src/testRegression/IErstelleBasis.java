@@ -19,5 +19,5 @@ public interface IErstelleBasis {
      * @param tolleranz
      */
     public IBasis erstelleBasis(String targetJUnitResutls, String targetBasis
-            , double tolleranz);
+            , double tolleranz, int anzahlTests);
 }

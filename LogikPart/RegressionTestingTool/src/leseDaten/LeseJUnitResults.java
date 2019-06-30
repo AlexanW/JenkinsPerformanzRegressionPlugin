@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
@@ -24,6 +26,7 @@ import testDatenTypen.TestWerte;
  *
  */
 public class LeseJUnitResults {
+    public final static String JUNIT_DATAEINAME = "junitResult.xml"; 
 	/**
 	 * XMLReaderTrial
 	 */
@@ -142,12 +145,67 @@ public class LeseJUnitResults {
             values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
         }
         return values;
+    }   
+    /**
+     * Diese Methode startet den Vorgang des Einlesens aller JUnitResultDatein
+     * die bereitgestellt sind.
+     * @param pfad Der "builds" Ordner inerhalb eines Jenkins projekts in dem die "build" Folders Liegen.
+     */
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults) {
+        List<ITestWerte> values = new ArrayList<ITestWerte>();
+        File file = new File(pfad);
+        if (file.exists() && file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                //Für den Fall, dass mehr angegeben wurde, als vorhanden ist.
+                files = entferneNichtBuildDatein(files);
+                if (useResults > files.length) {
+                    useResults = files.length;
+                }
+                //Sortiert die Files nach absteigender Buildnummer.
+                Arrays.sort(files, (a, b) -> - (Integer.parseInt(a.getName()) - Integer.parseInt(b.getName())));
+                for (int i = 0; i < useResults; i++) {
+                    File tempFile = new File(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME);
+                    if (tempFile.exists()) {
+                        values.add(leseTestsXML(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME));
+                    }
+                }
+            }
+        }
+        return values;
     }
+    /**
+     * Diese Methode entfernt alle nicht Build folders aus einem "builds" Dir.
+     * @param files
+     * @return
+     */
+    private static File[] entferneNichtBuildDatein (File[] files) {
+        int removedFiles = 0;
+        //Testet ob es sich um einen Ordner nur mit Nummer handelt und entfernt ihn sonst.
+        for (int i = 0; i < files.length; i++) {
+            try {
+                Double.parseDouble(files[i].getName());
+            } catch (NumberFormatException e) {
+                files[i] = null;
+                removedFiles++;
+            }
+        }
+        File[] tempFiles = new File[files.length - removedFiles];
+        int i = 0;
+        for (File f : files) {
+            if (f != null && i < tempFiles.length) {
+                tempFiles[i] = f;
+                i++;
+            }
+        }
+        return tempFiles;
+    }
+    
 	/**
 	 * Test Main Methdoe.
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		getJUnitResultDatei("Data/jUnitResults/");
+		getJUnitResultDateiAusBuilds("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\builds", 5);
 	}
 }

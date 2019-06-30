@@ -24,7 +24,7 @@ public class TesteRegression {
         //SysAuslastungMessung.startMeasurement();
         IErstelleBasis erstelleBasis = new ErstelleBasis();
         IBasis basis = erstelleBasis
-                .erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2);
+                .erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2, 5);
         List<ITestWerte> werte = LeseJUnitResults
                 .getJUnitResultDatei("Data/jUnitResultVergleich/");
         TestVergleichen testverleich = new TestVergleichen();

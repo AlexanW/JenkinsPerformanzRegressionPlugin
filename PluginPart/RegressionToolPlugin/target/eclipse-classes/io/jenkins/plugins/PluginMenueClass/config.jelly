@@ -1,12 +1,19 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   <f:section title ="RegressioToolPlugin">
-  <f:entry title="${%pfadZuBasen}" field="pfadZuBasen">
+  <f:entry title="${%Pfad zu Basen}" field="pfadZuBasen">
     <f:textbox />
   	</f:entry>
-  	<f:entry title="${%pfadZuBuilds}" field="pfadZuBuilds">
+  	<f:entry title="${%Pfad zu JUnitResults}" field="pfadZuBuilds">
     	<f:textbox />
   	</f:entry>
+  	<f:entry title="${%Anzahl an vergangenen Testergebnissen}" field="anzahlAnVergangenenBuilds">
+    	<f:textbox />
+  	</f:entry>
+  	<f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
+    	<f:checkbox />
+  	</f:entry>
+  	
  <f:validateButton
       title="${%CreateBasen}" progress="${%CreateBasen.progress}"
       method="createBase" with="pfadZuBasen" />

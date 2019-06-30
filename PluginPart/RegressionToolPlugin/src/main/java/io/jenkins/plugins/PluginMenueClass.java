@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.apache.tools.ant.taskdefs.TempFile;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
@@ -19,11 +20,19 @@ import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.FormValidation;
 import jenkins.model.StandardArtifactManager;
 
+import leseDaten.LeseJUnitResults;
+import testRegression.ErstelleBasis;
+import testRegression.IErstelleBasis;
+
 public class PluginMenueClass extends BuildWrapper{
     
     private String pfadZuBasen;
     
     private String pfadZuBuilds;
+    
+    private boolean erstelleBasis;
+    
+    private int anzahlAnVergangenenBuilds;
     
     @DataBoundConstructor
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
@@ -38,23 +47,42 @@ public class PluginMenueClass extends BuildWrapper{
     public String getPfadZuBuilds() {
         return pfadZuBuilds;
     }
+    public int getAnzahlAnVergangenenBuilds() {
+        return anzahlAnVergangenenBuilds;
+    }
+    
+    public boolean getErstelleBasis() {
+        return erstelleBasis;
+    }
     
     @Override
     public Environment setUp(AbstractBuild build,
             Launcher launcher,
             BuildListener listener) {
-        return new Environment() {
-            
+        boolean enthaeltBasisDir = false;
+        
+        //Dir des Projektjobs: RootDir=Buildnumber, Parant1=Builds, Parent2=Projekt.
+        File file = build.getRootDir().getParentFile().getParentFile();
+        if (file.isDirectory()) {
+            for (String s: file.list()) {
+                if (s.equals("basen")) {
+                   enthaeltBasisDir = true; 
+                }
+            }
+            if(!enthaeltBasisDir) {
+              File tempFile = new File (file.getAbsolutePath() + "/basen");
+              tempFile.mkdir();
+            }
+            if (erstelleBasis) {
+                IErstelleBasis basis = new ErstelleBasis();
+                basis.erstelleBasis(build.getRootDir().getParent(), file.getAbsolutePath() + "/basen", 0.0, anzahlAnVergangenenBuilds);
+            }
+        }
+ 
+        return new Environment() {      
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener)
                     throws IOException, InterruptedException {
-                listener.getLogger().print(pfadZuBasen + " HIER IST DER PFAD ZU DEN BASEN------------------------------\n");
-                
-                listener.fatalError("HierIstEtwasSchiefgegangen.\n");
-                listener.fatalError( "TestName: -- "+build.getProject().getName() + "\n");
-                listener.fatalError( "TeatPlace: -- "+ build.getProject().getRootProject().getRootDir() + "\n");
-                listener.fatalError( "TeatPlace: -- "+ build.getProject().getRootProject().getRootDir() + "\n");
-                
                 File fileDif = new File(build.getProject().getRootProject().getRootDir().getPath() + "/builds");
                 if (fileDif != null) {
                     File[] tempList = fileDif.listFiles(); 
@@ -64,7 +92,7 @@ public class PluginMenueClass extends BuildWrapper{
                                 File[] tempListT =  f.listFiles();
                                 if (tempListT != null) {
                                     for (File a : tempListT) {
-                                        listener.getLogger().print(a.getPath() + "................................_______________________________________________________\n");
+                                        //listener.getLogger().print(a.getPath() + "................................_______________________________________________________\n");
                                     }
                                 }
                             }
@@ -87,23 +115,23 @@ public class PluginMenueClass extends BuildWrapper{
         }
         @Override
         public String getDisplayName() {
-            return "TestNameHier";
+            return "Teste Performanz Regression";
         }
         
-        public FormValidation doCreateBase(@QueryParameter("pfadZuBasen") final String pfadZuBasen) {
+        public FormValidation doCreateBase(@QueryParameter("pfadZuBasen") final String pfadZuBasen) throws IOException, InterruptedException {
             FormValidation valid = FormValidation.ok("pfadZuBasen");
             
-            File file = new File("jobs/text.txt");
+            File file = new File("jobs/");
+            FilePath filepaht = new FilePath(file);
             
             try {
-                file.createNewFile();
-                
+                //file.createNewFile();
+                valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.list().get(0).getRemote());
             } catch (IOException e) {
                 e.printStackTrace();
+               //valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.getParent());
+                valid = FormValidation.ok(filepaht.getRemote() +" 00\n00" + filepaht.list().get(0).getRemote() + "asdfdafg" + e.getMessage());
             }
-            
-            valid = FormValidation.ok(file.getAbsolutePath() +" 000000000000000000000000000000000000000");
-            
             return valid;
         }
         

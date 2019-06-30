@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import leseDaten.LeseJUnitResults;
 import testDatenTypen.Test;
 import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
@@ -32,9 +33,9 @@ public class ErstelleBasis implements IErstelleBasis {
      * Eingabe von Prozent in 0.xx Fomat.
      */
     public IBasis erstelleBasis(String targetJUnitResutls,String targetBasis 
-            ,double tolleranz) {
+            ,double tolleranz, int anzahlTests) {
         List<ITestWerte> werte = 
-                SammleDaten.getJUnitResultDatei(targetJUnitResutls);
+                LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests);
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
         if (!enthaeltFehlschlag(werte)) {
