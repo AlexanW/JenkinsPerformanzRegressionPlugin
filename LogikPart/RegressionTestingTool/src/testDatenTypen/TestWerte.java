@@ -3,6 +3,7 @@ package testDatenTypen;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -16,9 +17,10 @@ public class TestWerte implements ITestWerte {
      */
     private static final double STEP_SIZE = 0.100;
 	/**
-	 * HashMap für das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
+	 * LinkedHashMap für das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
+	 * Dabei wird die Reihenfolge der Tests gewaehrleistet.
 	 */
-	private HashMap<String, ITest> tests = new HashMap<String, ITest>();
+	private LinkedHashMap<String, ITest> tests = new LinkedHashMap<String, ITest>();
 	/**
 	 * Eine HashMap die, die Uhrzeit der Auslastung mit der Auslastung verbindet. 
 	 */
@@ -70,29 +72,48 @@ public class TestWerte implements ITestWerte {
 	public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen) {
         this.testAuslastungen = matchMessungenZuTests(testAuslastungen);
     }
-	
+	/**
+	 * Diese Methode nimmt eine Menge an TestAuslastungen und matcht den Start
+	 * der Tests mit einem Punkt in den testAuslastungen
+	 * @param testAuslastungen
+	 * @return
+	 */
 	private List <TestAuslastungen> matchMessungenZuTests (List <TestAuslastungen> testAuslastungen) {
 	    List <TestAuslastungen> tempList = new ArrayList<TestAuslastungen>();
 	    boolean startGefunden = false;
 	    double zaehlerZumEnde = 0;
 	    //Gehe sicher, dass die Zeiten in steigender Reihenfolge sind.
 	    testAuslastungen.sort((a,b) -> Long.compare(a.getTimeStamp().getTime(),b.getTimeStamp().getTime()));
-	    
-	    //Result Zeitstempel yyyy-mm-ddThh:mm:ss split by T um nur Zeit zu bekommen
+	    //timestamp = "2019-04-10T21:17:20";
+	    //Result Zeitstempel yyyy-mm-ddTHH:mm:ss split by T um nur Zeit zu bekommen
 	    String testStart = timestamp.split("T")[1];
-	    SimpleDateFormat formateTime = new SimpleDateFormat("hh:mm:ss");
+	    SimpleDateFormat formateTime = new SimpleDateFormat("HH:mm:ss");
 	    //Score+STEP_SIZE stellen sicher, dass die letzte Messun nach dem Letzen Test liegt.
 	    for (int i = 0; i < testAuslastungen.size() && zaehlerZumEnde < (score + STEP_SIZE); i++) {
-	        System.out.println("TestFormateTimeThingy: " + formateTime.format(testAuslastungen.get(i)) + " Start = " + testStart);
-	        if (testStart.equals(formateTime.format(testAuslastungen.get(i))) || startGefunden) {
+	        
+	        if (testStart.equals(formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime())) || startGefunden) {
+	            //System.out.println( formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime()) + " STARTUP ASD");
 	            startGefunden = true;
 	            tempList.add(testAuslastungen.get(i));
 	            zaehlerZumEnde += STEP_SIZE;
 	        }
 	    }
-	    
 	    return tempList;
 	}
+	
+	private void addMessungenZuTests() {
+	    double scoreSumme = 0;
+	    while ((((int)(scoreSumme * 10)) + 1) < testAuslastungen.size()) {
+	        
+	    }
+	}
+	
+	private TestAuslastungen erstelleAngenaehrteAuslastungen(TestAuslastungen erste, TestAuslastungen zweite, double anteil) {
+	    TestAuslastungen tempAuslast = null;
+	    
+	    return tempAuslast;
+	}
+	
 	/**
 	 * Getter fuer die Gesamtdauert.
 	 * @return Die Gesamtdauer der TestSuit.

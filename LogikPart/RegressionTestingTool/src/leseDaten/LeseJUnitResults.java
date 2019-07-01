@@ -30,11 +30,11 @@ public class LeseJUnitResults {
 	 * XMLReaderTrial
 	 */
 	public static ITestWerte leseTestsXML(String pfad) {
-        TestWerte results = new TestWerte();
+	    ITestWerte results = new TestWerte();
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
-	        InputStream in = new FileInputStream(pfad);
+	        InputStream in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
 	        XMLEventReader reader = factory.createXMLEventReader(in);
 	        //Schritt fuer Schritt druchlaufen der Datei.
             while (reader.hasNext()) {
@@ -44,11 +44,9 @@ public class LeseJUnitResults {
                     switch (start.getName().toString()) {
                     case "time": 
                         results.setScore(Double.parseDouble(reader.nextEvent().asCharacters().getData()));
-                        //System.out.println(results);
                         break;
                     case "timestamp":
                         results.setTimestamp(reader.nextEvent().asCharacters().getData());
-                        //System.out.println(results.toString());
                         break;
                     case "case":
                         results.addTest(leseTestFall(reader));
@@ -166,9 +164,9 @@ public class LeseJUnitResults {
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i < useResults; i++) {
-                        File tempFile = new File(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME);
+                        File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                         if (tempFile.exists()) {
-                            values.add(leseTestsXML(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME));
+                            values.add(leseTestsXML(files[i].getAbsolutePath()));
                         }
                     }
                 }
@@ -208,6 +206,7 @@ public class LeseJUnitResults {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		getJUnitResultDateiAusBuilds("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\builds", 5);
+	    getJUnitResultDatei("Data/jUnitResults");
+		//getJUnitResultDateiAusBuilds("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\builds", 5);
 	}
 }

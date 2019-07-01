@@ -29,6 +29,30 @@ public class Test implements ITest, Serializable {
 	/**
 	 * 
 	 */
+	private double minCPU;
+	   /**
+     * 
+     */
+    private double maxCPU;
+    /**
+     * 
+     */
+    private double avarageCPU;
+    /**
+     * 
+     */
+    private double minRAM;
+       /**
+     * 
+     */
+    private double maxRAM;
+    /*
+     * 
+     */
+    private double avarageRAM;
+	/**
+	 * 
+	 */
 	private List<TestAuslastungen> auslastung;
 	/**
 	 * Der Getter fuer den Namen dieses Tests.
@@ -67,14 +91,48 @@ public class Test implements ITest, Serializable {
     }
     @Override
     public void setTestAuslastungen(List<TestAuslastungen> testAuslastungen) {
-        this.auslastung = testAuslastungen;
-        
+        this.auslastung = testAuslastungen;     
     }
     @Override
     public List<TestAuslastungen> getTestAuslastungen() {
         return auslastung;
+    }  
+    public double getMinCPU() {
+        return minCPU;
     }
-    
+    public void setMinCPU(double minCPU) {
+        this.minCPU = minCPU;
+    }
+    public double getMaxCPU() {
+        return maxCPU;
+    }
+    public void setMaxCPU(double maxCPU) {
+        this.maxCPU = maxCPU;
+    }
+    public double getAvarageCPU() {
+        return avarageCPU;
+    }
+    public void setAvarageCPU(double avarageCPU) {
+        this.avarageCPU = avarageCPU;
+    }
+    public double getMinRAM() {
+        return minRAM;
+    }
+    public void setMinRAM(double minRAM) {
+        this.minRAM = minRAM;
+    }
+    public double getMaxRAM() {
+        return maxRAM;
+    }
+    public void setMaxRAM(double maxRAM) {
+        this.maxRAM = maxRAM;
+    }
+    public double getAvarageRAM() {
+        return avarageRAM;
+    }
+    public void setAvarageRAM(double avarageRAM) {
+        this.avarageRAM = avarageRAM;
+    }
     public String toString () {
         String output = "Testname: " + name + " Score: " + score + " IstFehlgeschlagen: " + istFehlgeschlagen + "\n+ Werte: ";
 //        for (TestAuslastungen a : auslastung) {
