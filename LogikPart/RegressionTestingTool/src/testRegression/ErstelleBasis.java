@@ -1,5 +1,6 @@
 package testRegression;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -54,7 +55,7 @@ public class ErstelleBasis implements IErstelleBasis {
                     ,berecheneVarianz(werte, tolleranz, avarageLaufzeit)
                     ,getDurchschnitTests(werte), werte.get(0).getTests().values().size());
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
-            schreibeBasis(basis, targetBasis);
+            bestimmeNameUndSchreibeBasis(basis, targetBasis);
         } else {
             //Warnung das die Zeiten nicht stimmen koennen!!
         }
@@ -64,12 +65,28 @@ public class ErstelleBasis implements IErstelleBasis {
     private boolean schreibeBasis(IBasis basis, String targetBasis) {
         boolean geschrieben = false;
         try {
-            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis + basis.getName() + ".txt"));
+            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis));
             oStream.writeObject(basis);
             geschrieben = true;
         } catch (IOException e){
             e.printStackTrace();
         }    
+        return geschrieben;
+    }
+    /**
+     * Bestimmt den Namen einer Basis, wenn es eine "Neu" schon gibt wird diese
+     * in Alt umbenannt.
+     * @param targetBasis
+     * @return
+     */
+    private boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
+        boolean geschrieben = false;
+        File file = new File(targetBasis + "/Neu.txt");
+        if (file.exists()) {
+            File fileAlt = new File(targetBasis + "/Alt.txt");
+            file.renameTo(fileAlt);
+        }
+        geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         return geschrieben;
     }
     

@@ -158,17 +158,20 @@ public class LeseJUnitResults {
         if (file.exists() && file.isDirectory()) {
             File[] files = file.listFiles();
             if (files != null) {
-                //Für den Fall, dass mehr angegeben wurde, als vorhanden ist.
+                //Für den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
                 files = entferneNichtBuildDatein(files);
-                if (useResults > files.length) {
+                if (useResults > files.length || useResults == 0) {
                     useResults = files.length;
                 }
                 //Sortiert die Files nach absteigender Buildnummer.
                 Arrays.sort(files, (a, b) -> - (Integer.parseInt(a.getName()) - Integer.parseInt(b.getName())));
-                for (int i = 0; i < useResults; i++) {
-                    File tempFile = new File(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME);
-                    if (tempFile.exists()) {
-                        values.add(leseTestsXML(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME));
+                //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
+                if (files.length > 1) {
+                    for (int i = 1; i < useResults; i++) {
+                        File tempFile = new File(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME);
+                        if (tempFile.exists()) {
+                            values.add(leseTestsXML(files[i].getAbsoluteFile() + "/" + JUNIT_DATAEINAME));
+                        }
                     }
                 }
             }

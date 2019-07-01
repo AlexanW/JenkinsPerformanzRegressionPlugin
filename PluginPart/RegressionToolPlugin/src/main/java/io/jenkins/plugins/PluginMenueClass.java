@@ -33,6 +33,8 @@ public class PluginMenueClass extends BuildWrapper{
     
     private double tolleranzFuerBasen;
     
+    private boolean pruefeRegression;
+    
     @DataBoundConstructor
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
         this.pfadZuBasen = pfadZuBasen;
@@ -52,6 +54,10 @@ public class PluginMenueClass extends BuildWrapper{
     
     public boolean getErstelleBasis() {
         return erstelleBasis;
+    }
+    
+    public boolean getPruefeRegression() {
+        return pruefeRegression;
     }
     
     public double getTolleranzFuerBasen() {
