@@ -7,11 +7,9 @@ import java.util.List;
 import org.apache.commons.math3.distribution.TDistribution;
 import org.apache.commons.math3.stat.inference.TTest;
 
-import testDatenTypen.Basis;
 import testDatenTypen.BasisMitTests;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
-import testDatenTypen.ITestObjekt;
 import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;

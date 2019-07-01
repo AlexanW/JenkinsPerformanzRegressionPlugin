@@ -2,6 +2,7 @@ package leseDaten;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
@@ -32,6 +33,10 @@ public class LeseBasis implements ILeseBasis {
         }
     }
     
+    
+    public LeseBasis() {
+    }
+    
     public IBasis leseBasisEin () {
         IBasis basis = new Basis();
         try {
@@ -44,8 +49,15 @@ public class LeseBasis implements ILeseBasis {
         }
         return basis;
     }
-    
-    public IBasis leseObjektIBasisEin () {
+    /**
+     * 
+     * @param pfad
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public IBasis leseObjektIBasisEin (String pfad) throws FileNotFoundException, IOException {
+        oStream = new ObjectInputStream(new FileInputStream(pfad));
         IBasis basis = null;
         try {
             basis = (IBasis)oStream.readObject();
@@ -63,8 +75,14 @@ public class LeseBasis implements ILeseBasis {
      * @param args
      */
     public static void main(String[] args) {
-        LeseBasis lese = new LeseBasis("Data/Basen/tests.eu.qualimaster.AllTests.txt");
-        IBasis basis = (Basis)lese.leseObjektIBasisEin();
+        LeseBasis lese = new LeseBasis();
+        IBasis basis = new Basis();;
+        try {
+            basis = (Basis)lese.leseObjektIBasisEin("Data/Basen/tests.eu.qualimaster.AllTests.txt");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         System.out.println(basis.toString());
     }
 }

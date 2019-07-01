@@ -14,7 +14,6 @@ import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
-import testDatenTypen.TestWerte;
 
 public class ErstelleBasis implements IErstelleBasis {
     /**

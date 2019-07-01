@@ -13,6 +13,9 @@
   	<f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
     	<f:checkbox />
   	</f:entry>
+  	<f:entry title="${%Vergleiche letzen 2 Basen}" field="vergleicheBasen">
+    	<f:checkbox />
+  	</f:entry>
     <f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help ="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
     	<f:textbox default="0.0"/>
   	</f:entry>

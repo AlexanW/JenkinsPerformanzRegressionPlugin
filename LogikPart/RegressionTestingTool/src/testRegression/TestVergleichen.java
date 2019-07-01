@@ -1,14 +1,9 @@
 package testRegression;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
-import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;
-import testDatenTypen.Test;
 import testDatenTypen.TestWerte;
 
 public class TestVergleichen implements ITestVergleich{

@@ -6,7 +6,6 @@ import java.util.List;
 
 import leseDaten.LeseJUnitResults;
 import testDatenTypen.ITestWerte;
-import testDatenTypen.TestWerte;
 
 /**
  * Diese Klasse enthaelt Methoden zum Sammeln von Daten.

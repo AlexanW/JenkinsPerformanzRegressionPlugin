@@ -6,7 +6,6 @@ package testDatenTypen;
  *
  */
 
-import java.sql.Timestamp;
 
 public interface ITestWerte extends ITestObjektGruppe{
     

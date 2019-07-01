@@ -5,7 +5,6 @@ import java.util.List;
 import leseDaten.LeseJUnitResults;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
-import testDatenTypen.TestWerte;
 
 /**
  * Diese Klasse enthaelt Methoden um mithilfe von Basen und 
