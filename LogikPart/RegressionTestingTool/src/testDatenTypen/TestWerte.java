@@ -103,15 +103,63 @@ public class TestWerte implements ITestWerte {
 	
 	private void addMessungenZuTests() {
 	    double scoreSumme = 0;
-	    while ((((int)(scoreSumme * 10)) + 1) < testAuslastungen.size()) {
-	        
+	    for (ITest t : tests.values()) {
+	        if (t.getScore() < STEP_SIZE) {
+	            setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme*10)));
+	        } else {
+	            List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
+	            for (int i = ((int)(scoreSumme*10)); i <=  (int)((scoreSumme + t.getScore())*10); i++) {
+	                if (i < testAuslastungen.size()) {
+	                    auslatungen.add(testAuslastungen.get(i));
+	                }
+	            }
+	            setAuslatungenFuerTests(t, auslatungen);
+	            
+	        }
 	    }
 	}
+	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslatungen) {
+        double max = auslatungen.get(0).getCpuAuslastung();
+        double min = auslatungen.get(0).getCpuAuslastung();
+        double avarage = 0;
+        
+        for (TestAuslastungen t : auslatungen) {
+            if (t.getCpuAuslastung() > max) {
+                max = t.getCpuAuslastung();
+            }
+            if (t.getCpuAuslastung() < min) {
+                min = t.getCpuAuslastung();
+            }
+            avarage += t.getCpuAuslastung();
+        }  
+        test.setAvarageCPU(avarage/auslatungen.size());
+        test.setMinCPU(min);
+        test.setMaxCPU(max);
+        
+        max = auslatungen.get(0).getRamAuslastung();
+        min = auslatungen.get(0).getRamAuslastung();
+        avarage = 0;
+        for (TestAuslastungen t : auslatungen) {
+            if (t.getRamAuslastung() > max) {
+            max = t.getRamAuslastung();
+            }
+            if (t.getRamAuslastung() < min) {
+                min = t.getRamAuslastung();
+            }
+            avarage += t.getRamAuslastung();
+        }  
+        test.setAvarageRAM(avarage / auslatungen.size());
+        test.setMinRAM(min);
+        test.setMaxRAM(max);
+    }
 	
-	private TestAuslastungen erstelleAngenaehrteAuslastungen(TestAuslastungen erste, TestAuslastungen zweite, double anteil) {
-	    TestAuslastungen tempAuslast = null;
-	    
-	    return tempAuslast;
+	private void setAuslatungenFuerTests(ITest test, TestAuslastungen auslastung) {
+	    test.setAvarageCPU(auslastung.getCpuAuslastung());
+	    test.setMinCPU(auslastung.getCpuAuslastung());
+	    test.setMaxCPU(auslastung.getCpuAuslastung());
+	    test.setAvarageRAM(auslastung.getRamAuslastung());
+	    test.setMinRAM(auslastung.getRamAuslastung());
+	    test.setMaxRAM(auslastung.getRamAuslastung());
 	}
 	
 	/**
