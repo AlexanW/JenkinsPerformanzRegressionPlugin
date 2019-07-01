@@ -28,6 +28,6 @@ public class TesteRegression {
                 .getJUnitResultDatei("Data/jUnitResultVergleich/");
         TestVergleichen testverleich = new TestVergleichen();
         testverleich.vergleicheBasisMitWerten(werte.get(0), basis, 0.0); 
-        System.out.println(testverleich.vergleicheBasen(basis, basis, 0.0));
+        System.out.println(testverleich.vergleicheBasen(basis, basis, 0.0, 0.05));
     }
 }

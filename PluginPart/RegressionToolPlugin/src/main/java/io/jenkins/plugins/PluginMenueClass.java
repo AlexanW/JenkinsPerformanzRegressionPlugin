@@ -28,6 +28,8 @@ public class PluginMenueClass extends BuildWrapper{
     
     private String pfadZuBuilds;
     
+    private String pfadZuCPUundRAM;
+    
     private boolean erstelleBasis;
     
     private int anzahlAnVergangenenBuilds;
@@ -41,9 +43,18 @@ public class PluginMenueClass extends BuildWrapper{
     private boolean vergleicheBasis;
     
     @DataBoundConstructor
-    public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds) {
+    public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds, String pfadZuCPUundRAM, 
+            boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
+            double tolleranzFuerBasenVerlgeich, boolean pruefeRegression, boolean vergleicheBasis) {
         this.pfadZuBasen = pfadZuBasen;
         this.pfadZuBuilds = pfadZuBuilds;
+        this.pfadZuCPUundRAM = pfadZuCPUundRAM;
+        this.erstelleBasis = erstelleBasis;
+        this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
+        this.tolleranzFuerBasen = tolleranzFuerBasen;
+        this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVerlgeich;
+        this.pruefeRegression = pruefeRegression;
+        this.vergleicheBasis = vergleicheBasis;
     }
     
     public String getPfadZuBasen() {
@@ -53,6 +64,8 @@ public class PluginMenueClass extends BuildWrapper{
     public String getPfadZuBuilds() {
         return pfadZuBuilds;
     }
+    
+    
     public int getAnzahlAnVergangenenBuilds() {
         return anzahlAnVergangenenBuilds;
     }
@@ -77,6 +90,9 @@ public class PluginMenueClass extends BuildWrapper{
         return tolleranzFuerBasenVergleich;
     }
     
+    public String getPfadZuCPUundRAM() {
+        return pfadZuCPUundRAM;
+    }
     
     @Override
     public Environment setUp(AbstractBuild build,
@@ -84,7 +100,7 @@ public class PluginMenueClass extends BuildWrapper{
             BuildListener listener) {
       
         boolean enthaeltBasisDir = false;
-        
+        listener.getLogger().print("-----Starte RegressionTest-----");
         //Dir des Projektjobs: RootDir=Buildnumber, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
         if (file.isDirectory()) {
@@ -100,7 +116,13 @@ public class PluginMenueClass extends BuildWrapper{
             if (erstelleBasis) {
                 IErstelleBasis basis = new ErstelleBasis();
                 //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
-                basis.erstelleBasis(build.getRootDir().getParent(), file.getAbsolutePath() + "/basen", tolleranzFuerBasen, anzahlAnVergangenenBuilds);
+                if (pfadZuBasen.isEmpty()) {
+                    pfadZuBasen =  file.getAbsolutePath() + "/basen";
+                }
+                if (pfadZuBuilds.isEmpty()) {
+                    pfadZuBuilds = build.getRootDir().getParent();
+                }
+                basis.erstelleBasis(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds);
             }
             if (vergleicheBasis) {
                 IBasis basisNeu = null;

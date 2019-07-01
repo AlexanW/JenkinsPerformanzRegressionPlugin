@@ -11,19 +11,23 @@ public class TestVergleichen implements ITestVergleich{
      * 
      */
     @Override
-    public Status vergleicheBasen(IBasis basisNeu, IBasis basisAlt
-            , double erwarteteRegression) {
+    public String vergleicheBasen(IBasis basisNeu, IBasis basisAlt
+            , double erwarteteRegression, double alpha) {
         Status status = Status.NEUTRAL;
-        return status;
+        String result = "";
+        TestVergleichArten.vergleicheBasen(basisAlt, basisNeu, erwarteteRegression, alpha);
+        
+        return result;
     }
     
     /**
      * 
      */
     @Override
-    public Status vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
+    public String vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
             ,double erwarteteRegression) {
         Status regressionGefunden = Status.NEUTRAL;
+        String result = "";
                 regressionGefunden = TestVergleichArten.testWerteAuserhalbDerGrenzen(
                         testWerte, basis, erwarteteRegression);
                 /*
@@ -33,7 +37,7 @@ public class TestVergleichen implements ITestVergleich{
                  */
                 if (regressionGefunden == Status.GROESSER) {
                     //ToDo hier Check auf Auslastungen. Problem : How to measure.
-                    System.out.println("Die Tests fallen aus den Grenzen der Basis."
+                    result = "Die Tests fallen aus den Grenzen der Basis."
                             + "Daher wird angenommen, dass es sich um Regression "
                             + "handelt.\nUntergrenze: " 
                             + ((Basis)basis).getUntergrenze() + " Obergrenze: "
@@ -43,7 +47,7 @@ public class TestVergleichen implements ITestVergleich{
                             + "Laufzeit von: " 
                             + ((Basis)basis).getTolleranz() 
                             + " (0.0 bedeutet, dass die Grenzen durch"
-                            + "min und max Werte aus X Messungen sind)");
+                            + "min und max Werte aus X Messungen sind)";
                     TestVergleichArten.vergleicheTests((TestWerte)testWerte, (Basis)basis 
                             , erwarteteRegression);
                 } else if (regressionGefunden == Status.KLEINER) {
@@ -51,13 +55,13 @@ public class TestVergleichen implements ITestVergleich{
                      * Warnung, dass die Tests schneller als erwartet liefen und
                      * es probleme geben könnte.
                      */
-                    System.out.println("Die Tests wurden schneller abgeschlossen"
+                    result = "Die Tests wurden schneller abgeschlossen"
                             + " als erwarte, dies koennte auf fehlerhaftes "
-                            + "Verhalten beim Testen deuten.");
+                            + "Verhalten beim Testen deuten.";
                 } else {
                     regressionGefunden = Status.IM_BEREICH;
-                    System.out.println("Es scheint keine Regression vorzuliegen.");
+                    result = "Es scheint keine Regression vorzuliegen.";
                 }
-        return regressionGefunden;
+        return result;
     }
 }

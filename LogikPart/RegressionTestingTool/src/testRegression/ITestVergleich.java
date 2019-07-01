@@ -6,9 +6,9 @@ import testDatenTypen.Status;
 
 public interface ITestVergleich {
     
-   public Status vergleicheBasen (IBasis basisNeu, IBasis basisAlt
-           , double erwarteteRegression);
+   public String vergleicheBasen (IBasis basisNeu, IBasis basisAlt
+           , double erwarteteRegression, double alph);
     
-   public Status vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
-           ,double erwarteteRegression);
+   public String vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
+           ,double erwarteteRegressiona);
 }

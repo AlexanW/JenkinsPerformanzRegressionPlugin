@@ -57,8 +57,9 @@ public class TestVergleichArten {
      * @param basis
      * @param erwarteteRegression
      */
-    public static void vergleicheTests(ITestObjektGruppe testWerte, ITestObjektGruppe basis 
+    public static String vergleicheTests(ITestObjektGruppe testWerte, ITestObjektGruppe basis 
             ,double erwarteteRegression) {
+        String result = "";
         //Liste mit allen Tests in dem ersten und zweiten Objekt die sich verschlechtert haben.
         List<ITest> regressierteTests = new ArrayList<ITest>();
         List<ITest> testNurInWerten = new ArrayList<ITest>();
@@ -81,6 +82,7 @@ public class TestVergleichArten {
                 testNurInWerten.add(t);
             }
         }
+        return result;
     }
     /**
      * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
