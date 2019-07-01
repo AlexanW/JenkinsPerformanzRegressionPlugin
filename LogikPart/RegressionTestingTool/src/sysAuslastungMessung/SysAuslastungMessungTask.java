@@ -32,9 +32,9 @@ public class SysAuslastungMessungTask extends TimerTask {
      * In dieser Werden die Ergebnisse der Gatherer gesammelt, und für die Auswertung bereitgestellt.
      * @throws FileNotFoundException Sollte die Datei in die geschrieben werden soll nicht gefunden werden.
      */
-    public SysAuslastungMessungTask(Timer timer) throws FileNotFoundException {
+    public SysAuslastungMessungTask(Timer timer, String pfad) throws FileNotFoundException {
         super();
-        stream = new FileOutputStream(new File("Data/SysLoadData/ProzessValues.txt"));
+        stream = new FileOutputStream(new File(pfad));
         this.timer = timer;
     }
     /**
@@ -54,8 +54,11 @@ public class SysAuslastungMessungTask extends TimerTask {
                 stream.write(
                         (System.currentTimeMillis()
                                 + ";" + GathererFactory.getProcessorDataGatherer().getCurrentSystemLoad() 
-                                + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse()/1000000000.0) 
+                                // Teilen durch 1000000000.0 für GB.
+                                + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse()) 
+                                + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse())
                                 + ";" + timeFormat.format(System.currentTimeMillis()) + "\n")
+
                         .getBytes());
             } catch (IOException e) {
                 e.printStackTrace();

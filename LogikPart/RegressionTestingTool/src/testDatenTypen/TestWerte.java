@@ -1,5 +1,6 @@
 package testDatenTypen;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,10 @@ import java.util.List;
  *
  */
 public class TestWerte implements ITestWerte {
+    /**
+     * Die Schrittlaenge der SystemMessungen.
+     */
+    private static final double STEP_SIZE = 0.100;
 	/**
 	 * HashMap für das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
 	 */
@@ -63,8 +68,31 @@ public class TestWerte implements ITestWerte {
 	 * Setter fuer die Auslastung weahrend dieses Tests.
 	 */
 	public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen) {
-        this.testAuslastungen = testAuslastungen;
+        this.testAuslastungen = matchMessungenZuTests(testAuslastungen);
     }
+	
+	private List <TestAuslastungen> matchMessungenZuTests (List <TestAuslastungen> testAuslastungen) {
+	    List <TestAuslastungen> tempList = new ArrayList<TestAuslastungen>();
+	    boolean startGefunden = false;
+	    double zaehlerZumEnde = 0;
+	    //Gehe sicher, dass die Zeiten in steigender Reihenfolge sind.
+	    testAuslastungen.sort((a,b) -> Long.compare(a.getTimeStamp().getTime(),b.getTimeStamp().getTime()));
+	    
+	    //Result Zeitstempel yyyy-mm-ddThh:mm:ss split by T um nur Zeit zu bekommen
+	    String testStart = timestamp.split("T")[1];
+	    SimpleDateFormat formateTime = new SimpleDateFormat("hh:mm:ss");
+	    //Score+STEP_SIZE stellen sicher, dass die letzte Messun nach dem Letzen Test liegt.
+	    for (int i = 0; i < testAuslastungen.size() && zaehlerZumEnde < (score + STEP_SIZE); i++) {
+	        System.out.println("TestFormateTimeThingy: " + formateTime.format(testAuslastungen.get(i)) + " Start = " + testStart);
+	        if (testStart.equals(formateTime.format(testAuslastungen.get(i))) || startGefunden) {
+	            startGefunden = true;
+	            tempList.add(testAuslastungen.get(i));
+	            zaehlerZumEnde += STEP_SIZE;
+	        }
+	    }
+	    
+	    return tempList;
+	}
 	/**
 	 * Getter fuer die Gesamtdauert.
 	 * @return Die Gesamtdauer der TestSuit.

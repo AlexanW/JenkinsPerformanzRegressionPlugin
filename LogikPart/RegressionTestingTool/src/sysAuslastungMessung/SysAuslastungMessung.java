@@ -18,10 +18,10 @@ public class SysAuslastungMessung {
      * Dieser Methode stellt den Timer ein uns startet den Messvorgang. Sollte die 
      * TimerTask eine Exception werfen, so wird der Timer beendet.
      */
-    public static void startMeasurement() {
+    public static void startMeasurement(String pfad, int steps) {
         timer = new Timer();
         try {
-            timer.schedule(new SysAuslastungMessungTask(timer), 10, 500);
+            timer.schedule(new SysAuslastungMessungTask(timer, pfad), 10, steps);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             timer.cancel();
@@ -42,7 +42,7 @@ public class SysAuslastungMessung {
     }
     
     public static void main(String[] args) {
-        startMeasurement();
+        startMeasurement("Data/SysLoadData/ProzessValues.txt", 100);
         bestimmeDatei("Dummy");
     }
 }
