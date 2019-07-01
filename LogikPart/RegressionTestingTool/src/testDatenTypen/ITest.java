@@ -17,4 +17,8 @@ public interface ITest extends ITestObjekt{
      * Setter fuer die Auslastung weahrend dieses Tests. 
      */
     public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen);
+    
+    public List<TestAuslastungen> getTestAuslastungen ();
+    
+    public String toString ();
 }

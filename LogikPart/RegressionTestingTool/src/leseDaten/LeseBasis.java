@@ -1,9 +1,9 @@
 package leseDaten;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
@@ -19,10 +19,15 @@ public class LeseBasis implements ILeseBasis {
      */
     private BufferedReader stream;
     
+    /**
+     * Inputstrem zum Einlesen der Daten.
+     */
+    private ObjectInputStream oStream;
+    
     public LeseBasis(String pfad) {
         try {
-            stream = new BufferedReader(new FileReader(pfad));
-        } catch (FileNotFoundException e) {
+            oStream = new ObjectInputStream(new FileInputStream(pfad));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -40,14 +45,26 @@ public class LeseBasis implements ILeseBasis {
         return basis;
     }
     
+    public IBasis leseObjektIBasisEin () {
+        IBasis basis = null;
+        try {
+            basis = (IBasis)oStream.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return basis;
+    }
+    
 
     /**
      * TestMainMethode.
      * @param args
      */
     public static void main(String[] args) {
-        LeseBasis lese = new LeseBasis("Data/Basen/Basetest.net.ssehub.easy.reasoning.sseReasoner.AllTests.txt");
-        Basis basis = (Basis)lese.leseBasisEin();
+        LeseBasis lese = new LeseBasis("Data/Basen/tests.eu.qualimaster.AllTests.txt");
+        IBasis basis = (Basis)lese.leseObjektIBasisEin();
         System.out.println(basis.toString());
     }
 }

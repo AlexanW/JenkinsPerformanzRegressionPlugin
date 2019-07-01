@@ -1,5 +1,6 @@
 package testDatenTypen;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,8 +9,12 @@ import java.util.List;
  * @author Alexander Weber
  *
  */
-public class Test implements ITest {
+public class Test implements ITest, Serializable {
 	/**
+     * 
+     */
+    private static final long serialVersionUID = 7408901150396168510L;
+    /**
 	 * Die Dauer des Tests
 	 */
 	private double score;
@@ -52,12 +57,6 @@ public class Test implements ITest {
 	public void setName(String name) {
         this.name = name;
     }
-	/**
-	 * toString Methode einens Tests, sie enthaelt alle Attribute.
-	 */
-	public String toString() {
-	    return "Name: " + name + ", Dauer: " + score;
-	}
 	@Override
 	public boolean getIstFehlgeschlagen() {
 	    return istFehlgeschlagen;
@@ -70,5 +69,17 @@ public class Test implements ITest {
     public void setTestAuslastungen(List<TestAuslastungen> testAuslastungen) {
         this.auslastung = testAuslastungen;
         
+    }
+    @Override
+    public List<TestAuslastungen> getTestAuslastungen() {
+        return auslastung;
+    }
+    
+    public String toString () {
+        String output = "Testname: " + name + " Score: " + score + " IstFehlgeschlagen: " + istFehlgeschlagen + "\n+ Werte: ";
+//        for (TestAuslastungen a : auslastung) {
+//            output += a.toString();        
+//       }    
+       return output;
     }
 }

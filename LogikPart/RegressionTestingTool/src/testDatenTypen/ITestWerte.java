@@ -6,11 +6,13 @@ package testDatenTypen;
  *
  */
 
-import java.util.HashMap;
+import java.sql.Timestamp;
 
 public interface ITestWerte extends ITestObjektGruppe{
     
     public boolean getEnthaeltFehlschag();
     
     public String getName();
+    
+    public String getTimeStapm();
 }

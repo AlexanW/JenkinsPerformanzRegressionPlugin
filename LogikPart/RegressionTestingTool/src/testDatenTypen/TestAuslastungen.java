@@ -1,5 +1,6 @@
 package testDatenTypen;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -8,7 +9,11 @@ import java.sql.Timestamp;
  * @author Alexander Weber
  *
  */
-public class TestAuslastungen {
+public class TestAuslastungen implements Serializable{
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -7232136932852731144L;
     /**
      * Die RAM Auslastung in GB.
      */
@@ -38,5 +43,10 @@ public class TestAuslastungen {
     }
     public Timestamp getTimeStamp() {
         return timeStamp;
+    }
+    
+    @Override
+    public String toString() {
+        return "CPU: " + cpuAuslastung + " RAM: " + ramAuslastung + " Time: " + timeStamp;
     }
 }

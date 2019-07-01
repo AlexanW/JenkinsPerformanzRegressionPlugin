@@ -1,5 +1,6 @@
 package testDatenTypen;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +37,10 @@ public class TestWerte implements ITestWerte {
 	 */
 	public void addTest(ITest test) {
 		tests.put(test.getName(), test);
+	}	
+	@Override
+	public String getTimeStapm() {
+	    return timestamp;
 	}
 	/**
 	 * Setter fuer die Zeit zu der die Tests druchgefuehrt wurden.

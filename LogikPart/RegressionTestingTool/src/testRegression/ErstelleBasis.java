@@ -2,6 +2,7 @@ package testRegression;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,10 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     private static FileOutputStream stream;
     /**
+     * 
+     */
+    private static ObjectOutputStream oStream;
+    /**
      * Diese Methode erstellt eine Basis, auf Basis aller jUnitDateien in dem 
      * targetJUnitReult Ordner.
      * @param targetJUnitResutls der Zielordner, in dem die jUnitResult Dateien
@@ -36,6 +41,10 @@ public class ErstelleBasis implements IErstelleBasis {
             ,double tolleranz, int anzahlTests) {
         List<ITestWerte> werte = 
                 LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests);
+        if (werte.size() == 0) {
+            werte =  
+                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls);
+        }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
         if (!enthaeltFehlschlag(werte)) {
@@ -45,21 +54,38 @@ public class ErstelleBasis implements IErstelleBasis {
                     ,berecheneVarianz(werte, tolleranz, avarageLaufzeit)
                     ,getDurchschnitTests(werte), werte.get(0).getTests().values().size());
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
-            try {
-                /*
-                 * Hier wird an den Namen der Datei Basis noch der Name der 
-                 * TestSuit angehaengt.
-                 */
-                stream = new FileOutputStream(targetBasis + werte.get(0)
-                    .getName() + ".txt");
-                stream.write(basis.toString().getBytes());
-            } catch (IOException exc) {
-                exc.printStackTrace();
-            }   
+            schreibeBasis(basis, targetBasis);
         } else {
             //Warnung das die Zeiten nicht stimmen koennen!!
         }
         return basis;
+    }
+    
+    private boolean schreibeBasis(IBasis basis, String targetBasis) {
+        boolean geschrieben = false;
+        try {
+            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis + basis.getName() + ".txt"));
+            oStream.writeObject(basis);
+            geschrieben = true;
+        } catch (IOException e){
+            e.printStackTrace();
+        }    
+        return geschrieben;
+    }
+    
+    private boolean schribePlainTextBasis (IBasis basis, String targetBasis) {
+        boolean geschrieben = false;
+        try {
+            /*
+             * Hier wird an den Namen der Datei Basis noch der Name der 
+             * TestSuit angehaengt.
+             */
+            stream = new FileOutputStream(targetBasis + basis.getName() + ".txt");
+            stream.write(basis.toString().getBytes());
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }  
+        return geschrieben;
     }
     
     private boolean enthaeltFehlschlag (List<ITestWerte> werte) {
@@ -171,5 +197,9 @@ public class ErstelleBasis implements IErstelleBasis {
             }
         }
         return namen;
+    }
+    public static void main(String[] args) {
+        ErstelleBasis basis = new ErstelleBasis();
+        basis.erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2, 5);
     }
 }

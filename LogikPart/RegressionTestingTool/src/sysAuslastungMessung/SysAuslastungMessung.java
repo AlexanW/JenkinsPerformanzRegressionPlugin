@@ -43,5 +43,6 @@ public class SysAuslastungMessung {
     
     public static void main(String[] args) {
         startMeasurement();
+        bestimmeDatei("Dummy");
     }
 }

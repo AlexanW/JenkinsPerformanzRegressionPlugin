@@ -10,7 +10,6 @@ import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 
 import hudson.Extension;
-import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
@@ -18,9 +17,7 @@ import hudson.model.BuildListener;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.FormValidation;
-import jenkins.model.StandardArtifactManager;
 
-import leseDaten.LeseJUnitResults;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
 
@@ -65,6 +62,7 @@ public class PluginMenueClass extends BuildWrapper{
     public Environment setUp(AbstractBuild build,
             Launcher launcher,
             BuildListener listener) {
+      
         boolean enthaeltBasisDir = false;
         
         //Dir des Projektjobs: RootDir=Buildnumber, Parant1=Builds, Parent2=Projekt.

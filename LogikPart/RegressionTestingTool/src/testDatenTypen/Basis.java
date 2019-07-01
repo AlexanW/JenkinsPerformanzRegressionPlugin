@@ -1,7 +1,6 @@
  package testDatenTypen;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Eine Basis gegen die einzelne TestValues getestet werden können.
@@ -11,6 +10,10 @@ import java.util.List;
  *
  */
 public class Basis extends BasisMitTests {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -4575802343264513418L;
     /**
      * Die Tolleranz um den Durchschnitt herrum.
      */
@@ -97,6 +100,10 @@ public class Basis extends BasisMitTests {
     public double getScore() {
         return avarageLaufzeit;
     }
+    public String getName() {
+        return name;
+    }
+    
     /**
      * Standartabweichung als Wurzel der Varianz.
      * @return
@@ -140,10 +147,15 @@ public class Basis extends BasisMitTests {
      */
     @Override
     public String toString() {
-        return "Name:" + name + "\n" 
-    + "AvarageLaufzeit: " + avarageLaufzeit + "\n" 
-    + "Obergrenze:" + obergrenze + "\n" 
-    + "Untergrenze:" + untergrenze + "\n" 
-    + "Varianz:" + varianz ;
+        String outPut = "Name:" + name + "\n" 
+                + "AvarageLaufzeit: " + avarageLaufzeit + "\n" 
+                + "Obergrenze:" + obergrenze + "\n" 
+                + "Untergrenze:" + untergrenze + "\n" 
+                + "Varianz:" + varianz + "\n";
+        for (ITest t : getAvarageTests().values()) {
+            outPut += (t.toString());
+        }
+        
+        return outPut;
     }
 }

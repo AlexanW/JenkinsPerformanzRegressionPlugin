@@ -28,6 +28,10 @@ public interface IBasis extends ITestObjekt {
      */
     public double getVarianz();
     /**
+     * Der Name der Basis.
+     */
+    public String getName();
+    /**
      * Diese Methode bekommt ein StringArray mit [0] = <Attributname>
      * und [1] = <Attributwert>
      */
