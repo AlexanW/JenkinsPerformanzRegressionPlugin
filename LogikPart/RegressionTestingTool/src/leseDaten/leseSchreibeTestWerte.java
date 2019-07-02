@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 import testDatenTypen.ITestWerte;
 
-public class schreibeTestWerte {
+public class leseSchreibeTestWerte {
     
     
     
