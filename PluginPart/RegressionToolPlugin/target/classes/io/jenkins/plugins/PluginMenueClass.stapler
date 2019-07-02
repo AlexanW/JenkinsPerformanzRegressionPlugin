@@ -1,2 +1,2 @@
-#Wed Jul 03 00:17:33 CEST 2019
+#Wed Jul 03 01:28:00 CEST 2019
 constructor=pfadZuBasen,pfadZuBuilds,pfadZuCPUundRAM,erstelleBasis,anzahlAnVergangenenBuilds,tolleranzFuerBasen,tolleranzFuerBasenVerlgeich,pruefeRegression,vergleicheBasis,timerIntervall,jUnitDateiName

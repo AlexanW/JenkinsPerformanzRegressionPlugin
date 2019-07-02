@@ -37,10 +37,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             <id>repo.jenkins-ci.org</id>
             <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
-        <repository>
-            <id>localrepository</id>
-            <url>file://C:/Users/Alex/.m2/repository</url>
-        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -50,11 +46,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     </pluginRepositories>
     <dependencies>
         <dependency>
-    		<groupId>Regression</groupId>
-    		<artifactId>RegressionTestingTool</artifactId>
-    		<version>1.0</version>
-    	</dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-math3</artifactId>
+    		<version>3.6.1</version>
+		</dependency>
     </dependencies>
-    <build>   
-    </build>
 </project>

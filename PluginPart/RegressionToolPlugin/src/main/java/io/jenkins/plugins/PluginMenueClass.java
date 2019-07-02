@@ -159,6 +159,7 @@ public class PluginMenueClass extends BuildWrapper{
                 }
                 ITestVergleich verlgeich = new TestVergleichen();
                 String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
+                listener.getLogger().print(result);
             }
         }
  

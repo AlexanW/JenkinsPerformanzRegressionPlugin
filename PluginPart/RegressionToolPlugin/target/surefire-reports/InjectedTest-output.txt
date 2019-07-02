@@ -1,61 +1,61 @@
 Running tests for io.jenkins.plugins:RegressionToolPlugin:1.01
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.util.log.Log initialized
-INFO: Logging initialized @552ms to org.eclipse.jetty.util.log.Slf4jLog
-Jun 30, 2019 1:44:31 AM org.jvnet.hudson.test.WarExploder explode
+Jul 03, 2019 1:29:35 AM org.eclipse.jetty.util.log.Log initialized
+INFO: Logging initialized @476ms to org.eclipse.jetty.util.log.Slf4jLog
+Jul 03, 2019 1:29:36 AM org.jvnet.hudson.test.WarExploder explode
 INFO: Picking up existing exploded jenkins.war at F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\jenkins-for-test
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.server.handler.ContextHandler setContextPath
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.handler.ContextHandler setContextPath
 WARNING: Empty contextPath
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.server.Server doStart
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.Server doStart
 INFO: jetty-9.4.5.v20170502
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
 INFO: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: DefaultSessionIdManager workerName=node0
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: No SessionScavenger set, using defaults
-Jun 30, 2019 1:44:31 AM org.eclipse.jetty.server.session.HouseKeeper startScavenging
-INFO: Scavenging every 600000ms
-Jun 30, 2019 1:44:32 AM org.eclipse.jetty.server.handler.ContextHandler doStart
-INFO: Started o.e.j.w.WebAppContext@5c84624f{/,file:///F:/Uni/SeminareProjekte/ContinuousIntegrationPerformanceTests(Bachelor)/CIToolGit/PluginPart/RegressionToolPlugin/target/jenkins-for-test/,AVAILABLE}{F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\jenkins-for-test}
-Jun 30, 2019 1:44:32 AM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@15fc442{HTTP/1.1,[http/1.1]}{localhost:63280}
-Jun 30, 2019 1:44:32 AM org.eclipse.jetty.server.Server doStart
-INFO: Started @1462ms
-Jun 30, 2019 1:44:32 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: Scavenging every 660000ms
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started o.e.j.w.WebAppContext@1e5f4170{/,file:///F:/Uni/SeminareProjekte/ContinuousIntegrationPerformanceTests(Bachelor)/CIToolGit/PluginPart/RegressionToolPlugin/target/jenkins-for-test/,AVAILABLE}{F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\jenkins-for-test}
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@a7e2d9d{HTTP/1.1,[http/1.1]}{localhost:51241}
+Jul 03, 2019 1:29:36 AM org.eclipse.jetty.server.Server doStart
+INFO: Started @1448ms
+Jul 03, 2019 1:29:36 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Started initialization
-Jun 30, 2019 1:44:33 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:37 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Listed all plugins
-Jun 30, 2019 1:44:34 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:38 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Prepared all plugins
-Jun 30, 2019 1:44:34 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:38 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Started all plugins
-Jun 30, 2019 1:44:34 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:38 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Augmented all extensions
-Jun 30, 2019 1:44:35 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:39 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Loaded all jobs
-Jun 30, 2019 1:44:36 AM jenkins.InitReactorRunner$1 onAttained
+Jul 03, 2019 1:29:39 AM jenkins.InitReactorRunner$1 onAttained
 INFO: Completed initialization
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.Server doStart
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.Server doStart
 INFO: jetty-9.4.5.v20170502
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: DefaultSessionIdManager workerName=node0
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: No SessionScavenger set, using defaults
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.session.HouseKeeper startScavenging
 INFO: Scavenging every 600000ms
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.handler.ContextHandler doStart
-INFO: Started o.e.j.s.ServletContextHandler@2679311f{/,null,AVAILABLE}
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@44cb460e{HTTP/1.1,[http/1.1]}{0.0.0.0:63286}
-Jun 30, 2019 1:44:36 AM org.eclipse.jetty.server.Server doStart
-INFO: Started @5767ms
-Jun 30, 2019 1:44:38 AM org.eclipse.jetty.server.AbstractConnector doStop
-INFO: Stopped ServerConnector@15fc442{HTTP/1.1,[http/1.1]}{localhost:0}
-Jun 30, 2019 1:44:38 AM org.eclipse.jetty.server.session.HouseKeeper stopScavenging
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.handler.ContextHandler doStart
+INFO: Started o.e.j.s.ServletContextHandler@400d912a{/,null,AVAILABLE}
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@12477988{HTTP/1.1,[http/1.1]}{0.0.0.0:51247}
+Jul 03, 2019 1:29:39 AM org.eclipse.jetty.server.Server doStart
+INFO: Started @4963ms
+Jul 03, 2019 1:29:42 AM org.eclipse.jetty.server.AbstractConnector doStop
+INFO: Stopped ServerConnector@a7e2d9d{HTTP/1.1,[http/1.1]}{localhost:0}
+Jul 03, 2019 1:29:42 AM org.eclipse.jetty.server.session.HouseKeeper stopScavenging
 INFO: Stopped scavenging
-Jun 30, 2019 1:44:38 AM org.eclipse.jetty.server.handler.ContextHandler doStop
-INFO: Stopped o.e.j.w.WebAppContext@5c84624f{/,file:///F:/Uni/SeminareProjekte/ContinuousIntegrationPerformanceTests(Bachelor)/CIToolGit/PluginPart/RegressionToolPlugin/target/jenkins-for-test/,UNAVAILABLE}{F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\jenkins-for-test}
-Jun 30, 2019 1:44:38 AM jenkins.model.Jenkins cleanUp
+Jul 03, 2019 1:29:42 AM org.eclipse.jetty.server.handler.ContextHandler doStop
+INFO: Stopped o.e.j.w.WebAppContext@1e5f4170{/,file:///F:/Uni/SeminareProjekte/ContinuousIntegrationPerformanceTests(Bachelor)/CIToolGit/PluginPart/RegressionToolPlugin/target/jenkins-for-test/,UNAVAILABLE}{F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\jenkins-for-test}
+Jul 03, 2019 1:29:42 AM jenkins.model.Jenkins cleanUp
 INFO: Stopping Jenkins
-Jun 30, 2019 1:44:38 AM jenkins.model.Jenkins cleanUp
+Jul 03, 2019 1:29:43 AM jenkins.model.Jenkins cleanUp
 INFO: Jenkins stopped
