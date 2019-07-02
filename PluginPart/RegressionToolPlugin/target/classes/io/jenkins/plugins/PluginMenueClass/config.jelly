@@ -10,12 +10,24 @@
   	<f:entry title="${%Anzahl an vergangenen Testergebnissen}" field="anzahlAnVergangenenBuilds">
     	<f:textbox default = "1" />
   	</f:entry>
+  	 <f:entry title="${%Pfad zu CPU und RAM Messungen}" field="pfadZuCPUundRAM">
+    	<f:textbox default = "" />
+  	</f:entry>
   	<f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
+    	<f:checkbox />
+  	</f:entry>
+  	<f:entry title="${%Vergleiche letzen 2 Basen}" field="vergleicheBasen">
     	<f:checkbox />
   	</f:entry>
     <f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help ="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
     	<f:textbox default="0.0"/>
   	</f:entry>
+  	<f:entry title="${%Timer Intervall für CPU/RAM Messungen}" field="timerIntervall" help ="Der Intervall in dem die Daten gemessen werden in Hundertstel">
+        <f:textbox default="0.0"/>
+    </f:entry>
+    <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="timerIntervall" help ="Der Pfad zu den Messergebnissen, sollte auf den konkreten Namen enden.">
+        <f:textbox default="junitResult"/>
+    </f:entry>
  <f:validateButton
       title="${%CreateBasen}" progress="${%CreateBasen.progress}"
       method="createBase" with="pfadZuBasen" />
