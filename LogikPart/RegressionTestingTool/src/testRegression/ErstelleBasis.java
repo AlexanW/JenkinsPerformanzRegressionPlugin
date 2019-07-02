@@ -196,15 +196,37 @@ public class ErstelleBasis implements IErstelleBasis {
         for (String n : namen) {
             tempTest.setName(n);
             double tempSum = 0.0;
+            double tempCpuAvarageSum = 0.0;
+            double tempCpuMinSum = 0.0;
+            double tempCpuMaxSum = 0.0;
+            double tempRamAvarageSum = 0.0;
+            double tempRamMinSum = 0.0;
+            double tempRamMaxSum = 0.0;
             int i = 0;
+            int iAuslastungenCounter = 0;
             
             for (ITestWerte e : werte) {
                if (e.getTests().get(n) != null) {
                    tempSum += e.getTests().get(n).getScore();
+                   if (e.getTests().get(n).getAvarageCPU() != 0) {
+                       tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
+                       tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
+                       tempCpuMinSum += e.getTests().get(n).getMinCPU();
+                       tempRamAvarageSum += e.getTests().get(n).getAvarageRAM();
+                       tempRamMaxSum += e.getTests().get(n).getMaxRAM();
+                       tempRamMinSum += e.getTests().get(n).getMinRAM();
+                       iAuslastungenCounter++;
+                   }
                    i++;
                }
             }
             tempTest.setScore(tempSum/i);
+            tempTest.setAvarageCPU(tempCpuAvarageSum/iAuslastungenCounter);
+            tempTest.setMinCPU(tempCpuMinSum/iAuslastungenCounter);
+            tempTest.setMaxCPU(tempCpuMaxSum/iAuslastungenCounter);
+            tempTest.setAvarageRAM(tempRamAvarageSum/iAuslastungenCounter);
+            tempTest.setMinRAM(tempRamMinSum/iAuslastungenCounter);
+            tempTest.setMaxRAM(tempRamMaxSum/iAuslastungenCounter);
             druchschnitTests.put(tempTest.getName(), tempTest);
         }
         return druchschnitTests;

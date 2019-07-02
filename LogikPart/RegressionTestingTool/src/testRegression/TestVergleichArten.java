@@ -15,6 +15,8 @@ import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;
 
 public class TestVergleichArten {
+    public static double auslastungTolleranz = 0.2;
+    
     /**
      * Testet ob die durchschnittliche Laufzeit der TestSuit auserhalb der 
      * Grenzen der Basis liegt. Wenn dies der Fall ist wird von Performanz 
@@ -82,8 +84,52 @@ public class TestVergleichArten {
                 testNurInWerten.add(t);
             }
         }
+        result += "Regressierte Tests bei " + erwarteteRegression + " Tolleranz : \n";
+        for (ITest t : regressierteTests) {
+            result += t.getName() + " mit: " + t.getScore() +"\n";
+        }
+        result+= "Tests die nur in der neuen Datei sind: \n";
+        for (ITest t : testNurInWerten) {
+            result += t.getName() + " mit: " + t.getScore() +  "\n";
+        }
+        result += "Tests die nur in der Basis sind: ";
+        for (ITest t : testNurInBasis) {
+            result += t.getName() + " mit: " + t.getScore() +  "\n";
+        }
         return result;
     }
+    /**
+     * 
+     */
+    public static String vergleicheTestsAuslastungen(ITestObjektGruppe basis, ITestObjektGruppe testObjektGruppe) {
+        Status status = Status.NEUTRAL;
+        List<ITest> zuhoheAuslatungCPU = new ArrayList<ITest>();
+        List<ITest> zuhoheAuslatungRAM = new ArrayList<ITest>();
+        
+        for (ITest t: testObjektGruppe.getTests().values()) {
+            if (basis.getTests().get(t.getName()) != null) {
+                if (t.getAvarageCPU() > (basis.getTests().get(t.getName()).getAvarageCPU() * (1 + auslastungTolleranz))) {
+                    zuhoheAuslatungCPU.add(t);
+                } else if (t.getMaxCPU() > (basis.getTests().get(t.getName()).getMaxCPU() * (1 + auslastungTolleranz))) {
+                    zuhoheAuslatungCPU.add(t);
+                }
+                if (t.getAvarageRAM() > (basis.getTests().get(t.getName()).getAvarageRAM() * (1 + auslastungTolleranz))) {
+                    zuhoheAuslatungRAM.add(t);
+                } else if (t.getMaxRAM() > (basis.getTests().get(t.getName()).getMaxRAM() * (1 + auslastungTolleranz))) {
+                    zuhoheAuslatungRAM.add(t);
+                }
+            }
+        }
+        String result ="";
+        result += "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
+                + " zu hohe CPU Auslastung zeigen (mehr als 20% hoeher im "
+                + "Druchschnitt oder im Maximalwert):\n";
+        for (ITest t: zuhoheAuslatungCPU) {
+            
+        }
+        return result;
+    }
+    
     /**
      * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
      * verwendet. Dieser vergleicht 2 Sets miteinander und sagt mit 

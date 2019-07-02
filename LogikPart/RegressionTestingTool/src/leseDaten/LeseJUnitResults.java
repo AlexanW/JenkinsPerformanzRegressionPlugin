@@ -153,7 +153,8 @@ public class LeseJUnitResults {
      * @throws ClassNotFoundException 
      * @throws FileNotFoundException 
      */
-    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) throws FileNotFoundException, ClassNotFoundException, IOException {
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) 
+            throws FileNotFoundException, ClassNotFoundException, IOException {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
         if (file.exists() && file.isDirectory()) {
@@ -172,10 +173,11 @@ public class LeseJUnitResults {
                         File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                         if (tempTestWerteFile.exists()) {
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
-                        }
-                        File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
-                        if (tempFile.exists()) {
-                            values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
+                        } else {
+                            File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
+                            if (tempFile.exists()) {
+                                values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
+                            }
                         }
                     }
                 }

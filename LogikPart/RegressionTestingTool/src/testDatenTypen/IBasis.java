@@ -28,6 +28,10 @@ public interface IBasis extends ITestObjekt {
      */
     public double getVarianz();
     /**
+     * 
+     */
+    public double getTolleranz();
+    /**
      * Der Name der Basis.
      */
     public String getName();

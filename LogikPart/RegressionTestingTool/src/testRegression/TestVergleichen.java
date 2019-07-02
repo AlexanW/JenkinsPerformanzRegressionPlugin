@@ -2,6 +2,7 @@ package testRegression;
 
 import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
+import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;
 import testDatenTypen.TestWerte;
@@ -36,31 +37,37 @@ public class TestVergleichen implements ITestVergleich{
                  * Regression oder einen Ausreisser handelt.
                  */
                 if (regressionGefunden == Status.GROESSER) {
-                    //ToDo hier Check auf Auslastungen. Problem : How to measure.
-                    result = "Die Tests fallen aus den Grenzen der Basis."
-                            + "Daher wird angenommen, dass es sich um Regression "
-                            + "handelt.\nUntergrenze: " 
-                            + ((Basis)basis).getUntergrenze() + " Obergrenze: "
-                            + ((Basis)basis).getObergrenze()  + " TestZeit: " 
-                            + ((TestWerte)testWerte).getScore() 
-                            + " Bei einer Tolleranz um die mittlere "
-                            + "Laufzeit von: " 
-                            + ((Basis)basis).getTolleranz() 
-                            + " (0.0 bedeutet, dass die Grenzen durch"
-                            + "min und max Werte aus X Messungen sind)";
-                    TestVergleichArten.vergleicheTests((TestWerte)testWerte, (Basis)basis 
-                            , erwarteteRegression);
+                    if (basis instanceof ITestObjektGruppe) {
+                        result += TestVergleichArten.vergleicheTestsAuslastungen((ITestObjektGruppe)basis, testWerte);
+                    }
+                    if (result.isEmpty()) {
+                        result += "Die Tests fallen aus den Grenzen der Basis."
+                                + "Daher wird angenommen, dass es sich um Regression "
+                                + "handelt.\nUntergrenze: " 
+                                + basis.getUntergrenze() + " Obergrenze: "
+                                + basis.getObergrenze()  + " TestZeit: " 
+                                + testWerte.getScore() 
+                                + " Bei einer Tolleranz um die mittlere "
+                                + "Laufzeit von: " 
+                                + basis.getTolleranz() 
+                                + " (0.0 bedeutet, dass die Grenzen durch"
+                                + "min und max Werte aus X Messungen sind) \n";
+                        if (basis instanceof ITestObjektGruppe) {
+                            result += TestVergleichArten.vergleicheTests(testWerte, (ITestObjektGruppe)basis 
+                                    , erwarteteRegression);
+                        }
+                    }
                 } else if (regressionGefunden == Status.KLEINER) {
                     /*
                      * Warnung, dass die Tests schneller als erwartet liefen und
                      * es probleme geben könnte.
                      */
-                    result = "Die Tests wurden schneller abgeschlossen"
+                    result += "Die Tests wurden schneller abgeschlossen"
                             + " als erwarte, dies koennte auf fehlerhaftes "
                             + "Verhalten beim Testen deuten.";
                 } else {
                     regressionGefunden = Status.IM_BEREICH;
-                    result = "Es scheint keine Regression vorzuliegen.";
+                    result += "Es scheint keine Regression vorzuliegen.";
                 }
         return result;
     }
