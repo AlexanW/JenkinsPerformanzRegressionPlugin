@@ -1,6 +1,7 @@
 package testRegression;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -39,8 +40,18 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     public IBasis erstelleBasisOhneMessungen(String targetJUnitResutls,String targetBasis 
             ,double tolleranz, int anzahlTests, double step_size) {
-        List<ITestWerte> werte = 
-                LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests,step_size);
+        
+        
+        List<ITestWerte> werte = new ArrayList<ITestWerte>();
+        try {
+            werte = LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests,step_size);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (werte.size() == 0) {
             werte =  
                 LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);

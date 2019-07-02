@@ -3,6 +3,7 @@ package leseDaten;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +26,8 @@ import testDatenTypen.TestWerte;
  *
  */
 public class LeseJUnitResults {
-    public final static String JUNIT_DATAEINAME = "junitResult.xml"; 
+    public final static String JUNIT_DATAEINAME = "junitResult.xml";
+    public final static String TESTWERTE_DATEINAME = "testWerte.res"; 
 	/**
 	 * XMLReaderTrial
 	 */
@@ -147,8 +149,11 @@ public class LeseJUnitResults {
      * Diese Methode startet den Vorgang des Einlesens aller JUnitResultDatein
      * die bereitgestellt sind.
      * @param pfad Der "builds" Ordner inerhalb eines Jenkins projekts in dem die "build" Folders Liegen.
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     * @throws FileNotFoundException 
      */
-    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) {
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) throws FileNotFoundException, ClassNotFoundException, IOException {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
         if (file.exists() && file.isDirectory()) {
@@ -164,6 +169,10 @@ public class LeseJUnitResults {
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i < useResults; i++) {
+                        File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
+                        if (tempTestWerteFile.exists()) {
+                            values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
+                        }
                         File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                         if (tempFile.exists()) {
                             values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));

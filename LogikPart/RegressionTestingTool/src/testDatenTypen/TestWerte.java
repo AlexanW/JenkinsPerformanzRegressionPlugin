@@ -34,6 +34,11 @@ public class TestWerte implements ITestWerte {
 	    this.step_size = step_size/1000;
     }
 	/**
+	 * 
+	 */
+	public TestWerte() {
+    }
+	/**
 	 * Das Datum und die Uhrzeit des Tests.
 	 */
 	private String timestamp;

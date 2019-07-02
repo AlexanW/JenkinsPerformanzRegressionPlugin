@@ -18,14 +18,18 @@ import hudson.util.FormValidation;
 import leseDaten.LeseBasis;
 import leseDaten.LeseCPUundRAM;
 import leseDaten.LeseJUnitResults;
+import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
+import testDatenTypen.TestWerte;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
 import testRegression.ITestVergleich;
 import testRegression.TestVergleichen;
 
 public class PluginMenueClass extends BuildWrapper{
+    
+    public final static String TESTWERTE_DATEINAME = "testWerte.res"; 
     
     private String pfadZuBasen;
     
@@ -139,7 +143,7 @@ public class PluginMenueClass extends BuildWrapper{
                 if (pfadZuBuilds.isEmpty()) {
                     pfadZuBuilds = build.getRootDir().getParent();
                 }
-                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds);
+                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds, timerIntervall);
             }
             if (vergleicheBasis) {
                 IBasis basisNeu = null;
@@ -154,7 +158,7 @@ public class PluginMenueClass extends BuildWrapper{
                     listener.getLogger().print("!Ein Fehler beim Einlesen ist geschehen!" + e.getMessage());
                 }
                 ITestVergleich verlgeich = new TestVergleichen();
-                //String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich);
+                String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
             }
         }
  
@@ -163,12 +167,20 @@ public class PluginMenueClass extends BuildWrapper{
             public boolean tearDown(AbstractBuild build, BuildListener listener)
                     throws IOException, InterruptedException {
                 File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
+                ITestWerte tests = new TestWerte();
                 if (file.exists()) {
-                    ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath());
+                    tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
                     tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
                 } else {
                     listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
                 }
+                TestVergleichen vergleichen = new TestVergleichen();
+                LeseBasis lese = new LeseBasis();
+                String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
+                        lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                
+                LeseSchreibeTestWerte.schreibeTestWerte(
+                        build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                 return super.tearDown(build, listener);
             }
         };
