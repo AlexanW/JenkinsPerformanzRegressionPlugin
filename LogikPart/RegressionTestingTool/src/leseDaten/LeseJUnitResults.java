@@ -29,8 +29,8 @@ public class LeseJUnitResults {
 	/**
 	 * XMLReaderTrial
 	 */
-	public static ITestWerte leseTestsXML(String pfad) {
-	    ITestWerte results = new TestWerte();
+	public static ITestWerte leseTestsXML(String pfad, double step_size) {
+	    ITestWerte results = new TestWerte(step_size);
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -135,11 +135,11 @@ public class LeseJUnitResults {
      * die bereitgestellt sind.
      * @param pfad Der Zielordner in dem die Resultdateien Liegen.
      */
-    public static List<ITestWerte> getJUnitResultDatei(String pfad) {
+    public static List<ITestWerte> getJUnitResultDatei(String pfad, double step_size) {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
         for (File f : file.listFiles()) {
-            values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
+            values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath(), step_size));
         }
         return values;
     }   
@@ -148,7 +148,7 @@ public class LeseJUnitResults {
      * die bereitgestellt sind.
      * @param pfad Der "builds" Ordner inerhalb eines Jenkins projekts in dem die "build" Folders Liegen.
      */
-    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults) {
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
         if (file.exists() && file.isDirectory()) {
@@ -166,7 +166,7 @@ public class LeseJUnitResults {
                     for (int i = 1; i < useResults; i++) {
                         File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                         if (tempFile.exists()) {
-                            values.add(leseTestsXML(files[i].getAbsolutePath()));
+                            values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
                         }
                     }
                 }
@@ -174,6 +174,7 @@ public class LeseJUnitResults {
         }
         return values;
     }
+    
     /**
      * Diese Methode entfernt alle nicht Build folders aus einem "builds" Dir.
      * @param files
@@ -206,7 +207,7 @@ public class LeseJUnitResults {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	    getJUnitResultDatei("Data/jUnitResults");
+	    getJUnitResultDatei("Data/jUnitResults", 100);
 		//getJUnitResultDateiAusBuilds("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\builds", 5);
 	}
 }

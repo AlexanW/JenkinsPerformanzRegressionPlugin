@@ -16,7 +16,10 @@ import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.FormValidation;
 import leseDaten.LeseBasis;
+import leseDaten.LeseCPUundRAM;
+import leseDaten.LeseJUnitResults;
 import testDatenTypen.IBasis;
+import testDatenTypen.ITestWerte;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
 import testRegression.ITestVergleich;
@@ -38,14 +41,19 @@ public class PluginMenueClass extends BuildWrapper{
     
     private double tolleranzFuerBasenVergleich;
     
+    private double timerIntervall;
+    
     private boolean pruefeRegression;
     
     private boolean vergleicheBasis;
     
+    private String jUnitDateiName;
+    
     @DataBoundConstructor
     public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
-            double tolleranzFuerBasenVerlgeich, boolean pruefeRegression, boolean vergleicheBasis) {
+            double tolleranzFuerBasenVerlgeich, boolean pruefeRegression, boolean vergleicheBasis,
+            double timerIntervall, String jUnitDateiName) {
         this.pfadZuBasen = pfadZuBasen;
         this.pfadZuBuilds = pfadZuBuilds;
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
@@ -55,6 +63,8 @@ public class PluginMenueClass extends BuildWrapper{
         this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVerlgeich;
         this.pruefeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
+        this.timerIntervall = timerIntervall;
+        this.jUnitDateiName = jUnitDateiName;
     }
     
     public String getPfadZuBasen() {
@@ -65,6 +75,9 @@ public class PluginMenueClass extends BuildWrapper{
         return pfadZuBuilds;
     }
     
+    public double getTimerIntervall() {
+        return timerIntervall;
+    }
     
     public int getAnzahlAnVergangenenBuilds() {
         return anzahlAnVergangenenBuilds;
@@ -94,6 +107,10 @@ public class PluginMenueClass extends BuildWrapper{
         return pfadZuCPUundRAM;
     }
     
+    public String getJUnitDateiName ( ) {
+        return jUnitDateiName;
+    }
+    
     @Override
     public Environment setUp(AbstractBuild build,
             Launcher launcher,
@@ -101,7 +118,7 @@ public class PluginMenueClass extends BuildWrapper{
       
         boolean enthaeltBasisDir = false;
         listener.getLogger().print("-----Starte RegressionTest-----");
-        //Dir des Projektjobs: RootDir=Buildnumber, Parant1=Builds, Parent2=Projekt.
+        //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
         if (file.isDirectory()) {
             for (String s: file.list()) {
@@ -122,7 +139,7 @@ public class PluginMenueClass extends BuildWrapper{
                 if (pfadZuBuilds.isEmpty()) {
                     pfadZuBuilds = build.getRootDir().getParent();
                 }
-                basis.erstelleBasis(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds);
+                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds);
             }
             if (vergleicheBasis) {
                 IBasis basisNeu = null;
@@ -145,23 +162,13 @@ public class PluginMenueClass extends BuildWrapper{
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener)
                     throws IOException, InterruptedException {
-                File fileDif = new File(build.getProject().getRootProject().getRootDir().getPath() + "/builds");
-                if (fileDif != null) {
-                    File[] tempList = fileDif.listFiles(); 
-                    if (tempList != null) {
-                        for (File f: tempList) {
-                            if (f.isDirectory()) {
-                                File[] tempListT =  f.listFiles();
-                                if (tempListT != null) {
-                                    for (File a : tempListT) {
-                                        //listener.getLogger().print(a.getPath() + "................................_______________________________________________________\n");
-                                    }
-                                }
-                            }
-                        }
-                    }
+                File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
+                if (file.exists()) {
+                    ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath());
+                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                } else {
+                    listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
                 }
-                listener.getLogger().print("");
                 return super.tearDown(build, listener);
             }
         };

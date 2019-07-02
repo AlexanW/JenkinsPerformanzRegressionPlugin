@@ -140,4 +140,8 @@ public class Test implements ITest, Serializable {
 //       }    
        return output;
     }
+    public static void main(String[] args) {
+        Test test = new Test();
+        System.out.println(test.getAvarageCPU());
+    }
 }

@@ -15,7 +15,7 @@ public class TestWerte implements ITestWerte {
     /**
      * Die Schrittlaenge der SystemMessungen.
      */
-    private static final double STEP_SIZE = 0.100;
+    private double step_size = 0.100;
 	/**
 	 * LinkedHashMap für das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
 	 * Dabei wird die Reihenfolge der Tests gewaehrleistet.
@@ -26,6 +26,13 @@ public class TestWerte implements ITestWerte {
 	 */
 	private List <TestAuslastungen> testAuslastungen =
 	        new ArrayList<TestAuslastungen>();
+	/**
+	 * 
+	 */
+	public TestWerte(double step_size) {
+	    // Durch 1000 geteilt um die Schrittgroesse anzupassen.
+	    this.step_size = step_size/1000;
+    }
 	/**
 	 * Das Datum und die Uhrzeit des Tests.
 	 */
@@ -90,13 +97,13 @@ public class TestWerte implements ITestWerte {
 	    String testStart = timestamp.split("T")[1];
 	    SimpleDateFormat formateTime = new SimpleDateFormat("HH:mm:ss");
 	    //Score+STEP_SIZE stellen sicher, dass die letzte Messun nach dem Letzen Test liegt.
-	    for (int i = 0; i < testAuslastungen.size() && zaehlerZumEnde < (score + STEP_SIZE); i++) {
+	    for (int i = 0; i < testAuslastungen.size() && zaehlerZumEnde < (score + step_size); i++) {
 	        
 	        if (testStart.equals(formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime())) || startGefunden) {
 	            //System.out.println( formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime()) + " STARTUP ASD");
 	            startGefunden = true;
 	            tempList.add(testAuslastungen.get(i));
-	            zaehlerZumEnde += STEP_SIZE;
+	            zaehlerZumEnde += step_size;
 	        }
 	    }
 	    return tempList;
@@ -105,7 +112,7 @@ public class TestWerte implements ITestWerte {
 	private void addMessungenZuTests() {
 	    double scoreSumme = 0;
 	    for (ITest t : tests.values()) {
-	        if (t.getScore() < STEP_SIZE) {
+	        if (t.getScore() < step_size) {
 	            setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme*10)));
 	            scoreSumme += t.getScore();
 	        } else {
@@ -120,6 +127,7 @@ public class TestWerte implements ITestWerte {
 	        }
 	    }
 	}
+	
 	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslatungen) {
         double max = auslatungen.get(0).getCpuAuslastung();
         double min = auslatungen.get(0).getCpuAuslastung();

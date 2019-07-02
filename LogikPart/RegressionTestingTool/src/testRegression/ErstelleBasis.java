@@ -37,13 +37,13 @@ public class ErstelleBasis implements IErstelleBasis {
      * jUnitResultDateien nemen soll so sollte sie 0.0 sein.
      * Eingabe von Prozent in 0.xx Fomat.
      */
-    public IBasis erstelleBasis(String targetJUnitResutls,String targetBasis 
-            ,double tolleranz, int anzahlTests) {
+    public IBasis erstelleBasisOhneMessungen(String targetJUnitResutls,String targetBasis 
+            ,double tolleranz, int anzahlTests, double step_size) {
         List<ITestWerte> werte = 
-                LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests);
+                LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests,step_size);
         if (werte.size() == 0) {
             werte =  
-                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls);
+                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);
         }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
@@ -216,6 +216,6 @@ public class ErstelleBasis implements IErstelleBasis {
     }
     public static void main(String[] args) {
         ErstelleBasis basis = new ErstelleBasis();
-        basis.erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2, 5);
+        basis.erstelleBasisOhneMessungen("Data/jUnitResults/", "Data/Basen/", 0.2, 5, 100);
     }
 }

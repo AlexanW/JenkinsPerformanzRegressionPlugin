@@ -20,7 +20,7 @@ public class SammleDaten {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
         for (File f : file.listFiles()) {
-            values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
+            //values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
         }
         return values;
     }
