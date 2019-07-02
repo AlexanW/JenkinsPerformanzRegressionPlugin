@@ -71,6 +71,7 @@ public class TestWerte implements ITestWerte {
 	 */
 	public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen) {
         this.testAuslastungen = matchMessungenZuTests(testAuslastungen);
+        addMessungenZuTests();
     }
 	/**
 	 * Diese Methode nimmt eine Menge an TestAuslastungen und matcht den Start
@@ -106,6 +107,7 @@ public class TestWerte implements ITestWerte {
 	    for (ITest t : tests.values()) {
 	        if (t.getScore() < STEP_SIZE) {
 	            setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme*10)));
+	            scoreSumme += t.getScore();
 	        } else {
 	            List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
 	            for (int i = ((int)(scoreSumme*10)); i <=  (int)((scoreSumme + t.getScore())*10); i++) {
@@ -114,7 +116,7 @@ public class TestWerte implements ITestWerte {
 	                }
 	            }
 	            setAuslatungenFuerTests(t, auslatungen);
-	            
+	            scoreSumme += t.getScore();
 	        }
 	    }
 	}
