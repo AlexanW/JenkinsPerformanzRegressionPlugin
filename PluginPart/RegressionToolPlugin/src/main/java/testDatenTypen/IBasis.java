@@ -7,7 +7,7 @@ public interface IBasis extends ITestObjekt {
      */
     public String toString();
     /**
-     * Gibt eine untere Grenze für Aktzeptierte Tests an.
+     * Gibt eine untere Grenze fuer Aktzeptierte Tests an.
      */
     public double getUntergrenze();
     /**
