@@ -122,7 +122,7 @@ public class PluginMenueClass extends BuildWrapper{
       
         boolean enthaeltBasisDir = false;
         boolean basenDirErstellt = true;
-        listener.getLogger().print("-----Starte RegressionTest-----");
+        listener.getLogger().print("-----Starte RegressionTest-----\n");
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
         if (file.isDirectory()) {
@@ -135,6 +135,7 @@ public class PluginMenueClass extends BuildWrapper{
                 }
             }
             if(!enthaeltBasisDir) {
+              listener.getLogger().print("-----Erstelle Ordner fuer Basen-----\n");
               File tempFile = new File (file.getAbsolutePath() + "/basen");
               basenDirErstellt = tempFile.mkdir();
             }
@@ -147,11 +148,20 @@ public class PluginMenueClass extends BuildWrapper{
                 if (pfadZuBuilds.isEmpty()) {
                     pfadZuBuilds = build.getRootDir().getParent();
                 }
+                listener.getLogger().print("-----------------------------------\n"
+                        + "Erstelle Basen mit den Pfaden: \n"
+                        + "Die Build Ordner mit den Result Dateien:" + pfadZuBuilds + "\n"
+                        + "Der Ort an dem die Basen des Tests gespeichert werden:"+ pfadZuBasen +"\n"
+                        + "Die maximale Schwankung wird als:" + tolleranzFuerBasen + " festgelegt\n"
+                        + "Es werden die letzen " + anzahlAnVergangenenBuilds + " verwendet \n"
+                        + "Mit einem Timerintervall von: "  + timerIntervall + " \n"
+                        + "-------------------------------------------\n");
                 basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
                         tolleranzFuerBasen, anzahlAnVergangenenBuilds,
                         timerIntervall);
             }
             if (vergleicheBasis) {
+                listener.getLogger().print("Vergleiche die letzen zwei Basen miteinander.\n");
                 IBasis basisNeu = null;
                 IBasis basisAlt = null;
                 LeseBasis lese = new LeseBasis();
@@ -177,6 +187,7 @@ public class PluginMenueClass extends BuildWrapper{
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener)
                     throws IOException, InterruptedException {
+                listener.getLogger().print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName + ".xml \n");
                 File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
                 ITestWerte tests = new TestWerte();
                 if (file.exists()) {
