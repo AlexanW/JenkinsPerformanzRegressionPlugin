@@ -182,16 +182,16 @@ public class PluginMenueClass extends BuildWrapper{
                 if (file.exists()) {
                     tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
                     tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                    TestVergleichen vergleichen = new TestVergleichen();
+                    LeseBasis lese = new LeseBasis();
+                    String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
+                            lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                    listener.getLogger().print(testResultString);
+                    LeseSchreibeTestWerte.schreibeTestWerte(
+                            build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                 } else {
                     listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
                 }
-                TestVergleichen vergleichen = new TestVergleichen();
-                LeseBasis lese = new LeseBasis();
-                String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                        lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
-                listener.getLogger().print(testResultString);
-                LeseSchreibeTestWerte.schreibeTestWerte(
-                        build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                 return super.tearDown(build, listener);
             }
         };
