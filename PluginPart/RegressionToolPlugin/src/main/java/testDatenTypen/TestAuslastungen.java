@@ -33,7 +33,7 @@ public class TestAuslastungen implements Serializable{
             , Timestamp timeStamp) {
         this.ramAuslastung = ramAuslastung;
         this.cpuAuslastung = cpuAuslastung;
-        this.timeStamp = timeStamp;
+        this.timeStamp = new Timestamp(timeStamp.getTime());
     }
     public double getCpuAuslastung() {
         return cpuAuslastung;
@@ -42,7 +42,7 @@ public class TestAuslastungen implements Serializable{
         return ramAuslastung;
     }
     public Timestamp getTimeStamp() {
-        return timeStamp;
+        return new Timestamp(timeStamp.getTime());
     }
     
     @Override

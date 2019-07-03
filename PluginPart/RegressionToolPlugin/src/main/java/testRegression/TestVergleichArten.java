@@ -15,7 +15,7 @@ import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;
 
 public class TestVergleichArten {
-    public static double auslastungTolleranz = 0.2;
+    public static final double auslastungTolleranz = 0.2;
     
     /**
      * Testet ob die durchschnittliche Laufzeit der TestSuit auserhalb der 
@@ -123,8 +123,14 @@ public class TestVergleichArten {
         String result ="";
         result += "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
                 + " zu hohe CPU Auslastung zeigen (mehr als 20% hoeher im "
-                + "Druchschnitt oder im Maximalwert):\n";
+                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n";
         for (ITest t: zuhoheAuslatungCPU) {
+            
+        }
+        result += "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
+                + " zu hohe RAM Auslastung zeigen (mehr als 20% hoeher im "
+                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n";
+        for (ITest t: zuhoheAuslatungRAM) {
             
         }
         return result;
@@ -139,6 +145,7 @@ public class TestVergleichArten {
      */
     public static Status vergleicheBasen(BasisMitTests alteBasis, BasisMitTests neueBasis, double erwarteteRegression, double alpha) {
         Status status = Status.NEUTRAL;
+        String result = "";
         TTest test = new TTest();
         /*
          * Sollte die Ho Hypothese, dass die Means gleich sind abgelehnt werden dann gilt, 
@@ -149,9 +156,10 @@ public class TestVergleichArten {
         boolean h0Rejectet = test.tTest(ITestsZuArry(alteBasis.getTests().values()),
                 ITestsZuArry(neueBasis.getTests().values()), (2*alpha));
         if (!h0Rejectet) {
-            vergleicheTests(alteBasis, neueBasis, erwarteteRegression);
+
             status = Status.GROESSER;
         }
+        
         return status;
     }
     /**

@@ -19,8 +19,11 @@ public class SammleDaten {
     public static List<ITestWerte> getJUnitResultDatei(String pfad) {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
-        for (File f : file.listFiles()) {
-            //values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                //values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath()));
+            }   
         }
         return values;
     }

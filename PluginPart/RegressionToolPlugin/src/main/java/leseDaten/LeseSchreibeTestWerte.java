@@ -19,7 +19,8 @@ public class LeseSchreibeTestWerte {
         File file = new File(pfad);
         if (!file.exists()) {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(pfad));
-            stream.writeObject(testwerte);            
+            stream.writeObject(testwerte);    
+            stream.close();
         }
     }
     
@@ -28,7 +29,8 @@ public class LeseSchreibeTestWerte {
         File file = new File(pfad);
         if (file.exists()) {
             ObjectInputStream stream = new ObjectInputStream(new FileInputStream(pfad));
-            tempWerte = (ITestWerte)stream.readObject();            
+            tempWerte = (ITestWerte)stream.readObject();    
+            stream.close();
         }
         return tempWerte;
     }

@@ -94,7 +94,7 @@ public class ErstelleBasis implements IErstelleBasis {
         File file = new File(targetBasis + "/Neu.txt");
         if (file.exists()) {
             File fileAlt = new File(targetBasis + "/Alt.txt");
-            file.renameTo(fileAlt);
+            geschrieben = file.renameTo(fileAlt);
         }
         geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         return geschrieben;
@@ -108,7 +108,7 @@ public class ErstelleBasis implements IErstelleBasis {
              * TestSuit angehaengt.
              */
             stream = new FileOutputStream(targetBasis + basis.getName() + ".txt");
-            stream.write(basis.toString().getBytes());
+            stream.write(basis.toString().getBytes("UTF-8"));
         } catch (IOException exc) {
             exc.printStackTrace();
         }  

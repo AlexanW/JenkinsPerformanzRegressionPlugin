@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,11 +34,12 @@ public class LeseJUnitResults {
 	 */
 	public static ITestWerte leseTestsXML(String pfad, double step_size) {
 	    ITestWerte results = new TestWerte(step_size);
+	    XMLEventReader reader = null;
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
 	        InputStream in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
-	        XMLEventReader reader = factory.createXMLEventReader(in);
+	        reader = factory.createXMLEventReader(in);
 	        //Schritt fuer Schritt druchlaufen der Datei.
             while (reader.hasNext()) {
                 XMLEvent event = reader.nextEvent();
@@ -61,10 +63,20 @@ public class LeseJUnitResults {
                     }
                 }
             }
+
         } catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (XMLStreamException e) {
+                    e.printStackTrace();
+                }   
+            }
         }
-	    results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
+	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
+	    
 		return results;
 	}
 	/**
@@ -140,8 +152,11 @@ public class LeseJUnitResults {
     public static List<ITestWerte> getJUnitResultDatei(String pfad, double step_size) {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
-        for (File f : file.listFiles()) {
-            values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath(), step_size));
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath(), step_size));
+            }
         }
         return values;
     }   

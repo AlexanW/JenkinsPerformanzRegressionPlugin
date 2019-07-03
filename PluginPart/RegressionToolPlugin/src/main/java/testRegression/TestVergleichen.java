@@ -12,12 +12,15 @@ public class TestVergleichen implements ITestVergleich{
      * 
      */
     @Override
-    public String vergleicheBasen(IBasis basisNeu, IBasis basisAlt
+    public String vergleicheBasen(IBasis neueBasis, IBasis alteBasis
             , double erwarteteRegression, double alpha) {
         Status status = Status.NEUTRAL;
         String result = "";
-        TestVergleichArten.vergleicheBasen(basisAlt, basisNeu, erwarteteRegression, alpha);
-        
+        status = TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, erwarteteRegression, alpha);
+        if (status == Status.GROESSER && neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
+            result = TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression);
+        }
+        result += status.toString();
         return result;
     }
     
@@ -67,7 +70,7 @@ public class TestVergleichen implements ITestVergleich{
                             + "Verhalten beim Testen deuten.";
                 } else {
                     regressionGefunden = Status.IM_BEREICH;
-                    result += "Es scheint keine Regression vorzuliegen.";
+                    result += "Es scheint keine Regression vorzuliegen. " + regressionGefunden.toString() ;
                 }
         return result;
     }

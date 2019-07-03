@@ -27,7 +27,7 @@ public class TesteRegression {
         List<ITestWerte> werte = LeseJUnitResults
                 .getJUnitResultDatei("Data/jUnitResultVergleich/", 100);
         TestVergleichen testverleich = new TestVergleichen();
-        testverleich.vergleicheBasisMitWerten(werte.get(0), basis, 0.0); 
-        System.out.println(testverleich.vergleicheBasen(basis, basis, 0.0, 0.05));
+        String result = testverleich.vergleicheBasisMitWerten(werte.get(0), basis, 0.0); 
+        System.out.println(testverleich.vergleicheBasen(basis, basis, 0.0, 0.05) + result);
     }
 }

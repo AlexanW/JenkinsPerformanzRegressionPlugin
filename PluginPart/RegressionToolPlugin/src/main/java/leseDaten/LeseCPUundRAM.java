@@ -37,16 +37,20 @@ public class LeseCPUundRAM {
 	public static  List<TestAuslastungen> readAuslastung (String target) {
 	    List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
 	    try {
-            stream = new BufferedReader(new FileReader(target));
+	        FileReader reader = new FileReader (target);
+            stream = new BufferedReader(reader);
             while (stream.ready()) {
                 /**
                  * Splitted die Daten der Date anahnd des ";" in die drei
                  * Komponenten.
                  */
-                String[] temp = stream.readLine().split(";");
-                loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
-                        , Double.parseDouble(temp[2])
-                        , new Timestamp(Long.parseLong(temp[0]))));
+                String tempString = stream.readLine();
+                if (tempString != null) {
+                    String[] temp = tempString.split(";");
+                    loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
+                            , Double.parseDouble(temp[2])
+                            , new Timestamp(Long.parseLong(temp[0]))));   
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

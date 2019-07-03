@@ -43,8 +43,11 @@ public class LeseBasis implements ILeseBasis {
         IBasis basis = new Basis();
         try {
             while(stream.ready()) {
-                String[] attribut = stream.readLine().split(":");
-                basis.setBasisAttribute(attribut);
+                String tempString = stream.readLine();
+                if (tempString != null) {
+                    String[] attribut = tempString.split(":");
+                    basis.setBasisAttribute(attribut);   
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

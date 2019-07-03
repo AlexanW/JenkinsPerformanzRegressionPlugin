@@ -121,6 +121,7 @@ public class PluginMenueClass extends BuildWrapper{
             BuildListener listener) {
       
         boolean enthaeltBasisDir = false;
+        boolean basenDirErstellt = true;
         listener.getLogger().print("-----Starte RegressionTest-----");
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
@@ -135,9 +136,9 @@ public class PluginMenueClass extends BuildWrapper{
             }
             if(!enthaeltBasisDir) {
               File tempFile = new File (file.getAbsolutePath() + "/basen");
-              tempFile.mkdir();
+              basenDirErstellt = tempFile.mkdir();
             }
-            if (erstelleBasis) {
+            if (erstelleBasis && basenDirErstellt) {
                 IErstelleBasis basis = new ErstelleBasis();
                 //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
                 if (pfadZuBasen.isEmpty()) {
@@ -160,8 +161,9 @@ public class PluginMenueClass extends BuildWrapper{
                 } catch (IOException e) {
                     listener.getLogger().print("!Ein Fehler beim Einlesen ist geschehen!" + e.getMessage());
                 }
-                ITestVergleich verlgeich = new TestVergleichen();
+
                 if (basisAlt != null && basisNeu != null) {
+                    ITestVergleich verlgeich = new TestVergleichen();
                     String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
                     listener.getLogger().print(result);
                 }
@@ -185,7 +187,7 @@ public class PluginMenueClass extends BuildWrapper{
                 LeseBasis lese = new LeseBasis();
                 String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
                         lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
-                
+                listener.getLogger().print(testResultString);
                 LeseSchreibeTestWerte.schreibeTestWerte(
                         build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                 return super.tearDown(build, listener);

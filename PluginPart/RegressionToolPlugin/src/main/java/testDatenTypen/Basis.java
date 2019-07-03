@@ -140,6 +140,9 @@ public class Basis extends BasisMitTests {
             case "Varianz":
                 this.varianz = (Double.parseDouble(attribut[1]));
                 break;
+            default:
+                System.out.println("Fehler beim Setzen der Attribute.");
+                break;
         }
     }
     /**
