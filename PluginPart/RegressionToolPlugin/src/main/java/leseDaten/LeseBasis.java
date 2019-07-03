@@ -3,6 +3,7 @@ package leseDaten;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
@@ -28,6 +29,7 @@ public class LeseBasis implements ILeseBasis {
     public LeseBasis(String pfad) {
         try {
             oStream = new ObjectInputStream(new FileInputStream(pfad));
+            stream = new BufferedReader(new FileReader(pfad));
         } catch (IOException e) {
             e.printStackTrace();
         }

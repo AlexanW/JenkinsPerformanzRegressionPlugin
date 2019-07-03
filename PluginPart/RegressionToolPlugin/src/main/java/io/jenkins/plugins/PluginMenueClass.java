@@ -161,8 +161,11 @@ public class PluginMenueClass extends BuildWrapper{
                     listener.getLogger().print("!Ein Fehler beim Einlesen ist geschehen!" + e.getMessage());
                 }
                 ITestVergleich verlgeich = new TestVergleichen();
-                String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
-                listener.getLogger().print(result);
+                if (basisAlt != null && basisNeu != null) {
+                    String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
+                    listener.getLogger().print(result);
+                }
+
             }
         }
  
