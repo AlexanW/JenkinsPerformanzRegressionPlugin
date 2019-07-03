@@ -11,7 +11,7 @@
     	<f:textbox default = "1" />
   	</f:entry>
   	 <f:entry title="${%Pfad zu CPU und RAM Messungen}" field="pfadZuCPUundRAM">
-    	<f:textbox default = "" />
+    	<f:textbox default = ""/>
   	</f:entry>
   	<f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
     	<f:checkbox />
@@ -29,10 +29,9 @@
 		<f:textbox default="0.0"/>
   	</f:entry>
 	<f:entry title="${%Der Intervall er Messungen des Timers}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">
-		<f:textbox default="PfadHier"/>
+		<f:textbox default="100"/>
 	</f:entry>
-	<f:validateButton
-    	  title="${%CreateBasen}" progress="${%CreateBasen.progress}"
+	<f:validateButton title="${%CreateBasen}" progress="${%CreateBasen.progress}"
     	  method="createBase" with="pfadZuBasen" />
   	</f:section>
 </j:jelly>
