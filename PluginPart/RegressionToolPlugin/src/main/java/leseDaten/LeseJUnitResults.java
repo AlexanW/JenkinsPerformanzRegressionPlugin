@@ -69,16 +69,18 @@ public class LeseJUnitResults {
         } catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
         } finally {
-                try {
-                    if (in != null && reader != null) {
-                        
-                        in.close();
-                        reader.close();
-                    }
-                } catch (IOException | XMLStreamException e) {
-                    e.printStackTrace();
-                }   
+ 
         }
+        try {
+            if (in != null) {
+                in.close();
+            }
+            if( reader != null) {
+                reader.close();                
+            }
+        } catch (IOException | XMLStreamException e) {
+            e.printStackTrace();
+        }  
 	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
 	    
 		return results;
