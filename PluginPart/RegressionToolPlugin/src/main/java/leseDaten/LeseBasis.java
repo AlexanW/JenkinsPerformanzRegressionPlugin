@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 
 import testDatenTypen.Basis;
@@ -19,8 +21,7 @@ public class LeseBasis implements ILeseBasis {
     /**
      * Inputstrem zum Einlesen der Daten.
      */
-    private BufferedReader stream;
-    
+//    private BufferedReader stream;
     /**
      * Inputstrem zum Einlesen der Daten.
      */
@@ -28,8 +29,9 @@ public class LeseBasis implements ILeseBasis {
     
     public LeseBasis(String pfad) {
         try {
+            
             oStream = new ObjectInputStream(new FileInputStream(pfad));
-            stream = new BufferedReader(new FileReader(pfad));
+//            stream = new BufferedReader(new FileReader(pfad));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,21 +41,21 @@ public class LeseBasis implements ILeseBasis {
     public LeseBasis() {
     }
     
-    public IBasis leseBasisEin () {
-        IBasis basis = new Basis();
-        try {
-            while(stream.ready()) {
-                String tempString = stream.readLine();
-                if (tempString != null) {
-                    String[] attribut = tempString.split(":");
-                    basis.setBasisAttribute(attribut);   
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return basis;
-    }
+//    public IBasis leseBasisEin () {
+//        IBasis basis = new Basis();
+//        try {
+//            while(stream.ready()) {
+//                String tempString = stream.readLine();
+//                if (tempString != null) {
+//                    String[] attribut = tempString.split(":");
+//                    basis.setBasisAttribute(attribut);   
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return basis;
+//    }
     /**
      * 
      * @param pfad

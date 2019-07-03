@@ -61,7 +61,7 @@ public class TestVergleichArten {
      */
     public static String vergleicheTests(ITestObjektGruppe testWerte, ITestObjektGruppe basis 
             ,double erwarteteRegression) {
-        String result = "";
+        StringBuffer result = new StringBuffer();
         //Liste mit allen Tests in dem ersten und zweiten Objekt die sich verschlechtert haben.
         List<ITest> regressierteTests = new ArrayList<ITest>();
         List<ITest> testNurInWerten = new ArrayList<ITest>();
@@ -84,19 +84,19 @@ public class TestVergleichArten {
                 testNurInWerten.add(t);
             }
         }
-        result += "Regressierte Tests bei " + erwarteteRegression + " Tolleranz : \n";
+        result.append("Regressierte Tests bei " + erwarteteRegression + " Tolleranz : \n");
         for (ITest t : regressierteTests) {
-            result += t.getName() + " mit: " + t.getScore() +"\n";
+            result.append(t.getName() + " mit: " + t.getScore() +"\n");
         }
-        result+= "Tests die nur in der neuen Datei sind: \n";
+        result.append("Tests die nur in der neuen Datei sind: \n");
         for (ITest t : testNurInWerten) {
-            result += t.getName() + " mit: " + t.getScore() +  "\n";
+            result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
-        result += "Tests die nur in der Basis sind: ";
+        result.append( "Tests die nur in der Basis sind: ");
         for (ITest t : testNurInBasis) {
-            result += t.getName() + " mit: " + t.getScore() +  "\n";
+            result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
-        return result;
+        return result.toString();
     }
     /**
      * 
@@ -120,20 +120,20 @@ public class TestVergleichArten {
                 }
             }
         }
-        String result ="";
-        result += "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
+        StringBuffer result = new StringBuffer();
+        result.append( "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
                 + " zu hohe CPU Auslastung zeigen (mehr als 20% hoeher im "
-                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n";
+                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n");
         for (ITest t: zuhoheAuslatungCPU) {
-            
+            result.append(t.getName());
         }
-        result += "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
+        result.append("Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
                 + " zu hohe RAM Auslastung zeigen (mehr als 20% hoeher im "
-                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n";
+                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n");
         for (ITest t: zuhoheAuslatungRAM) {
-            
+            result.append(t.getName());
         }
-        return result;
+        return result.toString();
     }
     
     /**

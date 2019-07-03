@@ -1,5 +1,8 @@
 package leseDaten;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import testDatenTypen.IBasis;
 
 /**
@@ -10,5 +13,5 @@ import testDatenTypen.IBasis;
  */
 public interface ILeseBasis {
     
-    public IBasis leseBasisEin ();
+    public IBasis leseObjektIBasisEin (String pfad)throws FileNotFoundException, IOException;
 }

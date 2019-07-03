@@ -1,5 +1,6 @@
 package testDatenTypen;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,11 @@ import java.util.List;
  * @author Alexander Weber
  *
  */
-public class TestWerte implements ITestWerte {
+public class TestWerte implements ITestWerte, Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 5293564103144812233L;
     /**
      * Die Schrittlaenge der SystemMessungen.
      */

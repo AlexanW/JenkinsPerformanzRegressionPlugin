@@ -16,6 +16,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import jnr.ffi.Struct.in_addr_t;
 import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.Test;
@@ -35,10 +36,11 @@ public class LeseJUnitResults {
 	public static ITestWerte leseTestsXML(String pfad, double step_size) {
 	    ITestWerte results = new TestWerte(step_size);
 	    XMLEventReader reader = null;
+	    InputStream in = null;
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
-	        InputStream in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
+	        in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
 	        reader = factory.createXMLEventReader(in);
 	        //Schritt fuer Schritt druchlaufen der Datei.
             while (reader.hasNext()) {
@@ -67,13 +69,14 @@ public class LeseJUnitResults {
         } catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
         } finally {
-            if (reader != null) {
                 try {
-                    reader.close();
-                } catch (XMLStreamException e) {
+                    if (in != null && reader != null) {
+                        in.close();
+                        reader.close();
+                    }
+                } catch (IOException | XMLStreamException e) {
                     e.printStackTrace();
                 }   
-            }
         }
 	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
 	    

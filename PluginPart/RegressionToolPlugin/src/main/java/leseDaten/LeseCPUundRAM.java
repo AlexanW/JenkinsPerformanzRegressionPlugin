@@ -1,9 +1,12 @@
 package leseDaten;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,10 @@ public class LeseCPUundRAM {
 	 * Inputstrem zum Einlesen der Daten.
 	 */
 	private static BufferedReader stream;
+	   /**
+     * Inputstrem zum Einlesen der Daten.
+     */
+    private static InputStreamReader inStream;
 	/*
 	 * private static SimpleDateFormat sdf = 
 	 * new SimpleDateFormat("yyyy-mm-dd'T'hh:m");
@@ -37,8 +44,10 @@ public class LeseCPUundRAM {
 	public static  List<TestAuslastungen> readAuslastung (String target) {
 	    List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
 	    try {
-	        FileReader reader = new FileReader (target);
-            stream = new BufferedReader(reader);
+	      
+	        FileInputStream reader = new FileInputStream(new File(target));
+	        inStream =  new InputStreamReader(reader, "UTF-8"); 
+            stream = new BufferedReader(inStream);
             while (stream.ready()) {
                 /**
                  * Splitted die Daten der Date anahnd des ";" in die drei

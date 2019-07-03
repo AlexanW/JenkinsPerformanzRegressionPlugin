@@ -150,15 +150,15 @@ public class Basis extends BasisMitTests {
      */
     @Override
     public String toString() {
-        String outPut = "Name:" + name + "\n" 
+        StringBuffer outPut = new StringBuffer();
+        outPut.append("Name:" + name + "\n" 
                 + "AvarageLaufzeit: " + avarageLaufzeit + "\n" 
                 + "Obergrenze:" + obergrenze + "\n" 
                 + "Untergrenze:" + untergrenze + "\n" 
-                + "Varianz:" + varianz + "\n";
+                + "Varianz:" + varianz + "\n");
         for (ITest t : getAvarageTests().values()) {
-            outPut += (t.toString());
+            outPut.append(t.toString());
         }
-        
-        return outPut;
+        return outPut.toString();
     }
 }
