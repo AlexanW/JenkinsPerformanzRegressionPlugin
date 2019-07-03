@@ -125,9 +125,12 @@ public class PluginMenueClass extends BuildWrapper{
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
         if (file.isDirectory()) {
-            for (String s: file.list()) {
-                if (s.equals("basen")) {
-                   enthaeltBasisDir = true; 
+            String[] tempString =  file.list();
+            if (tempString != null) {
+                for (String s: tempString) {
+                    if (s.equals("basen")) {
+                       enthaeltBasisDir = true; 
+                    }
                 }
             }
             if(!enthaeltBasisDir) {
