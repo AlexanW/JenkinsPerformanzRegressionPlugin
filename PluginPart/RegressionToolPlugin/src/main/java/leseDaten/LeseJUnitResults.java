@@ -71,6 +71,7 @@ public class LeseJUnitResults {
         } finally {
                 try {
                     if (in != null && reader != null) {
+                        
                         in.close();
                         reader.close();
                     }
