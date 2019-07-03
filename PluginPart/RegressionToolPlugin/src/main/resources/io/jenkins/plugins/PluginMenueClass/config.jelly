@@ -19,13 +19,16 @@
   	<f:entry title="${%Vergleiche letzen 2 Basen}" field="vergleicheBasen">
     	<f:checkbox />
   	</f:entry>
-    <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="timerIntervall" help="Der Pfad zu den Messergebnissen, sollte auf den konkreten Namen enden.">
+  		<f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+		<f:textbox default="0.0"/>
+  	</f:entry>
+    <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName" help="Der Name den JUnitResultDateien in diesem System haben.(Ohne Endung.)">
         <f:textbox default="junitResult"/>
     </f:entry>
 	<f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
 		<f:textbox default="0.0"/>
   	</f:entry>
-	<f:entry title="${%Pfad zu CPU und RAM Messdaten}" field="timerIntervall" help="Der Pfad zu den Messdaten">
+	<f:entry title="${%Der Intervall er Messungen des Timers}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">
 		<f:textbox default="PfadHier"/>
 	</f:entry>
 	<f:validateButton

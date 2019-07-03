@@ -147,7 +147,9 @@ public class PluginMenueClass extends BuildWrapper{
                 if (pfadZuBuilds.isEmpty()) {
                     pfadZuBuilds = build.getRootDir().getParent();
                 }
-                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, tolleranzFuerBasen, anzahlAnVergangenenBuilds, timerIntervall);
+                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
+                        tolleranzFuerBasen, anzahlAnVergangenenBuilds,
+                        timerIntervall);
             }
             if (vergleicheBasis) {
                 IBasis basisNeu = null;
