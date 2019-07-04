@@ -189,9 +189,8 @@ public class PluginMenueClass extends BuildWrapper{
                     throws IOException, InterruptedException {
                 listener.getLogger().print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName + ".xml \n");
                 File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
-                ITestWerte tests = new TestWerte();
                 if (file.exists()) {
-                    tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
+                    ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
                     tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
                     TestVergleichen vergleichen = new TestVergleichen();
                     LeseBasis lese = new LeseBasis();
