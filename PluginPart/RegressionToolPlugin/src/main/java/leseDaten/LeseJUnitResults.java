@@ -23,7 +23,7 @@ import testDatenTypen.Test;
 import testDatenTypen.TestWerte;
 
 /**
- * Diese Klasse liest jUnit Result Dateien ein und Speichter dabei für jeden Test den Namen und die dauer.
+ * Diese Klasse liest jUnit Result Dateien ein und Speichter dabei fuer jeden Test den Namen und die dauer.
  * @author Alex
  *
  */

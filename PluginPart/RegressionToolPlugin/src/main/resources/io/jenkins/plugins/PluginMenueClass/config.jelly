@@ -1,6 +1,9 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
   <f:section title ="RegressioToolPlugin">
+     <f:entry title="${%Pruefe Regression}" field="pruefeRegression">
+        <f:checkbox />
+    </f:entry>
   <f:entry title="${%Pfad zu Basen}" field="pfadZuBasen">
     <f:textbox />
   	</f:entry>
@@ -25,7 +28,7 @@
     <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName" help="Der Name den JUnitResultDateien in diesem System haben.(Ohne Endung.)">
         <f:textbox default="junitResult"/>
     </f:entry>
-	<f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+	<f:entry title="${%Erwartete Regression bei Vergleich}" field="tolleranzFuerBasenVergleich" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
 		<f:textbox default="0.0"/>
   	</f:entry>
 	<f:entry title="${%Der Intervall er Messungen des Timers}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">

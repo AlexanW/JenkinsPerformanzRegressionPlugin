@@ -54,9 +54,9 @@ public class PluginMenueClass extends BuildWrapper{
     private String jUnitDateiName;
     
     @DataBoundConstructor
-    public PluginMenueClass(String pfadZuBasen, String pfadZuBuilds, String pfadZuCPUundRAM, 
+    public PluginMenueClass(boolean pruefeRegression, String pfadZuBasen, String pfadZuBuilds, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
-            double tolleranzFuerBasenVerlgeich, boolean pruefeRegression, boolean vergleicheBasis,
+            double tolleranzFuerBasenVergleich, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName) {
         this.pfadZuBasen = pfadZuBasen;
         this.pfadZuBuilds = pfadZuBuilds;
@@ -64,7 +64,7 @@ public class PluginMenueClass extends BuildWrapper{
         this.erstelleBasis = erstelleBasis;
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
         this.tolleranzFuerBasen = tolleranzFuerBasen;
-        this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVerlgeich;
+        this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
         this.pruefeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
         this.timerIntervall = timerIntervall;
