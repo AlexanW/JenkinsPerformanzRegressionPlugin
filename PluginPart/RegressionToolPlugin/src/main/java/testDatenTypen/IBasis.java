@@ -11,7 +11,7 @@ public interface IBasis extends ITestObjekt {
      */
     public double getUntergrenze();
     /**
-     * Gibt eine obere Grenze für Aktzeptierte Tests an.
+     * Gibt eine obere Grenze fuer Aktzeptierte Tests an.
      */
     public double getObergrenze();  
     /**

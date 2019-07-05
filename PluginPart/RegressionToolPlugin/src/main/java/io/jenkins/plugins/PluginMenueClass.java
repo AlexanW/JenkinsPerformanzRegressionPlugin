@@ -26,6 +26,7 @@ import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
 import testRegression.ITestVergleich;
 import testRegression.TestVergleichen;
+import testRegression.TesteRegression;
 
 public class PluginMenueClass extends BuildWrapper{
     
@@ -135,7 +136,8 @@ public class PluginMenueClass extends BuildWrapper{
                 }
             }
             if(!enthaeltBasisDir) {
-              listener.getLogger().print("-----Erstelle Ordner fuer Basen-----\n");
+              listener.getLogger().print("-----Erstelle Ordner fuer Basen-----\n"
+                      + "in " + file.getAbsolutePath() + "/basen\n");
               File tempFile = new File (file.getAbsolutePath() + "/basen");
               basenDirErstellt = tempFile.mkdir();
             }
@@ -187,20 +189,22 @@ public class PluginMenueClass extends BuildWrapper{
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener)
                     throws IOException, InterruptedException {
-                listener.getLogger().print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName + ".xml \n");
-                File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
-                if (file.exists()) {
-                    ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
-                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
-                    TestVergleichen vergleichen = new TestVergleichen();
-                    LeseBasis lese = new LeseBasis();
-                    String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                            lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
-                    listener.getLogger().print(testResultString);
-                    LeseSchreibeTestWerte.schreibeTestWerte(
-                            build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
-                } else {
-                    listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
+                if (pruefeRegression) {
+                    listener.getLogger().print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName + ".xml \n");
+                    File file = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
+                    if (file.exists()) {
+                        ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
+                        tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                        TestVergleichen vergleichen = new TestVergleichen();
+                        LeseBasis lese = new LeseBasis();
+                        String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
+                                lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                        listener.getLogger().print(testResultString);
+                        LeseSchreibeTestWerte.schreibeTestWerte(
+                                build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
+                    } else {
+                        listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
+                    }   
                 }
                 return super.tearDown(build, listener);
             }

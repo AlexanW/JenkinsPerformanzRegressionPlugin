@@ -63,7 +63,7 @@ public class TestVergleichen implements ITestVergleich{
                 } else if (regressionGefunden == Status.KLEINER) {
                     /*
                      * Warnung, dass die Tests schneller als erwartet liefen und
-                     * es probleme geben könnte.
+                     * es probleme geben koennte.
                      */
                     result += "Die Tests wurden schneller abgeschlossen"
                             + " als erwarte, dies koennte auf fehlerhaftes "

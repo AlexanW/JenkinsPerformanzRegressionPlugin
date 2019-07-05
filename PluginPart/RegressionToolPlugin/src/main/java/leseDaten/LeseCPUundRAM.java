@@ -13,7 +13,7 @@ import java.util.List;
 
 import testDatenTypen.TestAuslastungen;
 /**
- * Diese Klasse enthält Methoden mit denen die RAM und CPU 
+ * Diese Klasse enthaelt Methoden mit denen die RAM und CPU 
  * Auslastung wieder eingelesen werden kann.
  * 
  * @author Alexander Weber

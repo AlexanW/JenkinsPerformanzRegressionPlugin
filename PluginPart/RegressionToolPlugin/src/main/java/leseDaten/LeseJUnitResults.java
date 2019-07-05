@@ -126,7 +126,7 @@ public class LeseJUnitResults {
 	 */
 	private static void setTestModi (XMLEvent event, ITest temp, XMLEventReader reader) {
         /**
-         * An dieser Stelle wird ein Character Event eingelesen, welches die Daten enthält die gesucht sind.
+         * An dieser Stelle wird ein Character Event eingelesen, welches die Daten enthaelt die gesucht sind.
          * Dabei werden von {duration,className,testName,skipped,failedSince} duration, testName und failedSince verwendet.
          */
 	    try {
@@ -181,7 +181,7 @@ public class LeseJUnitResults {
         if (file.exists() && file.isDirectory()) {
             File[] files = file.listFiles();
             if (files != null) {
-                //Für den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
+                //Fuer den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
                 files = entferneNichtBuildDatein(files);
                 if (useResults > files.length || useResults == 0) {
                     useResults = files.length;

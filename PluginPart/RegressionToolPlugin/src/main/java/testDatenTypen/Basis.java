@@ -3,7 +3,7 @@
 import java.util.HashMap;
 
 /**
- * Eine Basis gegen die einzelne TestValues getestet werden können.
+ * Eine Basis gegen die einzelne TestValues getestet werden koennen.
  * Sie wir aus einer Menge an TestValues erstellt. 
  * 
  * @author Alexander Weber

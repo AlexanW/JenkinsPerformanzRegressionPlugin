@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * Diese Klasse stellt eine Testsuit dar. Sie Enthält alle Test mit Laufzeit und ggf. Fehlermeldung.
+ * Diese Klasse stellt eine Testsuit dar. Sie Enthaelt alle Test mit Laufzeit und ggf. Fehlermeldung.
  * @author Alexander Weber
  *
  */
@@ -22,7 +22,7 @@ public class TestWerte implements ITestWerte, Serializable {
      */
     private double step_size = 0.100;
 	/**
-	 * LinkedHashMap für das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
+	 * LinkedHashMap fuer das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
 	 * Dabei wird die Reihenfolge der Tests gewaehrleistet.
 	 */
 	private LinkedHashMap<String, ITest> tests = new LinkedHashMap<String, ITest>();
@@ -56,7 +56,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	 */
 	private String name;
 	/**
-	 * Diese Methode erlaub es einzelne Tests den TestValues hinzuzufügen.
+	 * Diese Methode erlaub es einzelne Tests den TestValues hinzuzufuegen.
 	 */
 	public void addTest(ITest test) {
 		tests.put(test.getName(), test);
