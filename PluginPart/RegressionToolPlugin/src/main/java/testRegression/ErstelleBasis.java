@@ -92,6 +92,7 @@ public class ErstelleBasis implements IErstelleBasis {
      * @param targetBasis
      * @return
      */
+    // TO DO THERE SHOULD NOT BE A FILE NOT FOUND WHEN WRITING A NEW FILE
     private boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
         boolean geschrieben = false;
         System.out.println("lookign for new");
