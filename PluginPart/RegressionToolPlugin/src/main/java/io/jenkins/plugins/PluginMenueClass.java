@@ -158,9 +158,13 @@ public class PluginMenueClass extends BuildWrapper{
                         + "Es werden die letzen " + anzahlAnVergangenenBuilds + " verwendet \n"
                         + "Mit einem Timerintervall von: "  + timerIntervall + " \n"
                         + "-------------------------------------------\n");
-                basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
+                IBasis erstellteBasis = basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
                         tolleranzFuerBasen, anzahlAnVergangenenBuilds,
                         timerIntervall);
+                if (basis != null) {
+                    listener.getLogger().print("Die erstellte Basis:\n"
+                            + erstellteBasis.toString());
+                }
             }
             if (vergleicheBasis) {
                 listener.getLogger().print("Vergleiche die letzen zwei Basen miteinander.\n");

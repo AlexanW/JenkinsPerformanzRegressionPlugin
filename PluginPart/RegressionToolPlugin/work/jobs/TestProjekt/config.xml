@@ -15,15 +15,15 @@
   <publishers/>
   <buildWrappers>
     <io.jenkins.plugins.PluginMenueClass plugin="RegressionToolPlugin@1.01">
-      <pfadZuBasen>basen</pfadZuBasen>
-      <pfadZuBuilds>restul</pfadZuBuilds>
-      <pfadZuCPUundRAM>cpuRam</pfadZuCPUundRAM>
+      <pfadZuBasen></pfadZuBasen>
+      <pfadZuBuilds></pfadZuBuilds>
+      <pfadZuCPUundRAM></pfadZuCPUundRAM>
       <erstelleBasis>true</erstelleBasis>
-      <anzahlAnVergangenenBuilds>5</anzahlAnVergangenenBuilds>
+      <anzahlAnVergangenenBuilds>2</anzahlAnVergangenenBuilds>
       <tolleranzFuerBasen>50.0</tolleranzFuerBasen>
       <tolleranzFuerBasenVergleich>25.0</tolleranzFuerBasenVergleich>
       <timerIntervall>10.0</timerIntervall>
-      <pruefeRegression>false</pruefeRegression>
+      <pruefeRegression>true</pruefeRegression>
       <vergleicheBasis>false</vergleicheBasis>
       <jUnitDateiName>junitResult</jUnitDateiName>
     </io.jenkins.plugins.PluginMenueClass>
