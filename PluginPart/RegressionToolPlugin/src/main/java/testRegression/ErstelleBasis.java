@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.jinterop.dcom.test.SysInfoEvents;
+
 import leseDaten.LeseJUnitResults;
 import testDatenTypen.Test;
 import testDatenTypen.Basis;
@@ -95,14 +97,12 @@ public class ErstelleBasis implements IErstelleBasis {
     // TO DO THERE SHOULD NOT BE A FILE NOT FOUND WHEN WRITING A NEW FILE
     private boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
         boolean geschrieben = false;
-        System.out.println("lookign for new");
         File file = new File(targetBasis + "/Neu.txt");
         if (file.exists()) {
-            System.out.println("Found New");
             File fileAlt = new File(targetBasis + "/Alt.txt");
             geschrieben = file.renameTo(fileAlt);
-            geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         }
+        geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         return geschrieben;
     }
     
@@ -197,9 +197,9 @@ public class ErstelleBasis implements IErstelleBasis {
     private HashMap<String, ITest> getDurchschnitTests (List<ITestWerte> werte) {
         HashMap<String, ITest> druchschnitTests = new HashMap<String, ITest>();
         List<String> namen = getAlleTestNamenDerBasis(werte);
-        Test tempTest = new Test();
         
         for (String n : namen) {
+            Test tempTest = new Test();
             tempTest.setName(n);
             double tempSum = 0.0;
             double tempCpuAvarageSum = 0.0;
@@ -258,6 +258,9 @@ public class ErstelleBasis implements IErstelleBasis {
     }
     public static void main(String[] args) {
         ErstelleBasis basis = new ErstelleBasis();
-        basis.erstelleBasisOhneMessungen("C:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanz(Bachelor)\\Tool\\CIRegressionTool\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds", "Data/Basen/", 0.2, 5, 100);
+        IBasis dummy = basis.erstelleBasisOhneMessungen("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
+                "F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\basen",
+                0.2, 5, 100);
+        System.out.println(dummy.toString());
     }
 }
