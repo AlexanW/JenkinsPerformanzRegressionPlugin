@@ -40,6 +40,7 @@ public class LeseJUnitResults {
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
+	        System.out.println("XML in Question: " + pfad + "/" + JUNIT_DATAEINAME);
 	        in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
 	        reader = factory.createXMLEventReader(in);
 	        //Schritt fuer Schritt druchlaufen der Datei.
@@ -191,7 +192,7 @@ public class LeseJUnitResults {
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i < useResults; i++) {
-                        File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
+                        File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + TESTWERTE_DATEINAME);
                         if (tempTestWerteFile.exists()) {
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
                         } else {

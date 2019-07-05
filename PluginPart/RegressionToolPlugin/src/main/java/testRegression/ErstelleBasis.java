@@ -52,12 +52,15 @@ public class ErstelleBasis implements IErstelleBasis {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Werte aus Builds gelesen:" + werte.size());
         if (werte.size() == 0) {
             werte =  
                 LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);
+                System.out.println("Werte aus Results gelesen:" + werte.size());
         }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
+        System.out.println("Werte=" + werte.size());
         if (!enthaeltFehlschlag(werte) && werte.size() > 1) {
             basis = new Basis(werte.get(0).getName(),avarageLaufzeit
                     , getMinLaufzeit(werte, tolleranz, avarageLaufzeit )
@@ -91,12 +94,14 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     private boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
         boolean geschrieben = false;
+        System.out.println("lookign for new");
         File file = new File(targetBasis + "/Neu.txt");
         if (file.exists()) {
+            System.out.println("Found New");
             File fileAlt = new File(targetBasis + "/Alt.txt");
             geschrieben = file.renameTo(fileAlt);
+            geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         }
-        geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         return geschrieben;
     }
     
@@ -240,8 +245,11 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     private List<String> getAlleTestNamenDerBasis (List<ITestWerte> werte) {
         List<String> namen = new ArrayList<String>();
+        System.out.println("Start Name Search: ");
         for (ITestWerte e : werte) {
+            System.out.println("------------------------------------------------");
             for (ITest t : e.getTests().values()) {
+                System.out.println("NameToAddTest: " + t.getName());
                 namen.add(t.getName());
             }
         }
@@ -249,6 +257,6 @@ public class ErstelleBasis implements IErstelleBasis {
     }
     public static void main(String[] args) {
         ErstelleBasis basis = new ErstelleBasis();
-        basis.erstelleBasisOhneMessungen("Data/jUnitResults/", "Data/Basen/", 0.2, 5, 100);
+        basis.erstelleBasisOhneMessungen("C:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanz(Bachelor)\\Tool\\CIRegressionTool\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds", "Data/Basen/", 0.2, 5, 100);
     }
 }
