@@ -60,14 +60,14 @@ alimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 9
           <failedSince>0</failedSince>
         </case>
         <case>
-          <duration>5.715</duration>
+          <duration>1</duration>
           <className>tests.eu.qualimaster.events.ForwardTests</className>
           <testName>testRequestResponseClient</testName>
           <skipped>false</skipped>
           <failedSince>0</failedSince>
         </case>
         <case>
-          <duration>5.715</duration>
+          <duration>0</duration>
           <className>tests.eu.qualimaster.events.ForwardTests</className>
           <testName>testRequestResponseServer</testName>
           <skipped>false</skipped>
