@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.stream.Stream;
 
@@ -84,6 +85,8 @@ public class SysAuslastungMessung {
                         startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[2])));
                         //TO DO END TIMER?
                         System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
+                        Scanner scanner = new Scanner(System.in);
+                        scanner.nextLine();
                         endMeasurement();
                     } else {
                         System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
@@ -100,10 +103,10 @@ public class SysAuslastungMessung {
                 System.out.println("Der Ordner " + testFile.getAbsolutePath() + " existiert nicht.");
             }       
         } else {
-            System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\""
+            System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\")"
                     + " und eine Zieldatei beinhalten.");
         }
-        startMeasurementTimer("Data/SysLoadData/ProzessValues.txt", 100);
-        bestimmeDatei("Dummy");
+//        startMeasurementTimer("Data/SysLoadData/ProzessValues.txt", 100);
+//        bestimmeDatei("Dummy");
     }
 }
