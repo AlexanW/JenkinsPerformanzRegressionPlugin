@@ -57,8 +57,7 @@ public class SysAuslastungMessungTask extends TimerTask {
                                 // Teilen durch 1000000000.0 für GB.
                                 + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse() / 1000000000.0) 
                                 + ";" + timeFormat.format(System.currentTimeMillis()) + "\n")
-
-                        .getBytes());
+                        .getBytes("UTF-8"));
             } catch (IOException e) {
                 e.printStackTrace();
                 timer.cancel();

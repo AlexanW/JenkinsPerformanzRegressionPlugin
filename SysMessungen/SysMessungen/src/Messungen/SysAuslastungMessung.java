@@ -2,7 +2,14 @@ package Messungen;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Timer;
+import java.util.stream.Stream;
+
+import de.uni_hildesheim.sse.system.GathererFactory;
 
 public class SysAuslastungMessung {
     /**
@@ -29,6 +36,31 @@ public class SysAuslastungMessung {
         }
     }
     /**
+     * 
+     */
+    public static void messePerformanz(String pfad) {
+        DateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");
+        FileOutputStream stream = null;
+        try {
+            stream = new FileOutputStream(new File(pfad), true);
+            stream.write(
+                    (System.currentTimeMillis()
+                            + ";" + GathererFactory.getProcessorDataGatherer().getCurrentSystemLoad() 
+                            // Teilen durch 1000000000.0 für GB.
+                            + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse() / 1000000000.0) 
+                            + ";" + timeFormat.format(System.currentTimeMillis()) + "\n")
+                    .getBytes("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                stream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    /**
      * Beendet die TimerTask, die fuer das Messen zustaendig ist.
      */
     public static void endMeasurement() {
@@ -43,27 +75,30 @@ public class SysAuslastungMessung {
     }
     
     public static void main(String[] args) {
-        System.out.println("Bitte einen Modus und einen Zielordner eingeben.");
         if (args.length > 1  ) {
-            switch(args[0]) {
-            case "timer":
-                if (args.length > 2) {
-                    File testFile = new File(args[1]);
-                    startMeasurementTimer(args[1], Integer.parseInt((args[2])));
-                    //TO DO END TIMER?
-                    System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
-                    endMeasurement();
-                } else {
-                    System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
+            File testFile = new File(args[1]);          
+            if (testFile.getParentFile().exists()) {                             
+                switch(args[0]) {
+                case "timer":
+                    if (args.length > 2) {                        
+                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[2])));
+                        //TO DO END TIMER?
+                        System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
+                        endMeasurement();
+                    } else {
+                        System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
+                    }
+                    break;
+                case "single":
+                    messePerformanz(args[1]);
+                    break;
+                default:
+                    System.out.println("Die erste Eingabe ist kein bekanntest Kommando (\"timer\" oder \"singel\")");
+                    break;
                 }
-                break;
-            case "single":
-                
-                break;
-            default:
-                System.out.println("Die erste Eingabe ist kein bekanntest Kommando (\"timer\" oder \"singel\")");
-                break;
-            }
+            } else {
+                System.out.println("Der Ordner " + testFile.getAbsolutePath() + " existiert nicht.");
+            }       
         } else {
             System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\""
                     + " und eine Zieldatei beinhalten.");
