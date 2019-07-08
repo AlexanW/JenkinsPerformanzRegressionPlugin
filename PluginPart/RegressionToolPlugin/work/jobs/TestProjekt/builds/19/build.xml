@@ -11,14 +11,14 @@
     </hudson.model.CauseAction>
   </actions>
   <queueId>6</queueId>
-  <timestamp>1561828413533</timestamp>
-  <startTime>1561828413562</startTime>
+  <timestamp>1562618588014</timestamp>
+  <startTime>1562618588031</startTime>
   <result>SUCCESS</result>
-  <duration>445</duration>
+  <duration>1037</duration>
   <charset>windows-1252</charset>
   <keepLog>false</keepLog>
   <builtOn></builtOn>
-  <workspace>F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\work\workspace\TestProjekt</workspace>
+  <workspace>C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\workspace\TestProjekt</workspace>
   <hudsonVersion>2.164.1</hudsonVersion>
   <scm class="hudson.scm.NullChangeLogParser"/>
   <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>

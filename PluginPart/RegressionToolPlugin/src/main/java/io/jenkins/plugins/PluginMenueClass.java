@@ -52,12 +52,14 @@ public class PluginMenueClass extends BuildWrapper{
     
     private boolean vergleicheBasis;
     
+    private double aplphWertFuerTTest;
+    
     private String jUnitDateiName;
     
     @DataBoundConstructor
     public PluginMenueClass(boolean pruefeRegression, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
-            double tolleranzFuerBasenVergleich, boolean vergleicheBasis,
+            double tolleranzFuerBasenVergleich, double alphaWertFuerTTest, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName) {
 //        this.pfadZuBasen = pfadZuBasen;
 //        this.pfadZuBuilds = pfadZuBuilds;
@@ -68,6 +70,7 @@ public class PluginMenueClass extends BuildWrapper{
         this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
         this.pruefeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
+        this.aplphWertFuerTTest = alphaWertFuerTTest;
         this.timerIntervall = timerIntervall;
         this.jUnitDateiName = jUnitDateiName;
     }
@@ -102,6 +105,10 @@ public class PluginMenueClass extends BuildWrapper{
     
     public boolean getVergleicheBasis() {
         return vergleicheBasis;
+    }
+    
+    public double getAplphWertFuerTTest() {
+        return aplphWertFuerTTest;
     }
     
     public double getTolleranzFuerBasenVergleich() {
@@ -217,7 +224,6 @@ public class PluginMenueClass extends BuildWrapper{
 
         @Override
         public boolean isApplicable(AbstractProject<?, ?> item) {
-            // TODO Auto-generated method stub
             return true;
         }
         @Override

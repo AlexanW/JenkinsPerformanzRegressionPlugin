@@ -8,7 +8,6 @@ testDatenTypen\Test.class
 testDatenTypen\ITestWerte.class
 testRegression\IErstelleBasis.class
 testRegression\TestVergleichArten.class
-io\jenkins\plugins\PluginMenueClass\DescriptorImpl\doCreateBase.stapler
 leseDaten\ILeseBasis.class
 META-INF\annotations\hudson.Extension.txt
 io\jenkins\plugins\PluginMenueClass$1.class

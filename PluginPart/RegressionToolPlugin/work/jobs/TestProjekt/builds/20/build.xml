@@ -10,11 +10,11 @@
       </causeBag>
     </hudson.model.CauseAction>
   </actions>
-  <queueId>1</queueId>
-  <timestamp>1562312628832</timestamp>
-  <startTime>1562312628847</startTime>
-  <result>FAILURE</result>
-  <duration>84</duration>
+  <queueId>7</queueId>
+  <timestamp>1562618590243</timestamp>
+  <startTime>1562618590261</startTime>
+  <result>SUCCESS</result>
+  <duration>980</duration>
   <charset>windows-1252</charset>
   <keepLog>false</keepLog>
   <builtOn></builtOn>

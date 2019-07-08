@@ -15,8 +15,6 @@
   <publishers/>
   <buildWrappers>
     <io.jenkins.plugins.PluginMenueClass plugin="RegressionToolPlugin@1.01">
-      <pfadZuBasen></pfadZuBasen>
-      <pfadZuBuilds></pfadZuBuilds>
       <pfadZuCPUundRAM></pfadZuCPUundRAM>
       <erstelleBasis>true</erstelleBasis>
       <anzahlAnVergangenenBuilds>2</anzahlAnVergangenenBuilds>

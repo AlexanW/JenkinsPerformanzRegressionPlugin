@@ -108,7 +108,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	    SimpleDateFormat formateTime = new SimpleDateFormat("HH:mm:ss");
 	    //Score+STEP_SIZE stellen sicher, dass die letzte Messun nach dem Letzen Test liegt.
 	    for (int i = 0; i < testAuslastungen.size() && zaehlerZumEnde < (score + step_size); i++) {
-	        //Hier wird angenommen, dass es min. eine Messungen pro Sekunde gibt und diese somit gematcht werden können.
+	        //Hier wird angenommen, dass es min. eine Messungen pro Sekunde gibt und diese somit gematcht werden koennen.
 	        if (testStart.equals(formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime())) || startGefunden) {
 	            //System.out.println( formateTime.format(testAuslastungen.get(i).getTimeStamp().getTime()) + " STARTUP ASD");
 	            startGefunden = true;
@@ -144,7 +144,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	 */
 	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslatungen) {
 	    //Ein Test hat einen min, max und Avaraga Wert, diese werden initial mit den ersten
-	    //der Liste gesetzt, so dass sie abgeglichen werden können.
+	    //der Liste gesetzt, so dass sie abgeglichen werden koennen.
         double max = auslatungen.get(0).getCpuAuslastung();
         double min = auslatungen.get(0).getCpuAuslastung();
         double avarage = 0;
