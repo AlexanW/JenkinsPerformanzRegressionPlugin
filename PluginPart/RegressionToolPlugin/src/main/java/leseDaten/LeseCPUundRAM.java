@@ -7,6 +7,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,31 +45,29 @@ public class LeseCPUundRAM {
 	 * dieser Part kann zum Ende hin entfernt werden.
 	 * @return Eine HashMap Key ist dabei die Zeit und Value sind RAM und 
 	 * CPU Auslastung.
+	 * @throws IOException 
 	 */
-	public static  List<TestAuslastungen> readAuslastung (String target) {
-	    List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
-	    try {
-	      
-	        FileInputStream reader = new FileInputStream(new File(target));
-	        inStream =  new InputStreamReader(reader, "UTF-8"); 
-            stream = new BufferedReader(inStream);
-            while (stream.ready()) {
-                /**
-                 * Splitted die Daten der Date anahnd des ";" in die drei
-                 * Komponenten.
-                 */
-                String tempString = stream.readLine();
-                if (tempString != null) {
-                    String[] temp = tempString.split(";");
-                    loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
-                            , Double.parseDouble(temp[2])
-                            , new Timestamp(Long.parseLong(temp[0]))));   
-                }
+	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException {
+        List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
+        Path copiedTo = Paths.get(target + "Copy");
+        File tempFile = new File(target);
+        Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
+        target+= "Copy";
+        FileInputStream reader = new FileInputStream(new File(target));
+        inStream =  new InputStreamReader(reader, "UTF-8"); 
+        stream = new BufferedReader(inStream);
+        while (stream.ready()) {
+            /**
+             * Splitted die Daten der Date anahnd des ";" in die drei
+             * Komponenten.
+             */
+            String tempString = stream.readLine();
+            if (tempString != null) {
+                String[] temp = tempString.split(";");
+                loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
+                        , Double.parseDouble(temp[2])
+                        , new Timestamp(Long.parseLong(temp[0]))));   
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 	    return loads;
 	}
@@ -73,6 +76,11 @@ public class LeseCPUundRAM {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-        readAuslastung("Data/SysLoadData/ProzessValues.txt");
+        try {
+            readAuslastung("Data/SysLoadData/ProzessValues.txt");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

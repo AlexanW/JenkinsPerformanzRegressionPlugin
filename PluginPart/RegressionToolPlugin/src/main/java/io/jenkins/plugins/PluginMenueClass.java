@@ -55,12 +55,12 @@ public class PluginMenueClass extends BuildWrapper{
     private String jUnitDateiName;
     
     @DataBoundConstructor
-    public PluginMenueClass(boolean pruefeRegression, String pfadZuBasen, String pfadZuBuilds, String pfadZuCPUundRAM, 
+    public PluginMenueClass(boolean pruefeRegression, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
             double tolleranzFuerBasenVergleich, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName) {
-        this.pfadZuBasen = pfadZuBasen;
-        this.pfadZuBuilds = pfadZuBuilds;
+//        this.pfadZuBasen = pfadZuBasen;
+//        this.pfadZuBuilds = pfadZuBuilds;
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
         this.erstelleBasis = erstelleBasis;
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
@@ -72,13 +72,13 @@ public class PluginMenueClass extends BuildWrapper{
         this.jUnitDateiName = jUnitDateiName;
     }
     
-    public String getPfadZuBasen() {
-        return pfadZuBasen;
-    }
-    
-    public String getPfadZuBuilds() {
-        return pfadZuBuilds;
-    }
+//    public String getPfadZuBasen() {
+//        return pfadZuBasen;
+//    }
+//    
+//    public String getPfadZuBuilds() {
+//        return pfadZuBuilds;
+//    }
     
     public double getTimerIntervall() {
         return timerIntervall;
@@ -123,6 +123,10 @@ public class PluginMenueClass extends BuildWrapper{
       
         boolean enthaeltBasisDir = false;
         boolean basenDirErstellt = true;
+        
+        //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
+        pfadZuBasen =  build.getRootDir().getParentFile().getParent() + "/basen";
+        pfadZuBuilds = build.getRootDir().getParent();
         listener.getLogger().print("-----Starte RegressionTest-----\n");
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = build.getRootDir().getParentFile().getParentFile();
@@ -143,13 +147,6 @@ public class PluginMenueClass extends BuildWrapper{
             }
             if (erstelleBasis && basenDirErstellt) {
                 IErstelleBasis basis = new ErstelleBasis();
-                //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
-                if (pfadZuBasen.isEmpty()) {
-                    pfadZuBasen =  file.getAbsolutePath() + "/basen";
-                }
-                if (pfadZuBuilds.isEmpty()) {
-                    pfadZuBuilds = build.getRootDir().getParent();
-                }
                 listener.getLogger().print("-----------------------------------\n"
                         + "Erstelle Basen mit den Pfaden: \n"
                         + "Die Build Ordner mit den Result Dateien:" + pfadZuBuilds + "\n"
@@ -226,12 +223,6 @@ public class PluginMenueClass extends BuildWrapper{
         @Override
         public String getDisplayName() {
             return "Teste Performanz Regression";
-        }
-        
-        public FormValidation doCreateBase(@QueryParameter("pfadZuBasen") final String pfadZuBasen) throws IOException, InterruptedException {
-            FormValidation valid = FormValidation.ok("pfadZuBasen");
-            return valid;
-        }
-        
+        }       
     }
 }
