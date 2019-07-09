@@ -20,12 +20,16 @@ public class TimeRunListener extends RunListener {
             e.printStackTrace();
         }
     }
-    
+    /*
+     * Schreibt am Start eines Tests die Variable mit Name;StartZeit;EndZeit
+     */
     @Override
     public void testStarted(Description description) throws Exception {
         tempText = description.getClassName() + ";" + System.currentTimeMillis();
     } 
-    
+    /*
+     *Ergaenzt die Datei um die Endzeit und schreibt diesen Teil an das Ende der Mail.
+     */
     @Override
      public void testFinished(Description description) throws Exception {
         tempText += ";" + System.currentTimeMillis();
