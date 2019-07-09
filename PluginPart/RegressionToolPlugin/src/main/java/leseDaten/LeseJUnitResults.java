@@ -192,6 +192,7 @@ public class LeseJUnitResults {
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i <= useResults; i++) {
+                        System.out.println("RUNNN" + i);
                         File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + TESTWERTE_DATEINAME);
                         if (tempTestWerteFile.exists()) {
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
@@ -199,6 +200,11 @@ public class LeseJUnitResults {
                             File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                             if (tempFile.exists()) {
                                 values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
+                            } else {
+                                //Erhoehen der zu verwenden Results falls nicht genug JUnitReulsts gefunden wurden.
+                                if (useResults < files.length - 1) {
+                                    useResults++;
+                                }
                             }
                         }
                     }
