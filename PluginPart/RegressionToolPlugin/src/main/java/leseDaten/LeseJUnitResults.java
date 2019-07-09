@@ -203,7 +203,6 @@ public class LeseJUnitResults {
                             System.out.println("CustomFile DOES NOT EXISTS");
                             File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                             if (tempFile.exists()) {
-                                System.out.println("RESULTS EXIST AT :" + tempFile.getAbsolutePath());
                                 values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
                             }
                         }
