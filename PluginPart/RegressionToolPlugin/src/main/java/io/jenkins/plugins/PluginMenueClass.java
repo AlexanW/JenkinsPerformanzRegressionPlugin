@@ -224,7 +224,6 @@ public class PluginMenueClass extends BuildWrapper{
                         listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");  
                     }   
                 }
-                //build.setResult(Result.FAILURE);
                 return super.tearDown(build, listener);
             }
         };
