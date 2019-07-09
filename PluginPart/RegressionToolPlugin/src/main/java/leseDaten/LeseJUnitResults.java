@@ -192,7 +192,6 @@ public class LeseJUnitResults {
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i <= useResults; i++) {
-                        System.out.println("RUNNN" + i);
                         File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + TESTWERTE_DATEINAME);
                         if (tempTestWerteFile.exists()) {
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
