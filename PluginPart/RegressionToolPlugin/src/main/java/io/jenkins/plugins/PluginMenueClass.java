@@ -168,6 +168,8 @@ public class PluginMenueClass extends BuildWrapper{
                 if (erstellteBasis != null) {
                     listener.getLogger().print("Die erstellte Basis:\n"
                             + erstellteBasis.toString());
+                } else {
+                    listener.getLogger().print("Es konnte keine Basis erstellt werden.");
                 }
             }
             if (vergleicheBasis) {
@@ -218,7 +220,7 @@ public class PluginMenueClass extends BuildWrapper{
                         LeseSchreibeTestWerte.schreibeTestWerte(
                                 build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                     } else {
-                        listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");   
+                        listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");  
                     }   
                 }
                 return super.tearDown(build, listener);
