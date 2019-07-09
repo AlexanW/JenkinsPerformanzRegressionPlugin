@@ -12,6 +12,7 @@ import hudson.Launcher;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.BuildListener;
+import hudson.model.Result;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.FormValidation;
@@ -223,6 +224,7 @@ public class PluginMenueClass extends BuildWrapper{
                         listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");  
                     }   
                 }
+                //build.setResult(Result.FAILURE);
                 return super.tearDown(build, listener);
             }
         };
