@@ -18,6 +18,6 @@ public interface IErstelleBasis {
      * @param targetBasis Der Ort, an den die erstellte Basis geschrieben wird.
      * @param tolleranz
      */
-    public IBasis erstelleBasisOhneMessungen(String targetJUnitResutls, String targetBasis
+    public IBasis erstelleBasis(String targetJUnitResutls, String targetBasis
             , double tolleranz, int anzahlTests, double step_size);
 }

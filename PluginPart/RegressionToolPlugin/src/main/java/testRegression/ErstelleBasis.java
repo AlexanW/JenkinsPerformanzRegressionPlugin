@@ -40,7 +40,7 @@ public class ErstelleBasis implements IErstelleBasis {
      * jUnitResultDateien nemen soll so sollte sie 0.0 sein.
      * Eingabe von Prozent in 0.xx Fomat.
      */
-    public IBasis erstelleBasisOhneMessungen(String targetJUnitResutls,String targetBasis 
+    public IBasis erstelleBasis(String targetJUnitResutls,String targetBasis 
             ,double tolleranz, int anzahlTests, double step_size) {
         
         
@@ -259,7 +259,7 @@ public class ErstelleBasis implements IErstelleBasis {
     }
     public static void main(String[] args) {
         ErstelleBasis basis = new ErstelleBasis();
-        IBasis dummy = basis.erstelleBasisOhneMessungen("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
+        IBasis dummy = basis.erstelleBasis("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
                 "F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\basen",
                 0.2, 5, 100);
         System.out.println(dummy.toString());

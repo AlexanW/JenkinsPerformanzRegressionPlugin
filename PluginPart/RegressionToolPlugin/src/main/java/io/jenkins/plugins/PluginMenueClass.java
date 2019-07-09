@@ -23,6 +23,7 @@ import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.RegressionTestResult;
+import testDatenTypen.Status;
 import testDatenTypen.TestWerte;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
@@ -164,7 +165,7 @@ public class PluginMenueClass extends BuildWrapper{
                         + "Es werden die letzen " + anzahlAnVergangenenBuilds + " verwendet \n"
                         + "Mit einem Timerintervall von: "  + timerIntervall + " \n"
                         + "-------------------------------------------\n");
-                IBasis erstellteBasis = basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
+                IBasis erstellteBasis = basis.erstelleBasis(pfadZuBuilds, pfadZuBasen, 
                         tolleranzFuerBasen, anzahlAnVergangenenBuilds,
                         timerIntervall);
                 if (erstellteBasis != null) {
@@ -217,6 +218,12 @@ public class PluginMenueClass extends BuildWrapper{
                                     lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
+                        }
+                        if (testResultString.getResutlDerTests() == Status.GROESSER) {
+                            build.setResult(Result.FAILURE);
+                        } else if (testResultString.getResutlDerTests() == Status.KLEINER) {
+                            //Unstable fuer einen Run der nicht gesichert.
+                            build.setResult(Result.UNSTABLE);
                         }
                         listener.getLogger().print(testResultString);
                         LeseSchreibeTestWerte.schreibeTestWerte(
