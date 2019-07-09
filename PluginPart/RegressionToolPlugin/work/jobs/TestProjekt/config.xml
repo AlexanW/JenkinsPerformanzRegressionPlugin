@@ -23,6 +23,7 @@
       <timerIntervall>10.0</timerIntervall>
       <pruefeRegression>true</pruefeRegression>
       <vergleicheBasis>false</vergleicheBasis>
+      <aplhaWert>0.0</aplhaWert>
       <jUnitDateiName>junitResult</jUnitDateiName>
     </io.jenkins.plugins.PluginMenueClass>
   </buildWrappers>

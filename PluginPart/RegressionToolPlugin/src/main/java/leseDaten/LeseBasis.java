@@ -27,14 +27,9 @@ public class LeseBasis implements ILeseBasis {
      */
     private ObjectInputStream oStream;
     
-    public LeseBasis(String pfad) {
-        try {
-            
+    public LeseBasis(String pfad) throws FileNotFoundException, IOException {
             oStream = new ObjectInputStream(new FileInputStream(pfad));
 //            stream = new BufferedReader(new FileReader(pfad));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     
     
@@ -62,17 +57,13 @@ public class LeseBasis implements ILeseBasis {
      * @return
      * @throws FileNotFoundException
      * @throws IOException
+     * @throws ClassNotFoundException 
      */
-    public IBasis leseObjektIBasisEin (String pfad) throws FileNotFoundException, IOException {
+    public IBasis leseObjektIBasisEin (String pfad) throws FileNotFoundException,
+        IOException, ClassNotFoundException {
         oStream = new ObjectInputStream(new FileInputStream(pfad));
         IBasis basis = null;
-        try {
-            basis = (IBasis)oStream.readObject();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        basis = (IBasis)oStream.readObject();
         return basis;
     }
     
@@ -86,7 +77,7 @@ public class LeseBasis implements ILeseBasis {
         IBasis basis = new Basis();;
         try {
             basis = (Basis)lese.leseObjektIBasisEin("Data/Basen/tests.eu.qualimaster.AllTests.txt");
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

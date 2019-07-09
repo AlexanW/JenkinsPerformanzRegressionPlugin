@@ -1,0 +1,81 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<result plugin="junit@1.27">
+  <suites>
+    <suite>
+      <file>/var/lib/jenkins/workspace/QM_Events/result.xml</file>
+      <name>tests.eu.qualimaster.AllTests</name>
+      <stdout>Reading /var/lib/jenkins/workspace/QM_Events/testdata/test.properties
+Direct test
+534  [main] INFO  eu.qualimaster.Configuration - The configured pipeline ports: 63000-64000
+Replay test
+547  [main] INFO  eu.qualimaster.Configuration - The configured pipeline ports: 63000-64000
+Reconfiguring infrastructure settings: {eventBus.port=2999, pipelines.ports=63000-64000, zookeeper.host=localhost,myserver.de, watcher.waiting.time=100, monitoring.volume.enabled=true, zookeeper.retry.times=5, zookeeper.po
+...[truncated 128973 chars]...
+alimaster.events.EventManager - dispatching TestEvent workerId: 9 eventId: 9 
+66762 [Thread-38] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 3 eventId: 9 
+66762 [Thread-41] INFO  eu.qualimaster.events.EventManager - received TestEvent workerId: 6 eventId: 9 
+66762 [Thread-38] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 3 eventId: 9 
+66762 [Thread-41] INFO  eu.qualimaster.events.EventManager - dispatching TestEvent workerId: 6 eventId: 9 
+</stdout>
+      <stderr></stderr>
+      <duration>25.058</duration>
+      <timestamp>2019-04-29T08:44:39</timestamp>
+      <time>67.799</time>
+      <enclosingBlocks/>
+      <enclosingBlockNames/>
+      <cases>
+        <case>
+          <duration>0.595</duration>
+          <className>tests.eu.qualimaster.ConfigurationTests</className>
+          <testName>configurationTest</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>0.029</duration>
+          <className>tests.eu.qualimaster.ConfigurationTests</className>
+          <testName>testUtilities</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.21</duration>
+          <className>tests.eu.qualimaster.events.RemoteHandlerTests</className>
+          <testName>testRemote</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.115</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testSynchronousStore</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.803</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testTimerHandler</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.715</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testRequestResponseClient</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+        <case>
+          <duration>5.715</duration>
+          <className>tests.eu.qualimaster.events.ForwardTests</className>
+          <testName>testRequestResponseServer</testName>
+          <skipped>false</skipped>
+          <failedSince>0</failedSince>
+        </case>
+      </cases>
+    </suite>
+  </suites>
+  <duration>67.799</duration>
+  <keepLongStdio>false</keepLongStdio>
+</result>

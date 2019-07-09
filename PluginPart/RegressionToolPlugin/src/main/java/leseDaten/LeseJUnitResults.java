@@ -183,7 +183,9 @@ public class LeseJUnitResults {
             File[] files = file.listFiles();
             if (files != null) {
                 //Fuer den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
+                System.out.println("FILES LENGTH BEVOR REMOVE" + files.length);
                 files = entferneNichtBuildDatein(files);
+                System.out.println(useResults + "-------------RESULTS-------------" + files.length);
                 if (useResults > files.length || useResults == 0) {
                     useResults = files.length;
                 }
@@ -191,13 +193,17 @@ public class LeseJUnitResults {
                 Arrays.sort(files, (a, b) -> - (Integer.parseInt(a.getName()) - Integer.parseInt(b.getName())));
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
-                    for (int i = 1; i < useResults; i++) {
+                    for (int i = 1; i <= useResults; i++) {
+                        System.out.println("TheUSedI:------" + i);
                         File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + TESTWERTE_DATEINAME);
                         if (tempTestWerteFile.exists()) {
+                            System.out.println("CustomFileEXISTS");
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
                         } else {
+                            System.out.println("CustomFile DOES NOT EXISTS");
                             File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
                             if (tempFile.exists()) {
+                                System.out.println("RESULTS EXIST AT :" + tempFile.getAbsolutePath());
                                 values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
                             }
                         }

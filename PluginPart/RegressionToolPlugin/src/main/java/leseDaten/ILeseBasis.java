@@ -13,5 +13,5 @@ import testDatenTypen.IBasis;
  */
 public interface ILeseBasis {
     
-    public IBasis leseObjektIBasisEin (String pfad)throws FileNotFoundException, IOException;
+    public IBasis leseObjektIBasisEin (String pfad)throws FileNotFoundException, IOException, ClassNotFoundException;
 }

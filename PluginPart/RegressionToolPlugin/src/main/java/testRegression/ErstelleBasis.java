@@ -55,11 +55,12 @@ public class ErstelleBasis implements IErstelleBasis {
             e.printStackTrace();
         }
         System.out.println("Werte aus Builds gelesen:" + werte.size());
-        if (werte.size() == 0) {
-            werte =  
-                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);
-                System.out.println("Werte aus Results gelesen:" + werte.size());
-        }
+        //DummyPart
+//        if (werte.size() == 0) {
+//            werte =  
+//                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);
+//                System.out.println("Werte aus Results gelesen:" + werte.size());
+//        }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
         System.out.println("Werte=" + werte.size());

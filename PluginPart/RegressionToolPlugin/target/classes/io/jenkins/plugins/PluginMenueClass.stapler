@@ -1,2 +1,2 @@
-#Mon Jul 08 23:30:05 CEST 2019
-constructor=pruefeRegression,pfadZuCPUundRAM,erstelleBasis,anzahlAnVergangenenBuilds,tolleranzFuerBasen,tolleranzFuerBasenVergleich,alphaWertFuerTTest,vergleicheBasis,timerIntervall,jUnitDateiName
+#Tue Jul 09 14:00:37 CEST 2019
+constructor=pruefeRegression,pfadZuCPUundRAM,erstelleBasis,anzahlAnVergangenenBuilds,tolleranzFuerBasen,tolleranzFuerBasenVergleich,aplhaWert,vergleicheBasis,timerIntervall,jUnitDateiName

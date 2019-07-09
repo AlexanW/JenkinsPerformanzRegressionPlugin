@@ -52,14 +52,14 @@ public class PluginMenueClass extends BuildWrapper{
     
     private boolean vergleicheBasis;
     
-    private double aplphWertFuerTTest;
+    private double aplhaWert;
     
     private String jUnitDateiName;
     
     @DataBoundConstructor
     public PluginMenueClass(boolean pruefeRegression, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
-            double tolleranzFuerBasenVergleich, double alphaWertFuerTTest, boolean vergleicheBasis,
+            double tolleranzFuerBasenVergleich, double aplhaWert, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName) {
 //        this.pfadZuBasen = pfadZuBasen;
 //        this.pfadZuBuilds = pfadZuBuilds;
@@ -70,7 +70,7 @@ public class PluginMenueClass extends BuildWrapper{
         this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
         this.pruefeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
-        this.aplphWertFuerTTest = alphaWertFuerTTest;
+        this.aplhaWert = aplhaWert;
         this.timerIntervall = timerIntervall;
         this.jUnitDateiName = jUnitDateiName;
     }
@@ -107,8 +107,8 @@ public class PluginMenueClass extends BuildWrapper{
         return vergleicheBasis;
     }
     
-    public double getAplphWertFuerTTest() {
-        return aplphWertFuerTTest;
+    public double getAplhaWert() {
+        return aplhaWert;
     }
     
     public double getTolleranzFuerBasenVergleich() {
@@ -165,7 +165,7 @@ public class PluginMenueClass extends BuildWrapper{
                 IBasis erstellteBasis = basis.erstelleBasisOhneMessungen(pfadZuBuilds, pfadZuBasen, 
                         tolleranzFuerBasen, anzahlAnVergangenenBuilds,
                         timerIntervall);
-                if (basis != null) {
+                if (erstellteBasis != null) {
                     listener.getLogger().print("Die erstellte Basis:\n"
                             + erstellteBasis.toString());
                 }
@@ -182,6 +182,8 @@ public class PluginMenueClass extends BuildWrapper{
                     listener.getLogger().print("!Eine der Basen existiert nicht!" + e.getMessage());
                 } catch (IOException e) {
                     listener.getLogger().print("!Ein Fehler beim Einlesen ist geschehen!" + e.getMessage());
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
 
                 if (basisAlt != null && basisNeu != null) {
@@ -205,8 +207,13 @@ public class PluginMenueClass extends BuildWrapper{
                         tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
                         TestVergleichen vergleichen = new TestVergleichen();
                         LeseBasis lese = new LeseBasis();
-                        String testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                                lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                        String testResultString="";
+                        try {
+                            testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
+                                    lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         listener.getLogger().print(testResultString);
                         LeseSchreibeTestWerte.schreibeTestWerte(
                                 build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);

@@ -1,0 +1,25 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause/>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+  </actions>
+  <queueId>5</queueId>
+  <timestamp>1562672762073</timestamp>
+  <startTime>1562672762085</startTime>
+  <result>SUCCESS</result>
+  <duration>4379</duration>
+  <charset>windows-1252</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\workspace\TestProjekt</workspace>
+  <hudsonVersion>2.164.1</hudsonVersion>
+  <scm class="hudson.scm.NullChangeLogParser"/>
+  <culprits class="com.google.common.collect.EmptyImmutableSortedSet"/>
+</build>

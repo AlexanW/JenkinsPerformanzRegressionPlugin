@@ -16,7 +16,7 @@
   	 <f:entry title="${%Vergleiche letzen 2 Basen}" field="vergleicheBasen">
     	<f:checkbox />
   	 </f:entry>
-  	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplphWertFuerTTest" help="Aplha Wert fuer einen t-Tests">
+  	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplhaWert" help="Aplha Wert fuer einen t-Tests">
         <f:textbox default="0.005"/>
      </f:entry>
   	 <f:entry title="${%Max. prozentuale Grenzen}" field="tolleranzFuerBasen" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">

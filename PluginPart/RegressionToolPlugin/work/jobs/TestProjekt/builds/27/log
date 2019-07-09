@@ -1,0 +1,26 @@
+Gestartet durch Benutzer unknown or anonymous
+Baue in Arbeitsbereich C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\workspace\TestProjekt
+-----Starte RegressionTest-----
+-----------------------------------
+Erstelle Basen mit den Pfaden: 
+Die Build Ordner mit den Result Dateien:C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt\builds
+Der Ort an dem die Basen des Tests gespeichert werden:C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt/basen
+Die maximale Schwankung wird als:50.0 festgelegt
+Es werden die letzen 2 verwendet 
+Mit einem Timerintervall von: 10.0 
+-------------------------------------------
+Die erstellte Basis:
+Name:tests.eu.qualimaster.AllTests
+AvarageLaufzeit: 21.1871875
+Obergrenze:67.799
+Untergrenze:0.0
+Varianz:987.5732111523436
+	Testname: testSynchronousStore Score: 5.115 	IstFehlgeschlagen: false
+	Testname: configurationTest Score: 0.595 	IstFehlgeschlagen: false
+	Testname: testRequestResponseClient Score: 5.715 	IstFehlgeschlagen: false
+	Testname: testTimerHandler Score: 5.803 	IstFehlgeschlagen: false
+	Testname: testRemote Score: 5.21 	IstFehlgeschlagen: false
+	Testname: testUtilities Score: 0.029000000000000005 	IstFehlgeschlagen: false
+	Testname: testRequestResponseServer Score: 5.715 	IstFehlgeschlagen: false
+Suche die JUnit Datei in: C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\work\jobs\TestProjekt\builds\27/junitResult.xml 
+Die jUnitResult.xml ist nocht nicht verfuegbar.Finished: SUCCESS
