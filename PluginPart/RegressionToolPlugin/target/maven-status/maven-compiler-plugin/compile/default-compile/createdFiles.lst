@@ -16,6 +16,7 @@ io\jenkins\plugins\PluginMenueClass.stapler
 testDatenTypen\BasisMitTests.class
 testDatenTypen\Basis.class
 testRegression\TestVergleichen.class
+testDatenTypen\RegressionTestResult.class
 io\jenkins\plugins\PluginMenueClass.class
 leseDaten\LeseCPUundRAM.class
 leseDaten\LeseJUnitResults.class
