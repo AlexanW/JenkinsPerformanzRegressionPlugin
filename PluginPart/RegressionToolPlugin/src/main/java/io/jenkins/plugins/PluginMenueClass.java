@@ -22,6 +22,7 @@ import leseDaten.LeseJUnitResults;
 import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
+import testDatenTypen.RegressionTestResult;
 import testDatenTypen.TestWerte;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
@@ -191,7 +192,7 @@ public class PluginMenueClass extends BuildWrapper{
 
                 if (basisAlt != null && basisNeu != null) {
                     ITestVergleich verlgeich = new TestVergleichen();
-                    String result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
+                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
                     listener.getLogger().print(result);
                 }
 
@@ -210,7 +211,7 @@ public class PluginMenueClass extends BuildWrapper{
                         tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
                         TestVergleichen vergleichen = new TestVergleichen();
                         LeseBasis lese = new LeseBasis();
-                        String testResultString="";
+                        RegressionTestResult testResultString = new RegressionTestResult();
                         try {
                             testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
                                     lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
