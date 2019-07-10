@@ -194,7 +194,7 @@ public class PluginMenueClass extends BuildWrapper{
                 if (basisAlt != null && basisNeu != null) {
                     ITestVergleich verlgeich = new TestVergleichen();
                     RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
-                    listener.getLogger().print(result);
+                    listener.getLogger().print(result.getNachricht());
                 }
 
             }
@@ -210,7 +210,7 @@ public class PluginMenueClass extends BuildWrapper{
                     if (file.exists()) {
                         ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
                         tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
-                        TestVergleichen vergleichen = new TestVergleichen();
+                        ITestVergleich vergleichen = new TestVergleichen();
                         LeseBasis lese = new LeseBasis();
                         RegressionTestResult testResultString = new RegressionTestResult();
                         try {

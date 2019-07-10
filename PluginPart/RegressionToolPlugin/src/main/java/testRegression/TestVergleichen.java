@@ -19,6 +19,9 @@ public class TestVergleichen implements ITestVergleich{
         result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, erwarteteRegression, alpha));
         if (result.getResutlDerTests() == Status.GROESSER && neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
             result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+        } else {
+            result.addTextZuNachricht("Keine Regression auﬂerhalb der " + (erwarteteRegression*100) + "% Grenze"
+                    + "fuer Regression.");
         }
         return result;
     }
