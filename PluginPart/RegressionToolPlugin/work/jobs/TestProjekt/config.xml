@@ -20,7 +20,7 @@
       <anzahlAnVergangenenBuilds>2</anzahlAnVergangenenBuilds>
       <tolleranzFuerBasen>50.0</tolleranzFuerBasen>
       <tolleranzFuerBasenVergleich>25.0</tolleranzFuerBasenVergleich>
-      <timerIntervall>10.0</timerIntervall>
+      <timerIntervall>100.0</timerIntervall>
       <pruefeRegression>true</pruefeRegression>
       <vergleicheBasis>false</vergleicheBasis>
       <aplhaWert>0.0</aplhaWert>

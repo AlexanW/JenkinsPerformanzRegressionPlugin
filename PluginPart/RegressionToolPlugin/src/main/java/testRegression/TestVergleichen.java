@@ -20,7 +20,7 @@ public class TestVergleichen implements ITestVergleich{
         if (result.getResutlDerTests() == Status.GROESSER && neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
             result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
         } else {
-            result.addTextZuNachricht("Keine Regression auﬂerhalb der " + (erwarteteRegression*100) + "% Grenze"
+            result.addTextZuNachricht("Keine Regression ausserhalb der " + (erwarteteRegression*100) + "% Grenze"
                     + "fuer Regression.");
         }
         return result;
