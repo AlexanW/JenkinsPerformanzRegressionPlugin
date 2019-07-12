@@ -1,8 +1,10 @@
 testDatenTypen\ITestObjekt.class
 testDatenTypen\ITest.class
+io\jenkins\plugins\PluginMenuePostBuild.class
 leseDaten\LeseBasis.class
 leseDaten\LeseSchreibeTestWerte.class
 testDatenTypen\TestAuslastungen.class
+io\jenkins\plugins\PluginMenuePostBuild$DescriptorImpl.class
 testRegression\ITestVergleich.class
 testDatenTypen\Test.class
 testDatenTypen\ITestWerte.class
@@ -19,6 +21,7 @@ testRegression\TestVergleichen.class
 testDatenTypen\RegressionTestResult.class
 io\jenkins\plugins\PluginMenueClass.class
 leseDaten\LeseCPUundRAM.class
+io\jenkins\plugins\PluginMenuePostBuild.stapler
 leseDaten\LeseJUnitResults.class
 testDatenTypen\IBasis.class
 testDatenTypen\ITestObjektGruppe.class

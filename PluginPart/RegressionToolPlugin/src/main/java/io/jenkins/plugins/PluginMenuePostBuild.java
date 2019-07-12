@@ -8,7 +8,7 @@ import hudson.tasks.BuildStepMonitor;
 import hudson.tasks.Publisher;
 import hudson.tasks.Recorder;
 
-public class PuluginMenuePostBuild extends Recorder{
+public class PluginMenuePostBuild extends Recorder{
 
     public final static String TESTWERTE_DATEINAME = "testWerte.res"; 
     
@@ -37,7 +37,7 @@ public class PuluginMenuePostBuild extends Recorder{
     private String jUnitDateiName;
     
     @DataBoundConstructor
-    public PuluginMenuePostBuild (boolean pruefeRegression, String pfadZuCPUundRAM, 
+    public PluginMenuePostBuild (boolean pruefeRegression, String pfadZuCPUundRAM, 
             boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
             double tolleranzFuerBasenVergleich, double aplhaWert, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName) {
