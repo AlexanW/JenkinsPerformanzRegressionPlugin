@@ -21,12 +21,12 @@ public class TesteRegression {
          * sollte bevor die andern Methoden beginnen.
          */
         //SysAuslastungMessung.startMeasurement();
-        IErstelleBasis erstelleBasis = new ErstelleBasis();
-        IBasis basis = erstelleBasis
-                .erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2, 5, 100);
-        List<ITestWerte> werte = LeseJUnitResults
-                .getJUnitResultDatei("Data/jUnitResultVergleich/", 100);
-        TestVergleichen testverleich = new TestVergleichen();
+//        IErstelleBasis erstelleBasis = new ErstelleBasis();
+//        IBasis basis = erstelleBasis
+//                .erstelleBasis("Data/jUnitResults/", "Data/Basen/", 0.2, 5, 100);
+//        List<ITestWerte> werte = LeseJUnitResults
+//                .getJUnitResultDatei("Data/jUnitResultVergleich/", 100);
+//        TestVergleichen testverleich = new TestVergleichen();
 //        String result = testverleich.vergleicheBasisMitWerten(werte.get(0), basis, 0.0); 
 //        System.out.println(testverleich.vergleicheBasen(basis, basis, 0.0, 0.05) + result);
     }

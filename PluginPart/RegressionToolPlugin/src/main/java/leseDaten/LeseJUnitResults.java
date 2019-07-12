@@ -188,7 +188,10 @@ public class LeseJUnitResults {
                     useResults = files.length;
                 }
                 //Sortiert die Files nach absteigender Buildnummer.
-                Arrays.sort(files, (a, b) -> - (Long.compare(a.lastModified(), b.lastModified())));
+                Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
+                for ( File f : files) {
+                    System.out.println(f.getName());
+                }
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i <= useResults; i++) {

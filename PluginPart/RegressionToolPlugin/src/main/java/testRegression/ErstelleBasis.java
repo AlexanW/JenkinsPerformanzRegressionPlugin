@@ -258,10 +258,10 @@ public class ErstelleBasis implements IErstelleBasis {
         return namen;
     }
     public static void main(String[] args) {
-        ErstelleBasis basis = new ErstelleBasis();
-        IBasis dummy = basis.erstelleBasis("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
-                "F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\basen",
-                0.2, 5, 100);
-        System.out.println(dummy.toString());
+//        ErstelleBasis basis = new ErstelleBasis();
+//        IBasis dummy = basis.erstelleBasis("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
+//                "F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\basen",
+//                0.2, 5, 100);
+//        System.out.println(dummy.toString());
     }
 }
