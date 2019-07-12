@@ -2,6 +2,7 @@ package io.jenkins.plugins;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
+import hudson.Extension;
 import hudson.model.AbstractProject;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.BuildStepMonitor;
@@ -108,6 +109,7 @@ public class PluginMenuePostBuild extends Recorder{
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
     }
+    @Extension
     public static class DescriptorImpl extends BuildStepDescriptor<Publisher>{
 
         @Override
