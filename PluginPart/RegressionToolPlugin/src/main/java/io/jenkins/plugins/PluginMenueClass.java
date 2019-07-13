@@ -229,7 +229,7 @@ public class PluginMenueClass extends BuildWrapper{
 
         @Override
         public boolean isApplicable(AbstractProject<?, ?> item) {
-            return true;
+            return false;
         }
         @Override
         public String getDisplayName() {
