@@ -53,22 +53,26 @@ public class LeseCPUundRAM {
         File tempFile = new File(target);
         Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
         target+= "Copy";
-        FileInputStream reader = new FileInputStream(new File(target));
-        inStream =  new InputStreamReader(reader, "UTF-8"); 
-        stream = new BufferedReader(inStream);
-        while (stream.ready()) {
-            /**
-             * Splitted die Daten der Date anahnd des ";" in die drei
-             * Komponenten.
-             */
-            String tempString = stream.readLine();
-            if (tempString != null) {
-                String[] temp = tempString.split(";");
-                loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
-                        , Double.parseDouble(temp[2])
-                        , new Timestamp(Long.parseLong(temp[0]))));   
+        File copiedFile = new File(target);
+        if (copiedFile.exists()) {
+            FileInputStream reader = new FileInputStream(new File(target));
+            inStream =  new InputStreamReader(reader, "UTF-8"); 
+            stream = new BufferedReader(inStream);
+            while (stream.ready()) {
+                /**
+                 * Splitted die Daten der Date anahnd des ";" in die drei
+                 * Komponenten.
+                 */
+                String tempString = stream.readLine();
+                if (tempString != null) {
+                    String[] temp = tempString.split(";");
+                    loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
+                            , Double.parseDouble(temp[2])
+                            , new Timestamp(Long.parseLong(temp[0]))));   
+                }
             }
         }
+
 	    return loads;
 	}
 	/**
