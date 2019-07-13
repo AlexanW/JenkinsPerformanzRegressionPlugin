@@ -67,7 +67,7 @@ public class TestVergleichArten {
         List<ITest> testNurInWerten = new ArrayList<ITest>();
         List<ITest> testNurInBasis = new ArrayList<ITest>();
         erwarteteRegression = erwarteteRegression != 0 ? erwarteteRegression : 0.2;
-        
+        System.out.println("Erwartete Regressoion fuer vergleich " + erwarteteRegression);
         for (ITest t :basis.getTests().values()) {
             if (testWerte.getTests().get(t.getName()) != null) {
                 //Trotz erwarteteer Regression sollte hier eine weitere tolleranz eingebaut werden.

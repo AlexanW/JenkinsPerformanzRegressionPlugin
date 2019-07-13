@@ -121,19 +121,23 @@ public class TestWerte implements ITestWerte, Serializable {
 	
 	private void addMessungenZuTests() {
 	    double scoreSumme = 0;
-	    for (ITest t : tests.values()) {
-	        if (t.getScore() < step_size) {
-	            setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
-	        } else {
-	            List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
-	            for (int i = (int)(scoreSumme/step_size); i <=  (int)(scoreSumme + t.getScore()/step_size); i++) {
-	                if (i < testAuslastungen.size()) {
-	                    auslatungen.add(testAuslastungen.get(i));
+	    if (testAuslastungen.size() > 0) {
+	        for (ITest t : tests.values()) {
+	            if (t.getScore() < step_size) {
+	                if ((int)(scoreSumme/step_size) < testAuslastungen.size()) {
+	                    setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
 	                }
+	            } else {
+	                List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
+	                for (int i = (int)(scoreSumme/step_size); i <=  (int)(scoreSumme + t.getScore()/step_size) && i < testAuslastungen.size(); i++) {
+	                    if (i < testAuslastungen.size()) {
+	                        auslatungen.add(testAuslastungen.get(i));
+	                    }
+	                }
+	                setAuslatungenFuerTests(t, auslatungen);
 	            }
-	            setAuslatungenFuerTests(t, auslatungen);
+	            scoreSumme += t.getScore();
 	        }
-            scoreSumme += t.getScore();
 	    }
 	}
 	/**

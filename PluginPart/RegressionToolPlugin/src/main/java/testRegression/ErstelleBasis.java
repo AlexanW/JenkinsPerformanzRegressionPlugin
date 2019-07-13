@@ -63,7 +63,6 @@ public class ErstelleBasis implements IErstelleBasis {
 //        }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
-        System.out.println("Werte=" + werte.size());
         if (!enthaeltFehlschlag(werte) && werte.size() > 1) {
             basis = new Basis(werte.get(0).getName(),avarageLaufzeit
                     , getMinLaufzeit(werte, tolleranz, avarageLaufzeit )
@@ -131,13 +130,17 @@ public class ErstelleBasis implements IErstelleBasis {
         }
        return enthaeltFehlschlag;
     }
+    
     private double getAvarageLaufzeit(List<ITestWerte> werte) {
         double sum = 0;
         for (ITestWerte t : werte) {
+            System.out.println("Erstelle Score: "+ t.getScore());
             sum += t.getScore();
         }
+        System.out.println("Durchschintt: " + sum/werte.size());
         return sum / werte.size();
     }
+    
     private double getMinLaufzeit(List<ITestWerte> werte, double tolleranz
             , double avarage) {
         //Init des Minimusm mit dem Mittelwer. 

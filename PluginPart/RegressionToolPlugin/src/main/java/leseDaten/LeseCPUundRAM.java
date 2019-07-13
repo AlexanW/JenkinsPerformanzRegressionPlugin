@@ -49,30 +49,35 @@ public class LeseCPUundRAM {
 	 */
 	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException {
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
+        
         Path copiedTo = Paths.get(target + "Copy");
         File tempFile = new File(target);
-        Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
-        target+= "Copy";
-        File copiedFile = new File(target);
-        if (copiedFile.exists()) {
-            FileInputStream reader = new FileInputStream(new File(target));
-            inStream =  new InputStreamReader(reader, "UTF-8"); 
-            stream = new BufferedReader(inStream);
-            while (stream.ready()) {
-                /**
-                 * Splitted die Daten der Date anahnd des ";" in die drei
-                 * Komponenten.
-                 */
-                String tempString = stream.readLine();
-                if (tempString != null) {
-                    String[] temp = tempString.split(";");
-                    loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
-                            , Double.parseDouble(temp[2])
-                            , new Timestamp(Long.parseLong(temp[0]))));   
+        if (tempFile.exists()) {
+            Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
+            target+= "Copy";
+            File copiedFile = new File(target);
+            System.out.println("Target " + copiedFile.getAbsolutePath());
+            System.out.println("Exist " + copiedFile.exists());
+            System.out.println("Copied " + copiedFile.canRead());
+            if (copiedFile.exists() && copiedFile.canRead()) {
+                FileInputStream reader = new FileInputStream(new File(target));
+                inStream =  new InputStreamReader(reader, "UTF-8"); 
+                stream = new BufferedReader(inStream);
+                while (stream.ready()) {
+                    /**
+                     * Splitted die Daten der Date anahnd des ";" in die drei
+                     * Komponenten.
+                     */
+                    String tempString = stream.readLine();
+                    if (tempString != null) {
+                        String[] temp = tempString.split(";");
+                        loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
+                                , Double.parseDouble(temp[2])
+                                , new Timestamp(Long.parseLong(temp[0]))));   
+                    }
                 }
-            }
+            }  
         }
-
 	    return loads;
 	}
 	/**

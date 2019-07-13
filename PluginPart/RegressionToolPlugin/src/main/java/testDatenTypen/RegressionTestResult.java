@@ -8,7 +8,7 @@ public class RegressionTestResult {
     /**
      * Die Nachricht fuer den Logger.
      */
-    private String nachricht;
+    private String nachricht = "";
     
     public Status getResutlDerTests() {
         return resutlDerTests;

@@ -31,7 +31,7 @@ import testRegression.TestVergleichen;
 
 public class PluginMenuePostBuild extends Recorder{
 
-    public final static String TESTWERTE_DATEINAME = "testWerte.res"; 
+    public final static String TESTWERTE_DATEINAME = "testWerte.txt"; 
     
     private String pfadZuBasen;
     
@@ -189,35 +189,46 @@ public class PluginMenuePostBuild extends Recorder{
 
                 if (basisAlt != null && basisNeu != null) {
                     ITestVergleich verlgeich = new TestVergleichen();
-                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
+                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, aplhaWert);
                     listener.getLogger().print(result.getNachricht());
                 }
 
             }
             if (pruefeRegression) {
                 listener.getLogger().print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName + ".xml \n");
-                File fileUnit = new File(build.getRootDir() + "/" + jUnitDateiName + ".xml");
+                File fileUnit = new File(build.getRootDir().getAbsolutePath());
                 if (fileUnit.exists()) {
-                    ITestWerte tests = LeseJUnitResults.leseTestsXML(file.getAbsolutePath(), timerIntervall);
-                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
-                    ITestVergleich vergleichen = new TestVergleichen();
-                    LeseBasis lese = new LeseBasis();
-                    RegressionTestResult testResultString = new RegressionTestResult();
-                    try {
-                        testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                                lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                    ITestWerte tests = LeseJUnitResults.leseTestsXML(fileUnit.getAbsolutePath(), timerIntervall);
+                    if (tests != null) {
+                        tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                        listener.getLogger().print(tests.toString() + "\n");
+                        ITestVergleich vergleichen = new TestVergleichen();
+                        LeseBasis lese = new LeseBasis();
+                        RegressionTestResult testResultString = new RegressionTestResult();
+                        IBasis tempBasis = null;
+                        try {
+                            tempBasis = lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt");
+                        } catch (ClassNotFoundException e1) {
+                            e1.printStackTrace();
+                        }
+                        if (tempBasis != null) {
+                            listener.getLogger().print("Beginne Vergleich von neuen Testergebnissen und der neusten Basis.\n"
+                                    + "Dabei gilt eine erwartete Regression von " + (tolleranzFuerBasenVergleich != 0 ? tolleranzFuerBasenVergleich : 0.2) + "\n"
+                                    + "Verglichen werden \n" + tempBasis.toString() + "und \n"
+                                    + tests.toString());
+                                testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
+                                       tempBasis, tolleranzFuerBasenVergleich);
+                            if (testResultString.getResutlDerTests() == Status.GROESSER) {
+                                build.setResult(Result.FAILURE);
+                            } else if (testResultString.getResutlDerTests() == Status.KLEINER) {
+                                //Unstable fuer einen Run der nicht gesichert.
+                                build.setResult(Result.UNSTABLE);
+                            }
+                        }
+                        listener.getLogger().print(testResultString.getNachricht());
+                        LeseSchreibeTestWerte.schreibeTestWerte(
+                                build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                     }
-                    if (testResultString.getResutlDerTests() == Status.GROESSER) {
-                        build.setResult(Result.FAILURE);
-                    } else if (testResultString.getResutlDerTests() == Status.KLEINER) {
-                        //Unstable fuer einen Run der nicht gesichert.
-                        build.setResult(Result.UNSTABLE);
-                    }
-                    listener.getLogger().print(testResultString);
-                    LeseSchreibeTestWerte.schreibeTestWerte(
-                            build.getRootDir().getAbsolutePath() + "/" + TESTWERTE_DATEINAME, tests);
                 } else {
                     listener.getLogger().print("Die jUnitResult.xml ist nocht nicht verfuegbar.");  
                 }   

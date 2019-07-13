@@ -27,7 +27,7 @@ import testDatenTypen.TestWerte;
  */
 public class LeseJUnitResults {
     public final static String JUNIT_DATAEINAME = "junitResult.xml";
-    public final static String TESTWERTE_DATEINAME = "testWerte.res"; 
+    public final static String TESTWERTE_DATEINAME = "testWerte.txt"; 
 	/**
 	 * XMLReaderTrial
 	 */
@@ -81,7 +81,6 @@ public class LeseJUnitResults {
             e.printStackTrace();
         }  
 	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
-	    
 		return results;
 	}
 	/**
@@ -180,16 +179,16 @@ public class LeseJUnitResults {
         if (file.exists() && file.isDirectory()) {
             File[] files = file.listFiles();
             if (files != null) {
-                //Fuer den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
+                /*
+                 * Fuer den Fall, dass mehr angegeben wurde, als vorhanden ist, oder 0;
+                 * -1 da eine der Build Dateien noch nich verwendet werden kann.
+                 */
                 files = entferneNichtBuildDatein(files);
-                if (useResults > files.length || useResults == 0) {
-                    useResults = files.length;
+                if (useResults >= files.length || useResults == 0) {
+                    useResults = files.length - 1;
                 }
                 //Sortiert die Files nach absteigender Buildnummer.
                 Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
-                for ( File f : files) {
-                    System.out.println(f.getName());
-                }
                 //Start bei 1 damit der Ordner des aktuellen Runs nicht beachtet wird.
                 if (files.length > 1) {
                     for (int i = 1; i <= useResults; i++) {
@@ -211,6 +210,7 @@ public class LeseJUnitResults {
                 }
             }
         }
+        System.out.println("FistEndOfReadingXMLS");
         return values;
     }
     
