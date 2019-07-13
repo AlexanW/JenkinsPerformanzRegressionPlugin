@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 
 import hudson.Extension;
 import hudson.Launcher;
@@ -15,21 +14,9 @@ import hudson.model.BuildListener;
 import hudson.model.Result;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
-import hudson.util.FormValidation;
-import leseDaten.LeseBasis;
-import leseDaten.LeseCPUundRAM;
-import leseDaten.LeseJUnitResults;
-import leseDaten.LeseSchreibeTestWerte;
-import testDatenTypen.IBasis;
-import testDatenTypen.ITestWerte;
-import testDatenTypen.RegressionTestResult;
-import testDatenTypen.Status;
-import testDatenTypen.TestWerte;
-import testRegression.ErstelleBasis;
-import testRegression.IErstelleBasis;
-import testRegression.ITestVergleich;
-import testRegression.TestVergleichen;
-import testRegression.TesteRegression;
+import leseDaten.*;
+import testDatenTypen.*;
+import testRegression.*;
 
 public class PluginMenueClass extends BuildWrapper{
     
