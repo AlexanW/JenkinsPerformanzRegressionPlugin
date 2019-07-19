@@ -1,5 +1,7 @@
 package testRegression;
 
+import java.io.PrintStream;
+
 import testDatenTypen.IBasis;
 
 /**
@@ -19,5 +21,6 @@ public interface IErstelleBasis {
      * @param tolleranz
      */
     public IBasis erstelleBasis(String targetJUnitResutls, String targetBasis
-            , double tolleranz, int anzahlTests, double step_size);
+            , double tolleranz, int anzahlTests, double step_size
+            , String jUnitDateiName, PrintStream logger);
 }

@@ -213,8 +213,9 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Eine Imlpementierung der toString Methode, diese Enthaelt alle Attribute. 
 	 */
 	public String toString() {
-	    return Double.toString(score);
+	    return "Name: " + name  + " \n" + "Score: "  + score + " \n";
 	}
+	
 	public boolean getEnthaeltFehlschag () {
 	    boolean enthaeltFehlschlag = false;
 	    for (ITest t : tests.values()) {

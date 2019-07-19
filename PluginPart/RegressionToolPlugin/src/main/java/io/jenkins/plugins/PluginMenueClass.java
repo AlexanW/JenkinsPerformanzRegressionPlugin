@@ -154,7 +154,7 @@ public class PluginMenueClass extends BuildWrapper{
                         + "-------------------------------------------\n");
                 IBasis erstellteBasis = basis.erstelleBasis(pfadZuBuilds, pfadZuBasen, 
                         tolleranzFuerBasen, anzahlAnVergangenenBuilds,
-                        timerIntervall);
+                        timerIntervall, jUnitDateiName, listener.getLogger());
                 if (erstellteBasis != null) {
                     listener.getLogger().print("Die erstellte Basis:\n"
                             + erstellteBasis.toString());

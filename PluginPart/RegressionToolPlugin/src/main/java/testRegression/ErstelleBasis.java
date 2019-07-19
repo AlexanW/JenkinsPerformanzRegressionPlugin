@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,12 +42,14 @@ public class ErstelleBasis implements IErstelleBasis {
      * Eingabe von Prozent in 0.xx Fomat.
      */
     public IBasis erstelleBasis(String targetJUnitResutls,String targetBasis 
-            ,double tolleranz, int anzahlTests, double step_size) {
+            ,double tolleranz, int anzahlTests, double step_size
+            , String jUnitDateiName, PrintStream logger) {
         
         
         List<ITestWerte> werte = new ArrayList<ITestWerte>();
         try {
-            werte = LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls, anzahlTests,step_size);
+            werte = LeseJUnitResults.getJUnitResultDateiAusBuilds(targetJUnitResutls,
+                    anzahlTests, step_size, jUnitDateiName);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -72,7 +75,11 @@ public class ErstelleBasis implements IErstelleBasis {
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
             bestimmeNameUndSchreibeBasis(basis, targetBasis);
         } else {
-            //Warnung das die Zeiten nicht stimmen koennen!!
+            if (enthaeltFehlschlag(werte)) {
+                logger.print("Unter den jUnit Dateien befindet sich mindestens "
+                        + "eine mit einem Fehlgeschlagenen Test. Es wurde daher"
+                        + " keine Basis erstellt.");
+            }
         }
         return basis;
     }

@@ -26,7 +26,7 @@ import testDatenTypen.TestWerte;
  *
  */
 public class LeseJUnitResults {
-    public final static String JUNIT_DATAEINAME = "junitResult.xml";
+//    public final static String JUNIT_DATAEINAME = "junitResult.xml";
     public final static String TESTWERTE_DATEINAME = "testWerte.txt"; 
 	/**
 	 * XMLReaderTrial
@@ -38,8 +38,8 @@ public class LeseJUnitResults {
 	    try {
 	        //Erstellen eines XMLReaders um die jUnitResultDateien einzulesen.
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
-	        System.out.println("XML in Question: " + pfad + "/" + JUNIT_DATAEINAME);
-	        in = new FileInputStream(pfad + "/" + JUNIT_DATAEINAME);
+	        System.out.println("XML in Question: " + pfad);
+	        in = new FileInputStream(pfad);
 	        reader = factory.createXMLEventReader(in);
 	        //Schritt fuer Schritt druchlaufen der Datei.
             while (reader.hasNext()) {
@@ -172,7 +172,7 @@ public class LeseJUnitResults {
      * @throws ClassNotFoundException 
      * @throws FileNotFoundException 
      */
-    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size) 
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size, String jUnitDateiName) 
             throws FileNotFoundException, ClassNotFoundException, IOException {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
@@ -196,9 +196,9 @@ public class LeseJUnitResults {
                         if (tempTestWerteFile.exists()) {
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
                         } else {
-                            File tempFile = new File(files[i].getAbsolutePath() + "/" + JUNIT_DATAEINAME);
+                            File tempFile = new File(files[i].getAbsolutePath() + "/" + jUnitDateiName);
                             if (tempFile.exists()) {
-                                values.add(leseTestsXML(files[i].getAbsolutePath(), step_size));
+                                values.add(leseTestsXML(tempFile.getAbsolutePath(), step_size));
                             } else {
                                 //Erhoehen der zu verwenden Results falls nicht genug JUnitReulsts gefunden wurden.
                                 if (useResults < files.length - 1) {
