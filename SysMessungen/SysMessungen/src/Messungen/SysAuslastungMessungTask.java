@@ -18,7 +18,7 @@ public class SysAuslastungMessungTask extends TimerTask {
     /**
      * Ein Dateforamt umd die akutelle Systemzeit zu bestimmen.
      */
-    private DateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");
+    private DateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss.SSS");
     /**
      * FileStream um die gesammelten Daten in eine Datei zu schreiben.
      */

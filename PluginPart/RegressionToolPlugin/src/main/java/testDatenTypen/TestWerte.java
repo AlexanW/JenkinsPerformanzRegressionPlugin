@@ -87,7 +87,9 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Setter fuer die Auslastung weahrend dieses Tests.
 	 */
 	public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen) {
+	    System.out.println("SETZE AUSLASTUNGEN: " + testAuslastungen.size());
         this.testAuslastungen = matchMessungenZuTests(testAuslastungen);
+        System.out.println("AUSLASSTNGE NACH MATCH: " + this.testAuslastungen.size());
         addMessungenZuTests();
     }
 	/**
@@ -125,11 +127,12 @@ public class TestWerte implements ITestWerte, Serializable {
 	        for (ITest t : tests.values()) {
 	            if (t.getScore() < step_size) {
 	                if ((int)(scoreSumme/step_size) < testAuslastungen.size()) {
+	                    System.out.println(t.toString());
 	                    setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
 	                }
 	            } else {
 	                List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
-	                for (int i = (int)(scoreSumme/step_size); i <=  (int)(scoreSumme + t.getScore()/step_size) && i < testAuslastungen.size(); i++) {
+	                for (int i = (int)(scoreSumme/step_size); i <= ((int)((t.getScore() + scoreSumme)/step_size)) && i < testAuslastungen.size(); i++) {
 	                    if (i < testAuslastungen.size()) {
 	                        auslatungen.add(testAuslastungen.get(i));
 	                    }
@@ -218,7 +221,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	    for ( ITest t : tests.values()) {
 	        buffer.append(t.toString());
 	    }
-	    return "Name: " + name  + " \n" + "Score: "  + score + " \n";
+	    return buffer.toString();
 	}
 	
 	public boolean getEnthaeltFehlschag () {

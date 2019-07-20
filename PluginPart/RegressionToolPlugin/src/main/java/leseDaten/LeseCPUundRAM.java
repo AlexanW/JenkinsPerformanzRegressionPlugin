@@ -51,12 +51,14 @@ public class LeseCPUundRAM {
 	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException, InterruptedException {
 	    int dummyCounter = 0;
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
-        
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         Path copiedTo = Paths.get(target + "Copy");
         File tempFile = new File(target);
         if (tempFile.exists()) {
-            while (!tempFile.canRead() && dummyCounter < 100) {
+            System.out.println("TEMP FILE EXISTIERT: " + tempFile.exists());
+            while (!tempFile.canRead() && dummyCounter < 10) {
                 Thread.sleep(10);
+                System.out.println("Cant Read " + dummyCounter);
             }
             if(tempFile.canRead()) {
                 Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
@@ -78,11 +80,12 @@ public class LeseCPUundRAM {
                     String tempString = stream.readLine();
                     if (tempString != null) {
                         String[] temp = tempString.split(";");
-                        loads.add(new TestAuslastungen(Double.parseDouble(temp[1])
-                                , Double.parseDouble(temp[2])
-                                , new Timestamp(Long.parseLong(temp[0]))));   
+                        loads.add(new TestAuslastungen(new Timestamp(Long.parseLong(temp[0]))
+                                , Double.parseDouble(temp[1])
+                                , Double.parseDouble(temp[2])));   
                     }
                 }
+                stream.close();
                 if (!copiedFile.delete()) {
                     System.out.println("Die Datei konnte nicht geloescht werden.");
                 }

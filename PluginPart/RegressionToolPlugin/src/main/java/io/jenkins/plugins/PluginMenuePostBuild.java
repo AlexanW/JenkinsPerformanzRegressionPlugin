@@ -236,6 +236,7 @@ public class PluginMenuePostBuild extends Recorder{
             ITestWerte tests = LeseJUnitResults.leseTestsXML(fileUnit.getAbsolutePath(), timerIntervall);
             if (tests != null) {
                 try {
+                    logger.print("Suche Auslastungen in: " + pfadZuCPUundRAM);
                     tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
                 } catch (InterruptedException e1) {
                     logger.print("Fehler beim kopieren der Datei.");

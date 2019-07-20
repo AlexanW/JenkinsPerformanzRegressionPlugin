@@ -16,7 +16,7 @@
   	 <f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
     	<f:checkbox />
   	 </f:entry>
-  	 <f:entry title="${%Vergleiche die letzen 2 Basen}" field="vergleicheBasen">
+  	 <f:entry title="${%Vergleiche die letzen 2 Basen}" field="vergleicheBasis">
     	<f:checkbox />
   	 </f:entry>
   	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplhaWert" help="Aplha Wert fuer einen t-Tests">

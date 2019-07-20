@@ -100,7 +100,6 @@ public class LeseJUnitResults {
                 } while (!event.isStartElement());
                 
                 setTestModi(event, temp, reader);
-                //System.out.println(temp.toString());
                 /**
                  * Da hiervor die Character eingelesen werden, ist der naechste Schritt ein EndElement.
                  */

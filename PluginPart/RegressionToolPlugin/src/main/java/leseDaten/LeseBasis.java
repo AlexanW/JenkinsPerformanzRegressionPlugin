@@ -1,5 +1,6 @@
 package leseDaten;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -61,22 +62,5 @@ public class LeseBasis implements ILeseBasis {
         IBasis basis = null;
         basis = (IBasis)oStream.readObject();
         return basis;
-    }
-    
-
-    /**
-     * TestMainMethode.
-     * @param args
-     */
-    public static void main(String[] args) {
-        LeseBasis lese = new LeseBasis();
-        IBasis basis = new Basis();;
-        try {
-            basis = (Basis)lese.leseObjektIBasisEin("Data/Basen/tests.eu.qualimaster.AllTests.txt");
-        } catch (IOException | ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.out.println(basis.toString());
     }
 }

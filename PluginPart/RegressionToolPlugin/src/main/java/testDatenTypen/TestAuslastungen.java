@@ -29,8 +29,8 @@ public class TestAuslastungen implements Serializable{
     /**
      * Ein Konstruktor der alle Attribute der Klasse setzt.
      */
-    public TestAuslastungen(double ramAuslastung, double cpuAuslastung
-            , Timestamp timeStamp) {
+    public TestAuslastungen(Timestamp timeStamp, double cpuAuslastung
+            , double ramAuslastung) {
         this.ramAuslastung = ramAuslastung;
         this.cpuAuslastung = cpuAuslastung;
         this.timeStamp = new Timestamp(timeStamp.getTime());
