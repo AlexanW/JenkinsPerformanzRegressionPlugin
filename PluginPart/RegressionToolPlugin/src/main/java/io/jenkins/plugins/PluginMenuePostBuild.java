@@ -62,7 +62,7 @@ public class PluginMenuePostBuild extends Recorder{
     
     @DataBoundConstructor
     public PluginMenuePostBuild (boolean pruefeRegression, String pfadZuCPUundRAM, 
-            boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerBasen, 
+            boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerSchwankungenBasen, 
             double tolleranzFuerBasenVergleich, double aplhaWert, boolean vergleicheBasis,
             double timerIntervall, String jUnitDateiName, double tolleranzFuerTestVergleich) {
 //        this.pfadZuBasen = pfadZuBasen;
@@ -70,7 +70,7 @@ public class PluginMenuePostBuild extends Recorder{
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
         this.erstelleBasis = erstelleBasis;
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
-        this.tolleranzFuerSchwankungenBasen = tolleranzFuerBasen;
+        this.tolleranzFuerSchwankungenBasen = tolleranzFuerSchwankungenBasen;
         this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
         this.pruefeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
@@ -144,7 +144,7 @@ public class PluginMenuePostBuild extends Recorder{
         StringBuffer buffer = new StringBuffer(jUnitDateiName);
         buffer.append(".xml");
         jUnitDateiName = buffer.toString();
-        listener.getLogger().print("-----Starte RegressionTest-----\n");
+        listener.getLogger().print("-----Starte RegressionTest-----\n" + jUnitDateiName);
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = new File(pfadZuBasen);
         if (file.exists() && file.isDirectory()) {
@@ -233,7 +233,12 @@ public class PluginMenuePostBuild extends Recorder{
         if (fileUnit.exists()) {
             ITestWerte tests = LeseJUnitResults.leseTestsXML(fileUnit.getAbsolutePath(), timerIntervall);
             if (tests != null) {
-                tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                try {
+                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                } catch (InterruptedException e1) {
+                    logger.print("Fehler beim kopieren der Datei.");
+                    e1.printStackTrace();
+                }
                 logger.print(tests.toString() + "\n");
                 ITestVergleich vergleichen = new TestVergleichen();
                 LeseBasis lese = new LeseBasis();
@@ -259,7 +264,7 @@ public class PluginMenuePostBuild extends Recorder{
                     }
                 } else {
                     logger.print("Fuer diesen Job wurde keine Basis in"
-                            + " " + pfadZuBasen);  
+                            + " " + pfadZuBasen + "gefunden");  
                 }
                 logger.print(testResultString.getNachricht());
                 LeseSchreibeTestWerte.schreibeTestWerte(

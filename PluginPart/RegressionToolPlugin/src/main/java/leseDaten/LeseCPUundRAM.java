@@ -46,14 +46,21 @@ public class LeseCPUundRAM {
 	 * @return Eine HashMap Key ist dabei die Zeit und Value sind RAM und 
 	 * CPU Auslastung.
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	 */
-	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException {
+	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException, InterruptedException {
+	    int dummyCounter = 0;
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
         
         Path copiedTo = Paths.get(target + "Copy");
         File tempFile = new File(target);
         if (tempFile.exists()) {
-            Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
+            while (!tempFile.canRead() && dummyCounter < 100) {
+                Thread.sleep(10);
+            }
+            if(tempFile.canRead()) {
+                Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
+            }
             target+= "Copy";
             File copiedFile = new File(target);
             System.out.println("Target " + copiedFile.getAbsolutePath());
@@ -90,7 +97,7 @@ public class LeseCPUundRAM {
 	public static void main(String[] args) {
         try {
             readAuslastung("Data/SysLoadData/ProzessValues.txt");
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

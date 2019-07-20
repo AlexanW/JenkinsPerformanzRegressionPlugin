@@ -12,19 +12,20 @@
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders/>
-  <publishers/>
-  <buildWrappers>
-    <io.jenkins.plugins.PluginMenueClass plugin="RegressionToolPlugin@1.01">
+  <publishers>
+    <io.jenkins.plugins.PluginMenuePostBuild plugin="RegressionToolPlugin@1.01">
       <pfadZuCPUundRAM></pfadZuCPUundRAM>
-      <erstelleBasis>true</erstelleBasis>
-      <anzahlAnVergangenenBuilds>2</anzahlAnVergangenenBuilds>
-      <tolleranzFuerBasen>50.0</tolleranzFuerBasen>
-      <tolleranzFuerBasenVergleich>25.0</tolleranzFuerBasenVergleich>
+      <erstelleBasis>false</erstelleBasis>
+      <anzahlAnVergangenenBuilds>1</anzahlAnVergangenenBuilds>
+      <tolleranzFuerSchwankungenBasen>0.0</tolleranzFuerSchwankungenBasen>
+      <tolleranzFuerTestVergleich>0.0</tolleranzFuerTestVergleich>
+      <tolleranzFuerBasenVergleich>0.0</tolleranzFuerBasenVergleich>
       <timerIntervall>100.0</timerIntervall>
-      <pruefeRegression>true</pruefeRegression>
+      <pruefeRegression>false</pruefeRegression>
       <vergleicheBasis>false</vergleicheBasis>
-      <aplhaWert>0.0</aplhaWert>
+      <aplhaWert>0.005</aplhaWert>
       <jUnitDateiName>junitResult</jUnitDateiName>
-    </io.jenkins.plugins.PluginMenueClass>
-  </buildWrappers>
+    </io.jenkins.plugins.PluginMenuePostBuild>
+  </publishers>
+  <buildWrappers/>
 </project>
