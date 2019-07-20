@@ -141,9 +141,11 @@ public class PluginMenuePostBuild extends Recorder{
         //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
         pfadZuBasen =  build.getRootDir().getParentFile().getParent();
         pfadZuBuilds = build.getRootDir().getParent();
-        StringBuffer buffer = new StringBuffer(jUnitDateiName);
-        buffer.append(".xml");
-        jUnitDateiName = buffer.toString();
+        if (!jUnitDateiName.contains(".xml")) {
+            StringBuffer buffer = new StringBuffer(jUnitDateiName);
+            buffer.append(".xml");
+            jUnitDateiName = buffer.toString();
+        }
         listener.getLogger().print("-----Starte RegressionTest-----\n" + jUnitDateiName);
         //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
         File file = new File(pfadZuBasen);
