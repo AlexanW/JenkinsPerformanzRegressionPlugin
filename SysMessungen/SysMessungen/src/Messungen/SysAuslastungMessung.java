@@ -77,10 +77,14 @@ public class SysAuslastungMessung {
     
     public static void main(String[] args) {
         if (args.length > 1  ) {
-            File testFile = new File(args[1]);          
-            if (testFile.getParentFile().exists()) {                             
+            File testFile = new File(args[1]); 
+            //Stellt sicher, dass der Pfad existiert. Prueft dabei nicht die eigenliche Datei.
+            if (testFile.getParentFile().exists()) { 
                 switch(args[0]) {
                 case "timer":
+                    if (testFile.exists() && !testFile.isDirectory()) {
+                        testFile.delete();
+                    }
                     if (args.length > 2) {                        
                         startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[2])));
                         //TO DO END TIMER?
@@ -88,6 +92,7 @@ public class SysAuslastungMessung {
                         Scanner scanner = new Scanner(System.in);
                         scanner.nextLine();
                         endMeasurement();
+                        scanner.close();
                     } else {
                         System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
                     }
@@ -104,7 +109,8 @@ public class SysAuslastungMessung {
             }       
         } else {
             System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\")"
-                    + " und eine Zieldatei beinhalten.");
+                    + " und eine Zieldatei beinhalten. \n"
+                    + "<Modus> <Pfad> <timer>*");
         }
 //        startMeasurementTimer("Data/SysLoadData/ProzessValues.txt", 100);
 //        bestimmeDatei("Dummy");

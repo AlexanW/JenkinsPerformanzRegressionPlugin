@@ -76,7 +76,10 @@ public class LeseCPUundRAM {
                                 , new Timestamp(Long.parseLong(temp[0]))));   
                     }
                 }
-            }  
+                if (!copiedFile.delete()) {
+                    System.out.println("Die Datei konnte nicht geloescht werden.");
+                }
+            }
         }
 	    return loads;
 	}
