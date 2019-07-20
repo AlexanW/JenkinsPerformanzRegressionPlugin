@@ -87,9 +87,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Setter fuer die Auslastung weahrend dieses Tests.
 	 */
 	public void setTestAuslastungen (List <TestAuslastungen> testAuslastungen) {
-	    System.out.println("SETZE AUSLASTUNGEN: " + testAuslastungen.size());
         this.testAuslastungen = matchMessungenZuTests(testAuslastungen);
-        System.out.println("AUSLASSTNGE NACH MATCH: " + this.testAuslastungen.size());
         addMessungenZuTests();
     }
 	/**
@@ -127,7 +125,6 @@ public class TestWerte implements ITestWerte, Serializable {
 	        for (ITest t : tests.values()) {
 	            if (t.getScore() < step_size) {
 	                if ((int)(scoreSumme/step_size) < testAuslastungen.size()) {
-	                    System.out.println(t.toString());
 	                    setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
 	                }
 	            } else {

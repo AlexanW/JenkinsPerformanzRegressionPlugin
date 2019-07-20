@@ -193,6 +193,7 @@ public class LeseJUnitResults {
                     for (int i = 1; i <= useResults; i++) {
                         File tempTestWerteFile = new File(files[i].getAbsolutePath() + "/" + TESTWERTE_DATEINAME);
                         if (tempTestWerteFile.exists()) {
+                            System.out.println(tempTestWerteFile.getAbsolutePath());
                             values.add(LeseSchreibeTestWerte.leseTestWerte(tempTestWerteFile.getAbsolutePath()));
                         } else {
                             File tempFile = new File(files[i].getAbsolutePath() + "/" + jUnitDateiName);
@@ -209,7 +210,6 @@ public class LeseJUnitResults {
                 }
             }
         }
-        System.out.println("FistEndOfReadingXMLS");
         return values;
     }
     

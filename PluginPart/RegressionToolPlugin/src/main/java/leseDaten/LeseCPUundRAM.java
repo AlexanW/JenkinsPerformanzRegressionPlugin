@@ -51,11 +51,9 @@ public class LeseCPUundRAM {
 	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException, InterruptedException {
 	    int dummyCounter = 0;
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         Path copiedTo = Paths.get(target + "Copy");
         File tempFile = new File(target);
         if (tempFile.exists()) {
-            System.out.println("TEMP FILE EXISTIERT: " + tempFile.exists());
             while (!tempFile.canRead() && dummyCounter < 10) {
                 Thread.sleep(10);
                 System.out.println("Cant Read " + dummyCounter);

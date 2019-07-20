@@ -17,11 +17,12 @@ public class LeseSchreibeTestWerte {
     
     public static void schreibeTestWerte (String pfad, ITestWerte testwerte) throws FileNotFoundException, IOException {
         File file = new File(pfad);
-        if (!file.exists()) {
+//        if (!file.exists()) {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(pfad));
+            System.out.println("VOR SCHREIBEN: " + testwerte);
             stream.writeObject(testwerte);    
             stream.close();
-        }
+//        }
     }
     
     public static ITestWerte leseTestWerte (String pfad) throws FileNotFoundException, IOException, ClassNotFoundException {

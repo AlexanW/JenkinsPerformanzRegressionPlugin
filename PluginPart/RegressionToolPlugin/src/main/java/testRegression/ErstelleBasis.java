@@ -208,7 +208,6 @@ public class ErstelleBasis implements IErstelleBasis {
     private HashMap<String, ITest> getDurchschnitTests (List<ITestWerte> werte) {
         HashMap<String, ITest> druchschnitTests = new HashMap<String, ITest>();
         List<String> namen = getAlleTestNamenDerBasis(werte);
-        
         for (String n : namen) {
             Test tempTest = new Test();
             tempTest.setName(n);
@@ -223,9 +222,10 @@ public class ErstelleBasis implements IErstelleBasis {
             int iAuslastungenCounter = 0;
             
             for (ITestWerte e : werte) {
+                System.out.println(e.toString());
                if (e.getTests().get(n) != null) {
                    tempSum += e.getTests().get(n).getScore();
-                   if (e.getTests().get(n).getAvarageCPU() != 0) {
+                   if (e.getTests().get(n) != null) {
                        tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
                        tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
                        tempCpuMinSum += e.getTests().get(n).getMinCPU();
@@ -237,6 +237,7 @@ public class ErstelleBasis implements IErstelleBasis {
                    i++;
                }
             }
+            System.out.println("AuslastungsCounter: " + iAuslastungenCounter);
             tempTest.setScore(tempSum/i);
             tempTest.setAvarageCPU(tempCpuAvarageSum/iAuslastungenCounter);
             tempTest.setMinCPU(tempCpuMinSum/iAuslastungenCounter);
@@ -257,12 +258,13 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     private List<String> getAlleTestNamenDerBasis (List<ITestWerte> werte) {
         List<String> namen = new ArrayList<String>();
-        System.out.println("Start Name Search: ");
+//        System.out.println("Start Name Search: ");
         for (ITestWerte e : werte) {
-            System.out.println("------------------------------------------------");
+//            System.out.println("------------------------------------------------");
             for (ITest t : e.getTests().values()) {
-                System.out.println("NameToAddTest: " + t.getName());
-                namen.add(t.getName());
+                if (!namen.contains(t.getName())) {
+                    namen.add(t.getName());
+                }
             }
         }
         return namen;
