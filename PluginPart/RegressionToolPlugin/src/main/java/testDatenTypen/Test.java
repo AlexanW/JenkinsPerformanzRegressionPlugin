@@ -134,7 +134,10 @@ public class Test implements ITest, Serializable {
         this.avarageRAM = avarageRAM;
     }
     public String toString () {
-        String output = "\tTestname: " + name + " Score: " + score + " \tIstFehlgeschlagen: " + istFehlgeschlagen + "\n";
+        String output = "\tTestname: " + name + " Score: " + score 
+                + " \tIstFehlgeschlagen: " + istFehlgeschlagen + " CPUMax: " + maxCPU 
+                + " CPUAvarage: " + avarageCPU  + " RAMMax: " + maxRAM + " RAMAvarage: " 
+                + avarageRAM + "\n";
        return output;
     }
     public static void main(String[] args) {
