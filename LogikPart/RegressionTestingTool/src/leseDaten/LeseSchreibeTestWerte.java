@@ -17,9 +17,10 @@ public class LeseSchreibeTestWerte {
     
     public static void schreibeTestWerte (String pfad, ITestWerte testwerte) throws FileNotFoundException, IOException {
         File file = new File(pfad);
-        if (!file.exists()) {
-            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(pfad));
+        if (file.getParentFile().exists()) {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file.getAbsolutePath()));
             stream.writeObject(testwerte);            
+            stream.close();
         }
     }
     
@@ -27,8 +28,9 @@ public class LeseSchreibeTestWerte {
         ITestWerte tempWerte = new TestWerte();
         File file = new File(pfad);
         if (file.exists()) {
-            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(pfad));
-            tempWerte = (ITestWerte)stream.readObject();            
+            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(file.getAbsolutePath()));
+            tempWerte = (ITestWerte)stream.readObject();
+            stream.close();
         }
         return tempWerte;
     }
