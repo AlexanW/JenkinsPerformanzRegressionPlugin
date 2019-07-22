@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import de.uni_hildesheim.sse.system.GathererFactory;
@@ -17,6 +18,10 @@ public class SysAuslastungMessung {
      * Der Timer, der fuer das Ausfuehren dieser Aufgabe zustaendig ist.
      */
     private static Timer timer;
+    /**
+     * Die Millisekunden die eine Stunde ausmachen.
+     */
+    private static long stunde = TimeUnit.HOURS.toMillis(1);
     /**
      * Der Pfad der Dateien in die, die Messdaten geschrieben werden.
      * Dabei fehlt die Nummer der Datei und die .txt Endung, beides wird
@@ -39,9 +44,10 @@ public class SysAuslastungMessung {
     /**
      * 
      */
-    public static void messePerformanz(String pfad) {
+    public static void messePerformanz(String pfad, int zeitOffset) {
         DateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");
         FileOutputStream stream = null;
+
         try {
             stream = new FileOutputStream(new File(pfad), true);
             stream.write(
@@ -85,8 +91,8 @@ public class SysAuslastungMessung {
                     if (testFile.exists() && !testFile.isDirectory()) {
                         testFile.delete();
                     }
-                    if (args.length > 2) {                        
-                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[2])));
+                    if (args.length > 3) {                        
+                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[3])));
                         //TO DO END TIMER?
                         System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
                         Scanner scanner = new Scanner(System.in);
@@ -98,7 +104,7 @@ public class SysAuslastungMessung {
                     }
                     break;
                 case "single":
-                    messePerformanz(args[1]);
+                    messePerformanz(args[1], Integer.parseInt(args[3]));
                     break;
                 default:
                     System.out.println("Die erste Eingabe ist kein bekanntest Kommando (\"timer\" oder \"singel\")");
@@ -110,7 +116,7 @@ public class SysAuslastungMessung {
         } else {
             System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\")"
                     + " und eine Zieldatei beinhalten. \n"
-                    + "<Modus> <Pfad> <timer>*");
+                    + "<Modus> <Pfad> <ZeitOffset> <timer>*");
         }
 //        startMeasurementTimer("Data/SysLoadData/ProzessValues.txt", 100);
 //        bestimmeDatei("Dummy");
