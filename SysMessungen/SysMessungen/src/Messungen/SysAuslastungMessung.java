@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
 
 import de.uni_hildesheim.sse.system.GathererFactory;
 
@@ -22,12 +21,12 @@ public class SysAuslastungMessung {
      * Die Millisekunden die eine Stunde ausmachen.
      */
     private static long stunde = TimeUnit.HOURS.toMillis(1);
-    /**
-     * Der Pfad der Dateien in die, die Messdaten geschrieben werden.
-     * Dabei fehlt die Nummer der Datei und die .txt Endung, beides wird
-     * bei dem Start einer Task hinzugefügt.
-     */
-    private final static String PATH = "Data/SysLoadData/ProzessValues";
+//    /**
+//     * Der Pfad der Dateien in die, die Messdaten geschrieben werden.
+//     * Dabei fehlt die Nummer der Datei und die .txt Endung, beides wird
+//     * bei dem Start einer Task hinzugefügt.
+//     */
+//    private final static String PATH = "Data/SysLoadData/ProzessValues";
     /**
      * Dieser Methode stellt den Timer ein uns startet den Messvorgang. Sollte die 
      * TimerTask eine Exception werfen, so wird der Timer beendet.
@@ -73,13 +72,13 @@ public class SysAuslastungMessung {
     public static void endMeasurement() {
         timer.cancel();
     }
-    /**
-     * Eine Methode um festzulegen in welche ProzessValues Datei geschrieben wird.
-     * Dabei wird darauf geachtet, dass es eine max. Anzahl X gibt.
-     */
-    private static String bestimmeDatei(String name) {
-        return PATH + name +"txt";
-    }
+//    /**
+//     * Eine Methode um festzulegen in welche ProzessValues Datei geschrieben wird.
+//     * Dabei wird darauf geachtet, dass es eine max. Anzahl X gibt.
+//     */
+//    private static String bestimmeDatei(String name) {
+//        return PATH + name +"txt";
+//    }
     
     public static void main(String[] args) {
         if (args.length > 1  ) {
