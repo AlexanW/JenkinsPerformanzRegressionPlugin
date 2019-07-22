@@ -62,7 +62,7 @@ public class MyTestClass {
         }
     }
     
-    @Test
+    
     public void testeEinlesen() {
         try {
             List<ITestWerte> werte = 
