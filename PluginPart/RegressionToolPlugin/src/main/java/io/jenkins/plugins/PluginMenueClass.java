@@ -14,9 +14,18 @@ import hudson.model.BuildListener;
 import hudson.model.Result;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
-import leseDaten.*;
-import testDatenTypen.*;
-import testRegression.*;
+import leseDaten.LeseBasis;
+import leseDaten.LeseCPUundRAM;
+import leseDaten.LeseJUnitResults;
+import leseDaten.LeseSchreibeTestWerte;
+import testDatenTypen.IBasis;
+import testDatenTypen.ITestWerte;
+import testDatenTypen.RegressionTestResult;
+import testDatenTypen.Status;
+import testRegression.ErstelleBasis;
+import testRegression.IErstelleBasis;
+import testRegression.ITestVergleich;
+import testRegression.TestVergleichen;
 
 public class PluginMenueClass extends BuildWrapper{
     

@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.jinterop.dcom.test.SysInfoEvents;
-
 import leseDaten.LeseJUnitResults;
 import testDatenTypen.Test;
 import testDatenTypen.Basis;
@@ -20,10 +18,6 @@ import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
 
 public class ErstelleBasis implements IErstelleBasis {
-    /**
-     * 
-     */
-    private static FileOutputStream stream;
     /**
      * 
      */
@@ -113,20 +107,20 @@ public class ErstelleBasis implements IErstelleBasis {
         return geschrieben;
     }
     
-    private boolean schribePlainTextBasis (IBasis basis, String targetBasis) {
-        boolean geschrieben = false;
-        try {
-            /*
-             * Hier wird an den Namen der Datei Basis noch der Name der 
-             * TestSuit angehaengt.
-             */
-            stream = new FileOutputStream(targetBasis + basis.getName() + ".txt");
-            stream.write(basis.toString().getBytes("UTF-8"));
-        } catch (IOException exc) {
-            exc.printStackTrace();
-        }  
-        return geschrieben;
-    }
+//    private boolean schribePlainTextBasis (IBasis basis, String targetBasis) {
+//        boolean geschrieben = false;
+//        try {
+//            /*
+//             * Hier wird an den Namen der Datei Basis noch der Name der 
+//             * TestSuit angehaengt.
+//             */
+//            stream = new FileOutputStream(targetBasis + basis.getName() + ".txt");
+//            stream.write(basis.toString().getBytes("UTF-8"));
+//        } catch (IOException exc) {
+//            exc.printStackTrace();
+//        }  
+//        return geschrieben;
+//    }
     
     private boolean enthaeltFehlschlag (List<ITestWerte> werte) {
         boolean enthaeltFehlschlag = false;
@@ -237,7 +231,6 @@ public class ErstelleBasis implements IErstelleBasis {
                    i++;
                }
             }
-            System.out.println("AuslastungsCounter: " + iAuslastungenCounter);
             tempTest.setScore(tempSum/i);
             tempTest.setAvarageCPU(tempCpuAvarageSum/iAuslastungenCounter);
             tempTest.setMinCPU(tempCpuMinSum/iAuslastungenCounter);
@@ -258,9 +251,7 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     private List<String> getAlleTestNamenDerBasis (List<ITestWerte> werte) {
         List<String> namen = new ArrayList<String>();
-//        System.out.println("Start Name Search: ");
         for (ITestWerte e : werte) {
-//            System.out.println("------------------------------------------------");
             for (ITest t : e.getTests().values()) {
                 if (!namen.contains(t.getName())) {
                     namen.add(t.getName());
@@ -268,12 +259,5 @@ public class ErstelleBasis implements IErstelleBasis {
             }
         }
         return namen;
-    }
-    public static void main(String[] args) {
-//        ErstelleBasis basis = new ErstelleBasis();
-//        IBasis dummy = basis.erstelleBasis("F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\builds",
-//                "F:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanceTests(Bachelor)\\CIToolGit\\PluginPart\\RegressionToolPlugin\\work\\jobs\\TestProjekt\\basen",
-//                0.2, 5, 100);
-//        System.out.println(dummy.toString());
     }
 }

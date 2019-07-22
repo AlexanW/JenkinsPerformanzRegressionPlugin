@@ -145,7 +145,6 @@ public class TestVergleichArten {
      */
     public static Status vergleicheBasen(BasisMitTests alteBasis, BasisMitTests neueBasis, double erwarteteRegression, double alpha) {
         Status status = Status.NEUTRAL;
-        String result = "";
         TTest test = new TTest();
         /*
          * Sollte die Ho Hypothese, dass die Means gleich sind abgelehnt werden dann gilt, 

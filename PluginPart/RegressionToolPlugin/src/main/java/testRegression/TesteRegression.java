@@ -1,11 +1,5 @@
 package testRegression;
 
-import java.util.List;
-
-import leseDaten.LeseJUnitResults;
-import testDatenTypen.IBasis;
-import testDatenTypen.ITestWerte;
-
 /**
  * Diese Klasse enthaelt Methoden um mithilfe von Basen und 
  * TestWerten Performanz Regression aufzudecken.

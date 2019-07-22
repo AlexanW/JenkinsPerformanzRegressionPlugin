@@ -249,8 +249,10 @@ public class PluginMenuePostBuild extends Recorder{
                 IBasis tempBasis = null;
                     try {
                         tempBasis = lese.leseObjektIBasisEin(pfadZuBasen + "/Neu.txt");
-                    } catch (ClassNotFoundException e) {
+                    } catch (ClassNotFoundException e ) {
                         e.printStackTrace();
+                    } catch (FileNotFoundException exc) {
+                        logger.print("Es konnte keine Basis fuer einen Vergleich gefunden worden.");
                     }
                 if (tempBasis != null) {
                     logger.print("Beginne Vergleich von neuen Testergebnissen und der neusten Basis.\n"

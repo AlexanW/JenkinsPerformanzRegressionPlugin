@@ -3,7 +3,6 @@ package testRegression;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.RegressionTestResult;
-import testDatenTypen.Status;
 
 public interface ITestVergleich {
     

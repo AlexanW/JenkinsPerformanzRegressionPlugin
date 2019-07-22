@@ -1,12 +1,10 @@
 package testRegression;
 
-import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.RegressionTestResult;
 import testDatenTypen.Status;
-import testDatenTypen.TestWerte;
 
 public class TestVergleichen implements ITestVergleich{
     /**
