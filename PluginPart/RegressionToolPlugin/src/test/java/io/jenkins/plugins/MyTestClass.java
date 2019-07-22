@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -56,6 +58,24 @@ public class MyTestClass {
                 System.out.println(basis);
             }
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Test
+    public void testeEinlesen() {
+        try {
+            List<ITestWerte> werte = 
+                    LeseJUnitResults.getJUnitResultDateiAusBuilds
+                    ("C:\\Uni\\SeminareProjekte\\"
+                    + "ContinuousIntegrationPerformanz(Bachelor)\\"
+                    + "Tool\\CIRegressionTool\\PluginPart\\RegressionToolPlugin"
+                    + "\\src\\main\\resources\\TestDaten", 1, 100, "junitResult.xml");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

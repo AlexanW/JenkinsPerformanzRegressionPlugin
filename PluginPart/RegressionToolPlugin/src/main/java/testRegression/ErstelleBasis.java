@@ -60,7 +60,7 @@ public class ErstelleBasis implements IErstelleBasis {
 //        }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
-        if (!enthaeltFehlschlag(werte) && werte.size() > 1) {
+        if (!enthaeltFehlschlag(werte) && werte.size() >= 1) {
             basis = new Basis(werte.get(0).getName(),avarageLaufzeit
                     , getMinLaufzeit(werte, tolleranz, avarageLaufzeit )
                     , getMaxLaufzeit(werte, tolleranz, avarageLaufzeit)
