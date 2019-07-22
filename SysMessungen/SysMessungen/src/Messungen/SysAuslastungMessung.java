@@ -32,10 +32,10 @@ public class SysAuslastungMessung {
      * Dieser Methode stellt den Timer ein uns startet den Messvorgang. Sollte die 
      * TimerTask eine Exception werfen, so wird der Timer beendet.
      */
-    public static void startMeasurementTimer(String pfad, int steps) {
+    public static void startMeasurementTimer(String pfad, int steps, double zeitOffset) {
         timer = new Timer();
         try {
-            timer.schedule(new SysAuslastungMessungTask(timer, pfad), 10, steps);
+            timer.schedule(new SysAuslastungMessungTask(timer, pfad, (long)(zeitOffset* stunde)), 10, steps);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             timer.cancel();
@@ -44,18 +44,18 @@ public class SysAuslastungMessung {
     /**
      * 
      */
-    public static void messePerformanz(String pfad, int zeitOffset) {
+    public static void messePerformanz(String pfad, double zeitOffset) {
         DateFormat timeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");
         FileOutputStream stream = null;
 
         try {
             stream = new FileOutputStream(new File(pfad), true);
             stream.write(
-                    (System.currentTimeMillis()
+                    ((System.currentTimeMillis() - (zeitOffset * stunde))
                             + ";" + GathererFactory.getProcessorDataGatherer().getCurrentSystemLoad() 
                             // Teilen durch 1000000000.0 für GB.
                             + ";" + (GathererFactory.getMemoryDataGatherer().getCurrentMemoryUse() / 1000000000.0) 
-                            + ";" + timeFormat.format(System.currentTimeMillis()) + "\n")
+                            + ";" + timeFormat.format((System.currentTimeMillis() - (zeitOffset * stunde))) + "\n")
                     .getBytes("UTF-8"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,7 +92,7 @@ public class SysAuslastungMessung {
                         testFile.delete();
                     }
                     if (args.length > 3) {                        
-                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt((args[3])));
+                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt(args[3]), Double.parseDouble(args[2]));
                         //TO DO END TIMER?
                         System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
                         Scanner scanner = new Scanner(System.in);
