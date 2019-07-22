@@ -213,7 +213,7 @@ public class PluginMenuePostBuild extends Recorder{
         LeseBasis lese = new LeseBasis();
         try {
             basisNeu = lese.leseObjektIBasisEin(pfadZuBasen + "/Neu.txt");
-            basisAlt = lese.leseObjektIBasisEin(pfadZuBasen +  "/basen/Alt.txt");
+            basisAlt = lese.leseObjektIBasisEin(pfadZuBasen +  "/Alt.txt");
         } catch (FileNotFoundException e) {
             logger.print("!Eine der Basen existiert nicht!" + e.getMessage());
         } catch (IOException e) {
@@ -256,7 +256,7 @@ public class PluginMenuePostBuild extends Recorder{
                     }
                 if (tempBasis != null) {
                     logger.print("Beginne Vergleich von neuen Testergebnissen und der neusten Basis.\n"
-                            + "Dabei gilt eine erwartete Regression von " + (tolleranzFuerTestVergleich != 0 ? tolleranzFuerTestVergleich : 0.2) + "\n"
+                            + "Dabei gilt eine erwartete Regression von " + tolleranzFuerTestVergleich + "\n"
                             + "Verglichen werden \n" + tempBasis.toString() + "und \n"
                             + tests.toString());
                         testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
