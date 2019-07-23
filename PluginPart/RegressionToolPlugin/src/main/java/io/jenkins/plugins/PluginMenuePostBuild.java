@@ -293,7 +293,7 @@ public class PluginMenuePostBuild extends Recorder{
         }
         @Override
         public String getDisplayName() {
-            return "Teste Performanz Regression POST";
+            return "Teste Performanz Regression";
         }    
     }
 }
