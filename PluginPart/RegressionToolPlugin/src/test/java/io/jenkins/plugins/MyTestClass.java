@@ -9,16 +9,20 @@ import java.util.List;
 
 import org.junit.Test;
 
+import leseDaten.LeseBasis;
 import leseDaten.LeseCPUundRAM;
 import leseDaten.LeseJUnitResults;
 import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.IBasis;
+import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
+import testDatenTypen.RegressionTestResult;
 import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
+import testRegression.TestVergleichArten;
 
 public class MyTestClass {
-    @Test
+    
     public void testBaseCreation() {
         //Relativer Pfad zu TestDaten "src/main/resources/TestDaten"
         File resultFile = new File("src/main/resources/TestDaten/ResultDateien/100/junitResult.xml");
@@ -67,10 +71,7 @@ public class MyTestClass {
         try {
             List<ITestWerte> werte = 
                     LeseJUnitResults.getJUnitResultDateiAusBuilds
-                    ("C:\\Uni\\SeminareProjekte\\"
-                    + "ContinuousIntegrationPerformanz(Bachelor)\\"
-                    + "Tool\\CIRegressionTool\\PluginPart\\RegressionToolPlugin"
-                    + "\\src\\main\\resources\\TestDaten", 1, 100, "junitResult.xml");
+                    ("src/main/resources/TestDaten", 1, 100, "junitResult.xml");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -78,5 +79,22 @@ public class MyTestClass {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Test
+    public void testeBasenTestRegression() {
+        RegressionTestResult result = new RegressionTestResult();
+        double erwarteteRegression = 0.1;
+       LeseBasis read = new LeseBasis();
+        IBasis neueBasis = null;
+        IBasis alteBasis = null;
+        try {
+            neueBasis = read.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Neu.txt");
+            alteBasis = read.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
+        } catch (ClassNotFoundException | IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+        System.out.println(result.getNachricht());
     }
 }

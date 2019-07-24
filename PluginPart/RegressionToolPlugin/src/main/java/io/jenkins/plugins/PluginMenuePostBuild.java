@@ -186,6 +186,9 @@ public class PluginMenuePostBuild extends Recorder{
     
     public void erstelleBasen(PrintStream logger) {
         IErstelleBasis basis = new ErstelleBasis();
+        if (timerIntervall == 0) {
+            timerIntervall = 100;
+        }
         logger.print("-----------------------------------\n"
                 + "Erstelle Basen mit den Pfaden: \n"
                 + "Die Build Ordner mit den Result Dateien:" + pfadZuBuilds + "\n"
@@ -217,7 +220,7 @@ public class PluginMenuePostBuild extends Recorder{
         } catch (FileNotFoundException e) {
             logger.print("!Eine der Basen existiert nicht!" + e.getMessage());
         } catch (IOException e) {
-            logger.print("!Ein Fehler beim Einlesen ist geschehen!" + e.getMessage());
+            logger.print("!Es ist ein Fehler beim Einlesen geschehen!" + e.getMessage());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -252,7 +255,7 @@ public class PluginMenuePostBuild extends Recorder{
                     } catch (ClassNotFoundException e ) {
                         e.printStackTrace();
                     } catch (FileNotFoundException exc) {
-                        logger.print("Es konnte keine Basis fuer einen Vergleich gefunden worden.");
+                        logger.print("Es konnte keine Basis fuer einen Vergleich gefunden werden.");
                     }
                 if (tempBasis != null) {
                     logger.print("Beginne Vergleich von neuen Testergebnissen und der neusten Basis.\n"

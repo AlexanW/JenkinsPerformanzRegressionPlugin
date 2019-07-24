@@ -66,12 +66,11 @@ public class TestVergleichArten {
         List<ITest> regressierteTests = new ArrayList<ITest>();
         List<ITest> testNurInWerten = new ArrayList<ITest>();
         List<ITest> testNurInBasis = new ArrayList<ITest>();
-        erwarteteRegression = erwarteteRegression != 0 ? erwarteteRegression : 0.2;
         System.out.println("Erwartete Regressoion fuer vergleich " + erwarteteRegression);
         for (ITest t :basis.getTests().values()) {
-            if (testWerte.getTests().get(t.getName()) != null) {
+            if (testWerte.getTests().containsKey(t.getName())) {
                 //Trotz erwarteteer Regression sollte hier eine weitere tolleranz eingebaut werden.
-                if (t.getScore() * 1 + erwarteteRegression <
+                if (t.getScore() * (1 + erwarteteRegression) <
                         testWerte.getTests().get(t.getName()).getScore()) {
                     regressierteTests.add(testWerte.getTests().get(t.getName()));
                 }
@@ -80,7 +79,7 @@ public class TestVergleichArten {
             }
         }
         for(ITest t : testWerte.getTests().values()) {
-            if (!basis.getTests().values().contains(t)) {
+            if (!basis.getTests().containsKey(t.getName())) {
                 testNurInWerten.add(t);
             }
         }
@@ -152,7 +151,7 @@ public class TestVergleichArten {
          * Dabei gibt es eine Fehlkategoriesierung von aphla%, hier 5%.
          * OneSided alpha*2; -> hier Mean 1 kleiner als mean2 -> Regression.
          */
-        boolean h0Rejectet = test.tTest(ITestsZuArry(alteBasis.getTests().values()),
+        boolean h0Rejectet = test.tTest(ITestsZuArry(alteBasis.getTests().values(), erwarteteRegression),
                 ITestsZuArry(neueBasis.getTests().values()), (2*alpha));
         if (!h0Rejectet) {
 
@@ -194,6 +193,18 @@ public class TestVergleichArten {
         int i = 0;
         for (ITest t: tests) {
             doubleArray[i] = t.getScore();
+            i++;
+        }
+        return doubleArray;
+    }
+    /**
+     * 
+     */
+    private static double[] ITestsZuArry(Collection<ITest> tests, double erwarteteRegression) {
+        double[] doubleArray = new double[tests.size()];
+        int i = 0;
+        for (ITest t: tests) {
+            doubleArray[i] = t.getScore() * (1 + erwarteteRegression);
             i++;
         }
         return doubleArray;

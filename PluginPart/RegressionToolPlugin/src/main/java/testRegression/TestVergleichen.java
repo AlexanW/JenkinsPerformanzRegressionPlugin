@@ -15,8 +15,12 @@ public class TestVergleichen implements ITestVergleich{
             , double erwarteteRegression, double alpha) {
         RegressionTestResult result = new RegressionTestResult();
         result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, erwarteteRegression, alpha));
-        if (result.getResutlDerTests() == Status.GROESSER && neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
-            result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+        if (result.getResutlDerTests() == Status.GROESSER) {
+            result.addTextZuNachricht("Die neue Basis weist dabei eine Regression im Vergleich zu der alten auf."
+                    + " Es galt eine erwartete Regression von " + erwarteteRegression);
+            if (neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
+                result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+            }
         } else {
             result.addTextZuNachricht("Keine Regression ausserhalb der " + (erwarteteRegression*100) + "% Grenze"
                     + "fuer Regression.");
