@@ -94,10 +94,7 @@ public class SysAuslastungMessung {
                         startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt(args[3]), Double.parseDouble(args[2]));
                         //TO DO END TIMER?
                         System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
-                        Scanner scanner = new Scanner(System.in);
-                        scanner.nextLine();
                         endMeasurement();
-                        scanner.close();
                     } else {
                         System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
                     }

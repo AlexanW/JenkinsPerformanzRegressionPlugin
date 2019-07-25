@@ -32,6 +32,10 @@ public class SysAuslastungMessungTask extends TimerTask {
      */
     private long zeitOffset;
     /**
+     * 
+     */
+    private File zielFile;
+    /**
      * Diese Task erstellt oder Überschreibt eine Datei names "ProzessValues.txt".
      * In dieser Werden die Ergebnisse der Gatherer gesammelt, und für die Auswertung bereitgestellt.
      * @throws FileNotFoundException Sollte die Datei in die geschrieben werden soll nicht gefunden werden.
@@ -39,7 +43,8 @@ public class SysAuslastungMessungTask extends TimerTask {
     public SysAuslastungMessungTask(Timer timer, String pfad, long zeitOffset) throws FileNotFoundException {
         super();
         this.zeitOffset = zeitOffset;
-        stream = new FileOutputStream(new File(pfad));
+        zielFile = new File(pfad);
+        stream = new FileOutputStream(zielFile);
         this.timer = timer;
     }
     /**
@@ -68,4 +73,18 @@ public class SysAuslastungMessungTask extends TimerTask {
                 timer.cancel();
             }
     }
+    @Override
+    public boolean cancel() {
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(!zielFile.delete()) {
+            System.out.println("Die Datei " + zielFile.getAbsolutePath() + ""
+                    + " konnte nicht geloescht werden.");
+        }
+        return super.cancel();
+    }
+    
 }
