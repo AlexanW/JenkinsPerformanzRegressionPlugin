@@ -97,13 +97,15 @@ public class LeseCPUundRAM {
         File folder = new File(target);
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles();
-            //Sortiere Files nach absteigender letzter Bearbeitung.
-            Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
-            for (int i = 0; i < files.length && 
-                    i <= TimeUnit.MILLISECONDS.toHours((long)(score * 1000)); i++) {
-                System.out.println("SCHLEIFENLAUF READ TESTS");
-                if (files[i].getName().contains("Auslastungen")) {
-                    loads.addAll(readAuslastung(files[i].getAbsolutePath()));
+            if (files != null) {
+                //Sortiere Files nach absteigender letzter Bearbeitung.
+                Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
+                for (int i = 0; i < files.length && 
+                        i <= TimeUnit.MILLISECONDS.toHours((long)(score * 1000)); i++) {
+                    System.out.println("SCHLEIFENLAUF READ TESTS");
+                    if (files[i].getName().contains("Auslastungen")) {
+                        loads.addAll(readAuslastung(files[i].getAbsolutePath()));
+                    }
                 }
             }
         }

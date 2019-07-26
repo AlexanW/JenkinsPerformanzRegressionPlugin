@@ -6,14 +6,14 @@
       <name>testsForDummys.DummyTests</name>
       <stdout></stdout>
       <stderr></stderr>
-      <duration>1.837</duration>
+      <duration>35.504</duration>
       <timestamp>2019-07-20T23:15:30</timestamp>
-      <time>1.837</time>
+      <time>35.058</time>
       <enclosingBlocks/>
       <enclosingBlockNames/>
       <cases>
         <case>
-          <duration>0.001</duration>
+          <duration>1.801</duration>
           <className>testsForDummys.DummyTests</className>
           <testName>testDoMathNoSleep</testName>
           <skipped>false</skipped>
@@ -27,7 +27,7 @@
           <failedSince>0</failedSince>
         </case>
         <case>
-          <duration>0.5</duration>
+          <duration>1.5</duration>
           <className>testsForDummys.DummyTests</className>
           <testName>testDoMathHalfSec</testName>
           <skipped>false</skipped>
@@ -43,6 +43,6 @@
       </cases>
     </suite>
   </suites>
-  <duration>1.837</duration>
+  <duration>23.84</duration>
   <keepLongStdio>false</keepLongStdio>
 </result>

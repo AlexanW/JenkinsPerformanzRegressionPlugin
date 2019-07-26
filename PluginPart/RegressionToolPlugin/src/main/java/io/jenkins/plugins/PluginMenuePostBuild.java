@@ -148,7 +148,7 @@ public class PluginMenuePostBuild extends Recorder{
             BuildListener listener) throws InterruptedException, IOException {
         boolean enthaeltBasisDir = false;
         boolean basenDirErstellt = true;
-        //Das Plugin ist nur aktiv wenn mindestens eine Aktion gewünscht ist.
+        //Das Plugin ist nur aktiv wenn mindestens eine Aktion gewuenscht ist.
         if (erstelleBasis || vergleicheBasis || testeRegression) {
             //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
             pfadZuBasen =  build.getRootDir().getParentFile().getParent();

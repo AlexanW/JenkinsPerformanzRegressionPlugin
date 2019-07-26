@@ -100,16 +100,24 @@ public class TestVergleichArten {
         for (ITest t : testNurInBasis) {
             result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
+        FileOutputStream stream = null;
         try {
-            FileOutputStream stream = new FileOutputStream(new File(pfad + "/regressierteTests.txt"));
+            stream = new FileOutputStream(new File(pfad + "/regressierteTests.txt"));
             stream.write(result.toString().getBytes("UTF-8"));
-            stream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
     /**
