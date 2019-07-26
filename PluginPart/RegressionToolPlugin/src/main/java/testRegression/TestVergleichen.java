@@ -36,7 +36,7 @@ public class TestVergleichen implements ITestVergleich{
      */
     @Override
     public RegressionTestResult vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
-            ,double erwarteteRegression, String pfad) {
+            ,double erwarteteRegression, String pfad, double auslastungTolleranz) {
         RegressionTestResult result = new RegressionTestResult();
         result.setResutlDerTests(TestVergleichArten.testWerteAuserhalbDerGrenzen(
                 testWerte, basis, erwarteteRegression));
@@ -47,7 +47,9 @@ public class TestVergleichen implements ITestVergleich{
              */
             if (result.getResutlDerTests() == Status.GROESSER) {
                 if (basis instanceof ITestObjektGruppe) {
-                    result.addTextZuNachricht(TestVergleichArten.vergleicheTestsAuslastungen((ITestObjektGruppe)basis, testWerte));
+                    TestVergleichArten.vergleicheTestsAuslastungen(
+                                    (ITestObjektGruppe)basis,
+                                    testWerte, auslastungTolleranz, pfad);
                 }
                 if (result.getNachricht().isEmpty()) {
                     result.addTextZuNachricht("Die Tests fallen aus den Grenzen der Basis."

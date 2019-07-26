@@ -10,5 +10,5 @@ public interface ITestVergleich {
            , double erwarteteRegression, double alph, String pfad);
     
    public RegressionTestResult vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
-           ,double erwarteteRegressiona, String pfad);
+           ,double erwarteteRegressiona, String pfad, double auslastungTolleranz);
 }

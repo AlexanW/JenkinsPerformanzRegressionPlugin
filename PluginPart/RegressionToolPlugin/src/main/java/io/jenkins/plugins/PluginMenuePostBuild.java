@@ -62,6 +62,8 @@ public class PluginMenuePostBuild extends Recorder{
     
     private boolean erlaubeBuildFehlschlag;
     
+    private double auslastungTolleranz;
+    
     @DataBoundConstructor
     public PluginMenuePostBuild (boolean pruefeRegression, 
             String pfadZuCPUundRAM, boolean erstelleBasis,
@@ -70,7 +72,7 @@ public class PluginMenuePostBuild extends Recorder{
             double tolleranzFuerBasenVergleich, double aplhaWert, 
             boolean vergleicheBasis,double timerIntervall,
             String jUnitDateiName, double tolleranzFuerTestVergleich,
-            boolean erlaubeBuildFehlschlag) {
+            boolean erlaubeBuildFehlschlag, double auslastungTolleranz) {
 //        this.pfadZuBasen = pfadZuBasen;
 //        this.pfadZuBuilds = pfadZuBuilds;
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
@@ -85,6 +87,7 @@ public class PluginMenuePostBuild extends Recorder{
         this.jUnitDateiName = jUnitDateiName;
         this.tolleranzFuerTestVergleich = tolleranzFuerTestVergleich;
         this.erlaubeBuildFehlschlag = erlaubeBuildFehlschlag;
+        this.auslastungTolleranz = auslastungTolleranz;
     }
     
 //    public String getPfadZuBasen() {
@@ -141,6 +144,10 @@ public class PluginMenuePostBuild extends Recorder{
     
     public double getTolleranzFuerTestVergleich () {
         return tolleranzFuerTestVergleich;
+    }
+    
+    public double getAuslastungTolleranz() {
+        return auslastungTolleranz;
     }
     
     @Override
@@ -279,7 +286,7 @@ public class PluginMenuePostBuild extends Recorder{
                             + tests.toString());
                         testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
                                tempBasis, tolleranzFuerTestVergleich,
-                               build.getRootDir().getAbsolutePath());
+                               build.getRootDir().getAbsolutePath(), auslastungTolleranz);
                     if (erlaubeBuildFehlschlag) {
                         if (testResultString.getResutlDerTests() == Status.GROESSER) {
                             build.setResult(Result.FAILURE);

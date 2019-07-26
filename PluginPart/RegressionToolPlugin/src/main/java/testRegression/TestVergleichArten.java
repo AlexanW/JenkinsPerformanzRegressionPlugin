@@ -12,6 +12,7 @@ import java.util.List;
 import org.apache.commons.math3.distribution.TDistribution;
 import org.apache.commons.math3.stat.inference.TTest;
 
+import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.BasisMitTests;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
@@ -20,8 +21,7 @@ import testDatenTypen.ITestWerte;
 import testDatenTypen.Status;
 
 public class TestVergleichArten {
-    public static final double auslastungTolleranz = 0.2;
-    
+  
     /**
      * Testet ob die durchschnittliche Laufzeit der TestSuit auserhalb der 
      * Grenzen der Basis liegt. Wenn dies der Fall ist wird von Performanz 
@@ -100,30 +100,14 @@ public class TestVergleichArten {
         for (ITest t : testNurInBasis) {
             result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
-        FileOutputStream stream = null;
-        try {
-            stream = new FileOutputStream(new File(pfad + "/regressierteTests.txt"));
-            stream.write(result.toString().getBytes("UTF-8"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (stream != null) {
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        LeseSchreibeTestWerte.schreibeErgebnisse(pfad, result.toString());
     }
     /**
      * 
      */
-    public static String vergleicheTestsAuslastungen(ITestObjektGruppe basis, ITestObjektGruppe testObjektGruppe) {
+    public static void vergleicheTestsAuslastungen(ITestObjektGruppe basis,
+            ITestObjektGruppe testObjektGruppe, double auslastungTolleranz, 
+            String pfad) {
         Status status = Status.NEUTRAL;
         List<ITest> zuhoheAuslatungCPU = new ArrayList<ITest>();
         List<ITest> zuhoheAuslatungRAM = new ArrayList<ITest>();
@@ -144,18 +128,20 @@ public class TestVergleichArten {
         }
         StringBuffer result = new StringBuffer();
         result.append( "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
-                + " zu hohe CPU Auslastung zeigen (mehr als 20% hoeher im "
-                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n");
+                + " zu hohe CPU Auslastung zeigen (mehr als " 
+                + (auslastungTolleranz *100)+ "% hoeher im Druchschnitt oder im"
+                + " Maximalwert):\n  "+  status.toString() +"  \n");
         for (ITest t: zuhoheAuslatungCPU) {
             result.append(t.getName());
         }
         result.append("Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
-                + " zu hohe RAM Auslastung zeigen (mehr als 20% hoeher im "
-                + "Druchschnitt oder im Maximalwert):\n  "+  status.toString() +"  \n");
+                + " zu hohe RAM Auslastung zeigen (mehr als " 
+                + (auslastungTolleranz *100) + "% hoeher im Druchschnitt"
+                + " oder im Maximalwert):\n  "+  status.toString() +"  \n");
         for (ITest t: zuhoheAuslatungRAM) {
             result.append(t.getName());
         }
-        return result.toString();
+        LeseSchreibeTestWerte.schreibeErgebnisse(pfad, result.toString());
     }
     
     /**

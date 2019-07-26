@@ -211,7 +211,7 @@ public class PluginMenueClass extends BuildWrapper{
                         RegressionTestResult testResultString = new RegressionTestResult();
                         try {
                             testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                                    lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0, "");
+                                    lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0, "", 0.0);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }

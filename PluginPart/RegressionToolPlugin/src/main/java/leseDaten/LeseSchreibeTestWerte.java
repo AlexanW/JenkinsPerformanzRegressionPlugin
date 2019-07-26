@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.io.ObjectInputStream;
 
 import testDatenTypen.ITestWerte;
@@ -33,5 +34,27 @@ public class LeseSchreibeTestWerte {
             stream.close();
         }
         return tempWerte;
+    }
+    
+    public static void schreibeErgebnisse(String pfad, String text) {
+        FileOutputStream stream = null;
+        try {
+            stream = new FileOutputStream(new File(pfad + "/auswertung.txt"), true);
+            stream.write(text.getBytes("UTF-8"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
