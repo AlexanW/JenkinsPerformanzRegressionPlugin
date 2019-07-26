@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
@@ -28,13 +27,16 @@ public class SysAuslastungMessung {
 //     */
 //    private final static String PATH = "Data/SysLoadData/ProzessValues";
     /**
-     * Dieser Methode stellt den Timer ein uns startet den Messvorgang. Sollte die 
-     * TimerTask eine Exception werfen, so wird der Timer beendet.
+     * Dieser Methode stellt den Timer ein uns startet den Messvorgang. Sollte 
+     * die TimerTask eine Exception werfen, so wird der Timer beendet.
      */
-    public static void startMeasurementTimer(String pfad, int steps, double zeitOffset) {
+    public static void startMeasurementTimer(String pfad, int steps, 
+            double zeitOffset, int maxSpeicherZeit) {
         timer = new Timer();
         try {
-            timer.schedule(new SysAuslastungMessungTask(timer, pfad, (long)(zeitOffset* stunde)), 10, steps);
+            timer.schedule(new SysAuslastungMessungTask(timer, pfad, 
+                    (long)(zeitOffset* stunde), maxSpeicherZeit, steps), 10, 
+                    steps);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             timer.cancel();
@@ -81,20 +83,34 @@ public class SysAuslastungMessung {
 //    }
     
     public static void main(String[] args) {
+        File folder = null;
         if (args.length > 1  ) {
             File testFile = new File(args[1]); 
             //Stellt sicher, dass der Pfad existiert. Prueft dabei nicht die eigenliche Datei.
-            if (testFile.getParentFile().exists()) { 
+            if (testFile.exists()) { 
+                 folder = new File(testFile.getAbsolutePath() + "/Auslastungen");
+                 if (!folder.exists()) {
+                     folder.mkdir();
+                 } else {
+                     /**
+                      * Sollte beim Start der Ordner existieren und der 
+                      * CleanUpHook diesen nicht ordentliche geleert haben
+                      * so wird es hier erneut versucht.
+                      */
+                     MessnungenUtils.loescheAuslastugen(folder.getAbsolutePath(), "Auslastungen");
+                 }
                 switch(args[0]) {
                 case "timer":
                     if (testFile.exists() && !testFile.isDirectory()) {
                         testFile.delete();
                     }
                     if (args.length > 3) {                        
-                        startMeasurementTimer(testFile.getAbsolutePath(), Integer.parseInt(args[3]), Double.parseDouble(args[2]));
+                        startMeasurementTimer(folder.getAbsolutePath(),
+                                Integer.parseInt(args[4]), 
+                                Double.parseDouble(args[2]),
+                                Integer.parseInt(args[3]));
                         //TO DO END TIMER?
-                        System.out.println("Bitte eine eingabe Taetigen um das Programm zu beenden.");
-                        endMeasurement();
+                        //endMeasurement();
                     } else {
                         System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
                     }
@@ -112,9 +128,8 @@ public class SysAuslastungMessung {
         } else {
             System.out.println("Die Eingabe sollte einen Modus (\"timer\" oder \"single\")"
                     + " und eine Zieldatei beinhalten. \n"
-                    + "<Modus> <Pfad> <ZeitOffset> <timer>*");
-        }
-//        startMeasurementTimer("Data/SysLoadData/ProzessValues.txt", 100);
-//        bestimmeDatei("Dummy");
+                    + "<Modus> <Pfad> <ZeitOffset> <maxSpeicherZeit> <timer>*");
+        }   
+        Runtime.getRuntime().addShutdownHook(new CleanUpHook(folder.getAbsolutePath(), "Auslastungen"));
     }
 }
