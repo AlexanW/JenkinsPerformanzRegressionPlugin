@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import testDatenTypen.TestAuslastungen;
 /**
@@ -87,6 +89,26 @@ public class LeseCPUundRAM {
             }
         }
 	    return loads;
+	}
+	
+	public static  List<TestAuslastungen> readAuslastungen (String target,
+	        double score) throws IOException, InterruptedException {
+        List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
+        File folder = new File(target);
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            //Sortiere Files nach absteigender letzter Bearbeitung.
+            Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
+            for (int i = 0; i < files.length && 
+                    i <= TimeUnit.MILLISECONDS.toHours((long)(score * 1000)); i++) {
+                System.out.println("SCHLEIFENLAUF READ TESTS");
+                if (files[i].getName().contains("Auslastungen")) {
+                    loads.addAll(readAuslastung(files[i].getAbsolutePath()));
+                }
+            }
+        }
+        System.out.println("MENGE AND DATEN " + loads.size());
+        return loads;
 	}
 	/**
 	 * Test Mainmethode.

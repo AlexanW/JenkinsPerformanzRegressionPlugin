@@ -149,38 +149,40 @@ public class TestWerte implements ITestWerte, Serializable {
 	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslatungen) {
 	    //Ein Test hat einen min, max und Avaraga Wert, diese werden initial mit den ersten
 	    //der Liste gesetzt, so dass sie abgeglichen werden koennen.
-        double max = auslatungen.get(0).getCpuAuslastung();
-        double min = auslatungen.get(0).getCpuAuslastung();
-        double avarage = 0;
-        
-        for (TestAuslastungen t : auslatungen) {
-            if (t.getCpuAuslastung() > max) {
-                max = t.getCpuAuslastung();
-            }
-            if (t.getCpuAuslastung() < min) {
-                min = t.getCpuAuslastung();
-            }
-            avarage += t.getCpuAuslastung();
-        }  
-        test.setAvarageCPU(avarage/auslatungen.size());
-        test.setMinCPU(min);
-        test.setMaxCPU(max);
-        
-        max = auslatungen.get(0).getRamAuslastung();
-        min = auslatungen.get(0).getRamAuslastung();
-        avarage = 0;
-        for (TestAuslastungen t : auslatungen) {
-            if (t.getRamAuslastung() > max) {
-            max = t.getRamAuslastung();
-            }
-            if (t.getRamAuslastung() < min) {
-                min = t.getRamAuslastung();
-            }
-            avarage += t.getRamAuslastung();
-        }  
-        test.setAvarageRAM(avarage / auslatungen.size());
-        test.setMinRAM(min);
-        test.setMaxRAM(max);
+        if (auslatungen != null && auslatungen.size() > 0) {
+            double max = auslatungen.get(0).getCpuAuslastung();
+            double min = auslatungen.get(0).getCpuAuslastung();
+            double avarage = 0;
+            
+            for (TestAuslastungen t : auslatungen) {
+                if (t.getCpuAuslastung() > max) {
+                    max = t.getCpuAuslastung();
+                }
+                if (t.getCpuAuslastung() < min) {
+                    min = t.getCpuAuslastung();
+                }
+                avarage += t.getCpuAuslastung();
+            }  
+            test.setAvarageCPU(avarage/auslatungen.size());
+            test.setMinCPU(min);
+            test.setMaxCPU(max);
+            
+            max = auslatungen.get(0).getRamAuslastung();
+            min = auslatungen.get(0).getRamAuslastung();
+            avarage = 0;
+            for (TestAuslastungen t : auslatungen) {
+                if (t.getRamAuslastung() > max) {
+                max = t.getRamAuslastung();
+                }
+                if (t.getRamAuslastung() < min) {
+                    min = t.getRamAuslastung();
+                }
+                avarage += t.getRamAuslastung();
+            }  
+            test.setAvarageRAM(avarage / auslatungen.size());
+            test.setMinRAM(min);
+            test.setMaxRAM(max);
+        }   
     }
 	
 	private void setAuslatungenFuerTests(ITest test, TestAuslastungen auslastung) {
@@ -213,11 +215,10 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Eine Imlpementierung der toString Methode, diese Enthaelt alle Attribute. 
 	 */
 	public String toString() {
-	    StringBuffer buffer = new StringBuffer("Name: " + name  + " \n" + "Score: "  + score + " \n"
-	            + "Tests: \n");
-	    for ( ITest t : tests.values()) {
-	        buffer.append(t.toString());
-	    }
+	    StringBuffer buffer = new StringBuffer("Name: " + name  + " \n" + "Score: "  + score + " \n");
+//	    for ( ITest t : tests.values()) {
+//	        buffer.append(t.toString());
+//	    }
 	    return buffer.toString();
 	}
 	

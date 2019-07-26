@@ -1,0 +1,6 @@
+Regressierte Tests bei 0.1 Tolleranz : 
+testDoMathHalfSec mit: 1.5
+testDoMathNoSleep mit: 1.501
+testDoMathQuarterSec mit: 0.5285
+Tests die nur in der neuen Datei sind: 
+Tests die nur in der Basis sind: 

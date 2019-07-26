@@ -12,14 +12,17 @@ public class TestVergleichen implements ITestVergleich{
      */
     @Override
     public RegressionTestResult vergleicheBasen(IBasis neueBasis, IBasis alteBasis
-            , double erwarteteRegression, double alpha) {
+            , double erwarteteRegression, double alpha, String pfad) {
         RegressionTestResult result = new RegressionTestResult();
         result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, erwarteteRegression, alpha));
         if (result.getResutlDerTests() == Status.GROESSER) {
             result.addTextZuNachricht("Die neue Basis weist dabei eine Regression im Vergleich zu der alten auf."
                     + " Es galt eine erwartete Regression von " + erwarteteRegression);
             if (neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
-                result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+                TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis,
+                        (ITestObjektGruppe)neueBasis,
+                        ((alteBasis.getObergrenze() - alteBasis.getScore())/alteBasis.getScore()),
+                        pfad);
             }
         } else {
             result.addTextZuNachricht("Keine Regression ausserhalb der " + (erwarteteRegression*100) + "% Grenze"
@@ -33,7 +36,7 @@ public class TestVergleichen implements ITestVergleich{
      */
     @Override
     public RegressionTestResult vergleicheBasisMitWerten(ITestWerte testWerte, IBasis basis 
-            ,double erwarteteRegression) {
+            ,double erwarteteRegression, String pfad) {
         RegressionTestResult result = new RegressionTestResult();
         result.setResutlDerTests(TestVergleichArten.testWerteAuserhalbDerGrenzen(
                 testWerte, basis, erwarteteRegression));
@@ -59,8 +62,10 @@ public class TestVergleichen implements ITestVergleich{
                             + " (0.0 bedeutet, dass die Grenzen durch"
                             + "min und max Werte aus X Messungen sind) \n");
                     if (basis instanceof ITestObjektGruppe) {
-                        result.addTextZuNachricht(TestVergleichArten.
-                                vergleicheTests(testWerte, (ITestObjektGruppe)basis, erwarteteRegression));
+                        TestVergleichArten.vergleicheTests(testWerte, 
+                                (ITestObjektGruppe)basis, 
+                                ((basis.getObergrenze() - basis.getScore())/basis.getScore()),
+                                pfad);
                     }
                 }
             } else if (result.getResutlDerTests() == Status.KLEINER) {

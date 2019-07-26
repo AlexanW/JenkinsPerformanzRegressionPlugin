@@ -1,5 +1,10 @@
 package testRegression;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -59,8 +64,8 @@ public class TestVergleichArten {
      * @param basis
      * @param erwarteteRegression
      */
-    public static String vergleicheTests(ITestObjektGruppe testWerte, ITestObjektGruppe basis 
-            ,double erwarteteRegression) {
+    public static void vergleicheTests(ITestObjektGruppe testWerte, ITestObjektGruppe basis 
+            ,double erwarteteRegression, String pfad) {
         StringBuffer result = new StringBuffer();
         //Liste mit allen Tests in dem ersten und zweiten Objekt die sich verschlechtert haben.
         List<ITest> regressierteTests = new ArrayList<ITest>();
@@ -70,7 +75,7 @@ public class TestVergleichArten {
         for (ITest t :basis.getTests().values()) {
             if (testWerte.getTests().containsKey(t.getName())) {
                 //Trotz erwarteteer Regression sollte hier eine weitere tolleranz eingebaut werden.
-                if (t.getScore() * (1 + erwarteteRegression) <
+                if ((t.getScore() * (1 + erwarteteRegression)) <
                         testWerte.getTests().get(t.getName()).getScore()) {
                     regressierteTests.add(testWerte.getTests().get(t.getName()));
                 }
@@ -95,7 +100,17 @@ public class TestVergleichArten {
         for (ITest t : testNurInBasis) {
             result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
-        return result.toString();
+        try {
+            FileOutputStream stream = new FileOutputStream(new File(pfad + "/regressierteTests.txt"));
+            stream.write(result.toString().getBytes("UTF-8"));
+            stream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * 
@@ -154,7 +169,6 @@ public class TestVergleichArten {
         boolean h0Rejectet = test.tTest(ITestsZuArry(alteBasis.getTests().values(), erwarteteRegression),
                 ITestsZuArry(neueBasis.getTests().values()), (2*alpha));
         if (!h0Rejectet) {
-
             status = Status.GROESSER;
         }
         
@@ -163,7 +177,9 @@ public class TestVergleichArten {
     /**
      * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
      * verwendet. Dieser vergleicht 2 Sets miteinander und sagt mit aus ob der 
-     * Durchschnitt der alten Basis 
+     * Durchschnitt der alten Basis kleiner ist als der der Neuen.
+     * Hier mussten die einzelnen Komponenten berechenet werden, da diese 
+     * Basen kein Zugriff auf die Menge an Tests haben aus denen sie bestehen.
      * @param alteBasis
      * @param neueBasis
      * @return

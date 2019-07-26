@@ -189,7 +189,7 @@ public class PluginMenueClass extends BuildWrapper{
 
                 if (basisAlt != null && basisNeu != null) {
                     ITestVergleich verlgeich = new TestVergleichen();
-                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05);
+                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05, "");
                     listener.getLogger().print(result.getNachricht());
                 }
 
@@ -211,7 +211,7 @@ public class PluginMenueClass extends BuildWrapper{
                         RegressionTestResult testResultString = new RegressionTestResult();
                         try {
                             testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                                    lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0);
+                                    lese.leseObjektIBasisEin(file.getAbsolutePath() + "/basen/Neu.txt"), 0.0, "");
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }

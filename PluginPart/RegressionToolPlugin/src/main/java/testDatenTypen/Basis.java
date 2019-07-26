@@ -156,9 +156,9 @@ public class Basis extends BasisMitTests {
                 + "Obergrenze:" + obergrenze + "\n" 
                 + "Untergrenze:" + untergrenze + "\n" 
                 + "Varianz:" + varianz + "\n");
-        for (ITest t : getAvarageTests().values()) {
-            outPut.append(t.toString());
-        }
+//        for (ITest t : getAvarageTests().values()) {
+//            outPut.append(t.toString());
+//        }
         return outPut.toString();
     }
 }

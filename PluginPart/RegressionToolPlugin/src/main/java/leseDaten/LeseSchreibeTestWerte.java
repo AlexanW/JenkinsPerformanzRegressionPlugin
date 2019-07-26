@@ -19,7 +19,6 @@ public class LeseSchreibeTestWerte {
         File file = new File(pfad);
         if (file.getParentFile().exists()) {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(pfad));
-            System.out.println("VOR SCHREIBEN: " + testwerte);
             stream.writeObject(testwerte);    
             stream.close();
         }

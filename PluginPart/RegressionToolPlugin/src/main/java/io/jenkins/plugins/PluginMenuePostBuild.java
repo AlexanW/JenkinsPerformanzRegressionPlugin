@@ -52,7 +52,7 @@ public class PluginMenuePostBuild extends Recorder{
     
     private double timerIntervall;
     
-    private boolean pruefeRegression;
+    private boolean testeRegression;
     
     private boolean vergleicheBasis;
     
@@ -60,11 +60,17 @@ public class PluginMenuePostBuild extends Recorder{
     
     private String jUnitDateiName;
     
+    private boolean erlaubeBuildFehlschlag;
+    
     @DataBoundConstructor
-    public PluginMenuePostBuild (boolean pruefeRegression, String pfadZuCPUundRAM, 
-            boolean erstelleBasis, int anzahlAnVergangenenBuilds, double tolleranzFuerSchwankungenBasen, 
-            double tolleranzFuerBasenVergleich, double aplhaWert, boolean vergleicheBasis,
-            double timerIntervall, String jUnitDateiName, double tolleranzFuerTestVergleich) {
+    public PluginMenuePostBuild (boolean pruefeRegression, 
+            String pfadZuCPUundRAM, boolean erstelleBasis,
+            int anzahlAnVergangenenBuilds,
+            double tolleranzFuerSchwankungenBasen, 
+            double tolleranzFuerBasenVergleich, double aplhaWert, 
+            boolean vergleicheBasis,double timerIntervall,
+            String jUnitDateiName, double tolleranzFuerTestVergleich,
+            boolean erlaubeBuildFehlschlag) {
 //        this.pfadZuBasen = pfadZuBasen;
 //        this.pfadZuBuilds = pfadZuBuilds;
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
@@ -72,12 +78,13 @@ public class PluginMenuePostBuild extends Recorder{
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
         this.tolleranzFuerSchwankungenBasen = tolleranzFuerSchwankungenBasen;
         this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
-        this.pruefeRegression = pruefeRegression;
+        this.testeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
         this.aplhaWert = aplhaWert;
         this.timerIntervall = timerIntervall;
         this.jUnitDateiName = jUnitDateiName;
         this.tolleranzFuerTestVergleich = tolleranzFuerTestVergleich;
+        this.erlaubeBuildFehlschlag = erlaubeBuildFehlschlag;
     }
     
 //    public String getPfadZuBasen() {
@@ -92,6 +99,10 @@ public class PluginMenuePostBuild extends Recorder{
         return timerIntervall;
     }
     
+    public boolean getErlaubeBuildFehlschlag() {
+        return erlaubeBuildFehlschlag;
+    }
+    
     public int getAnzahlAnVergangenenBuilds() {
         return anzahlAnVergangenenBuilds;
     }
@@ -101,7 +112,7 @@ public class PluginMenuePostBuild extends Recorder{
     }
     
     public boolean getPruefeRegression() {
-        return pruefeRegression;
+        return testeRegression;
     }
     
     public double getTolleranzFuerSchwankungenBasen() {
@@ -133,51 +144,53 @@ public class PluginMenuePostBuild extends Recorder{
     }
     
     @Override
-    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener)
-            throws InterruptedException, IOException {
+    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, 
+            BuildListener listener) throws InterruptedException, IOException {
         boolean enthaeltBasisDir = false;
         boolean basenDirErstellt = true;
-        
-        //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
-        pfadZuBasen =  build.getRootDir().getParentFile().getParent();
-        pfadZuBuilds = build.getRootDir().getParent();
-        if (!jUnitDateiName.contains(".xml")) {
-            StringBuffer buffer = new StringBuffer(jUnitDateiName);
-            buffer.append(".xml");
-            jUnitDateiName = buffer.toString();
-        }
-        listener.getLogger().print("-----Starte RegressionTest-----\n" + jUnitDateiName);
-        //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
-        File file = new File(pfadZuBasen);
-        if (file.exists() && file.isDirectory()) {
-            String[] tempString =  file.list();
-            if (tempString != null) {
-                for (String s: tempString) {
-                    if (s.equals("basen")) {
-                       enthaeltBasisDir = true; 
-                       pfadZuBasen = file.getAbsolutePath() + "/basen";
+        //Das Plugin ist nur aktiv wenn mindestens eine Aktion gewünscht ist.
+        if (erstelleBasis || vergleicheBasis || testeRegression) {
+            //Erster abschnitt: JUnitResults, Zweiter Part: Basen Dir
+            pfadZuBasen =  build.getRootDir().getParentFile().getParent();
+            pfadZuBuilds = build.getRootDir().getParent();
+            if (!jUnitDateiName.contains(".xml")) {
+                StringBuffer buffer = new StringBuffer(jUnitDateiName);
+                buffer.append(".xml");
+                jUnitDateiName = buffer.toString();
+            }
+            listener.getLogger().print("-----Starte RegressionTest-----\n" + jUnitDateiName);
+            //Dir des Projektjobs: RootDir=, Parant1=Builds, Parent2=Projekt.
+            File file = new File(pfadZuBasen);
+            if (file.exists() && file.isDirectory()) {
+                String[] tempString =  file.list();
+                if (tempString != null) {
+                    for (String s: tempString) {
+                        if (s.equals("basen")) {
+                           enthaeltBasisDir = true; 
+                           pfadZuBasen = file.getAbsolutePath() + "/basen";
+                        }
                     }
                 }
-            }
-            if(!enthaeltBasisDir) {
-              listener.getLogger().print("-----Erstelle Ordner fuer Basen-----\n"
-                      + "in " + pfadZuBasen + "/basen\n");
-              File tempFile = new File (pfadZuBasen + "/basen");
-              basenDirErstellt = tempFile.mkdir();
-              if (basenDirErstellt) {
-                  pfadZuBasen = tempFile.getAbsolutePath();
-              }
-            }
-            //Wenn ein Build bis hier hin schon fehlgeschlagen ist, machen die Test keinen Sinn.
-            if (build.getResult() != Result.FAILURE && build.getResult() != Result.ABORTED) {
-                if (erstelleBasis && basenDirErstellt) {
-                    erstelleBasen(listener.getLogger());
+                if(!enthaeltBasisDir) {
+                  listener.getLogger().print("-----Erstelle Ordner fuer Basen-----\n"
+                          + "in " + pfadZuBasen + "/basen\n");
+                  File tempFile = new File (pfadZuBasen + "/basen");
+                  basenDirErstellt = tempFile.mkdir();
+                  if (basenDirErstellt) {
+                      pfadZuBasen = tempFile.getAbsolutePath();
+                  }
                 }
-                if (vergleicheBasis) {
-                    vergleicheBasen(listener.getLogger());
-                }
-                if (pruefeRegression) {
-                    pruefeRegression(build,  listener.getLogger()); 
+                //Wenn ein Build bis hier hin schon fehlgeschlagen ist, machen die Test keinen Sinn.
+                if (build.getResult() != Result.FAILURE && build.getResult() != Result.ABORTED) {
+                    if (erstelleBasis && basenDirErstellt) {
+                        erstelleBasen(listener.getLogger());
+                    }
+                    if (vergleicheBasis) {
+                        vergleicheBasen(build ,listener.getLogger());
+                    }
+                    if (testeRegression) {
+                        pruefeRegression(build,  listener.getLogger()); 
+                    }
                 }
             }
         }
@@ -209,7 +222,7 @@ public class PluginMenuePostBuild extends Recorder{
         logger.print("-----------------------------------\n");
     }
     
-    public void vergleicheBasen (PrintStream logger) {
+    public void vergleicheBasen (AbstractBuild<?, ?> build, PrintStream logger) {
         logger.print("Vergleiche die letzen zwei Basen miteinander.\n");
         IBasis basisNeu = null;
         IBasis basisAlt = null;
@@ -227,7 +240,9 @@ public class PluginMenuePostBuild extends Recorder{
 
         if (basisAlt != null && basisNeu != null) {
             ITestVergleich verlgeich = new TestVergleichen();
-            RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, aplhaWert);
+            RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu,
+                    basisAlt, tolleranzFuerBasenVergleich, aplhaWert,
+                    build.getRootDir().getAbsolutePath());
             logger.print(result.getNachricht());
         }
     }
@@ -239,8 +254,8 @@ public class PluginMenuePostBuild extends Recorder{
             ITestWerte tests = LeseJUnitResults.leseTestsXML(fileUnit.getAbsolutePath(), timerIntervall);
             if (tests != null) {
                 try {
-                    logger.print("Suche Auslastungen in: " + pfadZuCPUundRAM);
-                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastung(pfadZuCPUundRAM));
+                    logger.print("Suche Auslastungen in: " + pfadZuCPUundRAM + "\n");
+                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastungen(pfadZuCPUundRAM, tests.getScore()));
                 } catch (InterruptedException e1) {
                     logger.print("Fehler beim kopieren der Datei.");
                     e1.printStackTrace();
@@ -263,12 +278,15 @@ public class PluginMenuePostBuild extends Recorder{
                             + "Verglichen werden \n" + tempBasis.toString() + "und \n"
                             + tests.toString());
                         testResultString = vergleichen.vergleicheBasisMitWerten(tests, 
-                               tempBasis, tolleranzFuerTestVergleich);
-                    if (testResultString.getResutlDerTests() == Status.GROESSER) {
-                        build.setResult(Result.FAILURE);
-                    } else if (testResultString.getResutlDerTests() == Status.KLEINER) {
-                        //Unstable fuer einen Run der nicht gesichert.
-                        build.setResult(Result.UNSTABLE);
+                               tempBasis, tolleranzFuerTestVergleich,
+                               build.getRootDir().getAbsolutePath());
+                    if (erlaubeBuildFehlschlag) {
+                        if (testResultString.getResutlDerTests() == Status.GROESSER) {
+                            build.setResult(Result.FAILURE);
+                        } else if (testResultString.getResutlDerTests() == Status.KLEINER) {
+                            //Unstable fuer einen Run der nicht gesichert.
+                            build.setResult(Result.UNSTABLE);
+                        }
                     }
                 } else {
                     logger.print("Fuer diesen Job wurde keine Basis in"

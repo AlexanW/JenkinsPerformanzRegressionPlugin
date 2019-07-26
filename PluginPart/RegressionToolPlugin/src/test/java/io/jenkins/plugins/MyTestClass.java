@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -22,7 +21,7 @@ import testRegression.IErstelleBasis;
 import testRegression.TestVergleichArten;
 
 public class MyTestClass {
-    
+    @Test
     public void testBaseCreation() {
         //Relativer Pfad zu TestDaten "src/main/resources/TestDaten"
         File resultFile = new File("src/main/resources/TestDaten/ResultDateien/100/junitResult.xml");
@@ -32,6 +31,9 @@ public class MyTestClass {
             ITestWerte werte = LeseJUnitResults.leseTestsXML(resultFile.getAbsolutePath(), 100);
             ITestWerte werte1 = LeseJUnitResults.leseTestsXML(resultFile1.getAbsolutePath(), 100);
             ITestWerte werte2 = LeseJUnitResults.leseTestsXML(resultFile2.getAbsolutePath(), 100);
+          System.out.println(werte);
+          System.out.println(werte1);
+          System.out.println(werte2);
             if (werte != null) {
                 try {
                     werte.setTestAuslastungen(LeseCPUundRAM.readAuslastung("src/main/resources/TestDaten/Auslastungen/TestDateiH11M04S10DH11M05S10.txt"));
@@ -45,12 +47,14 @@ public class MyTestClass {
                         LeseSchreibeTestWerte.schreibeTestWerte(
                                 "src/main/resources/TestDaten/ResultDateien/102/testWerte.txt", werte2);
                     }
-                } catch (IOException | InterruptedException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println(werte);
-                System.out.println(werte1);
-                System.out.println(werte2);
+
+                catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         }
         IErstelleBasis erstelleBasis = new ErstelleBasis();
@@ -59,14 +63,13 @@ public class MyTestClass {
                     , "src/main/resources/TestDaten/Basen", 0.0, 2, 100, "junitResult.xml"
                     , new PrintStream("src/main/resources/TestDaten/Logger.txt"));
             if (basis != null) {
-                System.out.println(basis);
+                System.out.println("DI ERSSTELLTE BASIS "  + basis);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    
-    
+    //@Test
     public void testeEinlesen() {
         try {
             List<ITestWerte> werte = 
@@ -94,7 +97,9 @@ public class MyTestClass {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        result.addTextZuNachricht(TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis, (ITestObjektGruppe)neueBasis, erwarteteRegression));
+        TestVergleichArten.vergleicheTests((ITestObjektGruppe)neueBasis,
+                (ITestObjektGruppe)alteBasis, erwarteteRegression,
+                "src/main/resources/TestDaten");
         System.out.println(result.getNachricht());
     }
 }

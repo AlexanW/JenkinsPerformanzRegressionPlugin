@@ -8,7 +8,7 @@
 		<f:textbox default="0.0"/>
   	 </f:entry>
   	 <f:entry title="${%Pfad zu CPU und RAM Messungen}" field="pfadZuCPUundRAM">
-    	<f:textbox default = ""/>
+    	<f:textbox default = "/temp/Auslastungen"/>
   	 </f:entry>
   	 <f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
     	<f:checkbox />
@@ -34,5 +34,8 @@
 	 <f:entry title="${%Intervall der Messungen der Auslastungen}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">
 		<f:textbox default="100"/>
 	 </f:entry>
+	 <f:entry title="${%Erlaube das Builds Fehlschlagen}" field="erlaubeBuildFehlschlag">
+    	<f:checkbox />
+  	 </f:entry>
    </f:section>
 </j:jelly>
