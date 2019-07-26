@@ -34,6 +34,9 @@
 	 <f:entry title="${%Intervall der Messungen der Auslastungen}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">
 		<f:textbox default="100"/>
 	 </f:entry>
+	 <f:entry title="${%Max. Abweichung der Auslastungen}" field="auslastungTolleranz" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+		<f:textbox default="0.1"/>
+  	 </f:entry>
 	 <f:entry title="${%Erlaube das Builds Fehlschlagen}" field="erlaubeBuildFehlschlag">
     	<f:checkbox />
   	 </f:entry>
