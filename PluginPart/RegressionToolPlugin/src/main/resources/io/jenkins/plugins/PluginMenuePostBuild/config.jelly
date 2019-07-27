@@ -8,7 +8,7 @@
 		<f:textbox default="0.0"/>
   	 </f:entry>
   	 <f:entry title="${%Pfad zu CPU und RAM Messungen}" field="pfadZuCPUundRAM">
-    	<f:textbox default = "/temp/Auslastungen"/>
+    	<f:textbox default = "/tmp/Auslastungen"/>
   	 </f:entry>
   	 <f:entry title="${%Erstelle Basis bei Build}" field="erstelleBasis">
     	<f:checkbox />
