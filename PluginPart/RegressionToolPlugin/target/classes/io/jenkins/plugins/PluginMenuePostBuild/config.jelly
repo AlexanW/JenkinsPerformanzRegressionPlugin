@@ -4,7 +4,7 @@
      <f:entry title="${%Pruefe Regression}" field="pruefeRegression">
         <f:checkbox />
      </f:entry>
-     <f:entry title="${%Erwartete Regression fuer den Vergleich von Tests}" field="tolleranzFuerTestVergleich" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+     <f:entry title="${%Erwartete Regression fuer den Vergleich von Tests}" field="tolleranzFuerTestVergleich">
 		<f:textbox default="0.0"/>
   	 </f:entry>
   	 <f:entry title="${%Pfad zu CPU und RAM Messungen}" field="pfadZuCPUundRAM">
@@ -19,22 +19,22 @@
   	 <f:entry title="${%Vergleiche die letzen 2 Basen}" field="vergleicheBasis">
     	<f:checkbox />
   	 </f:entry>
-  	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplhaWert" help="Aplha Wert fuer einen t-Tests">
+  	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplhaWert">
         <f:textbox default="0.005"/>
      </f:entry>
-  	 <f:entry title="${%Max. prozentuale Schwankung der Tests}" field="tolleranzFuerSchwankungenBasen" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+  	 <f:entry title="${%Max. prozentuale Schwankung der Tests}" field="tolleranzFuerSchwankungenBasen">
 		<f:textbox default="0.0"/>
   	 </f:entry>
-     <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName" help="Der Name den JUnitResultDateien in diesem System haben.(Ohne Endung.)">
+     <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName">
         <f:textbox default="junitResult"/>
      </f:entry>
-	 <f:entry title="${%Erwartete Regression fuer den Vergleich von Basen}" field="tolleranzFuerBasenVergleich" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+	 <f:entry title="${%Erwartete Regression fuer den Vergleich von Basen}" field="tolleranzFuerBasenVergleich">
 		<f:textbox default="0.0"/>
   	 </f:entry>
-	 <f:entry title="${%Intervall der Messungen der Auslastungen}" field="timerIntervall" help="Der Zeitintervall zwischne Messungen in hunderstel Sekunden.">
+	 <f:entry title="${%Intervall der Messungen der Auslastungen}" field="timerIntervall">
 		<f:textbox default="100"/>
 	 </f:entry>
-	 <f:entry title="${%Max. Abweichung der Auslastungen}" field="auslastungTolleranz" help="Bei 0.0 werden min. und max. Werte der Testergebnisse verwendet.">
+	 <f:entry title="${%Max. Abweichung der Auslastungen}" field="auslastungTolleranz">
 		<f:textbox default="0.1"/>
   	 </f:entry>
 	 <f:entry title="${%Erlaube das Builds Fehlschlagen}" field="erlaubeBuildFehlschlag">
