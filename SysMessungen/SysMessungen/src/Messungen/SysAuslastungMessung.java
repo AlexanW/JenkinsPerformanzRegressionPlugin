@@ -19,7 +19,7 @@ public class SysAuslastungMessung {
     /**
      * Die Millisekunden die eine Stunde ausmachen.
      */
-    private static long stunde = TimeUnit.HOURS.toMillis(1);
+    private static final long stunde = TimeUnit.HOURS.toMillis(1);
 //    /**
 //     * Der Pfad der Dateien in die, die Messdaten geschrieben werden.
 //     * Dabei fehlt die Nummer der Datei und die .txt Endung, beides wird
@@ -68,19 +68,6 @@ public class SysAuslastungMessung {
             }
         }
     }
-    /**
-     * Beendet die TimerTask, die fuer das Messen zustaendig ist.
-     */
-    public static void endMeasurement() {
-        timer.cancel();
-    }
-//    /**
-//     * Eine Methode um festzulegen in welche ProzessValues Datei geschrieben wird.
-//     * Dabei wird darauf geachtet, dass es eine max. Anzahl X gibt.
-//     */
-//    private static String bestimmeDatei(String name) {
-//        return PATH + name +"txt";
-//    }
     
     public static void main(String[] args) {
         File folder = null;
@@ -109,8 +96,6 @@ public class SysAuslastungMessung {
                                 Integer.parseInt(args[4]), 
                                 Double.parseDouble(args[2]),
                                 Integer.parseInt(args[3]));
-                        //TO DO END TIMER?
-                        //endMeasurement();
                     } else {
                         System.out.println("Ein Timer benoetigt eine Tickrate in Hundertstelsekunden.");
                     }

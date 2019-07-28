@@ -100,16 +100,13 @@ public class LeseCPUundRAM {
             if (files != null) {
                 //Sortiere Files nach absteigender letzter Bearbeitung.
                 Arrays.sort(files, (a,b) -> (Long.compare(b.lastModified(), a.lastModified())));
-                for (int i = 0; i < files.length && 
-                        i <= TimeUnit.MILLISECONDS.toHours((long)(score * 1000)); i++) {
-                    System.out.println("SCHLEIFENLAUF READ TESTS");
+                for (int i = 0; i < files.length; i++) {
                     if (files[i].getName().contains("Auslastungen")) {
                         loads.addAll(readAuslastung(files[i].getAbsolutePath()));
                     }
                 }
             }
         }
-        System.out.println("MENGE AND DATEN " + loads.size());
         return loads;
 	}
 	/**

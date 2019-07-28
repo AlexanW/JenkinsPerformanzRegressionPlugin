@@ -20,7 +20,7 @@ public class TestWerte implements ITestWerte, Serializable {
     /**
      * Die Schrittlaenge der SystemMessungen.
      */
-    private double step_size = 0.100;
+    private double step_size;
 	/**
 	 * LinkedHashMap fuer das Speichern von Testzeiten im Verbund mit einem Namen und der Auslastung.
 	 * Dabei wird die Reihenfolge der Tests gewaehrleistet.
@@ -31,18 +31,6 @@ public class TestWerte implements ITestWerte, Serializable {
 	 */
 	private List <TestAuslastungen> testAuslastungen =
 	        new ArrayList<TestAuslastungen>();
-	/**
-	 * 
-	 */
-	public TestWerte(double step_size) {
-	    // Durch 1000 geteilt um die Schrittgroesse anzupassen.
-	    this.step_size = step_size/1000;
-    }
-	/**
-	 * 
-	 */
-	public TestWerte() {
-    }
 	/**
 	 * Das Datum und die Uhrzeit des Tests.
 	 */
@@ -55,6 +43,18 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Der Name der TestSuit, deren Ergebnisse in diesem Objekt sind.
 	 */
 	private String name;
+	/**
+     * 
+     */
+    public TestWerte(double step_size) {
+        // Durch 1000 geteilt um die Schrittgroesse anzupassen.
+        this.step_size = step_size/1000;
+    }
+    /**
+     * 
+     */
+    public TestWerte() {
+    }
 	/**
 	 * Diese Methode erlaub es einzelne Tests den TestValues hinzuzufuegen.
 	 */
@@ -82,6 +82,16 @@ public class TestWerte implements ITestWerte, Serializable {
 	 */
 	public void setName(String name) {
         this.name = name;
+    }
+	/**
+     * Getter fuer die Gesamtdauert.
+     * @return Die Gesamtdauer der TestSuit.
+     */
+    public double getScore() {
+        return score;
+    }
+    public String getName() {
+        return name;
     }
 	/**
 	 * Setter fuer die Auslastung weahrend dieses Tests.
@@ -125,7 +135,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	        for (ITest t : tests.values()) {
 	            if (t.getScore() < step_size) {
 	                if ((int)(scoreSumme/step_size) < testAuslastungen.size()) {
-	                    setAuslatungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
+	                    setAuslastungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
 	                }
 	            } else {
 	                List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
@@ -144,17 +154,17 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Diese Methode nimmt eine Liste von Auslasutngen entgegen und fuegt diese 
 	 * zu den Test dieser TestWerte Sammlung hinzu.
 	 * @param test
-	 * @param auslatungen
+	 * @param auslastungen
 	 */
-	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslatungen) {
+	private void setAuslatungenFuerTests(ITest test, List<TestAuslastungen> auslastungen) {
 	    //Ein Test hat einen min, max und Avaraga Wert, diese werden initial mit den ersten
 	    //der Liste gesetzt, so dass sie abgeglichen werden koennen.
-        if (auslatungen != null && auslatungen.size() > 0) {
-            double max = auslatungen.get(0).getCpuAuslastung();
-            double min = auslatungen.get(0).getCpuAuslastung();
+        if (auslastungen != null && auslastungen.size() > 0) {
+            double max = auslastungen.get(0).getCpuAuslastung();
+            double min = auslastungen.get(0).getCpuAuslastung();
             double avarage = 0;
             
-            for (TestAuslastungen t : auslatungen) {
+            for (TestAuslastungen t : auslastungen) {
                 if (t.getCpuAuslastung() > max) {
                     max = t.getCpuAuslastung();
                 }
@@ -163,14 +173,14 @@ public class TestWerte implements ITestWerte, Serializable {
                 }
                 avarage += t.getCpuAuslastung();
             }  
-            test.setAvarageCPU(avarage/auslatungen.size());
+            test.setAvarageCPU(avarage/auslastungen.size());
             test.setMinCPU(min);
             test.setMaxCPU(max);
             
-            max = auslatungen.get(0).getRamAuslastung();
-            min = auslatungen.get(0).getRamAuslastung();
+            max = auslastungen.get(0).getRamAuslastung();
+            min = auslastungen.get(0).getRamAuslastung();
             avarage = 0;
-            for (TestAuslastungen t : auslatungen) {
+            for (TestAuslastungen t : auslastungen) {
                 if (t.getRamAuslastung() > max) {
                 max = t.getRamAuslastung();
                 }
@@ -179,13 +189,13 @@ public class TestWerte implements ITestWerte, Serializable {
                 }
                 avarage += t.getRamAuslastung();
             }  
-            test.setAvarageRAM(avarage / auslatungen.size());
+            test.setAvarageRAM(avarage / auslastungen.size());
             test.setMinRAM(min);
             test.setMaxRAM(max);
         }   
     }
 	
-	private void setAuslatungenFuerTests(ITest test, TestAuslastungen auslastung) {
+	private void setAuslastungenFuerTests(ITest test, TestAuslastungen auslastung) {
 	    test.setAvarageCPU(auslastung.getCpuAuslastung());
 	    test.setMinCPU(auslastung.getCpuAuslastung());
 	    test.setMaxCPU(auslastung.getCpuAuslastung());
@@ -194,16 +204,6 @@ public class TestWerte implements ITestWerte, Serializable {
 	    test.setMaxRAM(auslastung.getRamAuslastung());
 	}
 	
-	/**
-	 * Getter fuer die Gesamtdauert.
-	 * @return Die Gesamtdauer der TestSuit.
-	 */
-	public double getScore() {
-        return score;
-    }
-	public String getName() {
-        return name;
-    }
 	/**
 	 * 
 	 * @return

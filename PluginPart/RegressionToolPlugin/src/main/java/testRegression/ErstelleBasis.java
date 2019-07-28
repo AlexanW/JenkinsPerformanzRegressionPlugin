@@ -190,7 +190,6 @@ public class ErstelleBasis implements IErstelleBasis {
             temp += Math.pow((t.getScore() - avarage), 2);
         }
         temp = temp /werte.size(); 
-        System.out.println(temp);
         return temp;
     }
     /**

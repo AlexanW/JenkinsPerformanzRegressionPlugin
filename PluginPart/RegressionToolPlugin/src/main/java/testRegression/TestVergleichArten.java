@@ -105,23 +105,23 @@ public class TestVergleichArten {
     /**
      * 
      */
-    public static void vergleicheTestsAuslastungen(ITestObjektGruppe basis,
-            ITestObjektGruppe testObjektGruppe, double auslastungTolleranz, 
+    public static void vergleicheTestsAuslastungen(ITestObjektGruppe alteGruppe,
+            ITestObjektGruppe neueGruppe, double auslastungTolleranz, 
             String pfad) {
         Status status = Status.NEUTRAL;
         List<ITest> zuhoheAuslatungCPU = new ArrayList<ITest>();
         List<ITest> zuhoheAuslatungRAM = new ArrayList<ITest>();
         
-        for (ITest t: testObjektGruppe.getTests().values()) {
-            if (basis.getTests().get(t.getName()) != null) {
-                if (t.getAvarageCPU() > (basis.getTests().get(t.getName()).getAvarageCPU() * (1 + auslastungTolleranz))) {
+        for (ITest t: neueGruppe.getTests().values()) {
+            if (alteGruppe.getTests().get(t.getName()) != null) {
+                if (t.getAvarageCPU() > (alteGruppe.getTests().get(t.getName()).getAvarageCPU() * (1 + auslastungTolleranz))) {
                     zuhoheAuslatungCPU.add(t);
-                } else if (t.getMaxCPU() > (basis.getTests().get(t.getName()).getMaxCPU() * (1 + auslastungTolleranz))) {
+                } else if (t.getMaxCPU() > (alteGruppe.getTests().get(t.getName()).getMaxCPU() * (1 + auslastungTolleranz))) {
                     zuhoheAuslatungCPU.add(t);
                 }
-                if (t.getAvarageRAM() > (basis.getTests().get(t.getName()).getAvarageRAM() * (1 + auslastungTolleranz))) {
+                if (t.getAvarageRAM() > (alteGruppe.getTests().get(t.getName()).getAvarageRAM() * (1 + auslastungTolleranz))) {
                     zuhoheAuslatungRAM.add(t);
-                } else if (t.getMaxRAM() > (basis.getTests().get(t.getName()).getMaxRAM() * (1 + auslastungTolleranz))) {
+                } else if (t.getMaxRAM() > (alteGruppe.getTests().get(t.getName()).getMaxRAM() * (1 + auslastungTolleranz))) {
                     zuhoheAuslatungRAM.add(t);
                 }
             }

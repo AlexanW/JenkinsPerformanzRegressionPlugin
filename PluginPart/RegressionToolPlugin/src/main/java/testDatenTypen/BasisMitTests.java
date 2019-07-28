@@ -25,10 +25,6 @@ public abstract class BasisMitTests implements IBasis, ITestObjektGruppe, Serial
         this.avarageTests = avarageTests;
     }
     
-    public HashMap<String, ITest> getAvarageTests() {
-        return avarageTests;
-    }
-    
     public HashMap<String, ITest> getTests() {
         return avarageTests;
     }
