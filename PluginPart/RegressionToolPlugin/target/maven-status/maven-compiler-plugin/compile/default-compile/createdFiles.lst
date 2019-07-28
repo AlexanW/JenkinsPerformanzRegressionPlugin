@@ -14,7 +14,6 @@ leseDaten\LeseCPUundRAM.class
 leseDaten\ILeseBasis.class
 io\jenkins\plugins\PluginMenueClass.class
 testDatenTypen\ITestObjektGruppe.class
-testRegression\SammleDaten.class
 testDatenTypen\ITestObjekt.class
 testDatenTypen\ITest.class
 leseDaten\LeseBasis.class
@@ -30,4 +29,3 @@ testRegression\TestVergleichen.class
 io\jenkins\plugins\PluginMenuePostBuild.stapler
 testDatenTypen\IBasis.class
 testRegression\ErstelleBasis.class
-testRegression\TesteRegression.class
