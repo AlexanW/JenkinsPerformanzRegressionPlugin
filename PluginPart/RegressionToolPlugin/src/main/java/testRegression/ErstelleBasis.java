@@ -220,13 +220,19 @@ public class ErstelleBasis implements IErstelleBasis {
                if (e.getTests().get(n) != null) {
                    tempSum += e.getTests().get(n).getScore();
                    if (e.getTests().get(n) != null) {
-                       tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
-                       tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
-                       tempCpuMinSum += e.getTests().get(n).getMinCPU();
-                       tempRamAvarageSum += e.getTests().get(n).getAvarageRAM();
-                       tempRamMaxSum += e.getTests().get(n).getMaxRAM();
-                       tempRamMinSum += e.getTests().get(n).getMinRAM();
-                       iAuslastungenCounter++;
+                       /*
+                        * Annahme, dass die AvarageRAM nur 0 ist wenn es keine
+                        * Werte gibt.
+                        */
+                       if (e.getTests().get(n).getAvarageRAM() != 0) {
+                           tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
+                           tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
+                           tempCpuMinSum += e.getTests().get(n).getMinCPU();
+                           tempRamAvarageSum += e.getTests().get(n).getAvarageRAM();
+                           tempRamMaxSum += e.getTests().get(n).getMaxRAM();
+                           tempRamMinSum += e.getTests().get(n).getMinRAM();
+                           iAuslastungenCounter++; 
+                       }
                    }
                    i++;
                }
