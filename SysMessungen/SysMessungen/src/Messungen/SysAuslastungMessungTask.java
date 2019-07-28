@@ -32,6 +32,10 @@ public class SysAuslastungMessungTask extends TimerTask {
      */
     private FileOutputStream stream;
     /**
+     * Eine Zeiteinheit, um die maximale Speicherzeit zu bestimmen.
+     */
+    private double zeitEinheit =  TimeUnit.HOURS.toMillis(1);
+    /**
      * Der Timer, der diese Task ausfürht. Wird verwendet um im Fall von 
      * Exceptionss diesen Prozess zu beenden.
      */
@@ -83,7 +87,7 @@ public class SysAuslastungMessungTask extends TimerTask {
         this.timer = timer;
         steps = intervall;
         aktuelleSpeichersumme = 0;
-        this.maxSpeicherZeit = TimeUnit.HOURS.toMillis(maxSpeicherZeit);
+        this.maxSpeicherZeit = zeitEinheit * maxSpeicherZeit;
     }
     /**
      * Im Run werden die Daten gesammelt und in eine, im Konstruktor definierte
@@ -92,6 +96,7 @@ public class SysAuslastungMessungTask extends TimerTask {
     @Override
     public void run() {
             try {
+                System.out.println("aktuell: " + aktuelleSpeichersumme + " MAX "+ maxSpeicherZeit);
                 if (aktuelleSpeichersumme >= maxSpeicherZeit) { 
                     loescheAeltesteDatei(zielFolder.getAbsolutePath());
                 }
@@ -136,16 +141,16 @@ public class SysAuslastungMessungTask extends TimerTask {
         for (int i = 0; i < files.length; i++) {
             if (files[i].getName().contains(DATEINAME) && !dateiGeloescht) {
                 dateiGeloescht = files[i].delete();
-                aktuelleSpeichersumme -= TimeUnit.HOURS.toMillis(1);
+                aktuelleSpeichersumme -= zeitEinheit;
             }
         }
     }
     private void erneuereStream() {
         try {
             stream.close();
-            //System.out.println("aktuell: " + aktuelleSpeicherdauerDatei + " Vergleich : " + TimeUnit.MINUTES.toMillis(1));
-            if (aktuelleSpeicherdauerDatei >= TimeUnit.HOURS.toMillis(1)) {
-                if (TimeUnit.HOURS.toMillis(dateienCounter+1) == maxSpeicherZeit) {
+            System.out.println("STREAMaktuell: " + aktuelleSpeicherdauerDatei + " Vergleich : " + zeitEinheit);
+            if (aktuelleSpeicherdauerDatei >= zeitEinheit) {
+                if ((zeitEinheit * (dateienCounter)) == maxSpeicherZeit) {
                     dateienCounter = 0;
                 } else {
                     dateienCounter++;
