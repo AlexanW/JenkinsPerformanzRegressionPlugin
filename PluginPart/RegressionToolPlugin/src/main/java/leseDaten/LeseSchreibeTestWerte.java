@@ -36,10 +36,10 @@ public class LeseSchreibeTestWerte {
         return tempWerte;
     }
     
-    public static void schreibeErgebnisse(String pfad, String text) {
+    public static void schreibeErgebnisse(String pfad, String text, boolean append) {
         FileOutputStream stream = null;
         try {
-            stream = new FileOutputStream(new File(pfad + "/auswertung.txt"), true);
+            stream = new FileOutputStream(new File(pfad), append);
             stream.write(text.getBytes("UTF-8"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();

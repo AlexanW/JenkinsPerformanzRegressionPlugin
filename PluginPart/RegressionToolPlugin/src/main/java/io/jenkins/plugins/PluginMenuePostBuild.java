@@ -21,6 +21,7 @@ import leseDaten.LeseBasis;
 import leseDaten.LeseCPUundRAM;
 import leseDaten.LeseJUnitResults;
 import leseDaten.LeseSchreibeTestWerte;
+import testDatenTypen.BasisMitTests;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.RegressionTestResult;
@@ -223,6 +224,11 @@ public class PluginMenuePostBuild extends Recorder{
         if (erstellteBasis != null) {
             logger.print("Die erstellte Basis:\n"
                     + erstellteBasis.toString());
+            if (erstellteBasis instanceof BasisMitTests) {
+                LeseSchreibeTestWerte.schreibeErgebnisse(pfadZuBasen + 
+                        "/neueBasisTests.txt", 
+                        ((BasisMitTests)erstellteBasis).getTestsAlsString(), false);
+            }
         } else {
             logger.print("Es konnte keine Basis erstellt werden.\n");
         }
@@ -268,6 +274,9 @@ public class PluginMenuePostBuild extends Recorder{
                     e1.printStackTrace();
                 }
                 logger.print(tests.toString() + "\n");
+                LeseSchreibeTestWerte.schreibeErgebnisse(build.getRootDir().
+                        getAbsolutePath() + "/TestsInTestWerte.txt", 
+                        tests.getTestsAlsString(), false);
                 ITestVergleich vergleichen = new TestVergleichen();
                 LeseBasis lese = new LeseBasis();
                 RegressionTestResult testResultString = new RegressionTestResult();

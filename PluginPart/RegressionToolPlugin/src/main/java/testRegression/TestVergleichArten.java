@@ -1,10 +1,5 @@
 package testRegression;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -100,7 +95,7 @@ public class TestVergleichArten {
         for (ITest t : testNurInBasis) {
             result.append(t.getName() + " mit: " + t.getScore() +  "\n");
         }
-        LeseSchreibeTestWerte.schreibeErgebnisse(pfad, result.toString());
+        LeseSchreibeTestWerte.schreibeErgebnisse(pfad + "/auswertung.txt", result.toString(), true);
     }
     /**
      * 
@@ -141,7 +136,7 @@ public class TestVergleichArten {
         for (ITest t: zuhoheAuslatungRAM) {
             result.append(t.getName());
         }
-        LeseSchreibeTestWerte.schreibeErgebnisse(pfad, result.toString());
+        LeseSchreibeTestWerte.schreibeErgebnisse(pfad + "/auswertung.txt", result.toString(), true);
     }
     
     /**

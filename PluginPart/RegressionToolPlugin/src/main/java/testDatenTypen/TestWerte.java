@@ -222,6 +222,14 @@ public class TestWerte implements ITestWerte, Serializable {
 	    return buffer.toString();
 	}
 	
+    public String getTestsAlsString() {
+        StringBuffer buffer = new StringBuffer();
+            for (ITest t : tests.values()) {
+                buffer.append(t.toString());
+            }
+        return buffer.toString();
+    }
+	
 	public boolean getEnthaeltFehlschag () {
 	    boolean enthaeltFehlschlag = false;
 	    for (ITest t : tests.values()) {

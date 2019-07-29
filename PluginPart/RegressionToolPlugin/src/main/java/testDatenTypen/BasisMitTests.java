@@ -28,4 +28,12 @@ public abstract class BasisMitTests implements IBasis, ITestObjektGruppe, Serial
     public HashMap<String, ITest> getTests() {
         return avarageTests;
     }
+    
+    public String getTestsAlsString() {
+        StringBuffer buffer = new StringBuffer();
+            for (ITest t : avarageTests.values()) {
+                buffer.append(t.toString());
+            }
+        return buffer.toString();
+    }
 }
