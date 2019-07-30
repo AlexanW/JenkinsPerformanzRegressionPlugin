@@ -17,7 +17,6 @@ public class CleanUpHook extends Thread{
     
     @Override
     public void run() {
-        System.out.println("HookLaeuft");
         MessnungenUtils.loescheAuslastugen(pfadZuZielOrdner, dateiName);
     }
     

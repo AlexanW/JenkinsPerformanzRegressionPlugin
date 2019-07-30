@@ -54,16 +54,12 @@ public class LeseCPUundRAM {
         if (tempFile.exists()) {
             while (!tempFile.canRead() && dummyCounter < 10) {
                 Thread.sleep(10);
-                System.out.println("Cant Read " + dummyCounter);
             }
             if(tempFile.canRead()) {
                 Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
             }
             target+= "Copy";
             File copiedFile = new File(target);
-            System.out.println("Target " + copiedFile.getAbsolutePath());
-            System.out.println("Exist " + copiedFile.exists());
-            System.out.println("Copied " + copiedFile.canRead());
             if (copiedFile.exists() && copiedFile.canRead()) {
                 FileInputStream reader = new FileInputStream(new File(target));
                 inStream =  new InputStreamReader(reader, "UTF-8"); 
@@ -83,7 +79,6 @@ public class LeseCPUundRAM {
                 }
                 stream.close();
                 if (!copiedFile.delete()) {
-                    System.out.println("Die Datei konnte nicht geloescht werden.");
                 }
             }
         }

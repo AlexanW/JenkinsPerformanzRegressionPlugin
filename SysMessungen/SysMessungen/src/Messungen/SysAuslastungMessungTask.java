@@ -96,7 +96,6 @@ public class SysAuslastungMessungTask extends TimerTask {
     @Override
     public void run() {
             try {
-                System.out.println("aktuell: " + aktuelleSpeichersumme + " MAX "+ maxSpeicherZeit);
                 if (aktuelleSpeichersumme >= maxSpeicherZeit) { 
                     loescheAeltesteDatei(zielFolder.getAbsolutePath());
                 }
@@ -148,7 +147,6 @@ public class SysAuslastungMessungTask extends TimerTask {
     private void erneuereStream() {
         try {
             stream.close();
-            System.out.println("STREAMaktuell: " + aktuelleSpeicherdauerDatei + " Vergleich : " + zeitEinheit);
             if (aktuelleSpeicherdauerDatei >= zeitEinheit) {
                 if ((zeitEinheit * (dateienCounter)) == maxSpeicherZeit) {
                     dateienCounter = 0;
