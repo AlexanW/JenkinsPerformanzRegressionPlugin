@@ -21,7 +21,7 @@ import testRegression.IErstelleBasis;
 import testRegression.TestVergleichArten;
 
 public class MyTestClass {
-    @Test
+    
     public void testBaseCreation() {
         //Relativer Pfad zu TestDaten "src/main/resources/TestDaten"
         File resultFile = new File("src/main/resources/TestDaten/ResultDateien/100/junitResult.xml");
@@ -69,12 +69,27 @@ public class MyTestClass {
             e.printStackTrace();
         }
     }
-    //@Test
+    @Test
     public void testeEinlesen() {
         try {
-            List<ITestWerte> werte = 
-                    LeseJUnitResults.getJUnitResultDateiAusBuilds
-                    ("src/main/resources/TestDaten", 1, 100, "junitResult.xml");
+//            List<ITestWerte> werte = 
+//                    LeseJUnitResults.getJUnitResultDateiAusBuilds
+//                    ("src/main/resources/TestDaten", 1, 100, "junitResult.xml");
+        IErstelleBasis erstelleBasis = new ErstelleBasis();
+        IBasis basis = erstelleBasis.erstelleBasis("src/main/resources/TestDaten"
+                , "src/main/resources/TestDaten/Basen", 0.0, 2, 100
+                , "junitResult.xml"
+                , new PrintStream("src/main/resources/TestDaten/Logger.txt"));
+        System.out.println(basis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        IBasis basisLesen = null;
+        LeseBasis lese = new LeseBasis();
+        try {
+            basisLesen = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -82,8 +97,11 @@ public class MyTestClass {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (basisLesen != null) {
+            System.out.println(basisLesen);
+        }
     }
-    @Test
+    //@Test
     public void testeBasenTestRegression() {
         RegressionTestResult result = new RegressionTestResult();
         double erwarteteRegression = 0.1;

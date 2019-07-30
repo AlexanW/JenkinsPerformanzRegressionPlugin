@@ -86,13 +86,23 @@ public class LeseSchreibeTestWerte {
      * @param targetBasis
      * @return
      */
-    // TO DO THERE SHOULD NOT BE A FILE NOT FOUND WHEN WRITING A NEW FILE
     public static boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
         boolean geschrieben = false;
         File file = new File(targetBasis + "/Neu.txt");
         if (file.exists()) {
             File fileAlt = new File(targetBasis + "/Alt.txt");
-            geschrieben = file.renameTo(fileAlt);
+            if (fileAlt.exists()) {
+                if (fileAlt.delete()) {
+//                    try {
+//                        fileAlt.createNewFile();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+                    geschrieben = file.renameTo(fileAlt);                    
+                }
+            } else {
+                geschrieben = file.renameTo(fileAlt);
+            }
         }
         geschrieben = schreibeBasis(basis, file.getAbsolutePath());
         return geschrieben;

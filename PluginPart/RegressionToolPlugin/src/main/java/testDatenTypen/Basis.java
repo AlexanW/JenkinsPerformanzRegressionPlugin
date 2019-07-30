@@ -1,4 +1,4 @@
- package testDatenTypen;
+package testDatenTypen;
 
 import java.util.HashMap;
 

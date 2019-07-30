@@ -22,30 +22,8 @@ public class LeseBasis implements ILeseBasis {
      */
     private ObjectInputStream oStream;
     
-    public LeseBasis(String pfad) throws FileNotFoundException, IOException {
-            oStream = new ObjectInputStream(new FileInputStream(pfad));
-//            stream = new BufferedReader(new FileReader(pfad));
-    }
-    
-    
     public LeseBasis() {
     }
-    
-//    public IBasis leseBasisEin () {
-//        IBasis basis = new Basis();
-//        try {
-//            while(stream.ready()) {
-//                String tempString = stream.readLine();
-//                if (tempString != null) {
-//                    String[] attribut = tempString.split(":");
-//                    basis.setBasisAttribute(attribut);   
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return basis;
-//    }
     /**
      * 
      * @param pfad

@@ -1,10 +1,7 @@
 package testRegression;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,19 +46,13 @@ public class ErstelleBasis implements IErstelleBasis {
             e.printStackTrace();
         }
         System.out.println("Werte aus Builds gelesen:" + werte.size());
-        //DummyPart
-//        if (werte.size() == 0) {
-//            werte =  
-//                LeseJUnitResults.getJUnitResultDatei(targetJUnitResutls,step_size);
-//                System.out.println("Werte aus Results gelesen:" + werte.size());
-//        }
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
         if (!enthaeltFehlschlag(werte) && werte.size() >= 1) {
             basis = new Basis(werte.get(0).getName(),avarageLaufzeit
                     , getMinLaufzeit(werte, tolleranz, avarageLaufzeit )
                     , getMaxLaufzeit(werte, tolleranz, avarageLaufzeit)
-                    ,berecheneVarianz(werte, tolleranz, avarageLaufzeit)
+                    ,berecheneVarianz(werte, avarageLaufzeit)
                     ,getDurchschnitTests(werte), werte.get(0).getTests().values().size());
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
             LeseSchreibeTestWerte.bestimmeNameUndSchreibeBasis(basis, targetBasis);
@@ -136,7 +127,7 @@ public class ErstelleBasis implements IErstelleBasis {
         return max;
     }
     
-    private double berecheneVarianz(List<ITestWerte> werte, double tolleranz
+    private double berecheneVarianz(List<ITestWerte> werte
             , double avarage) {
         double temp = 0;
         for (ITestWerte t : werte) {
@@ -168,23 +159,20 @@ public class ErstelleBasis implements IErstelleBasis {
             int iAuslastungenCounter = 0;
             
             for (ITestWerte e : werte) {
-                System.out.println(e.toString());
                if (e.getTests().get(n) != null) {
                    tempSum += e.getTests().get(n).getScore();
-                   if (e.getTests().get(n) != null) {
-                       /*
-                        * Annahme, dass die AvarageRAM nur 0 ist wenn es keine
-                        * Werte gibt.
-                        */
-                       if (e.getTests().get(n).getAvarageRAM() != 0) {
-                           tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
-                           tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
-                           tempCpuMinSum += e.getTests().get(n).getMinCPU();
-                           tempRamAvarageSum += e.getTests().get(n).getAvarageRAM();
-                           tempRamMaxSum += e.getTests().get(n).getMaxRAM();
-                           tempRamMinSum += e.getTests().get(n).getMinRAM();
-                           iAuslastungenCounter++; 
-                       }
+                   /*
+                    * Annahme, dass die AvarageRAM nur 0 ist wenn es keine
+                    * Werte gibt.
+                    */
+                   if (e.getTests().get(n).getAvarageRAM() != 0) {
+                       tempCpuAvarageSum += e.getTests().get(n).getAvarageCPU();
+                       tempCpuMaxSum += e.getTests().get(n).getMaxCPU();
+                       tempCpuMinSum += e.getTests().get(n).getMinCPU();
+                       tempRamAvarageSum += e.getTests().get(n).getAvarageRAM();
+                       tempRamMaxSum += e.getTests().get(n).getMaxRAM();
+                       tempRamMinSum += e.getTests().get(n).getMinRAM();
+                       iAuslastungenCounter++; 
                    }
                    i++;
                }
