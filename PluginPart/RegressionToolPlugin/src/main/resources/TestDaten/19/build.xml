@@ -26,7 +26,7 @@
               </branches>
             </marked>
             <revision reference="../marked"/>
-            <hudsonBuildNumber>19</hudsonBuildNumber>
+            <hudsonBuildNumber>18</hudsonBuildNumber>
           </hudson.plugins.git.util.Build>
         </entry>
       </buildsByBranchName>
@@ -54,11 +54,11 @@
       <testData/>
     </hudson.tasks.junit.TestResultAction>
   </actions>
-  <queueId>19</queueId>
-  <timestamp>1563808424112</timestamp>
-  <startTime>1563808424112</startTime>
+  <queueId>18</queueId>
+  <timestamp>1563808371279</timestamp>
+  <startTime>1563808371294</startTime>
   <result>SUCCESS</result>
-  <duration>9261</duration>
+  <duration>10683</duration>
   <charset>windows-1252</charset>
   <keepLog>false</keepLog>
   <builtOn></builtOn>

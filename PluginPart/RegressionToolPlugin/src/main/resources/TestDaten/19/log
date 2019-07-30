@@ -31,7 +31,7 @@ Buildfile: C:\Uni\EntwicklungsStuff\Jenkins\workspace\TestProjekt\DummyTestProje
 
 [8mha:////4BsaBtc3eW4OF0RW2j/OjO05PvLnJNIC/Pt9IF33732cAAAAYB+LCAAAAAAAAP9b85aBtbiIQT6jNKU4P0+vJLE4u1gvPjGvRM8xryQksSg9tcQvvyTVvqNr/s+Vl9uYGBgqihikoKqT8/OK83NS9ZwhNEghAwQwghQWAADROOumXQAAAA==[0mtest:
     [junit] Running testsForDummys.DummyTests
-    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,866 sec
+    [junit] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,848 sec
 
 [8mha:////4Csi/4/b5WZ8RacYyGZjXlrTmJudlvxuIDAXtn94AQauAAAAYB+LCAAAAAAAAP9b85aBtbiIQSGjNKU4P0+vJLE4u1gvPjGvRM8xr8S/tCQ5PzfVL78ktUuDM0uMry+HiYGhoohBCqo8OT+vOD8nVc8ZQoMUMkAAI0hhAQAUXUdTXgAAAA==[0mBUILD SUCCESSFUL
 Total time: 2 seconds
@@ -48,13 +48,13 @@ Mit einem Timerintervall von: 100.0
 Es konnte keine Basis erstellt werden.
 -----------------------------------
 Vergleiche die letzen zwei Basen miteinander.
-!Eine der Basen existiert nicht!C:\Uni\EntwicklungsStuff\Jenkins\jobs\TestProjekt\basen\Neu.txt (Das System kann die angegebene Datei nicht finden)Suche die JUnit Datei in: C:\Uni\EntwicklungsStuff\Jenkins\jobs\TestProjekt\builds\19/junitResult.xml
+!Eine der Basen existiert nicht!C:\Uni\EntwicklungsStuff\Jenkins\jobs\TestProjekt\basen\Neu.txt (Das System kann die angegebene Datei nicht finden)Suche die JUnit Datei in: C:\Uni\EntwicklungsStuff\Jenkins\jobs\TestProjekt\builds\18/junitResult.xml
 Suche Auslastungen in: C:\Uni\TestDateiName: testsForDummys.DummyTests 
-Score: 1.866 
+Score: 1.848 
 Tests: 
 	Testname: testDoMathNoSleep Score: 0.0 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
-	Testname: testDoMathQuarterSec Score: 0.25 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
-	Testname: testDoMathHalfSec Score: 0.516 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+	Testname: testDoMathQuarterSec Score: 0.257 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+	Testname: testDoMathHalfSec Score: 0.506 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
 	Testname: testDoMath Score: 1.007 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
 
 Es konnte keine Basis fuer einen Vergleich gefunden worden.Fuer diesen Job wurde keine Basis in C:\Uni\EntwicklungsStuff\Jenkins\jobs\TestProjekt/basengefundenFinished: SUCCESS
