@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import leseDaten.LeseJUnitResults;
+import leseDaten.LeseSchreibeTestWerte;
 import testDatenTypen.Test;
 import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
@@ -18,10 +19,6 @@ import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
 
 public class ErstelleBasis implements IErstelleBasis {
-    /**
-     * 
-     */
-    private static ObjectOutputStream oStream;
     /**
      * Diese Methode erstellt eine Basis, auf Basis aller jUnitDateien in dem 
      * targetJUnitReult Ordner.
@@ -67,7 +64,7 @@ public class ErstelleBasis implements IErstelleBasis {
                     ,berecheneVarianz(werte, tolleranz, avarageLaufzeit)
                     ,getDurchschnitTests(werte), werte.get(0).getTests().values().size());
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
-            bestimmeNameUndSchreibeBasis(basis, targetBasis);
+            LeseSchreibeTestWerte.bestimmeNameUndSchreibeBasis(basis, targetBasis);
         } else {
             if (enthaeltFehlschlag(werte)) {
                 logger.print("Unter den jUnit Dateien befindet sich mindestens "
@@ -77,51 +74,7 @@ public class ErstelleBasis implements IErstelleBasis {
         }
         return basis;
     }
-    
-    private boolean schreibeBasis(IBasis basis, String targetBasis) {
-        boolean geschrieben = false;
-        try {
-            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis));
-            oStream.writeObject(basis);
-            geschrieben = true;
-        } catch (IOException e){
-            e.printStackTrace();
-        }    
-        return geschrieben;
-    }
-    /**
-     * Bestimmt den Namen einer Basis, wenn es eine "Neu" schon gibt wird diese
-     * in Alt umbenannt.
-     * @param targetBasis
-     * @return
-     */
-    // TO DO THERE SHOULD NOT BE A FILE NOT FOUND WHEN WRITING A NEW FILE
-    private boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
-        boolean geschrieben = false;
-        File file = new File(targetBasis + "/Neu.txt");
-        if (file.exists()) {
-            File fileAlt = new File(targetBasis + "/Alt.txt");
-            geschrieben = file.renameTo(fileAlt);
-        }
-        geschrieben = schreibeBasis(basis, file.getAbsolutePath());
-        return geschrieben;
-    }
-    
-//    private boolean schribePlainTextBasis (IBasis basis, String targetBasis) {
-//        boolean geschrieben = false;
-//        try {
-//            /*
-//             * Hier wird an den Namen der Datei Basis noch der Name der 
-//             * TestSuit angehaengt.
-//             */
-//            stream = new FileOutputStream(targetBasis + basis.getName() + ".txt");
-//            stream.write(basis.toString().getBytes("UTF-8"));
-//        } catch (IOException exc) {
-//            exc.printStackTrace();
-//        }  
-//        return geschrieben;
-//    }
-    
+      
     private boolean enthaeltFehlschlag (List<ITestWerte> werte) {
         boolean enthaeltFehlschlag = false;
         for (ITestWerte w : werte ) {

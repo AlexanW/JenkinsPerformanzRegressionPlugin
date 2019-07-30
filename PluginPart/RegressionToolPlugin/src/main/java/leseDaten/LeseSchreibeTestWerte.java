@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.io.ObjectInputStream;
 
+import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.TestWerte;
 
@@ -56,5 +57,44 @@ public class LeseSchreibeTestWerte {
                 }
             }
         }
+    }
+    
+    private static boolean schreibeBasis(IBasis basis, String targetBasis) {
+        boolean geschrieben = false;
+        ObjectOutputStream oStream = null;
+        try {
+            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis));
+            oStream.writeObject(basis);
+            geschrieben = true;
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            if (oStream != null) {
+                try {
+                    oStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return geschrieben;
+    }
+    
+    /**
+     * Bestimmt den Namen einer Basis, wenn es eine "Neu" schon gibt wird diese
+     * in Alt umbenannt.
+     * @param targetBasis
+     * @return
+     */
+    // TO DO THERE SHOULD NOT BE A FILE NOT FOUND WHEN WRITING A NEW FILE
+    public static boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
+        boolean geschrieben = false;
+        File file = new File(targetBasis + "/Neu.txt");
+        if (file.exists()) {
+            File fileAlt = new File(targetBasis + "/Alt.txt");
+            geschrieben = file.renameTo(fileAlt);
+        }
+        geschrieben = schreibeBasis(basis, file.getAbsolutePath());
+        return geschrieben;
     }
 }
