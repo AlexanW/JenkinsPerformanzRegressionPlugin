@@ -5,13 +5,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
@@ -21,7 +26,8 @@ import testDatenTypen.Test;
 import testDatenTypen.TestWerte;
 
 /**
- * Diese Klasse liest jUnit Result Dateien ein und Speichter dabei fuer jeden Test den Namen und die dauer.
+ * Diese Klasse liest jUnit Result Dateien ein und Speichter dabei fuer jeden 
+ * Test den Namen und die dauer.
  * @author Alex
  *
  */
@@ -48,19 +54,49 @@ public class LeseJUnitResults {
                     StartElement start = event.asStartElement();
                     switch (start.getName().toString()) {
                     case "time": 
-                        results.setScore(Double.parseDouble(reader.nextEvent().asCharacters().getData()));
+                        results.setScore(Double.parseDouble(reader.nextEvent()
+                                .asCharacters().getData()));
                         break;
                     case "timestamp":
-                        results.setTimestamp(reader.nextEvent().asCharacters().getData());
+                        System.out.println("TIMESTAMPS " + results.getTimeStapm());
+                        if (results.getTimeStapm() != null && !results
+                        .getTimeStapm().isEmpty()) {
+                            String tempDate = reader.nextEvent()
+                                    .asCharacters().getData();
+                            if (stringToTimestamp(tempDate)
+                                    .before(stringToTimestamp(results
+                                            .getTimeStapm()))) {
+                                results.setTimestamp(tempDate);
+                            }              
+                        } else {
+                            results.setTimestamp(reader.nextEvent()
+                                    .asCharacters().getData());
+                        }
                         break;
                     case "case":
                         results.addTest(leseTestFall(reader));
                         break;
                     case "name":
-                        results.setName(reader.nextEvent().asCharacters().getData());
+                        results.setName(reader.nextEvent().asCharacters()
+                                .getData());
                         break;
                     default:
                         break;
+                    }
+                } if (event.isEndElement()) {
+                    EndElement end = event.asEndElement();
+                    if (end.getName().toString().equals("suites")) {
+                        while (reader.hasNext()) {
+                            XMLEvent eventEnd = reader.nextEvent();
+                            if (eventEnd.isStartElement()) {
+                                StartElement element = eventEnd.asStartElement();
+                                if (element.getName().toString().equals("duration")) {
+                                    results.setScore(Double.parseDouble(reader
+                                            .nextEvent().asCharacters()
+                                            .getData()));
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -82,6 +118,18 @@ public class LeseJUnitResults {
         }  
 	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
 		return results;
+	}
+	
+	private static Timestamp stringToTimestamp(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date parseDate = null;
+        try {
+            parseDate = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Timestamp timestamp = new java.sql.Timestamp(parseDate.getTime());
+        return timestamp;
 	}
 	/**
 	 * Eine Klasse, die einen Case aus einer jUnitResultDatei einliest und in einen Test schreibt.
