@@ -83,30 +83,41 @@ public class TestVergleichArten {
                 testNurInWerten.add(t);
             }
         }
-        result.append("Regressierte Tests bei " + erwarteteRegression + " Tolleranz : \n");
+        result.append("Regressierte Tests bei " + (erwarteteRegression * 100) + "% Tolleranz : \n");
         for (ITest t : regressierteTests) {
-            result.append(t.getName() + " mit: " + t.getScore() +"\n");
+            result.append(t.getName() + " Score: " + t.getScore());
+            if (basis.getTests().get(t.getName()) != null) {
+                result.append(" Bais Test Score: " + basis.getTests().get(t.getName()).getScore() + "\n");
+            } else {
+                result.append("/n");
+            }
         }
-        result.append("Tests die nur in der neuen Datei sind: \n");
-        for (ITest t : testNurInWerten) {
-            result.append(t.getName() + " mit: " + t.getScore() +  "\n");
+        if (testNurInWerten.size() > 0) {
+            result.append("Tests die nur in der neuen Datei sind: \n");
+            for (ITest t : testNurInWerten) {
+                result.append(t.getName() + " mit: " + t.getScore() +  "\n");
+            }
         }
-        result.append( "Tests die nur in der Basis sind: ");
-        for (ITest t : testNurInBasis) {
-            result.append(t.getName() + " mit: " + t.getScore() +  "\n");
+        if (testNurInBasis.size() > 0) {
+            result.append( "Tests die nur in der Basis sind: ");
+            for (ITest t : testNurInBasis) {
+                result.append(t.getName() + " mit: " + t.getScore() +  "\n");
+            }
         }
         LeseSchreibeTestWerte.schreibeErgebnisse(pfad + "/auswertung.txt", result.toString(), true);
     }
     /**
      * 
      */
-    public static void vergleicheTestsAuslastungen(ITestObjektGruppe alteGruppe,
+    public static Status vergleicheTestsAuslastungen(ITestObjektGruppe alteGruppe,
             ITestObjektGruppe neueGruppe, double auslastungTolleranz, 
             String pfad) {
-        Status status = Status.NEUTRAL;
         List<ITest> zuhoheAuslatungCPU = new ArrayList<ITest>();
         List<ITest> zuhoheAuslatungRAM = new ArrayList<ITest>();
-        
+        /*
+         * Dieser Bereich wird nur ausgeführt wenn die Messungen ausserhalb des Rahmens liegen.
+         */
+        Status status = Status.GROESSER;
         for (ITest t: neueGruppe.getTests().values()) {
             if (alteGruppe.getTests().get(t.getName()) != null) {
                 if (t.getAvarageCPU() > (alteGruppe.getTests().get(t.getName()).getAvarageCPU() * (1 + auslastungTolleranz))) {
@@ -125,18 +136,24 @@ public class TestVergleichArten {
         result.append( "Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
                 + " zu hohe CPU Auslastung zeigen (mehr als " 
                 + (auslastungTolleranz *100)+ "% hoeher im Druchschnitt oder im"
-                + " Maximalwert):\n  "+  status.toString() +"  \n");
+                + " Maximalwert):\n  ");
         for (ITest t: zuhoheAuslatungCPU) {
-            result.append(t.getName());
+            result.append(t.getName() + " CPU Mean: " + t.getAvarageCPU() 
+                + " CPU Max: " + t.getMaxCPU() + "\n");
         }
         result.append("Tests die im Vergleich zu ihrem Durchschnittswert in der Basis"
                 + " zu hohe RAM Auslastung zeigen (mehr als " 
                 + (auslastungTolleranz *100) + "% hoeher im Druchschnitt"
-                + " oder im Maximalwert):\n  "+  status.toString() +"  \n");
+                + " oder im Maximalwert):\n");
         for (ITest t: zuhoheAuslatungRAM) {
-            result.append(t.getName());
+            result.append(t.getName() + " RAM Mean: " + t.getAvarageRAM() 
+            + " RAM Max: " + t.getMaxRAM() + "\n");
         }
         LeseSchreibeTestWerte.schreibeErgebnisse(pfad + "/auswertung.txt", result.toString(), true);
+        if (zuhoheAuslatungCPU.size() > 0 || zuhoheAuslatungRAM.size() > 0) {
+            status = Status.AUSREISSER;
+        }
+        return status;
     }
     
     /**

@@ -47,28 +47,26 @@ public class TestVergleichen implements ITestVergleich{
              */
             if (result.getResutlDerTests() == Status.GROESSER) {
                 if (basis instanceof ITestObjektGruppe) {
-                    TestVergleichArten.vergleicheTestsAuslastungen(
+                    result.setResutlDerTests(TestVergleichArten.vergleicheTestsAuslastungen(
                                     (ITestObjektGruppe)basis,
-                                    testWerte, auslastungTolleranz, pfad);
+                                    testWerte, auslastungTolleranz, pfad));
+                    TestVergleichArten.vergleicheTests(testWerte, 
+                            (ITestObjektGruppe)basis, 
+                            ((basis.getObergrenze() - basis.getScore())/basis.getScore()),
+                            pfad);
                 }
-                if (result.getNachricht().isEmpty()) {
+                if (result.getResutlDerTests() != Status.AUSREISSER) {
                     result.addTextZuNachricht("Die Tests fallen aus den Grenzen der Basis."
                             + "Daher wird angenommen, dass es sich um Regression "
                             + "handelt.\nUntergrenze: " 
                             + basis.getUntergrenze() + " Obergrenze: "
                             + basis.getObergrenze()  + " TestZeit: " 
                             + testWerte.getScore() 
-                            + " Bei einer Tolleranz um die mittlere "
-                            + "Laufzeit von: " 
+                            + " Bei einem Intervall um die mittlere "
+                            + "Laufzeit von maximal: " 
                             + basis.getTolleranz() 
-                            + " (0.0 bedeutet, dass die Grenzen durch"
-                            + "min und max Werte aus X Messungen sind) \n");
-                    if (basis instanceof ITestObjektGruppe) {
-                        TestVergleichArten.vergleicheTests(testWerte, 
-                                (ITestObjektGruppe)basis, 
-                                ((basis.getObergrenze() - basis.getScore())/basis.getScore()),
-                                pfad);
-                    }
+                            + " (0.0 bedeutet, dass die Grenzen "
+                            + "min und max Werte aus den Verwendeten Messungen sind) \n");
                 }
             } else if (result.getResutlDerTests() == Status.KLEINER) {
                 /*
