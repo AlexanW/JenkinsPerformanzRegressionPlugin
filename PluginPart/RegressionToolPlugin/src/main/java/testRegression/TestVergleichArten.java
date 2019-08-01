@@ -115,7 +115,7 @@ public class TestVergleichArten {
         List<ITest> zuhoheAuslatungCPU = new ArrayList<ITest>();
         List<ITest> zuhoheAuslatungRAM = new ArrayList<ITest>();
         /*
-         * Dieser Bereich wird nur ausgeführt wenn die Messungen ausserhalb des Rahmens liegen.
+         * Dieser Bereich wird nur ausgefuehrt wenn die Messungen ausserhalb des Rahmens liegen.
          */
         Status status = Status.GROESSER;
         for (ITest t: neueGruppe.getTests().values()) {

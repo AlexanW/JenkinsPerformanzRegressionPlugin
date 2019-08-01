@@ -79,7 +79,11 @@ public class Test implements ITest, Serializable {
 	 */
 	@Override
 	public void setName(String name) {
-        this.name = name;
+	    if (this.name != null && !this.name.isEmpty()) {
+	        this.name += "." + name;
+	    } else {
+	        this.name = name;
+	    }
     }
 	@Override
 	public boolean getIstFehlgeschlagen() {

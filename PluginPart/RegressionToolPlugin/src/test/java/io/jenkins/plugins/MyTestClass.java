@@ -52,7 +52,6 @@ public class MyTestClass {
                 }
 
                 catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -63,61 +62,10 @@ public class MyTestClass {
                     , "src/main/resources/TestDaten/Basen", 0.0, 2, 100, "junitResult.xml"
                     , new PrintStream("src/main/resources/TestDaten/Logger.txt"));
             if (basis != null) {
-                System.out.println("DI ERSSTELLTE BASIS "  + basis);
+                System.out.println("DIE ERSSTELLTE BASIS "  + basis);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-    }
-    @Test
-    public void testeEinlesen() {
-        try {
-//            List<ITestWerte> werte = 
-//                    LeseJUnitResults.getJUnitResultDateiAusBuilds
-//                    ("src/main/resources/TestDaten", 1, 100, "junitResult.xml");
-        IErstelleBasis erstelleBasis = new ErstelleBasis();
-        IBasis basis = erstelleBasis.erstelleBasis("src/main/resources/TestDaten"
-                , "src/main/resources/TestDaten/Basen", 0.0, 2, 100
-                , "junitResult.xml"
-                , new PrintStream("src/main/resources/TestDaten/Logger.txt"));
-        System.out.println(basis);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        IBasis basisLesen = null;
-        LeseBasis lese = new LeseBasis();
-        try {
-            basisLesen = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (basisLesen != null) {
-            System.out.println(basisLesen);
-        }
-    }
-    //@Test
-    public void testeBasenTestRegression() {
-        RegressionTestResult result = new RegressionTestResult();
-        double erwarteteRegression = 0.1;
-       LeseBasis read = new LeseBasis();
-        IBasis neueBasis = null;
-        IBasis alteBasis = null;
-        try {
-            neueBasis = read.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Neu.txt");
-            alteBasis = read.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
-        } catch (ClassNotFoundException | IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        TestVergleichArten.vergleicheTests((ITestObjektGruppe)neueBasis,
-                (ITestObjektGruppe)alteBasis, erwarteteRegression,
-                "src/main/resources/TestDaten");
-        System.out.println(result.getNachricht());
     }
 }

@@ -132,6 +132,10 @@ public class LeseJUnitResults {
 	            event = reader.nextEvent();
 	            temp.setScore(Double.parseDouble(event.asCharacters().getData()));
 	            break;
+	        case "className" :
+	                event = reader.nextEvent();
+	                temp.setName(event.asCharacters().getData());
+	                break;
 	        case "testName" :
 	            event = reader.nextEvent();
 	            temp.setName(event.asCharacters().getData());
