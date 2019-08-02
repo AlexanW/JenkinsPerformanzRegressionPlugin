@@ -58,7 +58,6 @@ public class LeseJUnitResults {
                                 .asCharacters().getData()));
                         break;
                     case "timestamp":
-                        System.out.println("TIMESTAMPS " + results.getTimeStapm());
                         if (results.getTimeStapm() != null && !results
                         .getTimeStapm().isEmpty()) {
                             String tempDate = reader.nextEvent()
@@ -123,12 +122,15 @@ public class LeseJUnitResults {
 	private static Timestamp stringToTimestamp(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Date parseDate = null;
+        Timestamp timestamp = null;
         try {
             parseDate = dateFormat.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Timestamp timestamp = new java.sql.Timestamp(parseDate.getTime());
+        if (parseDate != null) {
+            timestamp = new java.sql.Timestamp(parseDate.getTime());
+        }
         return timestamp;
 	}
 	/**

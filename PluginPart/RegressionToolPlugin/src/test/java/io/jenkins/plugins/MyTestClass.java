@@ -21,51 +21,5 @@ import testRegression.IErstelleBasis;
 import testRegression.TestVergleichArten;
 
 public class MyTestClass {
-    
-    public void testBaseCreation() {
-        //Relativer Pfad zu TestDaten "src/main/resources/TestDaten"
-        File resultFile = new File("src/main/resources/TestDaten/ResultDateien/100/junitResult.xml");
-        File resultFile1 = new File("src/main/resources/TestDaten/ResultDateien/101/junitResult.xml");
-        File resultFile2 = new File("src/main/resources/TestDaten/ResultDateien/102/junitResult.xml");
-        if (resultFile.exists() && resultFile1.exists() && resultFile2.exists()) {
-            ITestWerte werte = LeseJUnitResults.leseTestsXML(resultFile.getAbsolutePath(), 100);
-            ITestWerte werte1 = LeseJUnitResults.leseTestsXML(resultFile1.getAbsolutePath(), 100);
-            ITestWerte werte2 = LeseJUnitResults.leseTestsXML(resultFile2.getAbsolutePath(), 100);
-          System.out.println(werte);
-          System.out.println(werte1);
-          System.out.println(werte2);
-            if (werte != null) {
-                try {
-                    werte.setTestAuslastungen(LeseCPUundRAM.readAuslastung("src/main/resources/TestDaten/Auslastungen/TestDateiH11M04S10DH11M05S10.txt"));
-                    werte1.setTestAuslastungen(LeseCPUundRAM.readAuslastung("src/main/resources/TestDaten/Auslastungen/TestDateiH11M07S40DH11M07S53.txt"));
-                    werte2.setTestAuslastungen(LeseCPUundRAM.readAuslastung("src/main/resources/TestDaten/Auslastungen/TestDateiH11M15S09DH11M17S51.txt"));
-                    if (werte != null && werte1 != null && werte2 != null) {
-                        LeseSchreibeTestWerte.schreibeTestWerte(
-                                "src/main/resources/TestDaten/ResultDateien/100/testWerte.txt", werte);
-                        LeseSchreibeTestWerte.schreibeTestWerte(
-                                "src/main/resources/TestDaten/ResultDateien/101/testWerte.txt", werte1);
-                        LeseSchreibeTestWerte.schreibeTestWerte(
-                                "src/main/resources/TestDaten/ResultDateien/102/testWerte.txt", werte2);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        IErstelleBasis erstelleBasis = new ErstelleBasis();
-        try {
-            IBasis basis = erstelleBasis.erstelleBasis("src/main/resources/TestDaten/ResultDateien"
-                    , "src/main/resources/TestDaten/Basen", 0.0, 2, 100, "junitResult.xml"
-                    , new PrintStream("src/main/resources/TestDaten/Logger.txt"));
-            if (basis != null) {
-                System.out.println("DIE ERSSTELLTE BASIS "  + basis);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }

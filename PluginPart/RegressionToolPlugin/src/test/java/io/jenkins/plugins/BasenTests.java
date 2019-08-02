@@ -2,6 +2,7 @@ package io.jenkins.plugins;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import org.junit.Test;
 
@@ -9,6 +10,8 @@ import leseDaten.LeseBasis;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.RegressionTestResult;
+import testRegression.ErstelleBasis;
+import testRegression.IErstelleBasis;
 import testRegression.TestVergleichArten;
 
 public class BasenTests {
@@ -17,7 +20,7 @@ public class BasenTests {
     public void testeBasenTestRegression() {
         RegressionTestResult result = new RegressionTestResult();
         double erwarteteRegression = 0.1;
-       LeseBasis read = new LeseBasis();
+        LeseBasis read = new LeseBasis();
         IBasis neueBasis = null;
         IBasis alteBasis = null;
         try {
@@ -47,6 +50,18 @@ public class BasenTests {
         }
         if (basisLesen != null) {
             System.out.println(basisLesen);
+        }
+    }
+    @Test
+    public void erstelleBasis() {
+        IErstelleBasis erstelle = new ErstelleBasis();
+        try {
+            IBasis basis = erstelle.erstelleBasis("src/main/resources/TestDaten/builds"
+                    , "src/main/resources/TestDaten/Basen"
+                    , 0.0, 5, 100, "junitResult.xml"
+                    , new PrintStream("src/main/resources/TestDaten/builds/auswertungen.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
