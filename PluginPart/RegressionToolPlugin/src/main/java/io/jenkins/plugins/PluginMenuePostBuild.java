@@ -254,7 +254,7 @@ public class PluginMenuePostBuild extends Recorder{
         if (basisAlt != null && basisNeu != null) {
             ITestVergleich verlgeich = new TestVergleichen();
             RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu,
-                    basisAlt, tolleranzFuerBasenVergleich, aplhaWert,
+                    basisAlt, aplhaWert,
                     build.getRootDir().getAbsolutePath());
             logger.print(result.getNachricht());
         }

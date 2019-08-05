@@ -12,12 +12,13 @@ public class TestVergleichen implements ITestVergleich{
      */
     @Override
     public RegressionTestResult vergleicheBasen(IBasis neueBasis, IBasis alteBasis
-            , double erwarteteRegression, double alpha, String pfad) {
+            , double alpha, String pfad) {
         RegressionTestResult result = new RegressionTestResult();
-        result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, erwarteteRegression, alpha));
+        result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, alpha));
         if (result.getResutlDerTests() == Status.GROESSER) {
-            result.addTextZuNachricht("Die neue Basis weist dabei eine Regression im Vergleich zu der alten auf."
-                    + " Es galt eine erwartete Regression von " + erwarteteRegression);
+            result.addTextZuNachricht("Die neue Basis weist dabei eine Regression im Vergleich zu der alten auf.\n"
+                    + "Verglichen wurde die neue Basis:  " + neueBasis + "\n" 
+                    + "Und die alte Basis: " + alteBasis + "\n");
             if (neueBasis instanceof ITestObjektGruppe && alteBasis instanceof ITestObjektGruppe) {
                 TestVergleichArten.vergleicheTests((ITestObjektGruppe)alteBasis,
                         (ITestObjektGruppe)neueBasis,
@@ -25,8 +26,7 @@ public class TestVergleichen implements ITestVergleich{
                         pfad);
             }
         } else {
-            result.addTextZuNachricht("Keine Regression ausserhalb der " + (erwarteteRegression*100) + "% Grenze"
-                    + "fuer Regression.");
+            result.addTextZuNachricht("Keine Regression zwischen den Basen gefunden\n");
         }
         return result;
     }

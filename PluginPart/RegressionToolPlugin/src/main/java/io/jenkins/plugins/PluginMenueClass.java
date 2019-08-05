@@ -189,7 +189,7 @@ public class PluginMenueClass extends BuildWrapper{
 
                 if (basisAlt != null && basisNeu != null) {
                     ITestVergleich verlgeich = new TestVergleichen();
-                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, tolleranzFuerBasenVergleich, 0.05, "");
+                    RegressionTestResult result = verlgeich.vergleicheBasen(basisNeu, basisAlt, 0.05, "");
                     listener.getLogger().print(result.getNachricht());
                 }
 

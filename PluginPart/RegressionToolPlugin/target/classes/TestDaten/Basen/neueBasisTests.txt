@@ -1,0 +1,4 @@
+	Testname: testsForDummys.DummyTests.testDoMathQuarterSec Score: 0.2504 	IstFehlgeschlagen: false CPUMax: NaN CPUAvarage: NaN RAMMax: NaN RAMAvarage: NaN
+	Testname: testsForDummys.DummyTests.testDoMathNoSleep Score: 0.0012000000000000001 	IstFehlgeschlagen: false CPUMax: NaN CPUAvarage: NaN RAMMax: NaN RAMAvarage: NaN
+	Testname: testsForDummys.DummyTests.testDoMath Score: 1.001 	IstFehlgeschlagen: false CPUMax: NaN CPUAvarage: NaN RAMMax: NaN RAMAvarage: NaN
+	Testname: testsForDummys.DummyTests.testDoMathHalfSec Score: 0.5004 	IstFehlgeschlagen: false CPUMax: NaN CPUAvarage: NaN RAMMax: NaN RAMAvarage: NaN

@@ -7,6 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.io.ObjectInputStream;
 
 import testDatenTypen.IBasis;
@@ -90,21 +94,31 @@ public class LeseSchreibeTestWerte {
         boolean geschrieben = false;
         File file = new File(targetBasis + "/Neu.txt");
         if (file.exists()) {
-            File fileAlt = new File(targetBasis + "/Alt.txt");
-            if (fileAlt.exists()) {
-                if (fileAlt.delete()) {
-//                    try {
-//                        fileAlt.createNewFile();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-                    geschrieben = file.renameTo(fileAlt);                    
-                }
-            } else {
-                geschrieben = file.renameTo(fileAlt);
+            Path copiedTo = Paths.get(targetBasis + "/Alt.txt");
+            try {
+                Files.copy(file.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         geschrieben = schreibeBasis(basis, file.getAbsolutePath());
+        System.out.println("file Wurde nach neu geschrieben : " + geschrieben);
         return geschrieben;
     }
+//  File fileAlt = new File(targetBasis + "/Alt.txt");
+//  if (fileAlt.exists()) {
+//      if (fileAlt.delete()) {
+////          try {
+////              fileAlt.createNewFile();
+////          } catch (IOException e) {
+////              e.printStackTrace();
+////          }
+//          geschrieben = file.renameTo(fileAlt);
+//      }
+//  } else {
+//      geschrieben = file.renameTo(fileAlt);
+//  }
+//}
+//System.out.println("File. " + file.getAbsolutePath()););
+    
 }

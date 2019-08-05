@@ -5,10 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.math3.distribution.TDistribution;
-import org.apache.commons.math3.stat.inference.TTest;
 
 import leseDaten.LeseSchreibeTestWerte;
-import testDatenTypen.BasisMitTests;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
 import testDatenTypen.ITestObjektGruppe;
@@ -163,23 +161,31 @@ public class TestVergleichArten {
      * @param neueBasis
      * @return
      */
-    public static Status vergleicheBasen(BasisMitTests alteBasis, BasisMitTests neueBasis, double erwarteteRegression, double alpha) {
-        Status status = Status.NEUTRAL;
-        TTest test = new TTest();
-        /*
-         * Sollte die Ho Hypothese, dass die Means gleich sind abgelehnt werden dann gilt, 
-         * dass es keien statistischen Hinweis darauf gibt, dass die Means gleich sind.
-         * Dabei gibt es eine Fehlkategoriesierung von aphla%, hier 5%.
-         * OneSided alpha*2; -> hier Mean 1 kleiner als mean2 -> Regression.
-         */
-        boolean h0Rejectet = test.tTest(ITestsZuArry(alteBasis.getTests().values(), erwarteteRegression),
-                ITestsZuArry(neueBasis.getTests().values()), (2*alpha));
-        if (!h0Rejectet) {
-            status = Status.GROESSER;
-        }
-        
-        return status;
-    }
+//    public static Status vergleicheBasen(BasisMitTests alteBasis, BasisMitTests neueBasis, double erwarteteRegression, double alpha) {
+//        Status status = Status.NEUTRAL;
+//        TTest test = new TTest();
+//        System.out.println("In dem APPACE THINGS");
+//        /*
+//         * Sollte die Ho Hypothese, dass die Means gleich sind abgelehnt werden dann gilt, 
+//         * dass es keien statistischen Hinweis darauf gibt, dass die Means gleich sind.
+//         * Dabei gibt es eine Fehlkategoriesierung von aphla%, hier 5%.
+//         * OneSided alpha*2; -> hier Mean 1 kleiner als mean2 -> Regression.
+//         */
+//        //StatisticalSummary summary = new StatisticalSummaryValues(alteBasis.getScore(), );
+////        int i = 0;-
+////        for (double t: ITestsZuArry(alteBasis.getTests().values(), erwarteteRegression)) {
+////            System.out.println(t < neueBasisTests[i]);
+////            i++;
+////        }
+////        boolean h0Rejectet = test.tTest(dummyArrayAlt,
+////                dummyArrayNeu, (alpha));
+////        System.out.println("H0REJEKT: " + h0Rejectet);
+////        if (!h0Rejectet) {
+////            status = Status.GROESSER;
+////        }
+//        
+//        return status;
+//    }
     /**
      * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
      * verwendet. Dieser vergleicht 2 Sets miteinander und sagt mit aus ob der 
@@ -190,19 +196,25 @@ public class TestVergleichArten {
      * @param neueBasis
      * @return
      */
-    public static Status vergleicheBasen(IBasis alteBasis, IBasis neueBasis, double erwarteteRegression, double alpha) {
-        Status status = Status.NEUTRAL;
-        double sp = Math.sqrt((((alteBasis.getAnzahlTests()-1) * Math.pow(alteBasis.getVarianz(), 2))
-                + ((neueBasis.getAnzahlTests()-1) * Math.pow(neueBasis.getVarianz(), 2)))
-                /(alteBasis.getAnzahlTests() + neueBasis.getAnzahlTests() - 2));
-        double t0 = ((alteBasis.getScore() - neueBasis.getScore())
-                /(sp 
-                * Math.sqrt(((1/alteBasis.getAnzahlTests()) + (1/neueBasis.getAnzahlTests())))));
-        TDistribution dist = new TDistribution(alteBasis.getAnzahlTests()+ neueBasis.getAnzahlTests()-2, alpha);
-        double pvalue = dist.getSupportUpperBound();
+    public static Status vergleicheBasen(IBasis alteBasis, IBasis neueBasis, double alpha) {
+        Status status = Status.NEUTRAL;;
+        double spUpperPartOld = (alteBasis.getAnzahlTests()-1) * Math.pow(alteBasis.getVarianz(), 2);
+        double spUpperPartNew = (neueBasis.getAnzahlTests()-1) * Math.pow(neueBasis.getVarianz(), 2);
+        double spUpperPart = spUpperPartNew + spUpperPartOld;
+        double spLowerPart = alteBasis.getAnzahlTests() + neueBasis.getAnzahlTests() - 2;
+        double sp = Math.sqrt(spUpperPart / spLowerPart);
+        double difBasenAvarage = neueBasis.getScore() - alteBasis.getScore();
+        double tOLowerSqrt = Math.sqrt((1.0/alteBasis.getAnzahlTests()) + (1.0 /neueBasis.getAnzahlTests()));
+        double tOLowerHalf = sp * tOLowerSqrt;
+        double t0 = difBasenAvarage / tOLowerHalf;
+        TDistribution dist = new TDistribution(alteBasis.getAnzahlTests() + neueBasis.getAnzahlTests() - 2);
+        double tDistWert = dist.inverseCumulativeProbability(1 - 0.05);
         
-        boolean h0Rejectet = t0 > pvalue;
-        if (!h0Rejectet) {
+        System.out.println("t0: " + t0 + " pVALUE:" + tDistWert);
+        boolean h0Rejectet = t0 > tDistWert;
+        
+        
+        if (h0Rejectet) {
             status = Status.GROESSER;
         }
         return status;
