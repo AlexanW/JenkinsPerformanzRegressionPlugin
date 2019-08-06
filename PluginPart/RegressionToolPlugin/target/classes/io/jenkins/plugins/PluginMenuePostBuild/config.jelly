@@ -28,9 +28,6 @@
      <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName">
         <f:textbox default="junitResult"/>
      </f:entry>
-	 <f:entry title="${%Erwartete Regression fuer den Vergleich von Basen}" field="tolleranzFuerBasenVergleich">
-		<f:textbox default="0.0"/>
-  	 </f:entry>
 	 <f:entry title="${%Intervall der Messungen der Auslastungen in Millisekunden}" field="timerIntervall">
 		<f:textbox default="100"/>
 	 </f:entry>

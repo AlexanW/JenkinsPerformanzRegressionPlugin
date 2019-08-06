@@ -131,6 +131,7 @@ public class TestWerte implements ITestWerte, Serializable {
 	
 	private void addMessungenZuTests() {
 	    double scoreSumme = 0;
+	    System.out.println(testAuslastungen.size());
 	    if (testAuslastungen.size() > 0) {
 	        for (ITest t : tests.values()) {
 	            if (t.getScore() < step_size) {

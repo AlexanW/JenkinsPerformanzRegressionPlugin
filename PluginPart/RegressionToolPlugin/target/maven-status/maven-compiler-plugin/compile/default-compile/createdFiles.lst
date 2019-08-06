@@ -1,7 +1,6 @@
 io\jenkins\plugins\PluginMenuePostBuild.class
 io\jenkins\plugins\PluginMenuePostBuild$DescriptorImpl.class
 testDatenTypen\RegressionTestResult.class
-io\jenkins\plugins\PluginMenueClass$DescriptorImpl.class
 leseDaten\LeseJUnitResults.class
 testDatenTypen\Status.class
 META-INF\annotations\hudson.Extension
@@ -9,10 +8,8 @@ testDatenTypen\TestAuslastungen.class
 testRegression\ITestVergleich.class
 testDatenTypen\Test.class
 testDatenTypen\TestWerte.class
-io\jenkins\plugins\PluginMenueClass.stapler
 leseDaten\LeseCPUundRAM.class
 leseDaten\ILeseBasis.class
-io\jenkins\plugins\PluginMenueClass.class
 testDatenTypen\ITestObjektGruppe.class
 testDatenTypen\ITestObjekt.class
 testDatenTypen\ITest.class
@@ -22,7 +19,6 @@ testDatenTypen\ITestWerte.class
 testRegression\IErstelleBasis.class
 testRegression\TestVergleichArten.class
 META-INF\annotations\hudson.Extension.txt
-io\jenkins\plugins\PluginMenueClass$1.class
 testDatenTypen\BasisMitTests.class
 testDatenTypen\Basis.class
 testRegression\TestVergleichen.class
