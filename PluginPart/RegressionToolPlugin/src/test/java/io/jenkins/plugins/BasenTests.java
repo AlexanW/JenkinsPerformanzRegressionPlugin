@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import leseDaten.ILeseBasis;
 import leseDaten.LeseBasis;
+import testDatenTypen.Basis;
 import testDatenTypen.BasisMitTests;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestObjektGruppe;
@@ -38,15 +39,15 @@ public class BasenTests {
                 "src/main/resources/TestDaten");
         System.out.println(result.getNachricht());
     }
-    //@Test
+    @Test
     public void testeEinlesen() {
         IBasis basisLesen = null;
-        //IBasis basisLesen2 = null;
+        IBasis basisLesen2 = null;
         LeseBasis lese = new LeseBasis();
         try {
             //src/main/resources/TestDaten/Basen/Alt.txt
-            basisLesen = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
-            //basisLesen2 = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
+            basisLesen = lese.leseObjektIBasisEin("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\basen/Alt.txt");
+            basisLesen2 = lese.leseObjektIBasisEin("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\basen/Neu.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -56,10 +57,10 @@ public class BasenTests {
         }
         if (basisLesen != null) {
             System.out.println(basisLesen);
-            //System.out.println(basisLesen2);
+            System.out.println(basisLesen2);
         }
     }
-    @Test
+    //@Test
     public void erstelleBasis() {
         IErstelleBasis erstelle = new ErstelleBasis();
         try {
@@ -86,24 +87,12 @@ public class BasenTests {
     }
     @Test
     public void testeBasenRegressionsTest() {
-        ILeseBasis lese = new LeseBasis();
-        try {
-            IBasis basisAlt = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
-            IBasis basisNeu = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Neu.txt");
+            IBasis basisAlt = new Basis("Test", 1.873, 2.3, 1.9, 0.2, null, 40);
+            IBasis basisNeu = new Basis("Test", 1.982, 2.2, 1.8, 0.2, null, 40);
             Status status = Status.NEUTRAL;
             status = TestVergleichArten.vergleicheBasen(basisAlt, basisNeu, 0.005);
             System.out.println("Status ist: " + status);
 //            status = TestVergleichArten.vergleicheBasen((BasisMitTests)basisAlt, (BasisMitTests) basisNeu, 1.0, 0.005);
-//            System.out.println("Status nach APPACE THINS: " + status);
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }   
+//            System.out.println("Status nach APPACE THINS: " + status); 
     }
 }

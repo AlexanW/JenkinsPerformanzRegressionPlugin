@@ -49,8 +49,6 @@ public class PluginMenuePostBuild extends Recorder{
     
     private double tolleranzFuerTestVergleich;
     
-    private double tolleranzFuerBasenVergleich;
-    
     private double timerIntervall;
     
     private boolean testeRegression;
@@ -69,8 +67,7 @@ public class PluginMenuePostBuild extends Recorder{
     public PluginMenuePostBuild (boolean pruefeRegression, 
             String pfadZuCPUundRAM, boolean erstelleBasis,
             int anzahlAnVergangenenBuilds,
-            double tolleranzFuerSchwankungenBasen, 
-            double tolleranzFuerBasenVergleich, double aplhaWert, 
+            double tolleranzFuerSchwankungenBasen, double aplhaWert, 
             boolean vergleicheBasis,double timerIntervall,
             String jUnitDateiName, double tolleranzFuerTestVergleich,
             boolean erlaubeBuildFehlschlag, double auslastungTolleranz) {
@@ -80,7 +77,6 @@ public class PluginMenuePostBuild extends Recorder{
         this.erstelleBasis = erstelleBasis;
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
         this.tolleranzFuerSchwankungenBasen = tolleranzFuerSchwankungenBasen;
-        this.tolleranzFuerBasenVergleich = tolleranzFuerBasenVergleich;
         this.testeRegression = pruefeRegression;
         this.vergleicheBasis = vergleicheBasis;
         this.aplhaWert = aplhaWert;
@@ -130,11 +126,7 @@ public class PluginMenuePostBuild extends Recorder{
     public double getAplhaWert() {
         return aplhaWert;
     }
-    
-    public double getTolleranzFuerBasenVergleich() {
-        return tolleranzFuerBasenVergleich;
-    }
-    
+
     public String getPfadZuCPUundRAM() {
         return pfadZuCPUundRAM;
     }
@@ -258,6 +250,7 @@ public class PluginMenuePostBuild extends Recorder{
                     build.getRootDir().getAbsolutePath());
             logger.print(result.getNachricht());
         }
+        logger.print("------------------------------------\n");
     }
     
     public void pruefeRegression (AbstractBuild<?, ?> build, PrintStream logger) throws IOException {
