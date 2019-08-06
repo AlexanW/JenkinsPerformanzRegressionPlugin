@@ -1,0 +1,28 @@
+XML in Question: src/main/resources/TestDaten/TestAuslastung/junitResult.xml
+Name: testsForDummys.DummyTests 
+Score: 1.7 
+
+	Testname: testsForDummys.DummyTests.testDoMathNoSleep Score: 0.001 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+
+	Testname: testsForDummys.DummyTests.testDoMathQuarterSec Score: 0.01 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+
+	Testname: testsForDummys.DummyTests.testDoMathHalfSec Score: 0.5 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+
+	Testname: testsForDummys.DummyTests.testDoMathReal Score: 0.01 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+
+	Testname: testsForDummys.DummyTests.testDoMath Score: 1.0 	IstFehlgeschlagen: false CPUMax: 0.0 CPUAvarage: 0.0 RAMMax: 0.0 RAMAvarage: 0.0
+
+18
+Name: testsForDummys.DummyTests 
+Score: 1.7 
+
+	Testname: testsForDummys.DummyTests.testDoMathNoSleep Score: 0.001 	IstFehlgeschlagen: false CPUMax: 15.0 CPUAvarage: 15.0 RAMMax: 1.0 RAMAvarage: 1.0
+
+	Testname: testsForDummys.DummyTests.testDoMathQuarterSec Score: 0.01 	IstFehlgeschlagen: false CPUMax: 15.0 CPUAvarage: 15.0 RAMMax: 1.0 RAMAvarage: 1.0
+
+	Testname: testsForDummys.DummyTests.testDoMathHalfSec Score: 0.5 	IstFehlgeschlagen: false CPUMax: 20.0 CPUAvarage: 15.833333333333334 RAMMax: 1.0 RAMAvarage: 1.0
+
+	Testname: testsForDummys.DummyTests.testDoMathReal Score: 0.01 	IstFehlgeschlagen: false CPUMax: 20.0 CPUAvarage: 20.0 RAMMax: 1.0 RAMAvarage: 1.0
+
+	Testname: testsForDummys.DummyTests.testDoMath Score: 1.0 	IstFehlgeschlagen: false CPUMax: 21.0 CPUAvarage: 7.818181818181818 RAMMax: 1.0 RAMAvarage: 1.0
+
