@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
-Built-By: Alex
+Built-By: alexa
 Created-By: Apache Maven
 Build-Jdk: 12.0.1
 Extension-Name: RegressionToolPlugin
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: RegressionToolPlugin
-Implementation-Version: 1.2
+Implementation-Version: 1.25
 Group-Id: io.jenkins.plugins
 Short-Name: RegressionToolPlugin
 Long-Name: RegressionToolPlugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 1.2
+Plugin-Version: 1.25
 Hudson-Version: 2.164.1
 Jenkins-Version: 2.164.1
 Plugin-Developers: 
