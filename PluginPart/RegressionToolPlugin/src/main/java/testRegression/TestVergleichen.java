@@ -67,6 +67,10 @@ public class TestVergleichen implements ITestVergleich{
                             + basis.getTolleranz() 
                             + " (0.0 bedeutet, dass die Grenzen "
                             + "min und max Werte aus den Verwendeten Messungen sind) \n");
+                } else {
+                    result.addTextZuNachricht("Es scheinen Ausreiﬂer "
+                            + "vorzuliegen. Kontrollieren sie die auswertung."
+                            + "txt und starten sie bei Zweifen einen Weitern Build.");
                 }
             } else if (result.getResutlDerTests() == Status.KLEINER) {
                 /*
