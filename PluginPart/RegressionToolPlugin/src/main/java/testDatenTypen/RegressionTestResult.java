@@ -24,4 +24,9 @@ public class RegressionTestResult {
         temp.append(nachricht);
         this.nachricht = temp.toString();
     }
+    
+    public void addResultZuResult(RegressionTestResult resultToAdd) {
+        this.addTextZuNachricht( resultToAdd.getNachricht());
+        this.setResutlDerTests(resultToAdd.getResutlDerTests());
+    }
 }

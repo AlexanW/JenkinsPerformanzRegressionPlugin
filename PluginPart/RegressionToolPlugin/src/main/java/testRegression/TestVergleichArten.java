@@ -11,6 +11,7 @@ import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
 import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
+import testDatenTypen.RegressionTestResult;
 import testDatenTypen.Status;
 
 public class TestVergleichArten {
@@ -163,8 +164,8 @@ public class TestVergleichArten {
      * @param neueBasis
      * @return
      */
-    public static Status vergleicheBasen(IBasis alteBasis, IBasis neueBasis, double alpha) {
-        Status status = Status.NEUTRAL;;
+    public static RegressionTestResult vergleicheBasen(IBasis alteBasis, IBasis neueBasis, double alpha) {
+        RegressionTestResult result = new RegressionTestResult();
         double spUpperPartOld = (alteBasis.getAnzahlTests()-1) * Math.pow(alteBasis.getVarianz(), 2);
         double spUpperPartNew = (neueBasis.getAnzahlTests()-1) * Math.pow(neueBasis.getVarianz(), 2);
         double spUpperPart = spUpperPartNew + spUpperPartOld;
@@ -179,35 +180,14 @@ public class TestVergleichArten {
         
         System.out.println("t0: " + t0 + " pVALUE:" + tDistWert);
         boolean h0Rejectet = t0 > tDistWert;
-        
+        result.addTextZuNachricht("t Statistik:" + t0 + " p-Wert:"
+                + tDistWert + " Freiheitsgrade: " 
+                + (neueBasis.getAnzahlTests() 
+                        + alteBasis.getAnzahlTests() - 2) + "\n");
         
         if (h0Rejectet) {
-            status = Status.GROESSER;
+            result.setResutlDerTests(Status.GROESSER);
         }
-        return status;
-    }
-    /**
-     * 
-     */
-    private static double[] ITestsZuArry(Collection<ITest> tests) {
-        double[] doubleArray = new double[tests.size()];
-        int i = 0;
-        for (ITest t: tests) {
-            doubleArray[i] = t.getScore();
-            i++;
-        }
-        return doubleArray;
-    }
-    /**
-     * 
-     */
-    private static double[] ITestsZuArry(Collection<ITest> tests, double erwarteteRegression) {
-        double[] doubleArray = new double[tests.size()];
-        int i = 0;
-        for (ITest t: tests) {
-            doubleArray[i] = t.getScore() * (1 + erwarteteRegression);
-            i++;
-        }
-        return doubleArray;
+        return result;
     }
 }

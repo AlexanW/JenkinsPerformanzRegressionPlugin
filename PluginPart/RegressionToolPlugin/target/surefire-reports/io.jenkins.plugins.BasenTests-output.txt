@@ -1,14 +1,37 @@
 Name:testsForDummys.DummyTests
-AvarageLaufzeit: 2.3928000000000003
-Obergrenze:3.89
-Untergrenze:1.842
-Varianz:0.62066536
+AvarageLaufzeit: 1.9866
+Obergrenze:2.493
+Untergrenze:1.841
+Varianz:0.06452823999999997
 
 Name:testsForDummys.DummyTests
-AvarageLaufzeit: 2.394
-Obergrenze:3.89
-Untergrenze:1.848
-Varianz:0.6193492
+AvarageLaufzeit: 1.9855999999999998
+Obergrenze:2.493
+Untergrenze:1.841
+Varianz:0.06480143999999996
 
-t0: 2.4373140954747705 pVALUE:1.6646246445072475
-Status ist: GROESSER
+XML in Question: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resources\TestDaten\builds\37\junitResult.xml
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resources\TestDaten\builds\38\testWerte.txt
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resources\TestDaten\builds\36\testWerte.txt
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resources\TestDaten\builds\35\testWerte.txt
+F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resources\TestDaten\builds\34\testWerte.txt
+Erstelle Score: 10.267
+Erstelle Score: 6.262
+Erstelle Score: 5.305
+Erstelle Score: 4.777
+Erstelle Score: 5.128
+Durchschintt: 6.3478
+file Wurde nach neu geschrieben : true
+basis
+Alt: Name:test.uni_hildesheim.sse.easy.instantiator.velocity.tests.AllTests
+AvarageLaufzeit: 6.3478
+Obergrenze:12.06082
+Untergrenze:0.6347799999999999
+Varianz:4.082049359999999
+
+Neu: Name:test.uni_hildesheim.sse.easy.instantiator.velocity.tests.AllTests
+AvarageLaufzeit: 6.3478
+Obergrenze:12.06082
+Untergrenze:0.6347799999999999
+Varianz:4.082049359999999
+

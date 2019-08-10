@@ -14,7 +14,7 @@ public class TestVergleichen implements ITestVergleich{
     public RegressionTestResult vergleicheBasen(IBasis neueBasis, IBasis alteBasis
             , double alpha, String pfad) {
         RegressionTestResult result = new RegressionTestResult();
-        result.setResutlDerTests(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, alpha));
+        result.addResultZuResult(TestVergleichArten.vergleicheBasen(alteBasis, neueBasis, alpha));
         if (result.getResutlDerTests() == Status.GROESSER) {
             result.addTextZuNachricht("Die neue Basis weist dabei eine Regression im Vergleich zu der alten auf.\n"
                     + "Verglichen wurde die neue Basis:  " + neueBasis + "\n" 

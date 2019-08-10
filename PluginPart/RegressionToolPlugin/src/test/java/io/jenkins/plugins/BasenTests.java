@@ -92,7 +92,7 @@ public class BasenTests {
             IBasis basisAlt = new Basis("Test", 1.873, 2.3, 1.9, 0.2, null, 40);
             IBasis basisNeu = new Basis("Test", 1.982, 2.2, 1.8, 0.2, null, 40);
             Status status = Status.NEUTRAL;
-            status = TestVergleichArten.vergleicheBasen(basisAlt, basisNeu, 0.005);
+            //status = TestVergleichArten.vergleicheBasen(basisAlt, basisNeu, 0.005);
             System.out.println("Status ist: " + status);
 //            status = TestVergleichArten.vergleicheBasen((BasisMitTests)basisAlt, (BasisMitTests) basisNeu, 1.0, 0.005);
 //            System.out.println("Status nach APPACE THINS: " + status); 
