@@ -22,5 +22,5 @@ public interface IErstelleBasis {
      */
     public IBasis erstelleBasis(String targetJUnitResutls, String targetBasis
             , double tolleranz, int anzahlTests, double step_size
-            , String jUnitDateiName, PrintStream logger);
+            , String jUnitDateiName, double minTolleranzFuerGrenzen, PrintStream logger);
 }

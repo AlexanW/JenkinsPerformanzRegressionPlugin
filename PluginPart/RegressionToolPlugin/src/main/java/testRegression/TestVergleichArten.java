@@ -153,39 +153,6 @@ public class TestVergleichArten {
         }
         return status;
     }
-    
-    /**
-     * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
-     * verwendet. Dieser vergleicht 2 Sets miteinander und sagt mit 
-     * @param alteBasis
-     * @param neueBasis
-     * @return
-     */
-//    public static Status vergleicheBasen(BasisMitTests alteBasis, BasisMitTests neueBasis, double erwarteteRegression, double alpha) {
-//        Status status = Status.NEUTRAL;
-//        TTest test = new TTest();
-//        System.out.println("In dem APPACE THINGS");
-//        /*
-//         * Sollte die Ho Hypothese, dass die Means gleich sind abgelehnt werden dann gilt, 
-//         * dass es keien statistischen Hinweis darauf gibt, dass die Means gleich sind.
-//         * Dabei gibt es eine Fehlkategoriesierung von aphla%, hier 5%.
-//         * OneSided alpha*2; -> hier Mean 1 kleiner als mean2 -> Regression.
-//         */
-//        //StatisticalSummary summary = new StatisticalSummaryValues(alteBasis.getScore(), );
-////        int i = 0;-
-////        for (double t: ITestsZuArry(alteBasis.getTests().values(), erwarteteRegression)) {
-////            System.out.println(t < neueBasisTests[i]);
-////            i++;
-////        }
-////        boolean h0Rejectet = test.tTest(dummyArrayAlt,
-////                dummyArrayNeu, (alpha));
-////        System.out.println("H0REJEKT: " + h0Rejectet);
-////        if (!h0Rejectet) {
-////            status = Status.GROESSER;
-////        }
-//        
-//        return status;
-//    }
     /**
      * Eine Methode die zwei Basen miteinander vergleicht. Dazu wird ein t-Test
      * verwendet. Dieser vergleicht 2 Sets miteinander und sagt mit aus ob der 

@@ -14,7 +14,7 @@
     	<f:checkbox />
   	 </f:entry>
   	 <f:entry title="${%Anzahl an Tests fuer das Erstellen einer Basis}" field="anzahlAnVergangenenBuilds">
-    	<f:textbox default = "1" />
+    	<f:textbox default = "5" />
   	 </f:entry>
   	 <f:entry title="${%Vergleiche die letzen 2 Basen}" field="vergleicheBasis">
     	<f:checkbox />
@@ -24,6 +24,9 @@
      </f:entry>
   	 <f:entry title="${%Max. prozentuale Schwankung der Tests}" field="tolleranzFuerSchwankungenBasen">
 		<f:textbox default="0.0"/>
+  	 </f:entry>
+  	 <f:entry title="${%Min. prozentuale Schwankung fuer Basen}" field="minTolleranzFuerSchwankungen">
+		<f:textbox default="0.1"/>
   	 </f:entry>
      <f:entry title="${%Name der JUnitResult Dateien in dem build}" field="jUnitDateiName">
         <f:textbox default="junitResult"/>

@@ -63,16 +63,16 @@ public class PluginMenuePostBuild extends Recorder{
     
     private double auslastungTolleranz;
     
+    private double minTolleranzFuerSchwankungen;
+    
     @DataBoundConstructor
     public PluginMenuePostBuild (boolean pruefeRegression, 
             String pfadZuCPUundRAM, boolean erstelleBasis,
             int anzahlAnVergangenenBuilds,
-            double tolleranzFuerSchwankungenBasen, double aplhaWert, 
+            double tolleranzFuerSchwankungenBasen,double minTolleranzFuerSchwankungen , double aplhaWert, 
             boolean vergleicheBasis,double timerIntervall,
             String jUnitDateiName, double tolleranzFuerTestVergleich,
             boolean erlaubeBuildFehlschlag, double auslastungTolleranz) {
-//        this.pfadZuBasen = pfadZuBasen;
-//        this.pfadZuBuilds = pfadZuBuilds;
         this.pfadZuCPUundRAM = pfadZuCPUundRAM;
         this.erstelleBasis = erstelleBasis;
         this.anzahlAnVergangenenBuilds = anzahlAnVergangenenBuilds;
@@ -85,15 +85,8 @@ public class PluginMenuePostBuild extends Recorder{
         this.tolleranzFuerTestVergleich = tolleranzFuerTestVergleich;
         this.erlaubeBuildFehlschlag = erlaubeBuildFehlschlag;
         this.auslastungTolleranz = auslastungTolleranz;
+        this.minTolleranzFuerSchwankungen = minTolleranzFuerSchwankungen;
     }
-    
-//    public String getPfadZuBasen() {
-//        return pfadZuBasen;
-//    }
-//    
-//    public String getPfadZuBuilds() {
-//        return pfadZuBuilds;
-//    }
     
     public double getTimerIntervall() {
         return timerIntervall;
@@ -141,6 +134,10 @@ public class PluginMenuePostBuild extends Recorder{
     
     public double getAuslastungTolleranz() {
         return auslastungTolleranz;
+    }
+    
+    public double getMinTolleranzFuerSchwankungen() {
+        return minTolleranzFuerSchwankungen;
     }
     
     @Override
@@ -212,7 +209,7 @@ public class PluginMenuePostBuild extends Recorder{
                 + "-------------------------------------------\n");
         IBasis erstellteBasis = basis.erstelleBasis(pfadZuBuilds, pfadZuBasen, 
                 tolleranzFuerSchwankungenBasen, anzahlAnVergangenenBuilds,
-                timerIntervall, jUnitDateiName, logger);
+                timerIntervall, jUnitDateiName, minTolleranzFuerSchwankungen, logger);
         if (erstellteBasis != null) {
             logger.print("Die erstellte Basis:\n"
                     + erstellteBasis.toString());

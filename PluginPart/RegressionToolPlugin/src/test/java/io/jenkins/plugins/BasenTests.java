@@ -60,14 +60,15 @@ public class BasenTests {
             System.out.println(basisLesen2);
         }
     }
-    //@Test
-    public void erstelleBasis() {
+    @Test
+    public void testeBasenRotation() {
         IErstelleBasis erstelle = new ErstelleBasis();
         try {
             IBasis basis = erstelle.erstelleBasis("src/main/resources/TestDaten/builds"
                     , "src/main/resources/TestDaten/Basen"
-                    , 0.0, 5, 100, "junitResult.xml"
+                    , 0.0, 5, 100, "junitResult.xml", 0.9
                     , new PrintStream("src/main/resources/TestDaten/builds/auswertungen.txt"));
+            System.out.println("basis");
             IBasis basisLesen = null;
             LeseBasis lese = new LeseBasis();
             basisLesen = lese.leseObjektIBasisEin("src/main/resources/TestDaten/Basen/Alt.txt");
@@ -85,7 +86,8 @@ public class BasenTests {
             e.printStackTrace();
         }
     }
-    @Test
+    
+    //@Test
     public void testeBasenRegressionsTest() {
             IBasis basisAlt = new Basis("Test", 1.873, 2.3, 1.9, 0.2, null, 40);
             IBasis basisNeu = new Basis("Test", 1.982, 2.2, 1.8, 0.2, null, 40);

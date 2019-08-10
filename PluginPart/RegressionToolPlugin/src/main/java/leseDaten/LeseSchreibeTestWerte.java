@@ -105,20 +105,4 @@ public class LeseSchreibeTestWerte {
         System.out.println("file Wurde nach neu geschrieben : " + geschrieben);
         return geschrieben;
     }
-//  File fileAlt = new File(targetBasis + "/Alt.txt");
-//  if (fileAlt.exists()) {
-//      if (fileAlt.delete()) {
-////          try {
-////              fileAlt.createNewFile();
-////          } catch (IOException e) {
-////              e.printStackTrace();
-////          }
-//          geschrieben = file.renameTo(fileAlt);
-//      }
-//  } else {
-//      geschrieben = file.renameTo(fileAlt);
-//  }
-//}
-//System.out.println("File. " + file.getAbsolutePath()););
-    
 }

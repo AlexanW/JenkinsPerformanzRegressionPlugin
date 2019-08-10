@@ -31,7 +31,7 @@ public class ErstelleBasis implements IErstelleBasis {
      */
     public IBasis erstelleBasis(String targetJUnitResutls,String targetBasis 
             ,double tolleranz, int anzahlTests, double step_size
-            , String jUnitDateiName, PrintStream logger) {
+            , String jUnitDateiName,double minTolleranzFuerGrenzen , PrintStream logger) {
         
         
         List<ITestWerte> werte = new ArrayList<ITestWerte>();
@@ -45,15 +45,14 @@ public class ErstelleBasis implements IErstelleBasis {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Werte aus Builds gelesen:" + werte.size());
         IBasis basis = null;
         double avarageLaufzeit = getAvarageLaufzeit(werte);
         if (!enthaeltFehlschlag(werte) && werte.size() >= 1) {
             basis = new Basis(werte.get(0).getName(),avarageLaufzeit
-                    , getMinLaufzeit(werte, tolleranz, avarageLaufzeit )
-                    , getMaxLaufzeit(werte, tolleranz, avarageLaufzeit)
+                    , getMinLaufzeit(werte, tolleranz, avarageLaufzeit, minTolleranzFuerGrenzen )
+                    , getMaxLaufzeit(werte, tolleranz, avarageLaufzeit, minTolleranzFuerGrenzen)
                     ,berecheneVarianz(werte, avarageLaufzeit)
-                    ,getDurchschnitTests(werte), werte.get(0).getTests().values().size());
+                    ,getDurchschnitTests(werte), werte.size());
             //Schreibe die generierte Basis in den Ordner fuer die Basen.
             LeseSchreibeTestWerte.bestimmeNameUndSchreibeBasis(basis, targetBasis);
         } else {
@@ -87,42 +86,58 @@ public class ErstelleBasis implements IErstelleBasis {
     }
     
     private double getMinLaufzeit(List<ITestWerte> werte, double tolleranz
-            , double avarage) {
-        //Init des Minimusm mit dem Mittelwer. 
-        double min = avarage;
+            , double avarage,  double minTolleranzGrenze) {
+        //Init des Minimusm mit der minimalen Grenze nach unten 
+        double min = avarage * (1 - minTolleranzGrenze);
         for (ITestWerte t : werte) {
-            if (min > t.getScore() && 
-                    ((t.getScore() > 
-                    (avarage * (1-tolleranz)) || (1- tolleranz == 1)))) {
-                min = t.getScore();
+            if (tolleranz == 0) {
+                if (min > t.getScore()) {
+                    min = t.getScore();
+                }
+                /*
+                 * Sollte dies der Fall sein und das Maximum kleier als die 
+                 * maximale Tolleranz so wird verlichen ob der Score groesser
+                 * ist als die maximale Tolleranz.
+                 */
+            } else if (min > avarage * (1 - tolleranz)) {
+                if (t.getScore() > avarage * (1 - tolleranz)) {
+                    if (min > t.getScore()) {
+                        min = t.getScore();
+                    }
+                    //So wird max auf die maximale Tolleranz gesetzt.
+                } else {
+                    min = avarage * (1 - tolleranz);
+                }
             }
-        }
-        /*
-         * Solle es keine Untergrenze im Tolleranzbereich geben so wird
-         * die Untergrenze durch den Durchschnitt * (1 - tolleranz) bestimmt. 
-         */
-        if (min == avarage) {
-            min = avarage * (1 - tolleranz);
         }
         return min;
     }
     
     private double getMaxLaufzeit(List<ITestWerte> values, double tolleranz
-            , double avarage) {
-        double max = 0;
+            , double avarage, double minTolleranzGrenze) {
+        //Setzt das Maximum auf den minimal erwarteten Wert.
+        double max = avarage * (1 + minTolleranzGrenze);
         for (ITestWerte t : values) {
-            if (max < t.getScore() &&
-                    ((t.getScore() < 
-                    (avarage * (1+tolleranz)) || (1- tolleranz == 1)))) {
-                max = t.getScore();
+            //Unterscheided ob es eine maximale Tolleranz gibt.
+            if (tolleranz == 0) {
+                if (max < t.getScore()) {
+                    max = t.getScore();
+                }
+                /*
+                 * Sollte dies der Fall sein und das Maximum kleier als die 
+                 * maximale Tolleranz so wird verlichen ob der Score groesser
+                 * ist als die maximale Tolleranz.
+                 */
+            } else if (max < avarage * (1 + tolleranz)) {
+                if (t.getScore() < avarage * (1 + tolleranz)) {
+                    if (max < t.getScore()) {
+                        max = t.getScore();
+                    }
+                    //So wird max auf die maximale Tolleranz gesetzt.
+                } else {
+                    max = avarage * (1 + tolleranz);
+                }
             }
-        }
-        /*
-         * Solle es keine Obergrenze im Tolleranzbereich geben so wird die
-         * Untergrenze durch den Durchschnitt * (1 + tolleranz) bestimmt. 
-         */
-        if (max == 0.0) {
-            max = avarage * (1 + tolleranz);
         }
         return max;
     }
