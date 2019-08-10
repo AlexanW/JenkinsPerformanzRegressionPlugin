@@ -44,10 +44,10 @@ Durchschintt: 42.612
 file Wurde nach neu geschrieben : true
 basis
 Alt: Name:test.uni_hildesheim.sse.easy.instantiator.velocity.tests.AllTests
-AvarageLaufzeit: 6.3478
-Obergrenze:12.06082
-Untergrenze:0.6347799999999999
-Varianz:4.082049359999999
+AvarageLaufzeit: 42.612
+Obergrenze:105.83499
+Untergrenze:4.2612
+Varianz:2133.23071832004
 
 Neu: Name:test.uni_hildesheim.sse.easy.instantiator.velocity.tests.AllTests
 AvarageLaufzeit: 42.612
