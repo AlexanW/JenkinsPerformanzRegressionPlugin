@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
-    System.out.println("Running tests for "+"io.jenkins.plugins:RegressionToolPlugin:1.26");
+    System.out.println("Running tests for "+"io.jenkins.plugins:RegressionToolPlugin:1.3");
     Map<String, Object> parameters = new HashMap<String, Object>();
     parameters.put("basedir","C:\\Uni\\SeminareProjekte\\ContinuousIntegrationPerformanz(Bachelor)\\Tool\\CIRegressionTool\\PluginPart\\RegressionToolPlugin");
     parameters.put("artifactId","RegressionToolPlugin");
