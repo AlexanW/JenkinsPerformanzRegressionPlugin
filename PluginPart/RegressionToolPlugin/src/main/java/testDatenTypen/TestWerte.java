@@ -216,10 +216,8 @@ public class TestWerte implements ITestWerte, Serializable {
 	 * Eine Imlpementierung der toString Methode, diese Enthaelt alle Attribute. 
 	 */
 	public String toString() {
-	    StringBuffer buffer = new StringBuffer("Name: " + name  + " \n" + "Score: "  + score + " \n");
-//	    for ( ITest t : tests.values()) {
-//	        buffer.append(t.toString());
-//	    }
+	    StringBuffer buffer = new StringBuffer("Name: " + name  + " \n"
+	            + "Score: "  + score + " \n");
 	    return buffer.toString();
 	}
 	
