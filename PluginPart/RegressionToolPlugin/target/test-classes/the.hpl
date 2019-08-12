@@ -7,13 +7,13 @@ Plugin-Version: 1.26
 Hudson-Version: 2.164.1
 Jenkins-Version: 2.164.1
 Plugin-Developers: 
-Libraries: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTes
- ts(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\resou
- rces,F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanceTests(Ba
- chelor)\CIToolGit\PluginPart\RegressionToolPlugin\target\classes,C:\U
- sers\Alex\.m2\repository\org\apache\commons\commons-math3\3.6.1\commo
- ns-math3-3.6.1.jar
-Resource-Path: F:\Uni\SeminareProjekte\ContinuousIntegrationPerformanc
- eTests(Bachelor)\CIToolGit\PluginPart\RegressionToolPlugin\src\main\w
- ebapp
+Libraries: C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Bac
+ helor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\src\main
+ \resources,C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz(Ba
+ chelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\target\
+ classes,C:\Users\alexa\.m2\repository\org\apache\commons\commons-math
+ 3\3.6.1\commons-math3-3.6.1.jar
+Resource-Path: C:\Uni\SeminareProjekte\ContinuousIntegrationPerformanz
+ (Bachelor)\Tool\CIRegressionTool\PluginPart\RegressionToolPlugin\src\
+ main\webapp
 

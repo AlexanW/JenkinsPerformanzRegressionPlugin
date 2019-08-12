@@ -20,7 +20,7 @@
     	<f:checkbox />
   	 </f:entry>
   	 <f:entry title="${%Alpha Wert fuer t-Test}" field="aplhaWert">
-        <f:textbox default="0.005"/>
+        <f:textbox default="0.05"/>
      </f:entry>
   	 <f:entry title="${%Max. prozentuale Schwankung der Tests}" field="tolleranzFuerSchwankungenBasen">
 		<f:textbox default="0.0"/>
