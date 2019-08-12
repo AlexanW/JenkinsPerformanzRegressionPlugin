@@ -258,7 +258,7 @@ public class PluginMenuePostBuild extends Recorder{
             if (tests != null) {
                 try {
                     logger.print("Suche Auslastungen in: " + pfadZuCPUundRAM + "\n");
-                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastungen(pfadZuCPUundRAM, tests.getScore()));
+                    tests.setTestAuslastungen(LeseCPUundRAM.readAuslastungen(pfadZuCPUundRAM));
                 } catch (InterruptedException e1) {
                     logger.print("Fehler beim kopieren der Datei.");
                     e1.printStackTrace();

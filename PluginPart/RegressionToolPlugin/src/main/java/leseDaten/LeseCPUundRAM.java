@@ -46,11 +46,11 @@ public class LeseCPUundRAM {
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	 */
-	public static  List<TestAuslastungen> readAuslastung (String target) throws IOException, InterruptedException {
+	public static  List<TestAuslastungen> readAuslastung (String pfad) throws IOException, InterruptedException {
 	    int dummyCounter = 0;
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
-        Path copiedTo = Paths.get(target + "Copy");
-        File tempFile = new File(target);
+        Path copiedTo = Paths.get(pfad + "Copy");
+        File tempFile = new File(pfad);
         if (tempFile.exists()) {
             while (!tempFile.canRead() && dummyCounter < 10) {
                 Thread.sleep(10);
@@ -58,10 +58,10 @@ public class LeseCPUundRAM {
             if(tempFile.canRead()) {
                 Files.copy(tempFile.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
             }
-            target+= "Copy";
-            File copiedFile = new File(target);
+            pfad+= "Copy";
+            File copiedFile = new File(pfad);
             if (copiedFile.exists() && copiedFile.canRead()) {
-                FileInputStream reader = new FileInputStream(new File(target));
+                FileInputStream reader = new FileInputStream(new File(pfad));
                 inStream =  new InputStreamReader(reader, "UTF-8"); 
                 stream = new BufferedReader(inStream);
                 while (stream.ready()) {
@@ -85,10 +85,9 @@ public class LeseCPUundRAM {
 	    return loads;
 	}
 	
-	public static  List<TestAuslastungen> readAuslastungen (String target,
-	        double score) throws IOException, InterruptedException {
+	public static  List<TestAuslastungen> readAuslastungen (String pfad) throws IOException, InterruptedException {
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
-        File folder = new File(target);
+        File folder = new File(pfad);
         if (folder.exists() && folder.isDirectory()) {
             File[] files = folder.listFiles();
             if (files != null) {
@@ -103,16 +102,4 @@ public class LeseCPUundRAM {
         }
         return loads;
 	}
-	/**
-	 * Test Mainmethode.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-        try {
-            readAuslastung("Data/SysLoadData/ProzessValues.txt");
-        } catch (IOException | InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }

@@ -19,13 +19,11 @@ import testDatenTypen.TestWerte;
 
 public class LeseSchreibeTestWerte {
     
-    
-    
-    public static void schreibeTestWerte (String pfad, ITestWerte testwerte) throws FileNotFoundException, IOException {
+    public static void schreibeTestWerte (String pfad, ITestWerte testWerte) throws FileNotFoundException, IOException {
         File file = new File(pfad);
         if (file.getParentFile().exists()) {
             ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(pfad));
-            stream.writeObject(testwerte);    
+            stream.writeObject(testWerte);    
             stream.close();
         }
     }
@@ -63,11 +61,11 @@ public class LeseSchreibeTestWerte {
         }
     }
     
-    private static boolean schreibeBasis(IBasis basis, String targetBasis) {
+    private static boolean schreibeBasis(IBasis basis, String pfad) {
         boolean geschrieben = false;
         ObjectOutputStream oStream = null;
         try {
-            oStream = new ObjectOutputStream(new FileOutputStream(targetBasis));
+            oStream = new ObjectOutputStream(new FileOutputStream(pfad));
             oStream.writeObject(basis);
             geschrieben = true;
         } catch (IOException e){
@@ -87,14 +85,14 @@ public class LeseSchreibeTestWerte {
     /**
      * Bestimmt den Namen einer Basis, wenn es eine "Neu" schon gibt wird diese
      * in Alt umbenannt.
-     * @param targetBasis
+     * @param pfad
      * @return
      */
-    public static boolean bestimmeNameUndSchreibeBasis(IBasis basis, String targetBasis) {
+    public static boolean bestimmeNameUndSchreibeBasis(IBasis basis, String pfad) {
         boolean geschrieben = false;
-        File file = new File(targetBasis + "/Neu.txt");
+        File file = new File(pfad + "/Neu.txt");
         if (file.exists()) {
-            Path copiedTo = Paths.get(targetBasis + "/Alt.txt");
+            Path copiedTo = Paths.get(pfad + "/Alt.txt");
             try {
                 Files.copy(file.toPath(), copiedTo, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {

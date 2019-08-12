@@ -18,7 +18,7 @@ public class TestFuerTestWerte {
             System.out.println(t);
         }
         try {
-            werte.setTestAuslastungen(LeseCPUundRAM.readAuslastungen("src/main/resources/TestDaten/TestAuslastung", 10.0));
+            werte.setTestAuslastungen(LeseCPUundRAM.readAuslastungen("src/main/resources/TestDaten/TestAuslastung"));
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -32,7 +32,7 @@ import testDatenTypen.TestWerte;
  *
  */
 public class LeseJUnitResults {
-//    public final static String JUNIT_DATAEINAME = "junitResult.xml";
+
     public final static String TESTWERTE_DATEINAME = "testWerte.txt"; 
 	/**
 	 * XMLReaderTrial
@@ -115,8 +115,8 @@ public class LeseJUnitResults {
         } catch (IOException | XMLStreamException e) {
             e.printStackTrace();
         }  
-	    //results.setTestAuslastungen(LeseCPUundRAM.readAuslastung("Data/SysLoadData/ProzessValues.txt"));
-		return results;
+	    
+        return results;
 	}
 	
 	private static Timestamp stringToTimestamp(String date) {
@@ -201,22 +201,7 @@ public class LeseJUnitResults {
 	        exc.printStackTrace();
 	    }
 	}
-    /**
-     * Diese Methode startet den Vorgang des Einlesens aller JUnitResultDatein
-     * die bereitgestellt sind.
-     * @param pfad Der Zielordner in dem die Resultdateien Liegen.
-     */
-    public static List<ITestWerte> getJUnitResultDatei(String pfad, double step_size) {
-        List<ITestWerte> values = new ArrayList<ITestWerte>();
-        File file = new File(pfad);
-        File[] files = file.listFiles();
-        if (files != null) {
-            for (File f : files) {
-                values.add(LeseJUnitResults.leseTestsXML(f.getAbsolutePath(), step_size));
-            }
-        }
-        return values;
-    }   
+
     /**
      * Diese Methode startet den Vorgang des Einlesens aller JUnitResultDatein
      * die bereitgestellt sind.
@@ -225,7 +210,8 @@ public class LeseJUnitResults {
      * @throws ClassNotFoundException 
      * @throws FileNotFoundException 
      */
-    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad, int useResults , double step_size, String jUnitDateiName) 
+    public static List<ITestWerte> getJUnitResultDateiAusBuilds(String pfad
+            , int useResults , double step_size, String jUnitDateiName) 
             throws FileNotFoundException, ClassNotFoundException, IOException {
         List<ITestWerte> values = new ArrayList<ITestWerte>();
         File file = new File(pfad);
@@ -293,13 +279,4 @@ public class LeseJUnitResults {
         }
         return tempFiles;
     }
-    
-	/**
-	 * Test Main Methdoe.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-	    getJUnitResultDatei("Data/jUnitResults", 100);
-		//getJUnitResultDateiAusBuilds("F:\\Uni\\Jenkins\\jobs\\TestingProjekt\\builds", 5);
-	}
 }
