@@ -68,7 +68,7 @@ public class TestVergleichen implements ITestVergleich{
                             + " (0.0 bedeutet, dass die Grenzen "
                             + "min und max Werte aus den Verwendeten Messungen sind) \n");
                 } else {
-                    result.addTextZuNachricht("Es scheinen Ausreiﬂer "
+                    result.addTextZuNachricht("Es scheinen Ausreisser "
                             + "vorzuliegen. Kontrollieren sie die auswertung."
                             + "txt und starten sie bei Zweifen einen Weitern Build.");
                 }
