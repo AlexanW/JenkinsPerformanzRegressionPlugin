@@ -9,14 +9,10 @@ import testDatenTypen.IBasis;
 
 /**
  * Diese Klasse enthaelt Methoden um eine Basis einzulesen.
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public class LeseBasis implements ILeseBasis {
-    /**
-     * Inputstrem zum Einlesen der Daten.
-     */
-//    private BufferedReader stream;
     /**
      * Inputstrem zum Einlesen der Daten.
      */
@@ -25,8 +21,8 @@ public class LeseBasis implements ILeseBasis {
     public LeseBasis() {
     }
     /**
-     * 
-     * @param pfad
+     * Liest eine Basis per ObjektInputStream ein.
+     * @param pfad Der komplette Pfad zu der Basis.
      * @return
      * @throws FileNotFoundException
      * @throws IOException

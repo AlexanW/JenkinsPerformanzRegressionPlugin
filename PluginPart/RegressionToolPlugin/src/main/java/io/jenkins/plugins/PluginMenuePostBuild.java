@@ -30,7 +30,11 @@ import testRegression.ErstelleBasis;
 import testRegression.IErstelleBasis;
 import testRegression.ITestVergleich;
 import testRegression.TestVergleichen;
-
+/**
+ * Die Haupklasse des Plugins. Von hier aus werden die Funktioen aufgerufen.
+ * @author Alexander
+ *
+ */
 public class PluginMenuePostBuild extends Recorder{
 
     public final static String TESTWERTE_DATEINAME = "testWerte.txt"; 
@@ -64,7 +68,25 @@ public class PluginMenuePostBuild extends Recorder{
     private double auslastungTolleranz;
     
     private double minTolleranzFuerSchwankungen;
-    
+    /**
+     * Der Konsturktor muss jeden Wert der Konfigurationsdatei enthalten.
+     * @param pruefeRegression
+     * @param pfadZuCPUundRAM
+     * @param erstelleBasis
+     * @param anzahlAnVergangenenBuilds Wie viele Builds fuer eine Basis 
+     * verwendet werden sollen.
+     * @param tolleranzFuerSchwankungenBasen Die maximale Schwankung von Basen
+     * prozenutal zum Durchscnitt.
+     * @param minTolleranzFuerSchwankungen Die minimale Schwankung von Basen.
+     * @param aplhaWert Alphawert fuer einen t-Test
+     * @param vergleicheBasis 
+     * @param timerIntervall Intervall der Systemauslastungsmessungen.
+     * @param jUnitDateiName
+     * @param tolleranzFuerTestVergleich Prozentule erwartete Regression bei 
+     * einem Kommit in verhaeltniss zum Druchschnitt der Basis.
+     * @param erlaubeBuildFehlschlag
+     * @param auslastungTolleranz
+     */
     @DataBoundConstructor
     public PluginMenuePostBuild (boolean pruefeRegression, 
             String pfadZuCPUundRAM, boolean erstelleBasis,
@@ -139,7 +161,9 @@ public class PluginMenuePostBuild extends Recorder{
     public double getMinTolleranzFuerSchwankungen() {
         return minTolleranzFuerSchwankungen;
     }
-    
+    /**
+     * Die Haupmethode die am Ende eines Builds aufgerufen wird.
+     */
     @Override
     public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, 
             BuildListener listener) throws InterruptedException, IOException {
@@ -193,7 +217,11 @@ public class PluginMenuePostBuild extends Recorder{
         }
         return true;
     }
-    
+    /**
+     * Erstellt eine neue Basis mit den Daten, die beider Konfiguration 
+     * angegeben wurden.
+     * @param logger
+     */
     public void erstelleBasen(PrintStream logger) {
         IErstelleBasis basis = new ErstelleBasis();
         if (timerIntervall == 0) {
@@ -223,7 +251,10 @@ public class PluginMenuePostBuild extends Recorder{
         }
         logger.print("-----------------------------------\n");
     }
-    
+    /**
+     * Vergleicht zwei Basen mit dem Ziel Regression aufzudecken. Dem Vergleich
+     * liegt ein t-Test zugrunde.
+     */
     public void vergleicheBasen (AbstractBuild<?, ?> build, PrintStream logger) {
         logger.print("Vergleiche die letzen zwei Basen miteinander.\n");
         IBasis basisNeu = null;
@@ -249,7 +280,12 @@ public class PluginMenuePostBuild extends Recorder{
         }
         logger.print("------------------------------------\n");
     }
-    
+    /**
+     * Prueft ob es zwischen einem Build und einer Basis zu grober Regressio kam.
+     * @param build
+     * @param logger
+     * @throws IOException
+     */
     public void pruefeRegression (AbstractBuild<?, ?> build, PrintStream logger) throws IOException {
         logger.print("Suche die JUnit Datei in: " + build.getRootDir() + "/" + jUnitDateiName +"\n");
         File fileUnit = new File(build.getRootDir().getAbsolutePath()+ "/" + jUnitDateiName);
@@ -311,6 +347,12 @@ public class PluginMenuePostBuild extends Recorder{
     public BuildStepMonitor getRequiredMonitorService() {
         return BuildStepMonitor.NONE;
     }
+    /**
+     * Diese Klasse ist notwendig, damit das Plugin angezeigt und somit 
+     * verwendet werden kann.
+     * @author Alexander
+     *
+     */
     @Extension
     public static class DescriptorImpl extends BuildStepDescriptor<Publisher>{
 

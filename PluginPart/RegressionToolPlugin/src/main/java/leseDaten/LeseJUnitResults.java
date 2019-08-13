@@ -118,7 +118,11 @@ public class LeseJUnitResults {
 	    
         return results;
 	}
-	
+	/**
+	 * Diese Methode mach aus den gelesenen Strings sql.Timestamps.
+	 * @param date
+	 * @return
+	 */
 	private static Timestamp stringToTimestamp(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Date parseDate = null;

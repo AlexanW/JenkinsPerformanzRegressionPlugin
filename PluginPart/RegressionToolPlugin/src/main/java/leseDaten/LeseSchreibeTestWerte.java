@@ -16,9 +16,19 @@ import java.io.ObjectInputStream;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.TestWerte;
-
+/**
+ * Diese Klasse schreibt die Auslastungs.txt, die TestWerte und die Basis.
+ * @author Alexaner
+ *
+ */
 public class LeseSchreibeTestWerte {
-    
+    /**
+     * Diese Methode schreibt die TestWerte eines Builds in eine Datei.
+     * @param pfad Der volle Pfad an den die Datei soll.
+     * @param testWerte Die zu schreibenden TestWerte.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void schreibeTestWerte (String pfad, ITestWerte testWerte) throws FileNotFoundException, IOException {
         File file = new File(pfad);
         if (file.getParentFile().exists()) {
@@ -27,7 +37,14 @@ public class LeseSchreibeTestWerte {
             stream.close();
         }
     }
-    
+    /**
+     * Liest eine TestWerte Datei wieder ein.
+     * @param pfad
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static ITestWerte leseTestWerte (String pfad) throws FileNotFoundException, IOException, ClassNotFoundException {
         ITestWerte tempWerte = new TestWerte();
         File file = new File(pfad);
@@ -38,7 +55,12 @@ public class LeseSchreibeTestWerte {
         }
         return tempWerte;
     }
-    
+    /**
+     * Schreibt eine Datei per FileOutputStream.
+     * @param pfad
+     * @param text
+     * @param append
+     */
     public static void schreibeErgebnisse(String pfad, String text, boolean append) {
         FileOutputStream stream = null;
         try {
@@ -60,7 +82,12 @@ public class LeseSchreibeTestWerte {
             }
         }
     }
-    
+    /**
+     * Schreibt eine Basis.
+     * @param basis
+     * @param pfad
+     * @return
+     */
     private static boolean schreibeBasis(IBasis basis, String pfad) {
         boolean geschrieben = false;
         ObjectOutputStream oStream = null;

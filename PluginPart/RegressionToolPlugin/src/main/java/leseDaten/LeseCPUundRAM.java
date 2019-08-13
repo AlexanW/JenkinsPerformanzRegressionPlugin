@@ -19,7 +19,7 @@ import testDatenTypen.TestAuslastungen;
  * Diese Klasse enthaelt Methoden mit denen die RAM und CPU 
  * Auslastung wieder eingelesen werden kann.
  * 
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public class LeseCPUundRAM {
@@ -84,7 +84,15 @@ public class LeseCPUundRAM {
         }
 	    return loads;
 	}
-	
+	/**
+	 * Diese Methode ruf fuer jede Datei welche "Auslastungen" im Namen hat
+	 * die Mehtode readAuslastung auf.
+	 * @param pfad Der Ordner in dem sich mehre oder eine Auslastungen Dateien
+	 * befinden.
+	 * @return
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	public static  List<TestAuslastungen> readAuslastungen (String pfad) throws IOException, InterruptedException {
         List <TestAuslastungen> loads = new ArrayList<TestAuslastungen>();
         File folder = new File(pfad);

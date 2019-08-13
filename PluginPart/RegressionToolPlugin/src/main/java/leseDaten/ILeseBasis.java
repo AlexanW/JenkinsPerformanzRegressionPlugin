@@ -8,7 +8,7 @@ import testDatenTypen.IBasis;
 /**
  * Dieses Interface definiert die Eigenschaften die eine 
  * Klasse zum Einlesen einer Basis benoetigt.
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public interface ILeseBasis {
