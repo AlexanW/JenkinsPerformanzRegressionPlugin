@@ -5,7 +5,13 @@ import testDatenTypen.ITestObjektGruppe;
 import testDatenTypen.ITestWerte;
 import testDatenTypen.RegressionTestResult;
 import testDatenTypen.Status;
-
+/**
+ * Diese Klasse implements ITestVergleich und fuellt diese Methodne mit den 
+ * TestVergleichsArten und Prozeduren die zum Auswerten der Daten benoetigt 
+ * wird.
+ * @author Alexander
+ *
+ */
 public class TestVergleichen implements ITestVergleich{
     /**
      * 

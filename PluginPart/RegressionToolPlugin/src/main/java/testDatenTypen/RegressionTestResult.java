@@ -1,5 +1,10 @@
 package testDatenTypen;
-
+/**
+ * Eine Klasse die den Ausagetext und das Resultat der Auswertungen 
+ * zusammenfasst.
+ * @author Alexander
+ *
+ */
 public class RegressionTestResult {
     /**
      * Der Status der Tests die ausgefuehrt wurden.

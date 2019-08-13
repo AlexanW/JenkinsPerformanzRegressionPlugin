@@ -7,7 +7,7 @@ import testDatenTypen.IBasis;
 /**
  * Dises Interface definiert welche Methoden eine Klasse benoetigt, die eine 
  * Art der IBasis erstellen moechte.
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public interface IErstelleBasis {

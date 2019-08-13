@@ -14,7 +14,11 @@ import testDatenTypen.Basis;
 import testDatenTypen.IBasis;
 import testDatenTypen.ITest;
 import testDatenTypen.ITestWerte;
-
+/**
+ * Diese Methode erstellt eine Basis.
+ * @author Alexander
+ *
+ */
 public class ErstelleBasis implements IErstelleBasis {
     /**
      * Diese Methode erstellt eine Basis, auf Basis aller jUnitDateien in dem 
@@ -78,10 +82,8 @@ public class ErstelleBasis implements IErstelleBasis {
     private double getAvarageLaufzeit(List<ITestWerte> werte) {
         double sum = 0;
         for (ITestWerte t : werte) {
-            System.out.println("Erstelle Score: "+ t.getScore());
             sum += t.getScore();
         }
-        System.out.println("Durchschintt: " + sum/werte.size());
         return sum / werte.size();
     }
     

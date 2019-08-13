@@ -6,7 +6,7 @@ import java.util.HashMap;
  * Eine Basis gegen die einzelne TestValues getestet werden koennen.
  * Sie wir aus einer Menge an TestValues erstellt. 
  * 
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public class Basis extends BasisMitTests {
@@ -106,7 +106,7 @@ public class Basis extends BasisMitTests {
     
     /**
      * Standartabweichung als Wurzel der Varianz.
-     * @return
+     * @return Die Standardabweichung
      */
     public double getStandartabweichung() {
         return Math.sqrt(varianz);
@@ -156,9 +156,6 @@ public class Basis extends BasisMitTests {
                 + "Obergrenze:" + obergrenze + "\n" 
                 + "Untergrenze:" + untergrenze + "\n" 
                 + "Varianz:" + varianz + "\n");
-//        for (ITest t : getAvarageTests().values()) {
-//            outPut.append(t.toString());
-//        }
         return outPut.toString();
     }
 }

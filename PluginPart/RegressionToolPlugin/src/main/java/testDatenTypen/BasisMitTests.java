@@ -2,7 +2,12 @@ package testDatenTypen;
 
 import java.io.Serializable;
 import java.util.HashMap;
-
+/**
+ * Diese Klasse stellt ein besondere Version einer Basis da, diese Version
+ * enthaellt alle Tests die zu dieser Basis gehoeren.
+ * @author Alexander
+ *
+ */
 public abstract class BasisMitTests implements IBasis, ITestObjektGruppe, Serializable {
     /**
      * 
@@ -14,10 +19,16 @@ public abstract class BasisMitTests implements IBasis, ITestObjektGruppe, Serial
      * Werten der Test ueber alle verwendeten TestValues.
      */
     public HashMap<String,ITest> avarageTests;
-    
+    /**
+     * 
+     * @param avarageTests Die Liste mit allen Tests dieser Basis.
+     */
     public BasisMitTests(HashMap<String, ITest> avarageTests) {
         this.avarageTests = avarageTests;
     }
+    /**
+     * Default Konstruktor.
+     */
     public BasisMitTests() {        
     }
     

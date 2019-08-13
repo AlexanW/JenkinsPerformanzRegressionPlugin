@@ -1,7 +1,11 @@
 package testDatenTypen;
 
 import java.util.List;
-
+/**
+ * Diese Klasse stellt das Geruest fuer einen Test dar. 
+ * @author Alexander
+ *
+ */
 public interface ITest extends ITestObjekt{
     
     public String getName();

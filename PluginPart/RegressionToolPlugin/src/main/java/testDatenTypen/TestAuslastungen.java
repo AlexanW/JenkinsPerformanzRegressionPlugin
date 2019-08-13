@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 /**
  * Diese Klasse Verbindet die CPU und die RAM auslastung an einem fixen Zeitpunkt.
  * 
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public class TestAuslastungen implements Serializable{

@@ -77,6 +77,7 @@ public class TestVergleichArten {
                 testNurInBasis.add(t);
             }
         }
+        //Erstellt die Auswertungen.
         for(ITest t : testWerte.getTests().values()) {
             if (!basis.getTests().containsKey(t.getName())) {
                 testNurInWerten.add(t);
@@ -106,7 +107,7 @@ public class TestVergleichArten {
         LeseSchreibeTestWerte.schreibeErgebnisse(pfad + "/auswertung.txt", result.toString(), true);
     }
     /**
-     * 
+     * Vergleicht die Auslastungen von Tests in zwei Testobjektgruppen.
      */
     public static Status vergleicheTestsAuslastungen(ITestObjektGruppe alteGruppe,
             ITestObjektGruppe neueGruppe, double auslastungTolleranz, 

@@ -8,8 +8,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * Diese Klasse stellt eine Testsuit dar. Sie Enthaelt alle Test mit Laufzeit und ggf. Fehlermeldung.
- * @author Alexander Weber
+ * Diese Klasse stellt eine Testsuit dar. Sie Enthaelt alle Test mit Laufzeit
+ * und ggf. Fehlermeldung.
+ * @author Alexander
  *
  */
 public class TestWerte implements ITestWerte, Serializable {
@@ -102,7 +103,7 @@ public class TestWerte implements ITestWerte, Serializable {
     }
 	/**
 	 * Diese Methode nimmt eine Menge an TestAuslastungen und matcht den Start
-	 * der Tests mit einem Punkt in den testAuslastungen
+	 * der Tests mit einem Punkt in den testAuslastungen.
 	 * @param testAuslastungen
 	 * @return
 	 */
@@ -128,17 +129,28 @@ public class TestWerte implements ITestWerte, Serializable {
 	    }
 	    return tempList;
 	}
-	
+	/**
+	 * Methode fuegt Systemauslastugen zu Tests hinzu.
+	 */
 	private void addMessungenZuTests() {
 	    double scoreSumme = 0;
 	    System.out.println(testAuslastungen.size());
 	    if (testAuslastungen.size() > 0) {
 	        for (ITest t : tests.values()) {
+	            //Unterscheide Laufzeit nach groeseer oder kleiner step_size
 	            if (t.getScore() < step_size) {
+	                   /**
+	                    * Starte an der Scoresummer/ Stepsize abgerunden und 
+	                    * fuege dise dem Test hinzu.
+	                    */
 	                if ((int)(scoreSumme/step_size) < testAuslastungen.size()) {
 	                    setAuslastungenFuerTests(t, testAuslastungen.get((int)(scoreSumme/step_size)));
 	                }
 	            } else {
+	                /**
+	                 * Starte an der Scoresumme/ Step_size abgerundet, fuege 
+	                 * fuer jeden Step des Tests einen Wert hinzu.
+	                 */
 	                List<TestAuslastungen> auslatungen = new ArrayList<TestAuslastungen>();
 	                for (int i = (int)(scoreSumme/step_size); i <= ((int)((t.getScore() + scoreSumme)/step_size)) && i < testAuslastungen.size(); i++) {
 	                    if (i < testAuslastungen.size()) {

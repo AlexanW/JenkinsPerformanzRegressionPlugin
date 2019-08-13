@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Dieses Interface definiert ein Grundgeruest fuer die Klassen,
  * die, die Werte einer TestSuit einlesen.
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public interface ITestWerte extends ITestObjektGruppe{

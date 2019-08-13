@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Eine Klasse, die die Testzeiten und die entsprechenden Auslastungen bindet.
  * 
- * @author Alexander Weber
+ * @author Alexander
  *
  */
 public class Test implements ITest, Serializable {
@@ -143,9 +143,5 @@ public class Test implements ITest, Serializable {
                 + " CPUAvarage: " + avarageCPU  + " RAMMax: " + maxRAM + " RAMAvarage: " 
                 + avarageRAM + "\n";
        return output;
-    }
-    public static void main(String[] args) {
-        Test test = new Test();
-        System.out.println(test.getAvarageCPU());
     }
 }
