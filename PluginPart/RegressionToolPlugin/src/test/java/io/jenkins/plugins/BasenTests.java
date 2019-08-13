@@ -20,7 +20,7 @@ import testRegression.TestVergleichArten;
 
 public class BasenTests {
 
-    //@Test
+    @Test
     public void testeBasenTestRegression() {
         RegressionTestResult result = new RegressionTestResult();
         double erwarteteRegression = 0.1;
@@ -87,7 +87,7 @@ public class BasenTests {
         }
     }
     
-    //@Test
+    @Test
     public void testeBasenRegressionsTest() {
             IBasis basisAlt = new Basis("Test", 1.873, 2.3, 1.9, 0.2, null, 40);
             IBasis basisNeu = new Basis("Test", 1.982, 2.2, 1.8, 0.2, null, 40);
